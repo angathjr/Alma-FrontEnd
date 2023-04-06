@@ -11,11 +11,11 @@ class ProfilePage extends StatelessWidget {
     double height=MediaQuery.of(context).size.height;
 
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: SafeArea(
         child: Container(
             width: width,
             height: height,
-            decoration: Constants.buildBoxDecoration(),
             child: Center(child: Text("profile",style: Constants.txtStyle(),))),
       ),
     );

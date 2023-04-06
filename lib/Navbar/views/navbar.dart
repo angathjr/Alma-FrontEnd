@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 class NavBarPage extends StatelessWidget {
   NavBarPage({Key? key}) : super(key: key);
 
-  var pages = const [
+   var pages = const [
     FeedPage(),
     SearchPage(),
     PostPage(),
@@ -23,17 +23,15 @@ class NavBarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("build");
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    double topHeight = height * 0.90;
+    double topHeight = height * 0.91;
     double navHeight = (height - topHeight) - (width * 0.035 * 2);
 
-    return Scaffold(
-        body: Container(
+    return Scaffold(body: Container(
       width: width,
       height: height,
-      decoration: Constants.buildBoxDecoration(),
+     decoration: Constants.buildBoxDecoration(),
       child: Column(
         children: [
           //pageview
@@ -48,9 +46,9 @@ class NavBarPage extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(width * 0.035),
+              padding: EdgeInsets.all(width * 0.03),
               width: width,
-              decoration: const BoxDecoration(),
+              color: Colors.transparent,
               child: Container(
                 decoration: BoxDecoration(
                   color: const Color(0xff34353E).withOpacity(.40),

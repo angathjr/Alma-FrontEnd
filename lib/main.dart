@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 void main(){
   Paint.enableDithering = true;
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 
@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       theme: ThemeData(
         useMaterial3: true,
+        fontFamily: 'Helvetica',
       ),
       home: NavBarPage(),
     );

@@ -23,7 +23,7 @@ class Constants {
 
 
   static TextStyle txtStyle ()=>const TextStyle(
-    fontSize: 25,
+    fontSize: 22,
     color: Colors.white
   );
 }
