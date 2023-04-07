@@ -25,7 +25,7 @@ class NavBarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    double topHeight = height * 0.91;
+    double topHeight = height * 0.915;
     double navHeight = (height - topHeight) - (width * 0.035 * 2);
 
     return Scaffold(body: Container(
@@ -34,6 +34,8 @@ class NavBarPage extends StatelessWidget {
      decoration: Constants.buildBoxDecoration(),
       child: Column(
         children: [
+
+
           //pageview
 
           SizedBox(

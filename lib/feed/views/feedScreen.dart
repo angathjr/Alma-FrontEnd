@@ -24,13 +24,17 @@ class FeedPage extends StatelessWidget {
           appBarWidget(height, width),
 
 
-          //Cards starts here
+         //list of all post
 
 
           Expanded(
             child: ListView.builder(
             itemCount: 3,
               itemBuilder: (context, index) {
+
+
+
+              //the card starts here
 
                 return SizedBox(
                   width: width,
@@ -78,21 +82,17 @@ class FeedPage extends StatelessWidget {
                                   ],
                                 ),
                                 const Spacer(),
-                                Column(
-                                  children: [
-                                    SizedBox(
-                                      width: width * 0.07,
-                                      height: width * 0.07,
-                                      child: Image.asset("assets/images/more.png",alignment: Alignment.topRight,),
-                                    ),
-                                  ],
+                                SizedBox(
+                                  width: width * 0.07,
+                                  height: width * 0.07,
+                                  child: Image.asset("assets/images/more.png",alignment: Alignment.topRight,),
                                 )
                               ],
                             ),
                           ),
 
                           SizedBox(
-                            height: postSize * 0.05,
+                            height: postSize * 0.03,
                           ),
                           
                           
@@ -141,8 +141,8 @@ class FeedPage extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.only(left: 10, right: 10),
-            height: width * 0.14,
-            width: width * 0.14,
+            height: width * 0.13,
+            width: width * 0.13,
             child: Image.asset("assets/appbar/menu.png"),
           ),
           Text(
@@ -152,8 +152,8 @@ class FeedPage extends StatelessWidget {
           const Spacer(),
           Container(
             padding: const EdgeInsets.only(right: 10),
-            width: width * 0.09,
-            height: width * 0.09,
+            width: width * 0.08,
+            height: width * 0.08,
             child: Image.asset("assets/appbar/bell.png"),
           )
         ],
