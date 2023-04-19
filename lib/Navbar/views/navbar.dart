@@ -14,7 +14,7 @@ class NavBarPage extends StatelessWidget {
    var pages = const [
     FeedPage(),
     SearchPage(),
-    PostPage(),
+    postScreen(),
     CalendarPage(),
     ProfilePage(),
   ];
