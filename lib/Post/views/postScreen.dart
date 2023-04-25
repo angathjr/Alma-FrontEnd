@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class postScreen extends StatelessWidget {
   const postScreen({super.key});
@@ -12,39 +11,46 @@ class postScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Create post'),
+        title: const Text('Create post'),
       ),
+      
       body: SingleChildScrollView(
+        
         child: Padding(
           padding:  EdgeInsets.symmetric(horizontal: width*0.04),
+          
           child: Column(
             children: [
-              Container(
-                width: width * .9,
-                height: height * .07,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Color(0xff13141B),
-                ),
-                child: Row(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/pic.png',
-                      height: height * .15,
-                      scale: 2.5,
-                    ),
-                    SizedBox(
-                      width: 0.03 * width,
-                    ),
-                    Text(
-                      'Shanil A V',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
+              
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  width: width * .9,
+                  height: height * .07,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Color(0xff13141B),
+                  ),
+                  child: Row(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/pic.png',
+                        height: height * .15,
+                        scale: 2.5,
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        width: 0.03 * width,
+                      ),
+                      const Text(
+                        'Shanil A V',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
@@ -53,7 +59,7 @@ class postScreen extends StatelessWidget {
               Container(
                 width: width * .89,
                 height: height * .665,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: Color(0xff13141B),
                 ),
@@ -68,7 +74,7 @@ class postScreen extends StatelessWidget {
                     SizedBox(
                       height: width * 0.06,
                     ),
-                    Text(
+                    const Text(
                       'esfdggujhgfvrtfscyjkhgvcrfdfgukjgcrtfggnijgctrgfhghikjghfcrtghghniokjhgfcrt',
                       style: TextStyle(
                         fontSize: 10.0,
@@ -80,7 +86,7 @@ class postScreen extends StatelessWidget {
                       child: Container(
                           width: width * .2,
                           height: height * .04,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Color.fromARGB(255, 30, 31, 42),
                           ),
@@ -104,14 +110,14 @@ class postScreen extends StatelessWidget {
               Container(
                 width: width * .3,
                 height: height * .05,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: Color(0xff13141B),
                 ),
                 child: Row(
-                  children: [
+                  children: const [
                     Padding(
-                      padding: const EdgeInsets.symmetric(
+                      padding: EdgeInsets.symmetric(
                           vertical: 1.0, horizontal: .8),
                       child: Text(
                         '        Next',

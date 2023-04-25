@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class InternshipScreen extends StatelessWidget {
   const InternshipScreen({super.key});
@@ -22,36 +20,36 @@ class InternshipScreen extends StatelessWidget {
           Container(
             height: 0.15 * height,
             width: 0.87 * width,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               color: Color(0xff1A1B27),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Container(
                       width: 0.21 * width,
                       height: 0.075 * height,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Color(0xffC0CEEF),
                           image: DecorationImage(
                               image: AssetImage('assets/images/TCS.png'))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         Text(
                           'UI Engineer Intern',
                           style: TextStyle(
@@ -73,11 +71,11 @@ class InternshipScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Row(
-                  children: [
+                  children: const [
                     SizedBox(
                       width: 10,
                     ),
@@ -99,36 +97,36 @@ class InternshipScreen extends StatelessWidget {
           Container(
             height: 0.15 * height,
             width: 0.87 * width,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               color: Color(0xff1A1B27),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Container(
                       width: 0.21 * width,
                       height: 0.075 * height,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Color(0xffC0CEEF),
                           image: DecorationImage(
                               image: AssetImage('assets/images/TCS.png'))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         Text(
                           'UI Engineer Intern',
                           style: TextStyle(
@@ -150,11 +148,11 @@ class InternshipScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Row(
-                  children: [
+                  children: const [
                     SizedBox(
                       width: 10,
                     ),
@@ -176,36 +174,36 @@ class InternshipScreen extends StatelessWidget {
           Container(
             height: 0.15 * height,
             width: 0.87 * width,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               color: Color(0xff1A1B27),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Container(
                       width: 0.21 * width,
                       height: 0.075 * height,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Color(0xffC0CEEF),
                           image: DecorationImage(
                               image: AssetImage('assets/images/TCS.png'))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         Text(
                           'UI Engineer Intern',
                           style: TextStyle(
@@ -227,11 +225,11 @@ class InternshipScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Row(
-                  children: [
+                  children: const [
                     SizedBox(
                       width: 10,
                     ),
@@ -253,36 +251,36 @@ class InternshipScreen extends StatelessWidget {
           Container(
             height: 0.15 * height,
             width: 0.87 * width,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               color: Color(0xff1A1B27),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Container(
                       width: 0.21 * width,
                       height: 0.075 * height,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Color(0xffC0CEEF),
                           image: DecorationImage(
                               image: AssetImage('assets/images/TCS.png'))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         Text(
                           'UI Engineer Intern',
                           style: TextStyle(
@@ -304,11 +302,11 @@ class InternshipScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Row(
-                  children: [
+                  children: const [
                     SizedBox(
                       width: 10,
                     ),
@@ -330,36 +328,36 @@ class InternshipScreen extends StatelessWidget {
           Container(
             height: 0.15 * height,
             width: 0.87 * width,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               color: Color(0xff1A1B27),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Container(
                       width: 0.21 * width,
                       height: 0.075 * height,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Color(0xffC0CEEF),
                           image: DecorationImage(
                               image: AssetImage('assets/images/TCS.png'))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         Text(
                           'UI Engineer Intern',
                           style: TextStyle(
@@ -381,11 +379,11 @@ class InternshipScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Row(
-                  children: [
+                  children: const [
                     SizedBox(
                       width: 10,
                     ),

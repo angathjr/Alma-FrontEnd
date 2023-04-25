@@ -1,11 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class StudentProfileScreen extends StatefulWidget {
-  StudentProfileScreen({super.key});
+  const StudentProfileScreen({super.key});
 
   @override
   State<StudentProfileScreen> createState() => _StudentProfileScreenState();
@@ -27,7 +23,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Complete Your StudentProfileScreen Profile'),
+        title: const Text('Complete Your StudentProfileScreen Profile'),
       ),
       body: Center(
         child: Column(
@@ -40,7 +36,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
             Container(
               width: width * .89,
               height: height * .62,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: Color(0xff13141B),
               ),
@@ -50,7 +46,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'First Name',
                           style: TextStyle(
                             color: Colors.white,
@@ -60,13 +56,13 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
                             controller: first_name_controller,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
@@ -76,7 +72,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                         SizedBox(
                           height: width * 0.06,
                         ),
-                        Text(
+                        const Text(
                           'Last Name',
                           style: TextStyle(
                             color: Colors.white,
@@ -86,13 +82,13 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
                             controller: last_name_controller,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
@@ -102,7 +98,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                         SizedBox(
                           height: width * 0.06,
                         ),
-                        Text(
+                        const Text(
                           'Phone Number',
                           style: TextStyle(
                             color: Colors.white,
@@ -112,13 +108,13 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
                             controller: phone_number_controller,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
@@ -128,7 +124,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                         SizedBox(
                           height: width * 0.06,
                         ),
-                        Text(
+                        const Text(
                           'Tkm Mail id',
                           style: TextStyle(
                             color: Colors.white,
@@ -138,13 +134,13 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
                             controller: tkm_mail_controller,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
@@ -154,7 +150,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                         SizedBox(
                           height: width * 0.06,
                         ),
-                        Text(
+                        const Text(
                           'Admission number',
                           style: TextStyle(
                             color: Colors.white,
@@ -164,13 +160,13 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
                             controller: adm_no_controller,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
@@ -180,7 +176,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                         SizedBox(
                           height: width * 0.06,
                         ),
-                        Text(
+                        const Text(
                           'Department',
                           style: TextStyle(
                             color: Colors.white,
@@ -190,13 +186,13 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
                             controller: department_controller,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
@@ -206,7 +202,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                         SizedBox(
                           height: width * 0.08,
                         ),
-                        Text(
+                        const Text(
                           'Year of study',
                           style: TextStyle(
                             color: Colors.white,
@@ -216,13 +212,13 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
                             controller: year_controller,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
@@ -244,11 +240,11 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                 alignment: Alignment.center,
                 width: width * 0.35,
                 height: height * .053,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   color: Color(0xff25262E),
                 ),
-                child: Text(
+                child: const Text(
                   "Submit",
                   style: TextStyle(
                     color: Colors.white,

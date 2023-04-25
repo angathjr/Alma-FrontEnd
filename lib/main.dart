@@ -1,8 +1,9 @@
-import 'package:alma/Navbar/views/navbar.dart';
+
+import 'package:alma/login/views/StudentProfileScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'login/views/LoginScreen.dart';
+
 
 void main(){
   Paint.enableDithering = true;
@@ -18,10 +19,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       theme: ThemeData(
         brightness: Brightness.dark,
-        useMaterial3: true,
+        //useMaterial3: true,
         fontFamily: 'Helvetica',
       ),
-      home: NavBarPage(),
+      home:const StudentProfileScreen(),
     );
   }
 }
