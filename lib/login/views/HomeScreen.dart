@@ -4,7 +4,6 @@ import 'AlumniProfileScreen.dart';
 import 'StaffProfileScreen.dart';
 import 'StudentProfileScreen.dart';
 
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -18,28 +17,28 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Text(
+            const Text(
               'Who are you?',
               style: TextStyle(color: Colors.white, fontSize: 35),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             InkWell(
               onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const AlumniProfileScreen()),
-                    );
-                  },
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AlumniProfileScreen()),
+                );
+              },
               child: Container(
-                
                 height: height * 0.2,
                 width: width * 0.4,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/graduation 1.png')),
                     borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -56,13 +55,14 @@ class HomeScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const StaffProfileScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => const StaffProfileScreen()),
                     );
                   },
                   child: Container(
                     height: height * 0.2,
                     width: width * 0.4,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage('assets/images/male 1.png')),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -73,13 +73,14 @@ class HomeScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) =>  StudentProfileScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => StudentProfileScreen()),
                     );
                   },
                   child: Container(
                     height: height * 0.2,
                     width: width * 0.4,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage('assets/images/boy 1.png')),
                         borderRadius: BorderRadius.all(Radius.circular(10)),

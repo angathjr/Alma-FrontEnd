@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -11,16 +9,16 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   @override
-  final TextEditingController search_controller=TextEditingController();
+  final TextEditingController search_controller = TextEditingController();
   Widget build(BuildContext context) {
     print("search");
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-         resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Search'),
+        title: const Text('Search'),
       ),
       body: Center(
         child: Column(
@@ -45,17 +43,24 @@ class _SearchPageState extends State<SearchPage> {
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Colors.white,
+                    ),),
+                    const Text(
+                      'tcs',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 0.65 * width,
-                  ),
-                  Image.asset(
-                    'assets/images/search.png',
-                    height: height * .15,
-                    scale: 2.0,
-                  ),
-                ],
+                    SizedBox(
+                      width: 0.65 * width,
+                    ),
+                    Image.asset(
+                      'assets/images/search.png',
+                      height: height * .15,
+                      scale: 2.0,
+                    ),
+                  ],
+                ),
               ),
             ),
             SizedBox(
@@ -64,7 +69,7 @@ class _SearchPageState extends State<SearchPage> {
             Container(
               width: width * .9,
               height: height * .12,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: Color(0xff13141B),
               ),
@@ -76,7 +81,7 @@ class _SearchPageState extends State<SearchPage> {
                   Container(
                     width: width * .18,
                     height: height * .08,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       color: Color.fromARGB(255, 61, 64, 91),
                     ),
@@ -84,7 +89,7 @@ class _SearchPageState extends State<SearchPage> {
                   SizedBox(
                     width: 0.04 * width,
                   ),
-                  Text(
+                  const Text(
                     'Tata Consultancy Services',
                     style: TextStyle(
                       fontSize: 20.0,
@@ -100,7 +105,7 @@ class _SearchPageState extends State<SearchPage> {
             Container(
               width: width * .9,
               height: height * .12,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: Color(0xff13141B),
               ),
@@ -112,7 +117,7 @@ class _SearchPageState extends State<SearchPage> {
                   Container(
                     width: width * .18,
                     height: height * .08,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       color: Color.fromARGB(255, 61, 64, 91),
                     ),
@@ -129,7 +134,7 @@ class _SearchPageState extends State<SearchPage> {
             Container(
               width: width * .9,
               height: height * .12,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: Color(0xff13141B),
               ),
@@ -141,7 +146,7 @@ class _SearchPageState extends State<SearchPage> {
                   Container(
                     width: width * .18,
                     height: height * .08,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       color: Color.fromARGB(255, 61, 64, 91),
                     ),
@@ -158,7 +163,7 @@ class _SearchPageState extends State<SearchPage> {
             Container(
               width: width * .9,
               height: height * .12,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: Color(0xff13141B),
               ),
@@ -170,7 +175,7 @@ class _SearchPageState extends State<SearchPage> {
                   Container(
                     width: width * .18,
                     height: height * .08,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       color: Color.fromARGB(255, 61, 64, 91),
                     ),
@@ -187,7 +192,7 @@ class _SearchPageState extends State<SearchPage> {
             Container(
               width: width * .9,
               height: height * .12,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: Color(0xff13141B),
               ),
@@ -199,7 +204,7 @@ class _SearchPageState extends State<SearchPage> {
                   Container(
                     width: width * .18,
                     height: height * .08,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       color: Color.fromARGB(255, 61, 64, 91),
                     ),

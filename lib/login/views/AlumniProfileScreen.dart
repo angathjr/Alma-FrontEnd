@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class AlumniProfileScreen extends StatefulWidget {
   const AlumniProfileScreen({super.key});
@@ -15,8 +13,9 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
   final TextEditingController last_name_controller = TextEditingController();
   final TextEditingController phone_number_controller = TextEditingController();
   final TextEditingController ktu_reg_controller = TextEditingController();
-  final TextEditingController current_company_controller = TextEditingController();
-   final TextEditingController department_controller = TextEditingController();
+  final TextEditingController current_company_controller =
+      TextEditingController();
+  final TextEditingController department_controller = TextEditingController();
   final TextEditingController year1_controller = TextEditingController();
   final TextEditingController year2_controller = TextEditingController();
   Widget build(BuildContext context) {
@@ -25,12 +24,14 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text('Complete Your Alumni AlumniProfileScreen'),
+        backgroundColor: Color.fromARGB(255, 211, 176, 176),
+        title: const Text('Complete Your Alumni AlumniProfileScreen'),
       ),
       body: Center(
+        
         child: Column(
           children: [
+            
             Image.asset(
               'assets/images/pic.png',
               height: height * .15,
@@ -39,18 +40,17 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
             Container(
               width: width * .89,
               height: height * .62,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: Color(0xff13141B),
               ),
-              
               child: Padding(
                 padding: EdgeInsets.all(width * 0.06),
                 child: SingleChildScrollView(
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'First Name',
                           style: TextStyle(
                             color: Colors.white,
@@ -60,23 +60,23 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
                             controller: first_name_controller,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                         SizedBox(
                           height: width * 0.06,
                         ),
-                        Text(
+                        const Text(
                           'Last Name',
                           style: TextStyle(
                             color: Colors.white,
@@ -86,13 +86,13 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
                             controller: last_name_controller,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
@@ -102,7 +102,7 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
                         SizedBox(
                           height: width * 0.06,
                         ),
-                        Text(
+                        const Text(
                           'Phone Number',
                           style: TextStyle(
                             color: Colors.white,
@@ -112,13 +112,13 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
                             controller: phone_number_controller,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
@@ -128,7 +128,7 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
                         SizedBox(
                           height: width * 0.06,
                         ),
-                        Text(
+                        const Text(
                           'KTU Reg Number',
                           style: TextStyle(
                             color: Colors.white,
@@ -138,13 +138,13 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
                             controller: ktu_reg_controller,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
@@ -154,7 +154,7 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
                         SizedBox(
                           height: width * 0.06,
                         ),
-                        Text(
+                        const Text(
                           'Current Company',
                           style: TextStyle(
                             color: Colors.white,
@@ -164,13 +164,13 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
                             controller: current_company_controller,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
@@ -180,7 +180,7 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
                         SizedBox(
                           height: width * 0.06,
                         ),
-                        Text(
+                        const Text(
                           'Department',
                           style: TextStyle(
                             color: Colors.white,
@@ -190,13 +190,13 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
                             controller: department_controller,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
@@ -206,7 +206,7 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
                         SizedBox(
                           height: width * 0.08,
                         ),
-                        Text(
+                        const Text(
                           'Acadamic year',
                           style: TextStyle(
                             color: Colors.white,
@@ -218,37 +218,39 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
                             Container(
                               width: width * 0.35,
                               height: height * .053,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
                                 color: Color(0xff25262E),
                               ),
                               child: TextFormField(
-                            controller: year1_controller,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(left: 5),
+                                controller: year1_controller,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(left: 5),
+                                ),
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
-                            style: TextStyle(color: Colors.white),
-                          ),
+                            SizedBox(
+                              width: width * 0.05,
                             ),
-                             SizedBox(
-              width: width * 0.05,
-            ),
                             Container(
                               width: width * 0.35,
                               height: height * .053,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
                                 color: Color(0xff25262E),
                               ),
                               child: TextFormField(
-                            controller: year2_controller,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(left: 5),
-                            ),
-                            style: TextStyle(color: Colors.white),
-                          ),
+                                controller: year2_controller,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(left: 5),
+                                ),
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                           ],
                         ),
@@ -262,12 +264,12 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
             Container(
               width: width * 0.35,
               height: height * .053,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 color: Color(0xff25262E),
               ),
               child: Row(
-                children: [
+                children: const [
                   Text(
                     "             Submit",
                     style: TextStyle(
