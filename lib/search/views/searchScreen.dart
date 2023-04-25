@@ -13,6 +13,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   final TextEditingController search_controller=TextEditingController();
   Widget build(BuildContext context) {
+    print("search");
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -31,8 +32,8 @@ class _SearchPageState extends State<SearchPage> {
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: Color(0xff13141B),
               ),
-              
-              
+
+
               child: Row(
                 // mainAxisAlignment: MainAxisAlignment.center,
                 children: [

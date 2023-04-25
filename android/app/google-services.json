@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "443740264493",
+    "project_id": "alumni-portal-382415",
+    "storage_bucket": "alumni-portal-382415.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443740264493:android:b554f3bf1b72f0879040a4",
+        "android_client_info": {
+          "package_name": "com.example.alma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "443740264493-vc3factengf7vk5uu26g1afa21mg1q7v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.alma",
+            "certificate_hash": "f84ca631e79fc5e5e9557a4954f34bd9fcd51076"
+          }
+        },
+        {
+          "client_id": "443740264493-hv4i6tktjbmc9n75n10jsu2kmkbtiqbb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTZfoNR_ea_KljyyFQGnQjJE3w7C489jk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "443740264493-hv4i6tktjbmc9n75n10jsu2kmkbtiqbb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

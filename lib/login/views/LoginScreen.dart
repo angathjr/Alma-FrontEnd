@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 
+import '../../auth/controllers/auth_controller.dart';
 import 'HomeScreen.dart';
 
 
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
-
+   LoginScreen({super.key});
+  final AuthController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -25,10 +27,7 @@ class LoginScreen extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const HomeScreen()),
-              );
+             controller.handleSignIn();
             },
             child: Container(
               width: width * .8,
