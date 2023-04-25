@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
 class FeedPage extends StatelessWidget {
   const FeedPage({Key? key}) : super(key: key);
 
-
-
-
   @override
   Widget build(BuildContext context) {
+    print("feed");
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     double postSize = height * 0.6;
