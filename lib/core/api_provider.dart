@@ -26,8 +26,9 @@ class ApiProvider extends GetConnect {
       final token = storage.read('authToken');
       // log('AuthTOken: $token');
       request.headers['Authorization'] = "token $token";
-      // log(request.headers.toString());
-      // log(request.url.toString());
+      print("hello");
+      log(request.headers.toString());
+      log(request.url.toString());
       return request;
     });
 

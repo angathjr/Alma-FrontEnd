@@ -1,15 +1,9 @@
 import 'package:alma/Navbar/views/navbar.dart';
-import 'package:alma/profile/views/profileScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-import 'package:alma/login/views/StudentProfileScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
 import 'getx_di.dart';
-import 'login/views/LoginScreen.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,26 +11,33 @@ void main() async {
   await GetStorage.init();
   GetXDependancyInjector().onInit();
   Paint.enableDithering = true;
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  final storage = GetStorage();
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        //useMaterial3: true,
-        fontFamily: 'Helvetica',
-      ),
-      home: LoginScreen(),
-      getPages: [
-        GetPage(name: '/', page:()=> LoginScreen()),
-        GetPage(name: 'login', page: ()=>LoginScreen()),
-      ],
-    );
+        theme: ThemeData(
+          brightness: Brightness.dark,
+          useMaterial3: true,
+          fontFamily: 'Helvetica',
+        ),
+        home: NavBarPage()
+        // getPages: [
+        //   GetPage(
+        //       name: '/',
+        //       page: () => storage.hasData('authToken')
+        //           ? storage.read('is_verified') ?? true
+        //           ? NavBarPage()
+        //           : HomeScreen()
+        //           : const FeedPage()),
+        //  // GetPage(name: 'login', page: ()=>LoginScreen()),
+        // ],
+        );
   }
 }
