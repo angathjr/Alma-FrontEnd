@@ -32,15 +32,15 @@ class AuthController extends GetxController {
 
      log("access token is ${auth.accessToken}");
       Map data = {'access_token': auth.accessToken};
-      final response = await apiNoAuth.postApi('/users/google/', data);
+      final response = await apiNoAuth.postApi('/users/google', data);
       log(data.toString());
       final apiToken = response.body['key'];
 
-      print('Api Token: $apiToken');
+      log('Api Token: $apiToken');
 
       await _storage.write('authToken', apiToken);
 
-      final Response userResponse = await apiNoAuth.getApi('/users/current_user');
+      final Response userResponse = await api.getApi('/users/current_user');
       log('${userResponse.statusCode}');
 
       log(userResponse.body.toString());
