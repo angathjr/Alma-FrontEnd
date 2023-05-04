@@ -1,4 +1,5 @@
 import 'package:alma/Navbar/views/navbar.dart';
+import 'package:alma/auth/views/login_screen.dart';
 import 'package:alma/login/views/HomeScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -29,14 +30,14 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Helvetica',
       ),
-      home: NavBarPage(),
+      //home: NavBarPage(),
       getPages: [
         GetPage(
             name: '/',
             page: () => storage.hasData('authToken')
-                ? storage.read('is_verified') ?? true
+                ? storage.read('is_verified') ?? false
                     ? NavBarPage()
-                    : HomeScreen()
+                    : LoginScreen()
                 : const FeedPage()),
         // GetPage(name: 'login', page: ()=>LoginScreen()),
       ],
