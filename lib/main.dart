@@ -1,8 +1,10 @@
 import 'package:alma/Navbar/views/navbar.dart';
+import 'package:alma/login/views/HomeScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'feed/views/feedScreen.dart';
 import 'getx_di.dart';
 
 void main() async {
@@ -22,22 +24,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        theme: ThemeData(
-          brightness: Brightness.dark,
-          useMaterial3: true,
-          fontFamily: 'Helvetica',
-        ),
-        home: NavBarPage()
-        // getPages: [
-        //   GetPage(
-        //       name: '/',
-        //       page: () => storage.hasData('authToken')
-        //           ? storage.read('is_verified') ?? true
-        //           ? NavBarPage()
-        //           : HomeScreen()
-        //           : const FeedPage()),
-        //  // GetPage(name: 'login', page: ()=>LoginScreen()),
-        // ],
-        );
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        useMaterial3: true,
+        fontFamily: 'Helvetica',
+      ),
+      home: NavBarPage(),
+      getPages: [
+        GetPage(
+            name: '/',
+            page: () => storage.hasData('authToken')
+                ? storage.read('is_verified') ?? true
+                    ? NavBarPage()
+                    : HomeScreen()
+                : const FeedPage()),
+        // GetPage(name: 'login', page: ()=>LoginScreen()),
+      ],
+    );
   }
 }
