@@ -8,6 +8,7 @@ import '../../core/api_provider_no_auth.dart';
 import '../models/user.dart';
 
 class AuthController extends GetxController {
+
   late GoogleSignIn _googleSignIn;
   final GetStorage _storage = GetStorage();
   final ApiProvider api = Get.find();
@@ -31,9 +32,12 @@ class AuthController extends GetxController {
       final auth = await result!.authentication;
 
      log("access token is ${auth.accessToken}");
+
       Map data = {'access_token': auth.accessToken};
       final response = await apiNoAuth.postApi('/users/google', data);
+
       log(data.toString());
+      
       final apiToken = response.body['key'];
 
       log('Api Token: $apiToken');
