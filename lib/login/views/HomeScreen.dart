@@ -1,11 +1,17 @@
+import 'package:alma/auth/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'AlumniProfileScreen.dart';
 import 'StaffProfileScreen.dart';
 import 'StudentProfileScreen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+   HomeScreen({Key? key}) : super(key: key);
+
+   final AuthController authController=Get.find();
+    final _box=GetStorage;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +35,7 @@ class HomeScreen extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
+                
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -53,6 +60,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(
