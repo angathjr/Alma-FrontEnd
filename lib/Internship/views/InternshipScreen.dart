@@ -8,8 +8,9 @@ class InternshipScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
-          title: Text(
+          title: const Text(
             'Internship',
             style: TextStyle(color: Colors.white),
           ),
@@ -27,13 +28,13 @@ class InternshipScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 8,
+                SizedBox(
+                  height: 0.015 * height,
                 ),
                 Row(
                   children: [
-                    const SizedBox(
-                      width: 10,
+                    SizedBox(
+                      width: .030 * width,
                     ),
                     Container(
                       width: 0.21 * width,
@@ -44,13 +45,13 @@ class InternshipScreen extends StatelessWidget {
                           image: DecorationImage(
                               image: AssetImage('assets/images/TCS.png'))),
                     ),
-                    const SizedBox(
-                      width: 5,
+                    SizedBox(
+                      width: .030 * width,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'UI Engineer Intern',
                           style: TextStyle(
                             color: Colors.white,
@@ -58,9 +59,9 @@ class InternshipScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 5,
+                          height: .005 * height,
                         ),
-                        Text(
+                        const Text(
                           'TCS',
                           style: TextStyle(
                             color: Colors.white,
@@ -71,23 +72,20 @@ class InternshipScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                const SizedBox(
-                  height: 25,
+                SizedBox(
+                  height: 0.025 * height,
                 ),
                 Row(
-                  children: const [
+                  children: [
                     SizedBox(
-                      width: 10,
+                      width: .030 * width,
                     ),
-                    Text(
+                    const Text(
                       'Applied on June 24 , 21:24',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 13,
                       ),
-                    ),
-                    SizedBox(
-                      width: 75,
                     ),
                   ],
                 )
@@ -104,13 +102,13 @@ class InternshipScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 8,
+                SizedBox(
+                  height: 0.015 * height,
                 ),
                 Row(
                   children: [
-                    const SizedBox(
-                      width: 10,
+                    SizedBox(
+                      width: .030 * width,
                     ),
                     Container(
                       width: 0.21 * width,
@@ -121,13 +119,13 @@ class InternshipScreen extends StatelessWidget {
                           image: DecorationImage(
                               image: AssetImage('assets/images/TCS.png'))),
                     ),
-                    const SizedBox(
-                      width: 5,
+                    SizedBox(
+                      width: .030 * width,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'UI Engineer Intern',
                           style: TextStyle(
                             color: Colors.white,
@@ -135,9 +133,9 @@ class InternshipScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 5,
+                          height: .005 * height,
                         ),
-                        Text(
+                        const Text(
                           'TCS',
                           style: TextStyle(
                             color: Colors.white,
@@ -148,23 +146,20 @@ class InternshipScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                const SizedBox(
-                  height: 25,
+                SizedBox(
+                  height: .03 * height,
                 ),
                 Row(
-                  children: const [
+                  children: [
                     SizedBox(
-                      width: 10,
+                      width: .030 * width,
                     ),
-                    Text(
+                    const Text(
                       'Applied on June 24 , 21:24',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 13,
                       ),
-                    ),
-                    SizedBox(
-                      width: 75,
                     ),
                   ],
                 )
@@ -181,13 +176,13 @@ class InternshipScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 8,
+                SizedBox(
+                  height: 0.015 * height,
                 ),
                 Row(
                   children: [
-                    const SizedBox(
-                      width: 10,
+                    SizedBox(
+                      width: .030 * width,
                     ),
                     Container(
                       width: 0.21 * width,
@@ -198,13 +193,13 @@ class InternshipScreen extends StatelessWidget {
                           image: DecorationImage(
                               image: AssetImage('assets/images/TCS.png'))),
                     ),
-                    const SizedBox(
-                      width: 5,
+                    SizedBox(
+                      width: .030 * width,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'UI Engineer Intern',
                           style: TextStyle(
                             color: Colors.white,
@@ -212,9 +207,9 @@ class InternshipScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 5,
+                          height: .005 * height,
                         ),
-                        Text(
+                        const Text(
                           'TCS',
                           style: TextStyle(
                             color: Colors.white,
@@ -225,23 +220,20 @@ class InternshipScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                const SizedBox(
-                  height: 25,
+                SizedBox(
+                  height: .03 * height,
                 ),
                 Row(
-                  children: const [
+                  children: [
                     SizedBox(
-                      width: 10,
+                      width: .030 * width,
                     ),
-                    Text(
+                    const Text(
                       'Applied on June 24 , 21:24',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 13,
                       ),
-                    ),
-                    SizedBox(
-                      width: 75,
                     ),
                   ],
                 )
@@ -258,13 +250,13 @@ class InternshipScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 8,
+                SizedBox(
+                  height: 0.015 * height,
                 ),
                 Row(
                   children: [
-                    const SizedBox(
-                      width: 10,
+                    SizedBox(
+                      width: .030 * width,
                     ),
                     Container(
                       width: 0.21 * width,
@@ -275,13 +267,13 @@ class InternshipScreen extends StatelessWidget {
                           image: DecorationImage(
                               image: AssetImage('assets/images/TCS.png'))),
                     ),
-                    const SizedBox(
-                      width: 5,
+                    SizedBox(
+                      width: .030 * width,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'UI Engineer Intern',
                           style: TextStyle(
                             color: Colors.white,
@@ -289,9 +281,9 @@ class InternshipScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 5,
+                          height: .005 * height,
                         ),
-                        Text(
+                        const Text(
                           'TCS',
                           style: TextStyle(
                             color: Colors.white,
@@ -302,23 +294,20 @@ class InternshipScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                const SizedBox(
-                  height: 25,
+                SizedBox(
+                  height: .03 * height,
                 ),
                 Row(
-                  children: const [
+                  children: [
                     SizedBox(
-                      width: 10,
+                      width: .030 * width,
                     ),
-                    Text(
+                    const Text(
                       'Applied on June 24 , 21:24',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 13,
                       ),
-                    ),
-                    SizedBox(
-                      width: 75,
                     ),
                   ],
                 )
@@ -335,13 +324,13 @@ class InternshipScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 8,
+                SizedBox(
+                  height: 0.015 * height,
                 ),
                 Row(
                   children: [
-                    const SizedBox(
-                      width: 10,
+                    SizedBox(
+                      width: .030 * width,
                     ),
                     Container(
                       width: 0.21 * width,
@@ -352,13 +341,13 @@ class InternshipScreen extends StatelessWidget {
                           image: DecorationImage(
                               image: AssetImage('assets/images/TCS.png'))),
                     ),
-                    const SizedBox(
-                      width: 5,
+                    SizedBox(
+                      width: .030 * width,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           'UI Engineer Intern',
                           style: TextStyle(
                             color: Colors.white,
@@ -366,9 +355,9 @@ class InternshipScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 5,
+                          height: .005 * height,
                         ),
-                        Text(
+                        const Text(
                           'TCS',
                           style: TextStyle(
                             color: Colors.white,
@@ -379,23 +368,20 @@ class InternshipScreen extends StatelessWidget {
                     )
                   ],
                 ),
-                const SizedBox(
-                  height: 25,
+                SizedBox(
+                  height: .03 * height,
                 ),
                 Row(
-                  children: const [
+                  children: [
                     SizedBox(
-                      width: 10,
+                      width: .030 * width,
                     ),
-                    Text(
+                    const Text(
                       'Applied on June 24 , 21:24',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 13,
                       ),
-                    ),
-                    SizedBox(
-                      width: 75,
                     ),
                   ],
                 )

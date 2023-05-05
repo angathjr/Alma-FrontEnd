@@ -20,10 +20,11 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Colors.black,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text('Complete Your StudentProfileScreen Profile'),
+        title: const Text('Complete Your Profile'),
       ),
       body: Center(
         child: Column(
@@ -66,7 +67,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                         SizedBox(
@@ -92,7 +93,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                         SizedBox(
@@ -118,7 +119,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                         SizedBox(
@@ -144,7 +145,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                         SizedBox(
@@ -170,7 +171,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                         SizedBox(
@@ -196,7 +197,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                         SizedBox(
@@ -222,7 +223,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                       ]),

@@ -15,56 +15,48 @@ class _SearchPageState extends State<SearchPage> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text('Search'),
-      ),
-      body: Center(
-        child: Column(
-          children: [
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          title: const Text('Search'),
+        ),
+        body: Center(
+          child: Column(children: [
+            
             Container(
               width: width * .9,
-              height: height * .07,
-              decoration: BoxDecoration(
+              height: height * .06,
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: Color(0xff13141B),
               ),
-
-
               child: Row(
-                // mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
                     width: 0.03 * width,
                   ),
-                  Text(
+                  const Text(
                     'tcs',
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Colors.white,
-                    ),),
-                    const Text(
-                      'tcs',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                      ),
                     ),
-                    SizedBox(
-                      width: 0.65 * width,
-                    ),
-                    Image.asset(
-                      'assets/images/search.png',
-                      height: height * .15,
-                      scale: 2.0,
-                    ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    width: 0.65 * width,
+                  ),
+                  Image.asset(
+                    'assets/images/search.png',
+                    height: height * .15,
+                    scale: 2.0,
+                  ),
+                ],
               ),
-
+            ),
             SizedBox(
-              height: 0.04 * width,
+              height: 0.08 * width,
             ),
             Container(
               width: width * .9,
@@ -218,9 +210,7 @@ class _SearchPageState extends State<SearchPage> {
             SizedBox(
               height: 0.04 * width,
             ),
-
-        ]),)
-      );
-
+          ]),
+        ));
   }
 }

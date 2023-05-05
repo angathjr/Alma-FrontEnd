@@ -8,16 +8,17 @@ import 'StaffProfileScreen.dart';
 import 'StudentProfileScreen.dart';
 
 class HomeScreen extends StatelessWidget {
-   HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
 
-   final AuthController authController=Get.find();
-    final _box=GetStorage;
+  final AuthController authController = Get.find();
+  final _box = GetStorage;
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -35,21 +36,30 @@ class HomeScreen extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => const AlumniProfileScreen()),
                 );
               },
-              child: Container(
-                height: height * 0.2,
-                width: width * 0.4,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/graduation 1.png')),
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: Color(0xff13141B)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: height * 0.2,
+                    width: width * 0.4,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/graduation 1.png')),
+                            
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Color(0xff13141B)),
+                        child: const Padding(
+                          padding: EdgeInsets.fromLTRB(57, 130, 20, 5),
+                          child: Text('alumni'),
+                        ),
+                  ),
+                ],
               ),
             ),
             SizedBox(
@@ -60,7 +70,6 @@ class HomeScreen extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -75,6 +84,10 @@ class HomeScreen extends StatelessWidget {
                             image: AssetImage('assets/images/male 1.png')),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         color: Color(0xff13141B)),
+                        child: const Padding(
+                          padding: EdgeInsets.fromLTRB(57, 130, 20, 5),
+                          child: Text('Staff'),
+                        ),
                   ),
                 ),
                 InkWell(
@@ -82,7 +95,7 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => StudentProfileScreen()),
+                          builder: (context) => const StudentProfileScreen()),
                     );
                   },
                   child: Container(
@@ -93,6 +106,10 @@ class HomeScreen extends StatelessWidget {
                             image: AssetImage('assets/images/boy 1.png')),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         color: Color(0xff13141B)),
+                        child: const Padding(
+                          padding: EdgeInsets.fromLTRB(57, 130, 20, 5),
+                          child: Text('Student'),
+                        ),
                   ),
                 )
               ],
