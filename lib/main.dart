@@ -37,8 +37,8 @@ class MyApp extends StatelessWidget {
             page: () => storage.hasData('authToken')
                 ? storage.read('is_verified') ?? false
                     ? NavBarPage()
-                    : LoginScreen()
-                : const FeedPage()),
+                    : const HomeScreen()
+                : LoginScreen()),
         // GetPage(name: 'login', page: ()=>LoginScreen()),
       ],
     );
