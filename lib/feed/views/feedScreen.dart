@@ -6,21 +6,26 @@ class FeedPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("feed");
+   // print("feed");
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     double postSize = height * 0.6;
      final Test test;
 
     return SafeArea(child: Scaffold(
+      appBar: AppBar(
+         title: Text("Home"),
+        backgroundColor: Colors.black,
+      ),
+       drawer:  NavigationDrawer(),
       backgroundColor: Colors.transparent,
       body: Column(
         children: [
 
-          //appbar
+          
 
-          appBarWidget(height, width),
-
+          //appBarWidget(height, width),
+        
 
          //list of all post
 
@@ -176,4 +181,69 @@ class Test{
   ];
 
 
+}
+class NavigationDrawer extends StatelessWidget {
+  const NavigationDrawer({super.key});
+
+  @override
+  Widget build(BuildContext context) =>Drawer(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+         
+         DrawerHeader(
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(255, 61, 77, 90),
+        ),
+        
+        child: Column(
+          children: [
+            
+            Image.asset(
+              'assets/images/pic.png',
+             // height: height * .15,
+              scale: 1.1,
+            ),
+             const Text('Mohammed Shanil AV',
+             style: TextStyle(color: Colors.white, fontSize: 22),),
+
+          ],
+        ),
+        
+      ),
+       ListTile(
+        title: const Text(''),
+        onTap: () {
+          // Update the state of the app.
+          // ...
+        },
+      ),
+       ListTile(
+        title: const Text('Events',
+        style: TextStyle(color: Colors.white, fontSize: 22),),
+        onTap: () {
+          // Update the state of the app.
+          // ...
+        },
+      ),
+       ListTile(
+        title: const Text('Jobs',
+         style: TextStyle(color: Colors.white, fontSize: 22),),
+        onTap: () {
+          // Update the state of the app.
+          // ...
+        },
+      ),
+       ListTile(
+        title: const Text('Internships',
+         style: TextStyle(color: Colors.white, fontSize: 22),),
+        onTap: () {
+          // Update the state of the app.
+          // ...
+        },
+      ),
+      ],
+    ),
+  );
+    
 }

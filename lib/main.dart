@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Helvetica',
       ),
-      home: feedDetailedScreen(),
+      home: FeedPage(),
       //getPages: [
       //  GetPage(
          //   name: '/',
