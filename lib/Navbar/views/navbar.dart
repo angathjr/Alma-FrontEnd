@@ -15,7 +15,7 @@ class NavBarPage extends StatelessWidget {
     FeedPage(),
     SearchPage(),
     postScreen(),
-    CalendarPage(),
+    Calendarpage(),
     ProfilePage(),
   ];
 

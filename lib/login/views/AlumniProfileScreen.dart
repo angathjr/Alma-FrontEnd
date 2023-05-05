@@ -22,10 +22,11 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Colors.black,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 211, 176, 176),
-        title: const Text('Complete Your Alumni AlumniProfileScreen'),
+        backgroundColor: Colors.black,
+        title: const Text('Complete Your Profile'),
       ),
       body: Center(
         
@@ -269,9 +270,10 @@ class _AlumniProfileScreenState extends State<AlumniProfileScreen> {
                 color: Color(0xff25262E),
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   Text(
-                    "             Submit",
+                    "Submit",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,

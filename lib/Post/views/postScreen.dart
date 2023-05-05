@@ -9,6 +9,7 @@ class postScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text('Create post'),
@@ -16,10 +17,12 @@ class postScreen extends StatelessWidget {
       
       body: SingleChildScrollView(
         
+        
         child: Padding(
           padding:  EdgeInsets.symmetric(horizontal: width*0.04),
           
           child: Column(
+            
             children: [
               
               Padding(
@@ -45,7 +48,7 @@ class postScreen extends StatelessWidget {
                       const Text(
                         'Shanil A V',
                         style: TextStyle(
-                          fontSize: 20.0,
+                          fontSize: 18.0,
                           color: Colors.white,
                         ),
                       ),
