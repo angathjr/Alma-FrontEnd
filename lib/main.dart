@@ -5,7 +5,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'feed/views/feedScreen.dart';
 import 'getx_di.dart';
 
 void main() async {
@@ -35,9 +34,9 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: '/',
             page: () => storage.hasData('authToken')
-                ? storage.read('is_verified') ?? false
+                ? storage.read('isVerified') ?? false
                     ? NavBarPage()
-                    : const HomeScreen()
+                    :  HomeScreen()
                 : LoginScreen()),
         // GetPage(name: 'login', page: ()=>LoginScreen()),
       ],
