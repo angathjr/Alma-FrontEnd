@@ -30,7 +30,7 @@ class NavigationDrawer extends StatelessWidget {
          
         const DrawerHeader(
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 124, 140, 153),
+          color: Color.fromARGB(255, 65, 75, 83),
         ),
         child: Text('Shanil A V'),
       ),
