@@ -1,4 +1,6 @@
 import 'package:alma/Navbar/views/navbar.dart';
+import 'package:alma/profile/views/profileEditScreen.dart';
+import 'package:alma/profile/views/profileScreen.dart';
 import 'package:alma/registration/views/alumni_profile_screen.dart';
 import 'package:alma/registration/views/user_selection_screen.dart';
 import 'package:alma/registration/views/staff_profile_screen.dart';
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Helvetica',
       ),
-      //home: UserSelectionScreen(),
+      home: ProfileEditScreen(),
       getPages: [
         GetPage(
             name: '/',
