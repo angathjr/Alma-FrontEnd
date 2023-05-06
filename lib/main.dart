@@ -3,6 +3,8 @@ import 'package:alma/Internship/views/InternshipScreen.dart';
 import 'package:alma/Navbar/views/navbar.dart';
 import 'package:alma/Post/views/InternshipDescriptionScreen.dart';
 import 'package:alma/Post/views/JobDescriptionScreen.dart';
+
+import 'package:alma/Post/views/postScreen.dart';
 import 'package:alma/auth/views/login_screen.dart';
 import 'package:alma/feed/views/feedDetailScreen.dart';
 import 'package:alma/feed/views/feedScreen.dart';
@@ -40,7 +42,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Helvetica',
       ),
-      home: FeedPage(),
+      home: postScreen(),
       //getPages: [
       //  GetPage(
          //   name: '/',

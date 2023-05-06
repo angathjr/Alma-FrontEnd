@@ -1,8 +1,11 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
+import 'package:flutter/material.dart';
 
 class postScreen extends StatelessWidget {
   const postScreen({super.key});
+
+  get builder => null;
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +17,11 @@ class postScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         title: const Text('Create post'),
       ),
-      
       body: SingleChildScrollView(
-        
-        
         child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: width*0.04),
-          
+          padding: EdgeInsets.symmetric(horizontal: width * 0.04),
           child: Column(
-            
             children: [
-              
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
@@ -85,7 +82,8 @@ class postScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(250.0, 260.0, 20.0, 20),
+                      padding:
+                          const EdgeInsets.fromLTRB(250.0, 260.0, 20.0, 20),
                       child: Container(
                           width: width * .2,
                           height: height * .04,
@@ -117,22 +115,81 @@ class postScreen extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: Color(0xff13141B),
                 ),
-                child: Row(
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 1.0, horizontal: .8),
-                      child: Text(
-                        '        Next',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
+                child: ElevatedButton(
+                  child: const Text('next'),
+                  onPressed: () {
+                    showModalBottomSheet<void>(
+                      
+                      context: context,
+                      builder: (BuildContext context) {
+                        return SizedBox(
+                          height: 700,
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                const Text(
+                                  'Your post Belong to',
+                                  style: TextStyle(fontSize: 23),
+                                ),
+                                ListTile(
+                                  title: const Text(
+                                    'Job',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  onTap: () {
+                                    // Update the state of the app.
+                                    // ...
+                                  },
+                                ),
+                                ListTile(
+                                  title: const Text(
+                                    'Internship',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  onTap: () {
+                                    // Update the state of the app.
+                                    // ...
+                                  },
+                                ),
+                                ListTile(
+                                  title: const Text(
+                                    'Collage event',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  onTap: () {
+                                    // Update the state of the app.
+                                    // ...
+                                  },
+                                ),
+                                ListTile(
+                                  title: const Text(
+                                    'Other Event',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20),
+                                  ),
+                                  onTap: () {
+                                    // Update the state of the app.
+                                    // ...
+                                  },
+                                ),
+                                ElevatedButton(
+                                  child: const Text('Next '),
+                                  onPressed: () => Navigator.pop(context),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
-              ),
+              )
             ],
           ),
         ),
