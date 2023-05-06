@@ -1,21 +1,13 @@
-import 'package:alma/Internship/views/InternshipDetailsScreen.dart';
-import 'package:alma/Internship/views/InternshipScreen.dart';
 import 'package:alma/Navbar/views/navbar.dart';
-import 'package:alma/Post/views/InternshipDescriptionScreen.dart';
-import 'package:alma/Post/views/JobDescriptionScreen.dart';
-import 'package:alma/auth/views/login_screen.dart';
-import 'package:alma/feed/views/feedDetailScreen.dart';
-import 'package:alma/feed/views/feedScreen.dart';
-import 'package:alma/jobs/views/JobScreen.dart';
-import 'package:alma/login/views/AlumniProfileScreen.dart';
-import 'package:alma/login/views/HomeScreen.dart';
-import 'package:alma/login/views/StaffProfileScreen.dart';
-import 'package:alma/login/views/StudentProfileScreen.dart';
-import 'package:alma/profile/views/profileScreen.dart';
+import 'package:alma/registration/views/alumni_profile_screen.dart';
+import 'package:alma/registration/views/user_selection_screen.dart';
+import 'package:alma/registration/views/staff_profile_screen.dart';
+import 'package:alma/registration/views/student_profile_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'auth/views/login_screen.dart';
 import 'getx_di.dart';
 
 void main() async {
@@ -40,17 +32,20 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Helvetica',
       ),
-      home: FeedPage(),
-      //getPages: [
-      //  GetPage(
-         //   name: '/',
-         //   page: () => storage.hasData('authToken')
-         //       ? storage.read('isVerified') ?? false
-          //          ? NavBarPage()
-           //         :  HomeScreen()
-           //     : LoginScreen()),
-        // GetPage(name: 'login', page: ()=>LoginScreen()),
-      //],
+      //home: UserSelectionScreen(),
+      getPages: [
+        GetPage(
+            name: '/',
+            page: () => storage.hasData('authToken')
+                ? storage.read('isVerified') ?? false
+                    ? NavBarPage()
+                    : UserSelectionScreen()
+                : LoginScreen()),
+        GetPage(name: '/login', page: () => LoginScreen()),
+        GetPage(name: '/alumni-profile', page: () => AlumniProfileScreen()),
+        GetPage(name: '/staff-profile', page: () => StaffProfileScreen()),
+        GetPage(name: '/student-profile', page: () => StudentProfileScreen()),
+      ],
     );
   }
 }

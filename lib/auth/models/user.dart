@@ -36,8 +36,8 @@ class UserModel {
         email: json["email"] ?? '',
         userType: json["user_type"] ?? '',
         username: json["username"] ?? '',
-        //phoneNumber: json["phone_number"] ?? '',
-        // data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
+        phoneNumber: json["phone_number"] ?? '',
+        data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -48,8 +48,8 @@ class UserModel {
         "email": email,
         "user_type": userType,
         "username": username,
-        //"phone_number": phoneNumber,
-        // "data": data == null ? [] : List<dynamic>.from(data!.map((x) => x.toJson())),
+        "phone_number": phoneNumber,
+        "data": data == null ? [] : List<dynamic>.from(data!.map((x) => x.toJson())),
       };
 }
 
