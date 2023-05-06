@@ -1,21 +1,13 @@
+import 'package:alma/registration/controllers/student_profile_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class StudentProfileScreen extends StatefulWidget {
-  const StudentProfileScreen({super.key});
+class StudentProfileScreen extends StatelessWidget {
+  StudentProfileScreen({super.key});
+
+  final StudentProfileController controller = Get.find();
 
   @override
-  State<StudentProfileScreen> createState() => _StudentProfileScreenState();
-}
-
-class _StudentProfileScreenState extends State<StudentProfileScreen> {
-  @override
-  final TextEditingController first_name_controller = TextEditingController();
-  final TextEditingController last_name_controller = TextEditingController();
-  final TextEditingController phone_number_controller = TextEditingController();
-  final TextEditingController tkm_mail_controller = TextEditingController();
-  final TextEditingController adm_no_controller = TextEditingController();
-  final TextEditingController department_controller = TextEditingController();
-  final TextEditingController year_controller = TextEditingController();
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -62,7 +54,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
-                            controller: first_name_controller,
+                            controller: controller.first_name_controller,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -88,7 +80,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
-                            controller: last_name_controller,
+                            controller: controller.last_name_controller,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -114,7 +106,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
-                            controller: phone_number_controller,
+                            controller: controller.phone_number_controller,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -140,7 +132,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
-                            controller: tkm_mail_controller,
+                            controller: controller.tkm_mail_controller,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -166,7 +158,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
-                            controller: adm_no_controller,
+                            controller: controller.adm_no_controller,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -192,7 +184,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
-                            controller: department_controller,
+                            controller: controller.department_controller,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -218,7 +210,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
-                            controller: year_controller,
+                            controller: controller.year_controller,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -234,9 +226,7 @@ class _StudentProfileScreenState extends State<StudentProfileScreen> {
               height: width * 0.05,
             ),
             InkWell(
-              onTap: () {
-                print(first_name_controller.text);
-              },
+              onTap: () {},
               child: Container(
                 alignment: Alignment.center,
                 width: width * 0.35,
