@@ -6,43 +6,36 @@ class FeedPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   // print("feed");
+    // print("feed");
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     double postSize = height * 0.6;
-     final Test test;
+    final Test test;
 
-    return SafeArea(child: Scaffold(
+    return SafeArea(
+        child: Scaffold(
       appBar: AppBar(
-         title: Text("Home"),
-        backgroundColor: Colors.black,
+        title: Text("Home"),
+        // backgroundColor: Colors.black,
       ),
-       drawer:  NavigationDrawer(),
+      drawer: NavigationDrawer(),
       backgroundColor: Colors.transparent,
       body: Column(
         children: [
-
-          
-
           //appBarWidget(height, width),
-        
 
-         //list of all post
-
+          //list of all post
 
           Expanded(
             child: ListView.builder(
-            itemCount: 3,
+              itemCount: 3,
               itemBuilder: (context, index) {
-
-
-
-              //the card starts here
+                //the card starts here
 
                 return SizedBox(
                   width: width,
                   child: Padding(
-                    padding: EdgeInsets.all(width*0.04),
+                    padding: EdgeInsets.all(width * 0.04),
                     child: Container(
                       padding: const EdgeInsets.all(10),
                       width: width,
@@ -74,13 +67,13 @@ class FeedPage extends StatelessWidget {
                                   children: [
                                     Text(
                                       "Lubaib",
-                                      style:
-                                          Constants.txtStyle().copyWith(fontSize: 17),
+                                      style: Constants.txtStyle()
+                                          .copyWith(fontSize: 17),
                                     ),
                                     Text(
                                       "1 hour ago",
-                                      style:
-                                          Constants.txtStyle().copyWith(fontSize: 11),
+                                      style: Constants.txtStyle()
+                                          .copyWith(fontSize: 11),
                                     )
                                   ],
                                 ),
@@ -88,7 +81,10 @@ class FeedPage extends StatelessWidget {
                                 SizedBox(
                                   width: width * 0.07,
                                   height: width * 0.07,
-                                  child: Image.asset("assets/images/more.png",alignment: Alignment.topRight,),
+                                  child: Image.asset(
+                                    "assets/images/more.png",
+                                    alignment: Alignment.topRight,
+                                  ),
                                 )
                               ],
                             ),
@@ -97,28 +93,38 @@ class FeedPage extends StatelessWidget {
                           SizedBox(
                             height: postSize * 0.03,
                           ),
-                          
-                          
+
                           //The image of the post ,if there is no img the size of the card changes according to it
-                          
-                          if(Test.test[index].img!="")Container(
-                            height: postSize * 0.55,
-                            width: width,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.yellow),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                                child: Image.asset("assets/lub.jpg",fit: BoxFit.cover,)),
-                          ),
+
+                          if (Test.test[index].img != "")
+                            Container(
+                              height: postSize * 0.55,
+                              width: width,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.yellow),
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.asset(
+                                    "assets/lub.jpg",
+                                    fit: BoxFit.cover,
+                                  )),
+                            ),
                           SizedBox(
                             height: postSize * 0.06,
                           ),
                           Container(
-                            constraints: BoxConstraints(maxHeight:(Test.test[index].img!="")? postSize*0.2:postSize),
+                            constraints: BoxConstraints(
+                                maxHeight: (Test.test[index].img != "")
+                                    ? postSize * 0.2
+                                    : postSize),
                             //color: Colors.red,
                             child: Text(
-                                "A web developer is a programmer who develops World Wide Web applications using a client–server model.The applications typically use HTML, CSS, and JavaScript in the client, and any general-purpose programming language in the serverjjjjdfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhhhhhhhhhhhhhhhhhhh...............Read More",maxLines:(Test.test[index].img!="")?5:20,style: Constants.txtStyle().copyWith(fontSize: 12),overflow: TextOverflow.ellipsis),
+                                "A web developer is a programmer who develops World Wide Web applications using a client–server model.The applications typically use HTML, CSS, and JavaScript in the client, and any general-purpose programming language in the serverjjjjdfjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhhhhhhhhhhhhhhhhhhh...............Read More",
+                                maxLines: (Test.test[index].img != "") ? 5 : 20,
+                                style:
+                                    Constants.txtStyle().copyWith(fontSize: 12),
+                                overflow: TextOverflow.ellipsis),
                           )
                         ],
                       ),
@@ -132,7 +138,6 @@ class FeedPage extends StatelessWidget {
       ),
     ));
   }
-
 
   // The app bar of the home screen is set as an widget function here
 
@@ -165,85 +170,86 @@ class FeedPage extends StatelessWidget {
   }
 }
 
-
-
-class Test{
+class Test {
   final String img;
   final String text;
 
-  Test(this.img, this.text,);
+  Test(
+    this.img,
+    this.text,
+  );
 
-
-  static List<Test> test=[
-    Test("null","hello"),
-    Test("","helhfhjfjfkjfrkjfrjfjfhjfgnfglo"),
-    Test("h","hergrkjgnirnygiujllo")
+  static List<Test> test = [
+    Test("null", "hello"),
+    Test("", "helhfhjfjfkjfrkjfrjfjfhjfgnfglo"),
+    Test("h", "hergrkjgnirnygiujllo")
   ];
-
-
 }
+
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({super.key});
 
   @override
-  Widget build(BuildContext context) =>Drawer(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-         
-         DrawerHeader(
-        decoration: const BoxDecoration(
-          color: Color.fromARGB(255, 61, 77, 90),
-        ),
-        
+  Widget build(BuildContext context) => Drawer(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            
-            Image.asset(
-              'assets/images/pic.png',
-             // height: height * .15,
-              scale: 1.1,
+            DrawerHeader(
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 61, 77, 90),
+              ),
+              child: Column(
+                children: [
+                  Image.asset(
+                    'assets/images/pic.png',
+                    // height: height * .15,
+                    scale: 1.1,
+                  ),
+                  const Text(
+                    'Mohammed Shanil AV',
+                    style: TextStyle(color: Colors.white, fontSize: 22),
+                  ),
+                ],
+              ),
             ),
-             const Text('Mohammed Shanil AV',
-             style: TextStyle(color: Colors.white, fontSize: 22),),
-
+            ListTile(
+              title: const Text(''),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              title: const Text(
+                'Events',
+                style: TextStyle(color: Colors.white, fontSize: 22),
+              ),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              title: const Text(
+                'Jobs',
+                style: TextStyle(color: Colors.white, fontSize: 22),
+              ),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              title: const Text(
+                'Internships',
+                style: TextStyle(color: Colors.white, fontSize: 22),
+              ),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
           ],
         ),
-        
-      ),
-       ListTile(
-        title: const Text(''),
-        onTap: () {
-          // Update the state of the app.
-          // ...
-        },
-      ),
-       ListTile(
-        title: const Text('Events',
-        style: TextStyle(color: Colors.white, fontSize: 22),),
-        onTap: () {
-          // Update the state of the app.
-          // ...
-        },
-      ),
-       ListTile(
-        title: const Text('Jobs',
-         style: TextStyle(color: Colors.white, fontSize: 22),),
-        onTap: () {
-          // Update the state of the app.
-          // ...
-        },
-      ),
-       ListTile(
-        title: const Text('Internships',
-         style: TextStyle(color: Colors.white, fontSize: 22),),
-        onTap: () {
-          // Update the state of the app.
-          // ...
-        },
-      ),
-      ],
-    ),
-  );
-    
+      );
 }
