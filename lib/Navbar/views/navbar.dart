@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 class NavBarPage extends StatelessWidget {
   NavBarPage({Key? key}) : super(key: key);
 
-   var pages = const [
+   var pages =  [
     FeedPage(),
     SearchPage(),
     postScreen(),

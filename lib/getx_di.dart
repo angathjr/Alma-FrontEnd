@@ -1,3 +1,4 @@
+import 'package:alma/eventCalendar/controllers/calendar_controller.dart';
 import 'package:alma/registration/controllers/alumni_profile_controller.dart';
 import 'package:alma/registration/controllers/staff_profile_controller.dart';
 import 'package:alma/registration/controllers/student_profile_controller.dart';
@@ -16,5 +17,6 @@ class GetXDependancyInjector {
     Get.lazyPut(() => AlumniProfileController(), fenix: true);
     Get.lazyPut(() => StaffProfileController(), fenix: true);
     Get.lazyPut(() => StudentProfileController(), fenix: true);
+    Get.lazyPut(() => EventCalendarController(), fenix: true);
   }
 }
