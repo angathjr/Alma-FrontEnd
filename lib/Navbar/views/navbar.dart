@@ -1,21 +1,22 @@
 import 'package:alma/Navbar/controllers/navcontroller.dart';
 import 'package:alma/Post/views/postScreen.dart';
 import 'package:alma/core/constants.dart';
-import 'package:alma/eventCalendar/views/calendarpage.dart';
 import 'package:alma/feed/views/feedScreen.dart';
 import 'package:alma/profile/views/profileScreen.dart';
 import 'package:alma/search/views/searchScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../eventCalendar/views/calendar_screen.dart';
+
 class NavBarPage extends StatelessWidget {
   NavBarPage({Key? key}) : super(key: key);
 
-   var pages =  [
+  var pages = [
     FeedPage(),
     SearchPage(),
     postScreen(),
-    Calendarpage(),
+    CalendarScreen(),
     ProfilePage(),
   ];
 
@@ -28,14 +29,13 @@ class NavBarPage extends StatelessWidget {
     double topHeight = height * 0.915;
     double navHeight = (height - topHeight) - (width * 0.035 * 2);
 
-    return Scaffold(body: Container(
+    return Scaffold(
+        body: Container(
       width: width,
       height: height,
-     decoration: Constants.buildBoxDecoration(),
+      decoration: Constants.buildBoxDecoration(),
       child: Column(
         children: [
-
-
           //pageview
 
           SizedBox(

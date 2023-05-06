@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class Calendarpage extends StatelessWidget {
-  Calendarpage({super.key});
+class CalendarScreen extends StatelessWidget {
+  CalendarScreen({super.key});
 
   final EventCalendarController controller = Get.find();
 
