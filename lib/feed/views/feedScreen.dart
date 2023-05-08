@@ -1,5 +1,6 @@
 import 'package:alma/core/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class FeedPage extends StatelessWidget {
   const FeedPage({Key? key}) : super(key: key);
@@ -225,8 +226,7 @@ class NavigationDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 22),
               ),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                 Get.toNamed('/calender-page');
               },
             ),
             ListTile(
@@ -235,8 +235,7 @@ class NavigationDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 22),
               ),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                 Get.toNamed('/job-page');
               },
             ),
             ListTile(
@@ -245,8 +244,7 @@ class NavigationDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 22),
               ),
               onTap: () {
-                // Update the state of the app.
-                // ...
+                 Get.toNamed('/internship-page');
               },
             ),
           ],
