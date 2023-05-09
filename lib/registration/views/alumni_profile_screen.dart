@@ -1,10 +1,6 @@
-import 'dart:math';
-
-import 'package:alma/auth/models/user.dart';
 import 'package:alma/registration/controllers/alumni_profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 class AlumniProfileScreen extends StatelessWidget {
   AlumniProfileScreen({super.key});
@@ -12,7 +8,6 @@ class AlumniProfileScreen extends StatelessWidget {
   final AlumniProfileController controller = Get.find();
 
   @override
-  int _value = 1;
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -182,45 +177,42 @@ class AlumniProfileScreen extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: width * 02,
-                          height: height * .053,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff25262E),
-                          ),
-                          child: DropdownButtonFormField(
-                              decoration: const InputDecoration(
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide.none
-                                )
+                            width: width * 02,
+                            height: height * .053,
+                            decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Color(0xff25262E),
+                            ),
+                            child: Obx(
+                              () => DropdownButtonHideUnderline(
+                                child: ButtonTheme(
+                                  alignedDropdown: true,
+                                  child: DropdownButton(
+                                    borderRadius: BorderRadius.circular(20),
+                                    isExpanded: true,
+                                    isDense: false,
+                                    value: controller.selectedDepartment.value,
+                                    elevation: 0,
+                                    items: AlumniProfileController.departments
+                                        .map<DropdownMenuItem<String>>(
+                                            (String value) {
+                                      return DropdownMenuItem(
+                                        value: value,
+                                        child: Text(value,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: width * 0.037)),
+                                      );
+                                    }).toList(),
+                                    onChanged: (value) {
+                                      controller.selectedDepartment.value =
+                                          value.toString();
+                                    },
+                                  ),
+                                ),
                               ),
-                              value: _value,
-                              items: const [
-                                DropdownMenuItem(
-                                  child: Text("Computer Science"),
-                                  value: 1,
-                                ),
-                                DropdownMenuItem(
-                                  child: Text("Electronics and Communication"),
-                                  value: 2,
-                                ),
-                                DropdownMenuItem(
-                                  child: Text("Mechanical Engineering"),
-                                  value: 3,
-                                ),
-                                DropdownMenuItem(
-                                  child: Text("Electrical Enineering"),
-                                  value: 4,
-                                ),
-                               
-                              ],
-                              onChanged: (value) {
-                                setState(() {
-                                  _value = value!;
-                                });
-                              },
-                              hint: Text("Select item")),
-                        ),
+                            )),
                         SizedBox(
                           height: width * 0.08,
                         ),
@@ -279,8 +271,8 @@ class AlumniProfileScreen extends StatelessWidget {
             SizedBox(
               height: width * 0.05,
             ),
-            GestureDetector(
-              onTap: () => controller.registerAlumni(),
+            InkWell(
+              onTap: () => controller.updateUser(),
               child: Container(
                 width: width * 0.35,
                 height: height * .053,
@@ -298,9 +290,6 @@ class AlumniProfileScreen extends StatelessWidget {
                         fontSize: 16,
                       ),
                     ),
-                    
-
-                    
                   ],
                 ),
               ),
@@ -310,6 +299,4 @@ class AlumniProfileScreen extends StatelessWidget {
       ),
     );
   }
-
-  void setState(Null Function() param0) {}
 }

@@ -25,6 +25,20 @@ class AlumniProfileController extends GetxController {
   final _storage = GetStorage();
   late UserModel userModel;
 
+  static final List<String> departments = [
+    "Computer Science and Engineering",
+    "Electronics and Communication Engineering",
+    "Electrical and Electronics Engineering",
+    "Mechanical Engineering",
+    "Civil Engineering",
+    "Chemical Engineering",
+    "Production Engineering",
+    "Architecture",
+    "Applied Electronics and Instrumentation",
+  ];
+
+  var selectedDepartment = departments.first.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -37,10 +51,11 @@ class AlumniProfileController extends GetxController {
 //api calls
 
   void setAlumni() async {
-    Map data = {"user_type": "ALUMNI", "username": user.value.username};
+    Map data = {"user_type": "ALUMNI"};
 
     try {
-      final response = await api.putApi('/users/user/10', data);
+      final response =
+          await api.putApi('/users/user/${user.value.username}', data);
       log(response.body);
     } catch (e) {
       log(e.toString());
@@ -57,16 +72,31 @@ class AlumniProfileController extends GetxController {
         year1Controller.text.isEmpty ||
         year2Controller.text.isEmpty) {
       Get.snackbar('Error', 'Please fill all the fields');
-    } else {
-      userModel = userModel.copyWith(
-        firstName: firstNameController.text.trim(),
-        lastName: lastNameController.text.trim(),
-        phoneNumber: phoneNumberController.text.trim(),
-      );
+    } else {}
+  }
 
+  int getIdofDepartment() {
+    int index = departments.indexOf(selectedDepartment.toString());
+    return index + 1;
+  }
+
+  void updateUser() async {
+    userModel = userModel.copyWith(
+      firstName: firstNameController.text.trim(),
+      lastName: firstNameController.text.trim(),
+      phoneNumber: phoneNumberController.text.trim(),
+    );
+
+    Map data = {
+      "first_name": firstNameController.text,
+    };
+
+    try {
       final response = await api.putApi(
-          '/users/alumni/${user.value.username}}', userModel.toJson());
+          '/users/user/${user.value.username}', userModel.toJson());
       log(response.body);
+    } catch (e) {
+      log(e.toString());
     }
   }
 }
