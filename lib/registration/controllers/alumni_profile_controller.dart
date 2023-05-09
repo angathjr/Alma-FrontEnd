@@ -25,6 +25,20 @@ class AlumniProfileController extends GetxController {
   final _storage = GetStorage();
   late UserModel userModel;
 
+  static final List<String> departments = [
+    "Computer Science and Engineering",
+    "Electronics and Communication Engineering",
+    "Electrical and Electronics Engineering",
+    "Mechanical Engineering",
+    "Civil Engineering",
+    "Chemical Engineering",
+    "Production Engineering",
+    "Architecture",
+    "Applied Electronics and Instrumentation",
+  ];
+
+  var selectedDepartment = departments.first.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -37,11 +51,11 @@ class AlumniProfileController extends GetxController {
 //api calls
 
   void setAlumni() async {
-    Map data = {"user_type": "ALUMNI", "username": user.value.username};
+    Map data = {"user_type": "ALUMNI"};
 
     try {
       final response =
-          await api.putApi('/users/user/10', data);
+          await api.putApi('/users/user/${user.value.username}', data);
       log(response.body);
     } catch (e) {
       log(e.toString());
@@ -58,29 +72,31 @@ class AlumniProfileController extends GetxController {
         year1Controller.text.isEmpty ||
         year2Controller.text.isEmpty) {
       Get.snackbar('Error', 'Please fill all the fields');
-    } else {
-      var data = {
-        "user": {
-        
-          "first_name": firstNameController.text,
-          "last_name": lastNameController.text,
-          "is_verified": true,
-          "user_type": "ALUMNI",
-          "phone_number": phoneNumberController.text,
-        },
-        "year_of_graduate": year1Controller.text,
-        "previous_companies": "hgty",
-        "current_company": currentCompanyController.text,
-        "academic_year_from": year1Controller.text,
-        "academic_year_to": year2Controller.text,
-        "department": 1
-      };
+    } else {}
+  }
 
-      //TODO: change the url
+  int getIdofDepartment() {
+    int index = departments.indexOf(selectedDepartment.toString());
+    return index + 1;
+  }
 
-      final response =
-          await api.putApi('/users/alumni/5}', data);
+  void updateUser() async {
+    userModel = userModel.copyWith(
+      firstName: firstNameController.text.trim(),
+      lastName: firstNameController.text.trim(),
+      phoneNumber: phoneNumberController.text.trim(),
+    );
+
+    Map data = {
+      "first_name": firstNameController.text,
+    };
+
+    try {
+      final response = await api.putApi(
+          '/users/user/${user.value.username}', userModel.toJson());
       log(response.body);
+    } catch (e) {
+      log(e.toString());
     }
   }
 }
