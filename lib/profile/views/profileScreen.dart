@@ -1,10 +1,12 @@
+import 'package:alma/events/controllers/event_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../core/constants.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
-
+  ProfilePage({Key? key}) : super(key: key);
+  final EventsController eventsController = Get.find();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -71,29 +73,32 @@ class ProfilePage extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Container(
-            height: 0.56 * height,
-            width: 0.888 * width,
-            decoration: BoxDecoration(
-              color: Color(0xff13141B),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/images/edit.png',
-                  width: width * 0.133,
-                  height: height * 0.061,
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Text(
-                  'Edit Profile',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                )
-              ],
+          GestureDetector(
+            onTap: () => eventsController.fetchEvents(),
+            child: Container(
+              height: 0.56 * height,
+              width: 0.888 * width,
+              decoration: BoxDecoration(
+                color: Color(0xff13141B),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/edit.png',
+                    width: width * 0.133,
+                    height: height * 0.061,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    'Edit Profile',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  )
+                ],
+              ),
             ),
           )
         ],

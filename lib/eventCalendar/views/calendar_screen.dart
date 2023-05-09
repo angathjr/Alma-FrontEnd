@@ -44,7 +44,7 @@ class CalendarScreen extends StatelessWidget {
                       border: Border.all(color: Colors.white),
                       //borderRadius: BorderRadius.circular(50.0),
                     ),
-                    selectedDecoration: BoxDecoration(
+                    selectedDecoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.grey,
                       //borderRadius: BorderRadius.circular(50.0)
@@ -97,7 +97,7 @@ class CalendarScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(
+            SizedBox(
               width: 0.9 * width,
               height: 0.129 * height,
               child: Stack(
@@ -108,7 +108,7 @@ class CalendarScreen extends StatelessWidget {
                       width: 0.8 * width,
                       height: 0.127 * height,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 53, 52, 57),
+                        color: const Color.fromARGB(255, 53, 52, 57),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: const Center(

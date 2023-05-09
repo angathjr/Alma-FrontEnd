@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Helvetica',
       ),
-      home: ProfileEditScreen(),
+      // home: NavBarPage(),
       getPages: [
         GetPage(
             name: '/',
