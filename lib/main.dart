@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Helvetica',
       ),
-      home: LoginScreen(),
+      home: NavBarPage(),
       getPages: [
         GetPage(
             name: '/',

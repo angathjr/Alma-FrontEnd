@@ -298,6 +298,9 @@ class AlumniProfileScreen extends StatelessWidget {
                         fontSize: 16,
                       ),
                     ),
+                    
+
+                    
                   ],
                 ),
               ),
