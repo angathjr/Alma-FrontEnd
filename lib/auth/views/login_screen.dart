@@ -15,14 +15,16 @@ class LoginScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Colors.black,
         body: Center(
       child: Column(
         children: [
           Image.asset(
-            'assets/images/tkm.png',
+            'assets/images/background.png',
+            fit: BoxFit.cover,
           ),
           SizedBox(
-            height: height * 0.3,
+            height: height * 0.13,
           ),
           InkWell(
             onTap: () {
@@ -42,7 +44,7 @@ class LoginScreen extends StatelessWidget {
                     'assets/images/google.png',
                   ),
                   SizedBox(
-                    width: 0.03 * width,
+                    width: 0.08 * width,
                   ),
                   const Text(
                     'Continue with Google',
@@ -56,7 +58,7 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 0.05 * height,
+            height: 0.03 * height,
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 30.0),
