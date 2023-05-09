@@ -1,12 +1,12 @@
-import 'dart:ffi';
-
+import 'package:alma/events/controllers/event_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../core/constants.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
-
+  ProfilePage({Key? key}) : super(key: key);
+  final EventsController eventsController = Get.find();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;

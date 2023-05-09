@@ -37,11 +37,11 @@ class AlumniProfileController extends GetxController {
 //api calls
 
   void setAlumni() async {
-    Map data = {"user_type": "STUDENT", "username": user.value.username};
+    Map data = {"user_type": "ALUMNI", "username": user.value.username};
 
     try {
       final response =
-          await api.putApi('/users/user/${user.value.username}', data);
+          await api.putApi('/users/user/10', data);
       log(response.body);
     } catch (e) {
       log(e.toString());
@@ -61,11 +61,11 @@ class AlumniProfileController extends GetxController {
     } else {
       var data = {
         "user": {
-          "username": user.value.username,
+        
           "first_name": firstNameController.text,
           "last_name": lastNameController.text,
           "is_verified": true,
-          "user_type": "STUDENT",
+          "user_type": "ALUMNI",
           "phone_number": phoneNumberController.text,
         },
         "year_of_graduate": year1Controller.text,
@@ -79,7 +79,7 @@ class AlumniProfileController extends GetxController {
       //TODO: change the url
 
       final response =
-          await api.putApi('/users/alumni/${user.value.username}', data);
+          await api.putApi('/users/alumni/5}', data);
       log(response.body);
     }
   }
