@@ -24,83 +24,143 @@ class ProfilePage extends StatelessWidget {
           backgroundColor: Colors.black),
       body: Column(
         children: [
-          SizedBox(
-            height: 20,
-          ),
-          Center(
-            child: Image.asset('assets/images/pic.png',
-                height: height * .0825, width: width * 0.178),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: 0.33 * width,
-            ),
-            child: Row(
-              children: [
-                Image.asset(
-                  'assets/images/phone.png',
-                  height: 0.02 * height,
-                  width: 0.06 * width,
-                ),
-                SizedBox(
-                  width: 20,
-                ),
-                Text(
-                  '7498238661',
-                  style: TextStyle(fontSize: 15, color: Color(0xff999999)),
-                )
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 5,
-          ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(
+                width: 0.03 * width,
+              ),
               Text(
-                'prakash@gmail.com',
+                'Hi',
+                style: TextStyle(fontSize: 25, fontFamily: 'Helvatica'),
+              ),
+              SizedBox(
+                width: 0.015 * width,
+              ),
+              Text(
+                'Kishan',
                 style: TextStyle(
-                  color: Color(0xff999999),
-                  fontSize: 15,
-                ),
+                    fontSize: 25,
+                    fontFamily: 'Helavtica',
+                    fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                width: 0.44 * width,
+              ),
+              Image.asset(
+                'assets/images/pic.png',
+                width: 0.25 * width,
+                height: 0.067 * height,
               )
             ],
           ),
           SizedBox(
-            height: 10,
+            height: 0.08 * height,
           ),
-          GestureDetector(
-            onTap: () => eventsController.fetchEvents(),
-            child: Container(
-              height: 0.56 * height,
-              width: 0.888 * width,
-              decoration: BoxDecoration(
-                color: Color(0xff13141B),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/images/edit.png',
-                    width: width * 0.133,
-                    height: height * 0.061,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Text(
-                    'Edit Profile',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  )
-                ],
+          Container(
+            height: 0.2 * height,
+            width: 0.9 * width,
+            decoration: BoxDecoration(
+                color: Color(0xff292A36),
+                borderRadius: BorderRadius.circular(10)),
+            child: Padding(
+              padding: EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
+              child: Text(
+                'Bio',
+                style: TextStyle(
+                    fontFamily: 'Helvatica',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
               ),
             ),
-          )
+          ),
+          SizedBox(
+            height: 0.02 * height,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Container(
+                height: 0.3 * height,
+                width: 0.405 * width,
+                decoration: BoxDecoration(
+                    color: Color(0xff292A36),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.edit),
+                    Text(
+                      'Edit Profile',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Helvatica',
+                        //fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Column(
+                children: [
+                  Container(
+                    height: 0.14 * height,
+                    width: 0.405 * width,
+                    decoration: BoxDecoration(
+                        color: Color(0xff292A36),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.post_add),
+                        Text(
+                          'New Posts',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Helvatica',
+                            //fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 0.02 * height,
+                  ),
+                  Container(
+                    height: 0.14 * height,
+                    width: 0.405 * width,
+                    decoration: BoxDecoration(
+                        color: Color(0xff292A36),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.logout),
+                        Text(
+                          'Log Out',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Helvatica',
+                            //fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
+          // SizedBox(
+          //   height: 0.02 * height,
+          // ),
+          // Container(
+          //   height: 0.18 * height,
+          //   width: 0.9 * width,
+          //   decoration: BoxDecoration(
+          //       color: Color(0xff292A36),
+          //       borderRadius: BorderRadius.circular(10)),
+          // )
         ],
       ),
     );

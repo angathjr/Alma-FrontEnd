@@ -6,7 +6,6 @@ import 'package:alma/Post/views/postScreen.dart';
 import 'package:alma/auth/views/spalash_Screen.dart';
 import 'package:alma/eventCalendar/views/calendar_screen.dart';
 import 'package:alma/jobs/views/JobScreen.dart';
-import 'package:alma/profile/views/profileEditScreen.dart';
 import 'package:alma/profile/views/profileScreen.dart';
 import 'package:alma/registration/views/alumni_profile_screen.dart';
 import 'package:alma/registration/views/user_selection_screen.dart';
