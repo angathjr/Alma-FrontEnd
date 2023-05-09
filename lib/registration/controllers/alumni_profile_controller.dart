@@ -40,8 +40,7 @@ class AlumniProfileController extends GetxController {
     Map data = {"user_type": "ALUMNI", "username": user.value.username};
 
     try {
-      final response =
-          await api.putApi('/users/user/10', data);
+      final response = await api.putApi('/users/user/10', data);
       log(response.body);
     } catch (e) {
       log(e.toString());
@@ -59,27 +58,14 @@ class AlumniProfileController extends GetxController {
         year2Controller.text.isEmpty) {
       Get.snackbar('Error', 'Please fill all the fields');
     } else {
-      var data = {
-        "user": {
-        
-          "first_name": firstNameController.text,
-          "last_name": lastNameController.text,
-          "is_verified": true,
-          "user_type": "ALUMNI",
-          "phone_number": phoneNumberController.text,
-        },
-        "year_of_graduate": year1Controller.text,
-        "previous_companies": "hgty",
-        "current_company": currentCompanyController.text,
-        "academic_year_from": year1Controller.text,
-        "academic_year_to": year2Controller.text,
-        "department": 1
-      };
+      userModel = userModel.copyWith(
+        firstName: firstNameController.text.trim(),
+        lastName: lastNameController.text.trim(),
+        phoneNumber: phoneNumberController.text.trim(),
+      );
 
-      //TODO: change the url
-
-      final response =
-          await api.putApi('/users/alumni/5}', data);
+      final response = await api.putApi(
+          '/users/alumni/${user.value.username}}', userModel.toJson());
       log(response.body);
     }
   }

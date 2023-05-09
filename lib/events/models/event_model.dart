@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:alma/auth/models/user.dart';
+
 List<EventModel> eventModelFromJson(List<dynamic> str) =>
     List<EventModel>.from((str).map((x) => EventModel.fromJson(x)));
 
@@ -23,6 +25,7 @@ class EventModel {
   final DateTime? lastDateToApply;
   final String? institutionName;
   final List<SkillsRequired>? skillsRequired;
+  final UserModel? user;
 
   EventModel({
     this.id,
@@ -37,6 +40,7 @@ class EventModel {
     this.lastDateToApply,
     this.institutionName,
     this.skillsRequired,
+    this.user,
   });
 
   EventModel copyWith({
@@ -52,6 +56,7 @@ class EventModel {
     DateTime? lastDateToApply,
     String? institutionName,
     List<SkillsRequired>? skillsRequired,
+    UserModel? user,
   }) =>
       EventModel(
         id: id ?? this.id,
@@ -66,6 +71,7 @@ class EventModel {
         lastDateToApply: lastDateToApply ?? this.lastDateToApply,
         institutionName: institutionName ?? this.institutionName,
         skillsRequired: skillsRequired ?? this.skillsRequired,
+        user: user ?? this.user,
       );
 
   factory EventModel.fromJson(Map<String, dynamic> json) => EventModel(
@@ -109,6 +115,7 @@ class EventModel {
         "skills_required": skillsRequired == null
             ? []
             : List<dynamic>.from(skillsRequired!.map((x) => x.toJson())),
+        "user": user!.toJson(),
       };
 }
 

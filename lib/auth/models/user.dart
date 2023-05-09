@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:alma/events/models/event_model.dart';
+
 UserModel userModelFromJson(Map<String, dynamic> str) =>
     UserModel.fromJson(str);
 
@@ -27,6 +29,31 @@ class UserModel {
   final String? username;
   final String? phoneNumber;
   final List<Datum>? data;
+
+
+  UserModel copyWith({
+    String? firstName,
+    String? lastName,
+    bool? isVerified,
+    bool? isSuperuser,
+    String? email,
+    String? userType,
+    String? username,
+    String? phoneNumber,
+    List<Datum>? data,
+  }) =>
+      UserModel(
+        firstName: firstName ?? this.firstName,
+        lastName: lastName ?? this.lastName,
+        isVerified: isVerified ?? this.isVerified,
+        isSuperuser: isSuperuser ?? this.isSuperuser,
+        email: email ?? this.email,
+        userType: userType ?? this.userType,
+        username: username ?? this.username,
+        phoneNumber: phoneNumber ?? this.phoneNumber,
+        data: data ?? this.data,
+      );
+
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         firstName: json["first_name"] ?? '',
