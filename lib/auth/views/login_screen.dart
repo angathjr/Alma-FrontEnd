@@ -16,7 +16,7 @@ class LoginScreen extends StatelessWidget {
         backgroundColor: Colors.black,
         body: Column(
           children: [
-            Container(
+            SizedBox(
               width: width,
               child: Image.asset(
                 'assets/images/background.png',
@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            InkWell(
+            GestureDetector(
               onTap: () {
                 controller.handleSignIn();
               },
@@ -33,10 +33,10 @@ class LoginScreen extends StatelessWidget {
                 height: height * .06,
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(30)),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
-                          color: const Color.fromARGB(255, 53, 51, 51),
-                          blurRadius: 5,
+                          color: Color.fromARGB(255, 53, 51, 51),
+                          blurRadius: 4,
                           spreadRadius: 2)
                     ],
                     color: const Color.fromARGB(255, 18, 18, 22),
@@ -48,12 +48,14 @@ class LoginScreen extends StatelessWidget {
                     Lottie.asset(
                       'assets/lottie/google.json',
                     ),
-                    Text(
-                      'Continue with Google',
-                      style: TextStyle(
-                        fontSize: width * 0.04,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.white,
+                    Obx(
+                      () => Text(
+                        controller.loginText.value,
+                        style: TextStyle(
+                          fontSize: width * 0.04,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                     SizedBox(
