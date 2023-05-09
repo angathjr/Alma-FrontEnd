@@ -42,25 +42,25 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Helvetica',
       ),
-      home: SplashScreen(),
-    //  getPages: [
-       // GetPage(
-         //   name: '/',
-        //    page: () => storage.hasData('authToken')
-        //        ? storage.read('isVerified') ?? false
-        //            ? NavBarPage()
-        //            : UserSelectionScreen()
-        //        : LoginScreen()),
-      //  GetPage(name: '/login', page: () => LoginScreen()),
-       // GetPage(name: '/alumni-profile', page: () => AlumniProfileScreen()),
-       // GetPage(name: '/staff-profile', page: () => StaffProfileScreen()),
-       // GetPage(name: '/student-profile', page: () => StudentProfileScreen()),
-       // GetPage(name: '/job-description', page: () => JobDescriptionScreen()),
-       // GetPage(name: '/internship-description', page: () => InternshipDescriptionScreen()),
-      //  GetPage(name: '/calender-page', page: () => CalendarScreen()),
-      //  GetPage(name: '/job-page', page: () => JobScreen()),
-       // GetPage(name: '/internship-page', page: () => InternshipScreen()),
-    //  ],
+      home: LoginScreen(),
+      getPages: [
+        GetPage(
+            name: '/',
+            page: () => storage.hasData('authToken')
+                ? storage.read('isVerified') ?? false
+                    ? NavBarPage()
+                    : UserSelectionScreen()
+                : LoginScreen()),
+        GetPage(name: '/login', page: () => LoginScreen()),
+       GetPage(name: '/alumni-profile', page: () => AlumniProfileScreen()),
+        GetPage(name: '/staff-profile', page: () => StaffProfileScreen()),
+        GetPage(name: '/student-profile', page: () => StudentProfileScreen()),
+        GetPage(name: '/job-description', page: () => JobDescriptionScreen()),
+        GetPage(name: '/internship-description', page: () => InternshipDescriptionScreen()),
+        GetPage(name: '/calender-page', page: () => CalendarScreen()),
+        GetPage(name: '/job-page', page: () => JobScreen()),
+        GetPage(name: '/internship-page', page: () => InternshipScreen()),
+      ],
     );
   }
 }
