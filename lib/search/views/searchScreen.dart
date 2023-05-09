@@ -31,27 +31,18 @@ class _SearchPageState extends State<SearchPage> {
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: Color(0xff13141B),
               ),
+              
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
                     width: 0.03 * width,
                   ),
-                  const Text(
-                    'tcs',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.white,
-                    ),
-                  ),
+                  
                   SizedBox(
                     width: 0.65 * width,
                   ),
-                  Image.asset(
-                    'assets/images/search.png',
-                    height: height * .15,
-                    scale: 2.0,
-                  ),
+                   Icon(Icons.search)
                 ],
               ),
             ),
