@@ -180,6 +180,7 @@ class AlumniProfileScreen extends StatelessWidget {
                             fontSize: 12,
                           ),
                         ),
+
                         Container(
                           width: width * 02,
                           height: height * .053,
@@ -187,6 +188,7 @@ class AlumniProfileScreen extends StatelessWidget {
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Color(0xff25262E),
                           ),
+                          
                           child: TextFormField(
                             controller: controller.departmentController,
                             decoration: const InputDecoration(
@@ -194,7 +196,9 @@ class AlumniProfileScreen extends StatelessWidget {
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
                             style: TextStyle(color: Colors.white),
+                            
                           ),
+                          
                         ),
                         SizedBox(
                           height: width * 0.08,
