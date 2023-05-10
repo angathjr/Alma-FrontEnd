@@ -62,11 +62,15 @@ class AlumniProfileController extends GetxController {
         final response = await api.putApi(
             '/users/alumni/${user.value.username}', alumni.toJson());
         log("alumni response is ${response.body}");
-        userModel = UserModel.fromJson(response.body);
-        await _storage.write('user', userModel.toJson());
-        await _storage.write('isVerified', true);
-        log("new user model is ${userModel.toJson()}");
-        Get.offAllNamed('/');
+        if (response.statusCode == 200) {
+          userModel = UserModel.fromJson(response.body);
+          await _storage.write('user', userModel.toJson());
+          await _storage.write('isVerified', true);
+          log("new user model is ${userModel.toJson()}");
+          Get.offAllNamed('/');
+        } else {
+          Get.snackbar("Error", "${response.body}");
+        }
       } catch (e) {
         log(e.toString());
       }
@@ -90,7 +94,11 @@ class AlumniProfileController extends GetxController {
       final response = await api.putApi(
           '/users/user/${user.value.username}', userModel.toJson());
       log(response.body);
-      registerAlumni();
+      if (response.statusCode == 200) {
+        registerAlumni();
+      } else {
+        Get.snackbar("Error", "${response.body["phone_number"][0]}");
+      }
     } catch (e) {
       log(e.toString());
     }

@@ -54,11 +54,15 @@ class StaffProfileController extends GetxController {
         final response = await api.putApi(
             '/users/staff/${user.value.username}', staff.toJson());
         log("staff response is ${response.body}");
-        userModel = UserModel.fromJson(response.body);
-        await _storage.write('user', userModel.toJson());
-        await _storage.write('isVerified', true);
-        log("new user model is ${userModel.toJson()}");
-        Get.offAllNamed('/');
+        if (response.statusCode == 200) {
+          userModel = UserModel.fromJson(response.body);
+          await _storage.write('user', userModel.toJson());
+          await _storage.write('isVerified', true);
+          log("new user model is ${userModel.toJson()}");
+          Get.offAllNamed('/');
+        } else {
+          Get.snackbar("Error", "${response.body}");
+        }
       } catch (e) {
         log(e.toString());
       }
@@ -78,7 +82,11 @@ class StaffProfileController extends GetxController {
       final response = await api.putApi(
           '/users/user/${user.value.username}', userModel.toJson());
       log("response user is ${response.body}");
-      registerStaff();
+      if (response.statusCode == 200) {
+        registerStaff();
+      } else {
+        Get.snackbar("Error", "${response.body["phone_number"][0]}");
+      }
     } catch (e) {
       log(e.toString());
     }
