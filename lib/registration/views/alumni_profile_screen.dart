@@ -1,4 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'dart:developer';
+
 import 'package:alma/registration/controllers/alumni_profile_controller.dart';
+import 'package:alma/registration/controllers/registration_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,11 +11,13 @@ class AlumniProfileScreen extends StatelessWidget {
   AlumniProfileScreen({super.key});
 
   final AlumniProfileController controller = Get.find();
+  final RegistrationController regController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Colors.black,
       resizeToAvoidBottomInset: false,
@@ -85,7 +92,7 @@ class AlumniProfileScreen extends StatelessWidget {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                         SizedBox(
@@ -185,33 +192,38 @@ class AlumniProfileScreen extends StatelessWidget {
                               color: Color(0xff25262E),
                             ),
                             child: Obx(
-                              () => DropdownButtonHideUnderline(
-                                child: ButtonTheme(
-                                  alignedDropdown: true,
-                                  child: DropdownButton(
-                                    borderRadius: BorderRadius.circular(20),
-                                    isExpanded: true,
-                                    isDense: false,
-                                    value: controller.selectedDepartment.value,
-                                    elevation: 0,
-                                    items: AlumniProfileController.departments
-                                        .map<DropdownMenuItem<String>>(
-                                            (String value) {
-                                      return DropdownMenuItem(
-                                        value: value,
-                                        child: Text(value,
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: width * 0.037)),
-                                      );
-                                    }).toList(),
-                                    onChanged: (value) {
-                                      controller.selectedDepartment.value =
-                                          value.toString();
-                                    },
-                                  ),
-                                ),
-                              ),
+                              () => (regController.isdepartmentfetched.value ==
+                                      false)
+                                  ? Center(child: CircularProgressIndicator())
+                                  : DropdownButtonHideUnderline(
+                                      child: ButtonTheme(
+                                        alignedDropdown: true,
+                                        child: DropdownButton(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          isExpanded: true,
+                                          isDense: false,
+                                          value: regController
+                                              .selectedDepartment.value,
+                                          elevation: 0,
+                                          items: regController.depNames
+                                              .map<DropdownMenuItem<String>>(
+                                                  (String value) {
+                                            return DropdownMenuItem(
+                                              value: value,
+                                              child: Text(value,
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: width * 0.037)),
+                                            );
+                                          }).toList(),
+                                          onChanged: (value) {
+                                            regController.selectedDepartment
+                                                .value = value.toString();
+                                          },
+                                        ),
+                                      ),
+                                    ),
                             )),
                         SizedBox(
                           height: width * 0.08,
@@ -272,7 +284,9 @@ class AlumniProfileScreen extends StatelessWidget {
               height: width * 0.05,
             ),
             InkWell(
-              onTap: () => controller.updateUser(),
+              onTap: () {
+                controller.updateUser();                
+              },
               child: Container(
                 width: width * 0.35,
                 height: height * .053,

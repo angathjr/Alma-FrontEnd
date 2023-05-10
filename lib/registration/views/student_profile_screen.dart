@@ -1,3 +1,4 @@
+import 'package:alma/registration/controllers/registration_controller.dart';
 import 'package:alma/registration/controllers/student_profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,9 +7,9 @@ class StudentProfileScreen extends StatelessWidget {
   StudentProfileScreen({super.key});
 
   final StudentProfileController controller = Get.find();
+  final RegistrationController registrationController = Get.find();
 
   @override
-   int _value = 1;
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -55,7 +56,7 @@ class StudentProfileScreen extends StatelessWidget {
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
-                            controller: controller.first_name_controller,
+                            controller: controller.firstNameController,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -81,7 +82,7 @@ class StudentProfileScreen extends StatelessWidget {
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
-                            controller: controller.last_name_controller,
+                            controller: controller.lastNameController,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -107,7 +108,7 @@ class StudentProfileScreen extends StatelessWidget {
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
-                            controller: controller.phone_number_controller,
+                            controller: controller.phoneNumberController,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -133,7 +134,7 @@ class StudentProfileScreen extends StatelessWidget {
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
-                            controller: controller.tkm_mail_controller,
+                            controller: controller.tkmMailController,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -159,7 +160,7 @@ class StudentProfileScreen extends StatelessWidget {
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
-                            controller: controller.adm_no_controller,
+                            controller: controller.admNoController,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -178,45 +179,50 @@ class StudentProfileScreen extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: width * 02,
-                          height: height * .053,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff25262E),
-                          ),
-                          child: DropdownButtonFormField(
-                              decoration: const InputDecoration(
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide.none
-                                )
-                              ),
-                              value: _value,
-                              items: const [
-                                DropdownMenuItem(
-                                  child: Text("Computer Science"),
-                                  value: 1,
-                                ),
-                                DropdownMenuItem(
-                                  child: Text("Electronics and Communication"),
-                                  value: 2,
-                                ),
-                                DropdownMenuItem(
-                                  child: Text("Mechanical Engineering"),
-                                  value: 3,
-                                ),
-                                DropdownMenuItem(
-                                  child: Text("Electrical Enineering"),
-                                  value: 4,
-                                ),
-                               
-                              ],
-                              onChanged: (value) {
-                                setState(() {
-                                  var _value = value!;
-                                });
-                              },
-                              hint: Text("Select item")),
-                        ),
+                            width: width * 02,
+                            height: height * .053,
+                            decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Color(0xff25262E),
+                            ),
+                            child: Obx(
+                              () => (registrationController
+                                          .isdepartmentfetched.value ==
+                                      false)
+                                  ? const Center(
+                                      child: CircularProgressIndicator())
+                                  : DropdownButtonHideUnderline(
+                                      child: ButtonTheme(
+                                        alignedDropdown: true,
+                                        child: DropdownButton(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          isExpanded: true,
+                                          isDense: false,
+                                          value: registrationController
+                                              .selectedDepartment.value,
+                                          elevation: 0,
+                                          items: registrationController.depNames
+                                              .map<DropdownMenuItem<String>>(
+                                                  (String value) {
+                                            return DropdownMenuItem(
+                                              value: value,
+                                              child: Text(value,
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: width * 0.037)),
+                                            );
+                                          }).toList(),
+                                          onChanged: (value) {
+                                            registrationController
+                                                .selectedDepartment
+                                                .value = value.toString();
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                            )),
                         SizedBox(
                           height: width * 0.08,
                         ),
@@ -235,7 +241,7 @@ class StudentProfileScreen extends StatelessWidget {
                             color: Color(0xff25262E),
                           ),
                           child: TextFormField(
-                            controller: controller.year_controller,
+                            controller: controller.yearController,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -250,8 +256,10 @@ class StudentProfileScreen extends StatelessWidget {
             SizedBox(
               height: width * 0.05,
             ),
-            InkWell(
-              onTap: () {},
+            GestureDetector(
+              onTap: () {
+                  controller.updateUser();
+              },
               child: Container(
                 alignment: Alignment.center,
                 width: width * 0.35,
@@ -274,6 +282,5 @@ class StudentProfileScreen extends StatelessWidget {
       ),
     );
   }
-  
-  void setState(Null Function() param0) {}
+
 }

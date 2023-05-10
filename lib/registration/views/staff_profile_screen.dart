@@ -1,3 +1,4 @@
+import 'package:alma/registration/controllers/registration_controller.dart';
 import 'package:alma/registration/controllers/staff_profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,10 +6,10 @@ import 'package:get/get.dart';
 class StaffProfileScreen extends StatelessWidget {
   StaffProfileScreen({super.key});
 
-  final StaffProfileController controller = Get.find();
+  final StaffProfileController staffController = Get.find();
+  final RegistrationController registrationController = Get.find();
 
   @override
-  int _value = 1;
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -57,7 +58,7 @@ class StaffProfileScreen extends StatelessWidget {
                               color: Color(0xff25262E),
                             ),
                             child: TextFormField(
-                              controller: controller.firstNameController,
+                              controller: staffController.firstNameController,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
@@ -84,7 +85,7 @@ class StaffProfileScreen extends StatelessWidget {
                               color: Color(0xff25262E),
                             ),
                             child: TextFormField(
-                              controller: controller.last_name_controller,
+                              controller: staffController.lastNameController,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
@@ -111,7 +112,7 @@ class StaffProfileScreen extends StatelessWidget {
                               color: Color(0xff25262E),
                             ),
                             child: TextFormField(
-                              controller: controller.phone_number_controller,
+                              controller: staffController.phoneNumberController,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
@@ -138,7 +139,7 @@ class StaffProfileScreen extends StatelessWidget {
                               color: Color(0xff25262E),
                             ),
                             child: TextFormField(
-                              controller: controller.tkm_mail_controller,
+                              controller: staffController.tkmMailController,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
@@ -150,7 +151,7 @@ class StaffProfileScreen extends StatelessWidget {
                             height: width * 0.06,
                           ),
                           const Text(
-                            'Staff id',
+                            'Joined Year',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 12,
@@ -165,7 +166,7 @@ class StaffProfileScreen extends StatelessWidget {
                               color: Color(0xff25262E),
                             ),
                             child: TextFormField(
-                              controller: controller.staff_id_controller,
+                              controller: staffController.joinedYearController,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
@@ -192,7 +193,7 @@ class StaffProfileScreen extends StatelessWidget {
                               color: Color(0xff25262E),
                             ),
                             child: TextFormField(
-                              controller: controller.designation_controller,
+                              controller: staffController.designationController,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
@@ -211,46 +212,52 @@ class StaffProfileScreen extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            width: width * 02,
-                            height: height * .053,
-                            decoration: const BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              color: Color(0xff25262E),
-                            ),
-                            child:  DropdownButtonFormField(
-                              decoration: const InputDecoration(
-                                border: UnderlineInputBorder(
-                                  borderSide: BorderSide.none
-                                )
+                              width: width * 02,
+                              height: height * .053,
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Color(0xff25262E),
                               ),
-                              value: _value,
-                              items: const [
-                                DropdownMenuItem(
-                                  child: Text("Computer Science"),
-                                  value: 1,
-                                ),
-                                DropdownMenuItem(
-                                  child: Text("Electronics and Communication"),
-                                  value: 2,
-                                ),
-                                DropdownMenuItem(
-                                  child: Text("Mechanical Engineering"),
-                                  value: 3,
-                                ),
-                                DropdownMenuItem(
-                                  child: Text("Electrical Enineering"),
-                                  value: 4,
-                                ),
-                               
-                              ],
-                              onChanged: (value) {
-                                setState(() {
-                                  var _value = value!;
-                                });
-                              },
-                              hint: Text("Select item")),
-                          ),
+                              child: Obx(
+                                () => (registrationController
+                                            .isdepartmentfetched.value ==
+                                        false)
+                                    ? const Center(
+                                        child: CircularProgressIndicator())
+                                    : DropdownButtonHideUnderline(
+                                        child: ButtonTheme(
+                                          alignedDropdown: true,
+                                          child: DropdownButton(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            isExpanded: true,
+                                            isDense: false,
+                                            value: registrationController
+                                                .selectedDepartment.value,
+                                            elevation: 0,
+                                            items: registrationController
+                                                .depNames
+                                                .map<DropdownMenuItem<String>>(
+                                                    (String value) {
+                                              return DropdownMenuItem(
+                                                value: value,
+                                                child: Text(value,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize:
+                                                            width * 0.037)),
+                                              );
+                                            }).toList(),
+                                            onChanged: (value) {
+                                              registrationController
+                                                  .selectedDepartment
+                                                  .value = value.toString();
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                              )),
                         ]),
                   ),
                 ),
@@ -259,24 +266,30 @@ class StaffProfileScreen extends StatelessWidget {
             SizedBox(
               height: width * 0.05,
             ),
-            Container(
-              width: width * 0.35,
-              height: height * .053,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: Color(0xff25262E),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Text(
-                    "Submit",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
+            GestureDetector(
+              onTap: () {
+                staffController.updateUser();
+                
+              },
+              child: Container(
+                width: width * 0.35,
+                height: height * .053,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  color: Color(0xff25262E),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Submit",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ],
@@ -284,6 +297,6 @@ class StaffProfileScreen extends StatelessWidget {
       ),
     );
   }
-  
+
   void setState(Null Function() param0) {}
 }

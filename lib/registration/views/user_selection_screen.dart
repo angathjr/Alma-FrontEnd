@@ -1,15 +1,11 @@
-import 'package:alma/auth/controllers/auth_controller.dart';
-import 'package:alma/registration/controllers/alumni_profile_controller.dart';
+import 'package:alma/registration/controllers/registration_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 class UserSelectionScreen extends StatelessWidget {
   UserSelectionScreen({Key? key}) : super(key: key);
 
-  final AuthController authController = Get.find();
-  final AlumniProfileController alumniProfileController = Get.find();
-  final _box = GetStorage;
+  final RegistrationController regController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +28,10 @@ class UserSelectionScreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            InkWell(
+            GestureDetector(
               onTap: () {
-                alumniProfileController.setAlumni();
-                Get.toNamed('/alumni-profile');
+                regController.setAlumni();
+                
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -64,7 +60,9 @@ class UserSelectionScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 InkWell(
-                  onTap: () => Get.toNamed('staff-profile'),
+                  onTap: () {
+                    regController.setStaff();
+                  },
                   child: Container(
                     height: height * 0.2,
                     width: width * 0.4,
@@ -80,7 +78,9 @@ class UserSelectionScreen extends StatelessWidget {
                   ),
                 ),
                 InkWell(
-                  onTap: () => Get.toNamed('student-profile'),
+                  onTap: () {
+                    regController.setStudent();
+                  },
                   child: Container(
                     height: height * 0.2,
                     width: width * 0.4,

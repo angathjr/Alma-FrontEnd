@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final eventModel = eventModelFromJson(jsonString);
-
 import 'dart:convert';
 
 import 'package:alma/auth/models/user.dart';

@@ -59,11 +59,11 @@ class AuthController extends GetxController {
       _storage.write('user', userModel.toJson());
       log('nameis${userModel.firstName}');
 
-      // if (userModel.isVerified ?? false) {
-      //   _storage.write('isVerified', true);
-      // } else {
-      //   _storage.write('isVerified', false);
-      // }
+      if (userModel.isVerified ?? false) {
+        _storage.write('isVerified', true);
+      } else {
+        _storage.write('isVerified', false);
+      }
       loginText.value="Logged in ";
       isSigningIn(false);
 
@@ -80,5 +80,13 @@ class AuthController extends GetxController {
       loginText.value="Continue with Google";
     }
 
+  }
+
+
+  //to logout 
+  void logOut() async {
+    await _googleSignIn.signOut();
+    await _storage.erase();
+    Get.offAllNamed('/login');
   }
 }

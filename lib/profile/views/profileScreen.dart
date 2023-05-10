@@ -1,4 +1,6 @@
+import 'package:alma/auth/controllers/auth_controller.dart';
 import 'package:alma/events/controllers/event_controller.dart';
+import 'package:alma/registration/controllers/staff_profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -6,7 +8,8 @@ import '../../core/constants.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({Key? key}) : super(key: key);
-  final EventsController eventsController = Get.find();
+
+  final AuthController authController = Get.find();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -126,25 +129,28 @@ class ProfilePage extends StatelessWidget {
                   SizedBox(
                     height: 0.02 * height,
                   ),
-                  Container(
-                    height: 0.14 * height,
-                    width: 0.405 * width,
-                    decoration: BoxDecoration(
-                        color: Color(0xff292A36),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.logout),
-                        Text(
-                          'Log Out',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Helvatica',
-                            //fontWeight: FontWeight.bold
+                  GestureDetector(
+                    onTap: () => authController.signout(),
+                    child: Container(
+                      height: 0.14 * height,
+                      width: 0.405 * width,
+                      decoration: BoxDecoration(
+                          color: Color(0xff292A36),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.logout),
+                          Text(
+                            'Log Out',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'Helvatica',
+                              //fontWeight: FontWeight.bold
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   )
                 ],

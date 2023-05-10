@@ -1,24 +1,22 @@
 import 'dart:convert';
 
-import 'package:alma/events/models/event_model.dart';
-
 UserModel userModelFromJson(Map<String, dynamic> str) =>
     UserModel.fromJson(str);
 
 String userModelToJson(UserModel data) => json.encode(data.toJson());
 
 class UserModel {
-  UserModel({
-    this.firstName,
-    this.lastName,
-    this.isVerified,
-    this.isSuperuser,
-    this.email,
-    this.userType,
-    this.username,
-    this.phoneNumber,
-    this.data,
-  });
+  UserModel(
+      {this.firstName,
+      this.lastName,
+      this.isVerified,
+      this.isSuperuser,
+      this.email,
+      this.userType,
+      this.username,
+      this.phoneNumber,
+      this.data,
+      this.imageUrl});
 
   final String? firstName;
   final String? lastName;
@@ -28,8 +26,8 @@ class UserModel {
   final String? userType;
   final String? username;
   final String? phoneNumber;
-  final List<Datum>? data;
-
+  final List<UserData>? data;
+  final String? imageUrl;
 
   UserModel copyWith({
     String? firstName,
@@ -40,7 +38,8 @@ class UserModel {
     String? userType,
     String? username,
     String? phoneNumber,
-    List<Datum>? data,
+    String? imageUrl,
+    List<UserData>? data,
   }) =>
       UserModel(
         firstName: firstName ?? this.firstName,
@@ -51,9 +50,9 @@ class UserModel {
         userType: userType ?? this.userType,
         username: username ?? this.username,
         phoneNumber: phoneNumber ?? this.phoneNumber,
+        imageUrl: imageUrl ?? this.imageUrl,
         data: data ?? this.data,
       );
-
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         firstName: json["first_name"] ?? '',
@@ -63,25 +62,32 @@ class UserModel {
         email: json["email"] ?? '',
         userType: json["user_type"] ?? '',
         username: json["username"] ?? '',
+        imageUrl: json["img_url"] ?? '',
         phoneNumber: json["phone_number"] ?? '',
-        data: json["data"] == null ? [] : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
+        data: json["data"] == null
+            ? []
+            : List<UserData>.from(
+                json["data"]!.map((x) => UserData.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "first_name": firstName,
-        "last_name": lastName,
-        "is_verified": isVerified,
-        "is_superuser": isSuperuser,
-        "email": email,
-        "user_type": userType,
-        "username": username,
-        "phone_number": phoneNumber,
-        "data": data == null ? [] : List<dynamic>.from(data!.map((x) => x.toJson())),
+        "first_name": firstName ?? '',
+        "last_name": lastName ?? '',
+        "is_verified": isVerified ?? false,
+        "is_superuser": isSuperuser ?? false,
+        "email": email ?? '',
+        "user_type": userType ?? '',
+        "username": username ?? '',
+        "phone_number": phoneNumber ?? '',
+        "img_url": imageUrl ?? '',
+        "data": data == null
+            ? []
+            : List<dynamic>.from(data!.map((x) => x.toJson())),
       };
 }
 
-class Datum {
-  Datum({
+class UserData {
+  UserData({
     this.tkmMail,
     this.department,
     this.designation,
@@ -103,7 +109,30 @@ class Datum {
   final int? academicYearFrom;
   final int? academicYearTo;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  UserData copyWith({
+    String? tkmMail,
+    int? department,
+    String? designation,
+    int? joinedYear,
+    int? yearOfGraduate,
+    String? currentCompany,
+    String? previousCompanies,
+    int? academicYearFrom,
+    int? academicYearTo,
+  }) =>
+      UserData(
+        tkmMail: tkmMail ?? this.tkmMail,
+        department: department ?? this.department,
+        designation: designation ?? this.designation,
+        joinedYear: joinedYear ?? this.joinedYear,
+        yearOfGraduate: yearOfGraduate ?? this.yearOfGraduate,
+        currentCompany: currentCompany ?? this.currentCompany,
+        previousCompanies: previousCompanies ?? this.previousCompanies,
+        academicYearFrom: academicYearFrom ?? this.academicYearFrom,
+        academicYearTo: academicYearTo ?? this.academicYearTo,
+      );
+
+  factory UserData.fromJson(Map<String, dynamic> json) => UserData(
         tkmMail: json["tkm_mail"] ?? '',
         department: json["department"] ?? 0,
         designation: json["designation"] ?? '',
