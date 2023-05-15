@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
 class AlumniProfileController extends GetxController {
+
+
 //controllers of textfield
 
   final TextEditingController firstNameController = TextEditingController();
@@ -27,6 +29,7 @@ class AlumniProfileController extends GetxController {
   final _storage = GetStorage();
   late UserModel userModel;
 
+
   @override
   void onInit() {
     super.onInit();
@@ -41,6 +44,8 @@ class AlumniProfileController extends GetxController {
 //api calls
 
   void registerAlumni() async {
+
+
     if (firstNameController.text.isEmpty ||
         lastNameController.text.isEmpty ||
         phoneNumberController.text.isEmpty ||
@@ -50,17 +55,21 @@ class AlumniProfileController extends GetxController {
         year2Controller.text.isEmpty) {
       Get.snackbar('Error', 'Please fill all the fields');
     } else {
+
       UserData alumni = user.value.data![0];
+
       alumni = alumni.copyWith(
         department: getIdofDepartment(),
         currentCompany: currentCompanyController.text,
         academicYearFrom: int.parse(year1Controller.text),
         academicYearTo: int.parse(year2Controller.text),
       );
-
+  
       try {
         final response = await api.putApi(
             '/users/alumni/${user.value.username}', alumni.toJson());
+
+
         log("alumni response is ${response.body}");
         if (response.statusCode == 200) {
           userModel = UserModel.fromJson(response.body);
@@ -84,6 +93,7 @@ class AlumniProfileController extends GetxController {
   }
 
   void updateUser() async {
+
     userModel = userModel.copyWith(
         firstName: firstNameController.text.trim(),
         lastName: lastNameController.text.trim(),
@@ -93,7 +103,7 @@ class AlumniProfileController extends GetxController {
     try {
       final response = await api.putApi(
           '/users/user/${user.value.username}', userModel.toJson());
-      log(response.body);
+      log("user response${response.body}");
       if (response.statusCode == 200) {
         registerAlumni();
       } else {
