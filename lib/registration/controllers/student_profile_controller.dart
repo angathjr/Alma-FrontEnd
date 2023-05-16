@@ -1,11 +1,16 @@
 import 'dart:developer';
+import 'dart:io';
 import 'package:alma/auth/controllers/auth_controller.dart';
 import 'package:alma/auth/models/user.dart';
 import 'package:alma/core/api_provider.dart';
 import 'package:alma/registration/controllers/registration_controller.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:image_picker/image_picker.dart';
 
 class StudentProfileController extends GetxController {
   final TextEditingController firstNameController = TextEditingController();
@@ -22,6 +27,11 @@ class StudentProfileController extends GetxController {
   final RegistrationController registrationController = Get.find();
   final _storage = GetStorage();
   late UserModel userModel;
+
+
+    Rx<File> selectedImage = Rx<File>(File(''));
+  var imageUrl = ''.obs;
+  var isImageSelected = false.obs;
 
   @override
   void onInit() {
@@ -58,10 +68,7 @@ class StudentProfileController extends GetxController {
 
         if (response.statusCode == 200) {
           userModel = UserModel.fromJson(response.body);
-          await _storage.write('user', userModel.toJson());
-          await _storage.write('isVerified', true);
-          log("new user model is ${userModel.toJson()}");
-          Get.offAllNamed('/');
+          uploadImage();
         } else {
           Get.snackbar("Error", "${response.body["tkm_mail"][0]}");
         }
@@ -79,19 +86,60 @@ class StudentProfileController extends GetxController {
         firstName: firstNameController.text.trim(),
         lastName: lastNameController.text.trim(),
         phoneNumber: phoneNumberController.text.trim(),
+        imageUrl: imageUrl.value,
         isVerified: true);
 
     try {
       final response = await api.putApi(
           '/users/user/${user.value.username}', userModel.toJson());
-      log("response user is ${response.body}");
+      log("user response${response.body}");
       if (response.statusCode == 200) {
-        registerStudent();
+        userModel = UserModel.fromJson(response.body);
+        await _storage.write('user', userModel.toJson());
+        await _storage.write('isVerified', true);
+        log("new user model is ${userModel.toJson()}");
+        Get.offAllNamed('/');
       } else {
         Get.snackbar("Error", "${response.body["phone_number"][0]}");
       }
     } catch (e) {
-      log("catch ${e.toString()}");
+      log(e.toString());
+    }
+  }
+
+  //to pick image
+
+  void selectImage() async {
+    final ImagePicker picker = ImagePicker();
+    try {
+      final XFile? image =
+          await picker.pickImage(source: ImageSource.gallery, imageQuality: 60);
+      if (image == null) return;
+      selectedImage.value = File(image.path);
+      isImageSelected(true);
+      if (kDebugMode) {
+        log("image location is ${selectedImage.value}");
+      }
+    } on PlatformException catch (e) {
+      print("failed to pick image $e");
+    }
+  }
+
+  void uploadImage() async {
+    try {
+      final storageRef = FirebaseStorage.instance.ref();
+
+      final profileRef =
+          storageRef.child('profile-images/${user.value.username}');
+      await profileRef.putFile(
+        selectedImage.value,
+      );
+      imageUrl.value = await profileRef.getDownloadURL();
+      updateUser();
+
+      log(imageUrl.value);
+    } catch (e) {
+      log("error in uploading img ${e}");
     }
   }
 
