@@ -36,7 +36,7 @@ class AlumniProfileScreen extends StatelessWidget {
                   children: [
                     Obx(
                       () => CircleAvatar(
-                        backgroundImage: AssetImage(
+                        backgroundImage: const AssetImage(
                           NOIMAGE,
                         ),
                         foregroundImage:
@@ -322,7 +322,7 @@ class AlumniProfileScreen extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                controller.updateUser();
+                controller.registerAlumni();
               },
               child: Container(
                 width: width * 0.35,

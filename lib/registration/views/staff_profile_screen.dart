@@ -3,6 +3,8 @@ import 'package:alma/registration/controllers/staff_profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../core/constants.dart';
+
 class StaffProfileScreen extends StatelessWidget {
   StaffProfileScreen({super.key});
 
@@ -23,10 +25,50 @@ class StaffProfileScreen extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Image.asset(
-              'assets/images/pic.png',
-              height: height * .15,
-              scale: 1.1,
+            Container(
+              alignment: Alignment.center,
+              width: width,
+              child: SizedBox(
+                height: height * .17,
+                width: width * 0.3,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Obx(
+                      () => CircleAvatar(
+                        backgroundImage: const AssetImage(
+                          NOIMAGE,
+                        ),
+                        foregroundImage:
+                            staffController.isImageSelected.value == true
+                                ? FileImage(staffController.selectedImage.value)
+                                    as ImageProvider<Object>
+                                : const AssetImage(NOIMAGE),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: height * 0.01,
+                      right: width * 0.02,
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: width * 0.09,
+                        height: width * 0.09,
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade300,
+                          shape: BoxShape.circle,
+                        ),
+                        child: IconButton(
+                            onPressed: () => staffController.selectImage(),
+                            icon: Icon(
+                              Icons.camera_alt,
+                              size: width * 0.05,
+                              color: Colors.black,
+                            )),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
             Container(
               width: width * .89,
@@ -268,7 +310,7 @@ class StaffProfileScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                staffController.updateUser();
+                staffController.registerStaff();
                 
               },
               child: Container(

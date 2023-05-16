@@ -32,7 +32,7 @@ class AlumniProfileController extends GetxController {
   final _storage = GetStorage();
   late UserModel userModel;
   Rx<File> selectedImage = Rx<File>(File(''));
-
+  var imageUrl = ''.obs;
   var isImageSelected = false.obs;
 
   @override
@@ -73,11 +73,7 @@ class AlumniProfileController extends GetxController {
 
         log("alumni response is ${response.body}");
         if (response.statusCode == 200) {
-          userModel = UserModel.fromJson(response.body);
-          await _storage.write('user', userModel.toJson());
-          await _storage.write('isVerified', true);
-          log("new user model is ${userModel.toJson()}");
-          Get.offAllNamed('/');
+          uploadImage();
         } else {
           Get.snackbar("Error", "${response.body}");
         }
@@ -98,6 +94,7 @@ class AlumniProfileController extends GetxController {
         firstName: firstNameController.text.trim(),
         lastName: lastNameController.text.trim(),
         phoneNumber: phoneNumberController.text.trim(),
+        imageUrl: imageUrl.value,
         isVerified: true);
 
     try {
@@ -105,7 +102,11 @@ class AlumniProfileController extends GetxController {
           '/users/user/${user.value.username}', userModel.toJson());
       log("user response${response.body}");
       if (response.statusCode == 200) {
-        registerAlumni();
+        userModel = UserModel.fromJson(response.body);
+        await _storage.write('user', userModel.toJson());
+        await _storage.write('isVerified', true);
+        log("new user model is ${userModel.toJson()}");
+        Get.offAllNamed('/');
       } else {
         Get.snackbar("Error", "${response.body["phone_number"][0]}");
       }
@@ -134,16 +135,17 @@ class AlumniProfileController extends GetxController {
 
   void uploadImage() async {
     try {
-      final StorageRef = FirebaseStorage.instance.ref();
+      final storageRef = FirebaseStorage.instance.ref();
 
       final profileRef =
-          StorageRef.child('profile-images/${user.value.username}');
+          storageRef.child('profile-images/${user.value.username}');
       await profileRef.putFile(
         selectedImage.value,
       );
-      final imageUrl = await profileRef.getDownloadURL();
+      imageUrl.value = await profileRef.getDownloadURL();
+      updateUser();
 
-      log(imageUrl);
+      log(imageUrl.value);
     } catch (e) {
       log("error in uploading img ${e}");
     }
