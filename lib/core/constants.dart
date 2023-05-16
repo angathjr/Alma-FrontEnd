@@ -2,7 +2,10 @@
 
 import 'package:flutter/material.dart';
 
+
+const String NOIMAGE ="assets/images/pic.png";
 class Constants {
+
   static var bgGradient = const [
     Color(0xff110D21),
     Color(0xff06070B),

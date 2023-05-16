@@ -1,15 +1,18 @@
 import 'dart:developer';
+import 'dart:io';
 import 'package:alma/auth/controllers/auth_controller.dart';
 import 'package:alma/auth/models/user.dart';
 import 'package:alma/core/api_provider.dart';
 import 'package:alma/registration/controllers/registration_controller.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AlumniProfileController extends GetxController {
-
-
 //controllers of textfield
 
   final TextEditingController firstNameController = TextEditingController();
@@ -28,7 +31,9 @@ class AlumniProfileController extends GetxController {
   final RegistrationController registrationController = Get.find();
   final _storage = GetStorage();
   late UserModel userModel;
+  Rx<File> selectedImage = Rx<File>(File(''));
 
+  var isImageSelected = false.obs;
 
   @override
   void onInit() {
@@ -44,8 +49,6 @@ class AlumniProfileController extends GetxController {
 //api calls
 
   void registerAlumni() async {
-
-
     if (firstNameController.text.isEmpty ||
         lastNameController.text.isEmpty ||
         phoneNumberController.text.isEmpty ||
@@ -55,7 +58,6 @@ class AlumniProfileController extends GetxController {
         year2Controller.text.isEmpty) {
       Get.snackbar('Error', 'Please fill all the fields');
     } else {
-
       UserData alumni = user.value.data![0];
 
       alumni = alumni.copyWith(
@@ -64,11 +66,10 @@ class AlumniProfileController extends GetxController {
         academicYearFrom: int.parse(year1Controller.text),
         academicYearTo: int.parse(year2Controller.text),
       );
-  
+
       try {
         final response = await api.putApi(
             '/users/alumni/${user.value.username}', alumni.toJson());
-
 
         log("alumni response is ${response.body}");
         if (response.statusCode == 200) {
@@ -93,7 +94,6 @@ class AlumniProfileController extends GetxController {
   }
 
   void updateUser() async {
-
     userModel = userModel.copyWith(
         firstName: firstNameController.text.trim(),
         lastName: lastNameController.text.trim(),
@@ -111,6 +111,41 @@ class AlumniProfileController extends GetxController {
       }
     } catch (e) {
       log(e.toString());
+    }
+  }
+
+  //to pick image
+
+  void selectImage() async {
+    final ImagePicker picker = ImagePicker();
+    try {
+      final XFile? image =
+          await picker.pickImage(source: ImageSource.gallery, imageQuality: 60);
+      if (image == null) return;
+      selectedImage.value = File(image.path);
+      isImageSelected(true);
+      if (kDebugMode) {
+        log("image location is ${selectedImage.value}");
+      }
+    } on PlatformException catch (e) {
+      print("failed to pick image $e");
+    }
+  }
+
+  void uploadImage() async {
+    try {
+      final StorageRef = FirebaseStorage.instance.ref();
+
+      final profileRef =
+          StorageRef.child('profile-images/${user.value.username}');
+      await profileRef.putFile(
+        selectedImage.value,
+      );
+      final imageUrl = await profileRef.getDownloadURL();
+
+      log(imageUrl);
+    } catch (e) {
+      log("error in uploading img ${e}");
     }
   }
 }
