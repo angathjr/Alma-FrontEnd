@@ -134,7 +134,7 @@ class UserData {
 
   factory UserData.fromJson(Map<String, dynamic> json) => UserData(
         tkmMail: json["tkm_mail"] ?? '',
-        department: json["department"] ?? 0,
+        department: json["department"] ?? 1,
         designation: json["designation"] ?? '',
         joinedYear: json["joined_year"] ?? 0,
         yearOfGraduate: json["year_of_graduate"] ?? 0,

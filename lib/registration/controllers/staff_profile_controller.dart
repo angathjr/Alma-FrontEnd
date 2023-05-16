@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 import 'package:alma/auth/controllers/auth_controller.dart';
 import 'package:alma/auth/models/user.dart';
 import 'package:alma/core/api_provider.dart';
@@ -6,6 +7,7 @@ import 'package:alma/registration/controllers/registration_controller.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:image_picker/image_picker.dart';
 
 class StaffProfileController extends GetxController {
   final TextEditingController firstNameController = TextEditingController();
@@ -22,6 +24,10 @@ class StaffProfileController extends GetxController {
   final RegistrationController registrationController = Get.find();
   final _storage = GetStorage();
   late UserModel userModel;
+
+
+
+
 
   @override
   void onInit() {
@@ -48,6 +54,7 @@ class StaffProfileController extends GetxController {
       staff = staff.copyWith(
         joinedYear: int.parse(joinedYearController.text),
         designation: designationController.text,
+        
       );
 
       try {
@@ -98,4 +105,12 @@ class StaffProfileController extends GetxController {
         .indexOf(registrationController.selectedDepartment.toString());
     return index + 1;
   }
+
+
+
+
+  //to pick image
+
+
+  
 }
