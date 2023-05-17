@@ -17,12 +17,13 @@ class StudentProfileScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.black,
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text('Complete Your Profile'),
       ),
-      body: Center(
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             Container(
@@ -325,7 +326,7 @@ class StudentProfileScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                  controller.registerStudent();
+                controller.registerStudent();
               },
               child: Container(
                 alignment: Alignment.center,
@@ -349,5 +350,4 @@ class StudentProfileScreen extends StatelessWidget {
       ),
     );
   }
-
 }

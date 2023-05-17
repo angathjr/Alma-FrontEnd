@@ -17,12 +17,13 @@ class StaffProfileScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.black,
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text('Complete Your Profile'),
       ),
-      body: Center(
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             Container(
@@ -311,7 +312,6 @@ class StaffProfileScreen extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 staffController.registerStaff();
-                
               },
               child: Container(
                 width: width * 0.35,

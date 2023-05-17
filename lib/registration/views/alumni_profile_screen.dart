@@ -17,12 +17,12 @@ class AlumniProfileScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.black,
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text('Complete Your Profile'),
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
@@ -80,6 +80,9 @@ class AlumniProfileScreen extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(width * 0.06),
                 child: SingleChildScrollView(
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
+                  physics: const BouncingScrollPhysics(),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -283,6 +286,7 @@ class AlumniProfileScreen extends StatelessWidget {
                                 color: Color(0xff25262E),
                               ),
                               child: TextFormField(
+                                keyboardType: TextInputType.number,
                                 controller: controller.year1Controller,
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,
@@ -303,6 +307,7 @@ class AlumniProfileScreen extends StatelessWidget {
                                 color: Color(0xff25262E),
                               ),
                               child: TextFormField(
+                                keyboardType: TextInputType.number,
                                 controller: controller.year2Controller,
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,
@@ -333,12 +338,14 @@ class AlumniProfileScreen extends StatelessWidget {
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "Submit",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
+                  children: [
+                    Obx(
+                      () => Text(
+                        controller.submitText.value,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                   ],
