@@ -28,8 +28,7 @@ class StaffProfileController extends GetxController {
   final _storage = GetStorage();
   late UserModel userModel;
 
-
-    Rx<File> selectedImage = Rx<File>(File(''));
+  Rx<File> selectedImage = Rx<File>(File(''));
   var imageUrl = ''.obs;
   var isImageSelected = false.obs;
 
@@ -66,7 +65,10 @@ class StaffProfileController extends GetxController {
         log("staff response is ${response.body}");
         if (response.statusCode == 200) {
           userModel = UserModel.fromJson(response.body);
-          uploadImage();
+          isImageSelected.value
+              ? uploadImage()
+              : Get.snackbar(
+                  "Profile Image", "please choose your Profile image");
         } else {
           Get.snackbar("Error", "${response.body}");
         }

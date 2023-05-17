@@ -269,27 +269,52 @@ class StudentProfileScreen extends StatelessWidget {
                           height: width * 0.08,
                         ),
                         const Text(
-                          'Year of study',
+                          'Acadamic year',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 12,
                           ),
                         ),
-                        Container(
-                          width: width * 02,
-                          height: height * .053,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff25262E),
-                          ),
-                          child: TextFormField(
-                            controller: controller.yearController,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(left: 5),
+                        Row(
+                          children: [
+                            Container(
+                              width: width * 0.35,
+                              height: height * .053,
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Color(0xff25262E),
+                              ),
+                              child: TextFormField(
+                                controller: controller.year1Controller,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(left: 5),
+                                ),
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
-                            style: const TextStyle(color: Colors.white),
-                          ),
+                            SizedBox(
+                              width: width * 0.05,
+                            ),
+                            Container(
+                              width: width * 0.35,
+                              height: height * .053,
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Color(0xff25262E),
+                              ),
+                              child: TextFormField(
+                                controller: controller.year2Controller,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(left: 5),
+                                ),
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ],
                         ),
                       ]),
                 ),

@@ -19,7 +19,8 @@ class StudentProfileController extends GetxController {
   final TextEditingController tkmMailController = TextEditingController();
   final TextEditingController admNoController = TextEditingController();
   final TextEditingController departmentController = TextEditingController();
-  final TextEditingController yearController = TextEditingController();
+  final TextEditingController year1Controller = TextEditingController();
+  final TextEditingController year2Controller = TextEditingController();
 
   var user = UserModel().obs;
   final ApiProvider api = Get.find();
@@ -28,10 +29,10 @@ class StudentProfileController extends GetxController {
   final _storage = GetStorage();
   late UserModel userModel;
 
-
-    Rx<File> selectedImage = Rx<File>(File(''));
+  Rx<File> selectedImage = Rx<File>(File(''));
   var imageUrl = ''.obs;
   var isImageSelected = false.obs;
+  var isUpdated=false.obs;
 
   @override
   void onInit() {
@@ -52,7 +53,9 @@ class StudentProfileController extends GetxController {
         phoneNumberController.text.isEmpty ||
         tkmMailController.text.isEmpty ||
         tkmMailController.text.isEmpty ||
-        admNoController.text.isEmpty) {
+        admNoController.text.isEmpty ||
+        year1Controller.text.isEmpty ||
+        year2Controller.text.isEmpty) {
       Get.snackbar('Error', 'Please fill all the fields');
     } else {
       UserData student = user.value.data![0];
@@ -60,15 +63,22 @@ class StudentProfileController extends GetxController {
       student = student.copyWith(
         tkmMail: tkmMailController.text,
         department: getIdofDepartment(),
+        academicYearFrom: int.parse(year1Controller.text),
+        academicYearTo: int.parse(year2Controller.text),
       );
       try {
         final response = await api.putApi(
             '/users/student/${user.value.username}', student.toJson());
         log("student  response is ${response.body}");
+        log(response.statusCode.toString());
 
         if (response.statusCode == 200) {
           userModel = UserModel.fromJson(response.body);
-          uploadImage();
+          print("user name in reg is ${userModel.username}");
+          isImageSelected.value
+              ? uploadImage()
+              : Get.snackbar(
+                  "Profile Image", "please choose your profile image");
         } else {
           Get.snackbar("Error", "${response.body["tkm_mail"][0]}");
         }
@@ -82,12 +92,16 @@ class StudentProfileController extends GetxController {
 //to update common user fields
 
   void updateUser() async {
+
     userModel = userModel.copyWith(
         firstName: firstNameController.text.trim(),
         lastName: lastNameController.text.trim(),
         phoneNumber: phoneNumberController.text.trim(),
+        username: user.value.username,
         imageUrl: imageUrl.value,
         isVerified: true);
+
+        print("user name in update user is${userModel.username}");
 
     try {
       final response = await api.putApi(
@@ -127,7 +141,7 @@ class StudentProfileController extends GetxController {
 
   void uploadImage() async {
     try {
-      final storageRef = FirebaseStorage.instance.ref();
+      final storageRef =  FirebaseStorage.instance.ref();
 
       final profileRef =
           storageRef.child('profile-images/${user.value.username}');

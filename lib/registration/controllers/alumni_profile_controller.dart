@@ -73,7 +73,9 @@ class AlumniProfileController extends GetxController {
 
         log("alumni response is ${response.body}");
         if (response.statusCode == 200) {
-          uploadImage();
+          isImageSelected.value
+              ? uploadImage()
+              : Get.snackbar("Profile Image", "please choose your Profile image");
         } else {
           Get.snackbar("Error", "${response.body}");
         }
