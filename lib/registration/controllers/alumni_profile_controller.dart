@@ -13,6 +13,11 @@ import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AlumniProfileController extends GetxController {
+  final ApiProvider api = Get.find();
+  final AuthController authController = Get.find();
+  final RegistrationController registrationController = Get.find();
+  final _storage = GetStorage();
+
 //controllers of textfield
 
   final TextEditingController firstNameController = TextEditingController();
@@ -26,14 +31,12 @@ class AlumniProfileController extends GetxController {
   final TextEditingController year2Controller = TextEditingController();
 
   var user = UserModel().obs;
-  final ApiProvider api = Get.find();
-  final AuthController authController = Get.find();
-  final RegistrationController registrationController = Get.find();
-  final _storage = GetStorage();
   late UserModel userModel;
   Rx<File> selectedImage = Rx<File>(File(''));
   var imageUrl = ''.obs;
   var isImageSelected = false.obs;
+  var isUpdated = false.obs;
+  var submitText="Submit".obs;
 
   @override
   void onInit() {
@@ -49,6 +52,7 @@ class AlumniProfileController extends GetxController {
 //api calls
 
   void registerAlumni() async {
+    isUpdated(false);
     if (firstNameController.text.isEmpty ||
         lastNameController.text.isEmpty ||
         phoneNumberController.text.isEmpty ||
@@ -75,7 +79,8 @@ class AlumniProfileController extends GetxController {
         if (response.statusCode == 200) {
           isImageSelected.value
               ? uploadImage()
-              : Get.snackbar("Profile Image", "please choose your Profile image");
+              : Get.snackbar(
+                  "Profile Image", "please choose your Profile image");
         } else {
           Get.snackbar("Error", "${response.body}");
         }
@@ -108,6 +113,7 @@ class AlumniProfileController extends GetxController {
         await _storage.write('user', userModel.toJson());
         await _storage.write('isVerified', true);
         log("new user model is ${userModel.toJson()}");
+        isUpdated(true);
         Get.offAllNamed('/');
       } else {
         Get.snackbar("Error", "${response.body["phone_number"][0]}");
