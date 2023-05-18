@@ -57,6 +57,7 @@ class StaffProfileController extends GetxController {
       staff = staff.copyWith(
           joinedYear: int.parse(joinedYearController.text),
           designation: designationController.text,
+          tkmMail: tkmMailController.text,
           department: getIdofDepartment());
 
       try {
