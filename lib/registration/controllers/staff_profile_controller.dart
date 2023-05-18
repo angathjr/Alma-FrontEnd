@@ -64,7 +64,7 @@ class StaffProfileController extends GetxController {
             '/users/staff/${user.value.username}', staff.toJson());
         log("staff response is ${response.body}");
         if (response.statusCode == 200) {
-          userModel = UserModel.fromJson(response.body);
+          // userModel = UserModel.fromJson(response.body);
           isImageSelected.value
               ? uploadImage()
               : Get.snackbar(

@@ -109,7 +109,7 @@ class AlumniProfileController extends GetxController {
           '/users/user/${user.value.username}', userModel.toJson());
       log("user response${response.body}");
       if (response.statusCode == 200) {
-        userModel = UserModel.fromJson(response.body);
+        // userModel = UserModel.fromJson(response.body);
         await _storage.write('user', userModel.toJson());
         await _storage.write('isVerified', true);
         log("new user model is ${userModel.toJson()}");
