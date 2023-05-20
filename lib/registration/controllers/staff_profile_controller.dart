@@ -61,8 +61,10 @@ class StaffProfileController extends GetxController {
           department: getIdofDepartment());
 
       try {
+
         final response = await api.putApi(
             '/users/staff/${user.value.username}', staff.toJson());
+            
         log("staff response is ${response.body}");
         if (response.statusCode == 200) {
           // userModel = UserModel.fromJson(response.body);
