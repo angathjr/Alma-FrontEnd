@@ -43,7 +43,7 @@ class JobScreen extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Color(0xffC0CEEF),
                           image: DecorationImage(
-                              image: AssetImage('assets/images/TCS.png'))),
+                              image: AssetImage('assets/images/tcs.png'))),
                     ),
                     SizedBox(
                       width: .030 * width,
@@ -117,7 +117,7 @@ class JobScreen extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Color(0xffC0CEEF),
                           image: DecorationImage(
-                              image: AssetImage('assets/images/TCS.png'))),
+                              image: AssetImage('assets/images/tcs.png'))),
                     ),
                     SizedBox(
                       width: .030 * width,
@@ -191,7 +191,7 @@ class JobScreen extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Color(0xffC0CEEF),
                           image: DecorationImage(
-                              image: AssetImage('assets/images/TCS.png'))),
+                              image: AssetImage('assets/images/tcs.png'))),
                     ),
                     SizedBox(
                       width: .030 * width,
@@ -265,7 +265,7 @@ class JobScreen extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Color(0xffC0CEEF),
                           image: DecorationImage(
-                              image: AssetImage('assets/images/TCS.png'))),
+                              image: AssetImage('assets/images/tcs.png'))),
                     ),
                     SizedBox(
                       width: .030 * width,
@@ -339,7 +339,7 @@ class JobScreen extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           color: Color(0xffC0CEEF),
                           image: DecorationImage(
-                              image: AssetImage('assets/images/TCS.png'))),
+                              image: AssetImage('assets/images/tcs.png'))),
                     ),
                     SizedBox(
                       width: .030 * width,
