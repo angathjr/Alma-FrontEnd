@@ -1,4 +1,5 @@
 import 'package:alma/core/constants.dart';
+import 'package:alma/events/controllers/event_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -188,8 +189,8 @@ class Test {
 }
 
 class NavigationDrawer extends StatelessWidget {
-  const NavigationDrawer({super.key});
-
+   NavigationDrawer({super.key});
+  final EventsController  eventsController=Get.find();
   @override
   Widget build(BuildContext context) => Drawer(
         child: Column(
@@ -235,6 +236,7 @@ class NavigationDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 22),
               ),
               onTap: () {
+                eventsController.fetchJob();
                  Get.toNamed('/job-page');
               },
             ),
