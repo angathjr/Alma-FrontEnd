@@ -327,7 +327,7 @@ class AlumniProfileScreen extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                controller.registerAlumni();
+                controller.updateUser();
               },
               child: Container(
                 width: width * 0.35,
