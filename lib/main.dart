@@ -14,6 +14,7 @@ import 'package:alma/registration/views/student_profile_screen.dart';
 import 'package:alma/search/views/searchScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'Internship/views/InternshipDetailsScreen.dart';
@@ -26,6 +27,10 @@ void main() async {
   await GetStorage.init();
   GetXDependancyInjector().onInit();
   Paint.enableDithering = true;
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(MyApp());
 }
 
@@ -38,10 +43,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(
-        brightness: Brightness.dark,
-        useMaterial3: true,
-        fontFamily: 'Helvetica',
-      ),
+          brightness: Brightness.dark,
+          useMaterial3: true,
+          fontFamily: 'Helvetica',
+          appBarTheme: AppBarTheme(scrolledUnderElevation: 0)),
       // home: NavBarPage(),
       getPages: [
         GetPage(

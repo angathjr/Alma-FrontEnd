@@ -4,6 +4,7 @@ import 'package:alma/registration/controllers/registration_controller.dart';
 import 'package:alma/registration/controllers/staff_profile_controller.dart';
 import 'package:alma/registration/controllers/student_profile_controller.dart';
 import 'package:alma/events/controllers/event_controller.dart';
+import 'package:alma/search/controllers/search_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'auth/controllers/auth_controller.dart';
@@ -22,5 +23,6 @@ class GetXDependancyInjector {
     Get.lazyPut(() => StudentProfileController(), fenix: true);
     Get.lazyPut(() => EventCalendarController(), fenix: true);
     Get.lazyPut(() => EventsController(), fenix: true);
+    Get.lazyPut(() => EventSearchController(), fenix: true);
   }
 }
