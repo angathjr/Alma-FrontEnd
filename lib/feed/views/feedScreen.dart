@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FeedPage extends StatelessWidget {
-  const FeedPage({Key? key}) : super(key: key);
+   FeedPage({Key? key}) : super(key: key);
 
+  EventsController controller =Get.put(EventsController());
   @override
   Widget build(BuildContext context) {
     // print("feed");
