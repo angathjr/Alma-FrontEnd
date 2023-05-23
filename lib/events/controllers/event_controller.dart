@@ -21,12 +21,13 @@ class EventsController extends GetxController {
 
   var events = <EventModel>[].obs;
   var jobs = <EventModel>[].obs;
+  //List<EventModel> get jobs => jobs.value;
  
   final ApiProviderNoAuth api = Get.find();
    final _storage = GetStorage();
   late EventModel eventModel;
 
-  void fetchJob ( )async
+  void fetchJob (String? eventName )async
 {
 final response = await api.getApi('/events/job');
 log("guyguyS${response.body}");
@@ -34,7 +35,8 @@ log("guyguyS${response.body}");
 final parsed = eventModelFromJson(response.body);
 jobs.value=parsed;
 //print(jobs[0].eventName);
-log("shanilllll${jobs[0].eventName}");
+log("shanil${jobs[0].eventName}");
+//_jobs.add(eventModel());
 
 }
 
