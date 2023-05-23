@@ -17,10 +17,7 @@ class FeedPage extends StatelessWidget {
 
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(
-        title: Text("Home"),
-        // backgroundColor: Colors.black,
-      ),
+      appBar: AppBar(title: Text("Home"), backgroundColor: Colors.transparent),
       drawer: NavigationDrawer(),
       backgroundColor: Colors.transparent,
       body: Column(
@@ -190,8 +187,8 @@ class Test {
 }
 
 class NavigationDrawer extends StatelessWidget {
-   NavigationDrawer({super.key});
-  final EventsController  eventsController=Get.find();
+  NavigationDrawer({super.key});
+  final EventsController eventsController = Get.find();
   @override
   Widget build(BuildContext context) => Drawer(
         child: Column(
@@ -228,7 +225,7 @@ class NavigationDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 22),
               ),
               onTap: () {
-                 Get.toNamed('/calender-page');
+                Get.toNamed('/calender-page');
               },
             ),
             ListTile(
@@ -238,7 +235,7 @@ class NavigationDrawer extends StatelessWidget {
               ),
               onTap: () {
                 eventsController.fetchJob();
-                 Get.toNamed('/job-page');
+                Get.toNamed('/job-page');
               },
             ),
             ListTile(
@@ -247,7 +244,7 @@ class NavigationDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 22),
               ),
               onTap: () {
-                 Get.toNamed('/internship-page');
+                Get.toNamed('/internship-page');
               },
             ),
           ],
