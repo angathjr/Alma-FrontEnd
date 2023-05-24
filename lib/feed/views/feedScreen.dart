@@ -244,6 +244,7 @@ class NavigationDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 22),
               ),
               onTap: () {
+                 eventsController.fetchInternship();
                 Get.toNamed('/internship-page');
               },
             ),
