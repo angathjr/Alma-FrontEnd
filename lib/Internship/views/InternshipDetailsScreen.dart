@@ -64,7 +64,7 @@ class InternshipDetailsScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(left: 0.03 * width, top: 0.01 * height),
               child: Text(
-                "Requirements :\n\${controller.internship[1].skillsRequired}",
+                "Requirements :\n${controller.internship[1].skillsRequired}",
                 style: const TextStyle(
                     fontSize: 17,
                     fontFamily: 'Helvatica',
