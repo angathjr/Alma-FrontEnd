@@ -1,5 +1,5 @@
 import 'dart:developer';
-import 'dart:html';
+
 
 import 'package:alma/events/controllers/event_controller.dart';
 import 'package:flutter/material.dart';
@@ -125,86 +125,7 @@ class JobScreen extends StatelessWidget {
             );
           })),
 
-      //  Padding(
-      //    padding: const EdgeInsets.fromLTRB(8.0,10,10,520),
-      //    child: Center(
-      //      child: Container(
-      //         height: 0.25 * height,
-      //         width: 0.87 * width,
-      //         decoration: const BoxDecoration(
-      //           borderRadius: BorderRadius.all(Radius.circular(10)),
-      //           color: Color(0xff1A1B27),
-      //         ),
-      //         child: Column(
-      //           crossAxisAlignment: CrossAxisAlignment.start,
-      //           children: [
-      //             SizedBox(
-      //               height: 0.015 * height,
-      //             ),
-      //             Row(
-      //               children: [
-      //                 SizedBox(
-      //                   width: .030 * width,
-      //                 ),
-      //                 Container(
-      //                   width: 0.31 * width,
-      //                   height: 0.185 * height,
-      //                   decoration: const BoxDecoration(
-      //                       borderRadius: BorderRadius.all(Radius.circular(10)),
-      //                       color: Color(0xffC0CEEF),
-      //                       image: DecorationImage(
-      //                           image: AssetImage('assets/images/tcs.png'))),
-      //                 ),
-      //                 SizedBox(
-      //                   width: .030 * width,
-      //                 ),
-      //                 Column(
-      //                   crossAxisAlignment: CrossAxisAlignment.start,
-      //                   children: [
-      //                     const Text(
-      //                       //'${jobs[0].eventName}'
-      //                       'UI Engineer ',
-      //                       style: TextStyle(
-      //                         color: Colors.white,
-      //                         fontSize: 21,
-      //                       ),
-      //                     ),
-      //                     SizedBox(
-      //                       height: .005 * height,
-      //                     ),
-      //                     const Text(
-      //                       'TCS',
-      //                       style: TextStyle(
-      //                         color: Colors.white,
-      //                         fontSize: 15,
-      //                       ),
-      //                     ),
-      //                   ],
-      //                 )
-      //               ],
-      //             ),
-      //             SizedBox(
-      //               height: 0.025 * height,
-      //             ),
-      //             Row(
-      //               children: [
-      //                 SizedBox(
-      //                   width: .030 * width,
-      //                 ),
-      //                 const Text(
-      //                   'Applied on June 24 , 21:24',
-      //                   style: TextStyle(
-      //                     color: Colors.white,
-      //                     fontSize: 13,
-      //                   ),
-      //                 ),
-      //               ],
-      //             )
-      //           ],
-      //         ),
-      //      ),
-      //    ),
-      //  ),
+      
     );
   }
 }

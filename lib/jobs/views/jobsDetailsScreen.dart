@@ -50,10 +50,7 @@ class JobsDetailsScreen extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                
-               
-              ],
+             
             ),
             SizedBox(
               height: 0.03 * height,
