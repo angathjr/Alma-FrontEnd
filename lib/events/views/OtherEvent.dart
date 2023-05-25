@@ -2,12 +2,10 @@ import 'package:alma/events/controllers/event_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'CollageEventDetails.dart';
+import 'OtherEventDetailsScreen.dart';
 
-
-
-class CollageEventScreen extends StatelessWidget {
-  CollageEventScreen({super.key});
+class OtherEventScreen extends StatelessWidget {
+  OtherEventScreen({super.key});
 
   final EventsController controller = Get.find();
 
@@ -19,18 +17,18 @@ class CollageEventScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
           title: const Text(
-            'Collage Events',
+            'Other Events',
             style: TextStyle(color: Colors.white),
           ),
           backgroundColor: Colors.black),
       body: Obx(
-        () => controller.isCollageEventLoading.value
+        () => controller.isOtherEventLoading.value
             ? const Center(
                 child: CircularProgressIndicator(),
               )
             : ListView.builder(
                 shrinkWrap: true,
-                itemCount: controller.collageEvent.length,
+                itemCount: controller.otherEvent.length,
                 itemBuilder: ((context, index) {
                   return Center(
                     child: InkWell(
@@ -38,7 +36,7 @@ class CollageEventScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CollageEventsDetailsScreen()),
+                              builder: (context) => OtherEventsDetailsScreen()),
                         );
                       },
                       child: Padding(
@@ -80,7 +78,7 @@ class CollageEventScreen extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "${controller.collageEvent[index].eventName}",
+                                        "${controller.otherEvent[index].eventName}",
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 21,
@@ -90,7 +88,7 @@ class CollageEventScreen extends StatelessWidget {
                                         height: .005 * height,
                                       ),
                                       Text(
-                                        "${controller.collageEvent[index].companyName}",
+                                        "${controller.otherEvent[index].companyName}",
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 15,
@@ -109,7 +107,7 @@ class CollageEventScreen extends StatelessWidget {
                                     width: .030 * width,
                                   ),
                                   Text(
-                                    "${controller.collageEvent[index].eventDate}",
+                                    "${controller.otherEvent[index].eventDate}",
                                     style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 13,

@@ -248,6 +248,26 @@ class NavigationDrawer extends StatelessWidget {
                 Get.toNamed('/internship-page');
               },
             ),
+             ListTile(
+              title: const Text(
+                'Collage Events',
+                style: TextStyle(color: Colors.white, fontSize: 22),
+              ),
+              onTap: () {
+                 eventsController.fetchCollageEvent();
+                Get.toNamed('/collageEvent-page');
+              },
+            ),
+            ListTile(
+              title: const Text(
+                'Other Events',
+                style: TextStyle(color: Colors.white, fontSize: 22),
+              ),
+              onTap: () {
+                eventsController.fetchOtherEvent();
+                Get.toNamed('/otherEvent-page');
+              },
+            ),
           ],
         ),
       );

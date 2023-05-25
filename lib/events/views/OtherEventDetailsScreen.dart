@@ -4,8 +4,8 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../events/controllers/event_controller.dart';
 
-class JobsDetailsScreen extends StatelessWidget {
-  const JobsDetailsScreen({super.key});
+class OtherEventsDetailsScreen extends StatelessWidget {
+  const OtherEventsDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class JobsDetailsScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Jobs Details '),
+        title: Text('Other Events Details '),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -32,14 +32,14 @@ class JobsDetailsScreen extends StatelessWidget {
               ),
             ),
             Text(
-               "${controller.jobs[1].eventName}",
+               "${controller.otherEvent[0].eventName}",
               style: TextStyle(
                   fontFamily: 'Helvatica',
                   fontSize: 23,
                   fontWeight: FontWeight.bold),
             ),
             Text(
-               "${controller.jobs[0].eventDate}",
+               "${controller.otherEvent[0].eventDate}",
               style: TextStyle(
                 fontFamily: 'Helvatica',
                 fontSize: 20,
@@ -50,10 +50,7 @@ class JobsDetailsScreen extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                
-               
-              ],
+              
             ),
             SizedBox(
               height: 0.03 * height,
@@ -67,7 +64,7 @@ class JobsDetailsScreen extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.only(left: 0.03 * width, top: 0.01 * height),
                 child: Text(
-                   "Requirements :${controller.jobs[1].skillsRequired}",
+                   "Requirements :${controller.otherEvent[0].skillsRequired}",
                   style: const TextStyle(
                       fontSize: 17,
                       fontFamily: 'Helvatica',
@@ -87,7 +84,7 @@ class JobsDetailsScreen extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.only(left: 0.03 * width, top: 0.01 * height),
                 child: Text(
-                 "Description: ${controller.jobs[1].description}",
+                 "Description: ${controller.otherEvent[0].eventDescription}",
                   style: const TextStyle(
                       fontSize: 17,
                       fontFamily: 'Helvatica',

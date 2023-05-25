@@ -19,6 +19,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'Internship/views/InternshipDetailsScreen.dart';
 import 'auth/views/login_screen.dart';
+import 'events/views/CollageEvents.dart';
+import 'events/views/OtherEvent.dart';
 import 'getx_di.dart';
 
 void main() async {
@@ -61,12 +63,12 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/staff-profile', page: () => StaffProfileScreen()),
         GetPage(name: '/student-profile', page: () => StudentProfileScreen()),
         GetPage(name: '/job-description', page: () => JobDescriptionScreen()),
-        GetPage(
-            name: '/internship-description',
-            page: () => InternshipDescriptionScreen()),
+        GetPage( name: '/internship-description', page: () => InternshipDescriptionScreen()),
         GetPage(name: '/calender-page', page: () => CalendarScreen()),
         GetPage(name: '/job-page', page: () => JobScreen()),
         GetPage(name: '/internship-page', page: () => InternshipScreen()),
+         GetPage(name: '/collageEvent-page', page: () => CollageEventScreen()),
+         GetPage(name: '/otherEvent-page', page: () => OtherEventScreen()),
       ],
     );
   }

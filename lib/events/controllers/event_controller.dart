@@ -32,8 +32,12 @@ class EventsController extends GetxController {
   var events = <EventModel>[].obs;
   var jobs = <EventModel>[].obs;
   var internship = <EventModel>[].obs;
+   var collageEvent = <EventModel>[].obs;
+   var otherEvent = <EventModel>[].obs;
   var isJobLoading=false.obs;
   var isInternshipLoading=false.obs;
+  var isCollageEventLoading=false.obs;
+  var isOtherEventLoading=false.obs;
 
 
   late EventModel eventModel;
@@ -58,8 +62,35 @@ class EventsController extends GetxController {
 
     final parsed = eventModelFromJson(response.body);
     internship.value = parsed;
-//print(jobs[0].eventName);
+
     log("hellooooo${internship[0].eventDate}");
     isInternshipLoading(false); 
   }
+
+
+  void fetchCollageEvent() async {
+    isCollageEventLoading(true);
+    final response = await api.getApi('/events/college-events');
+    log("hjgj${response.body}");
+
+    final parsed = eventModelFromJson(response.body);
+    collageEvent.value = parsed;
+
+   
+    isCollageEventLoading(false); 
+  }
+
+   void fetchOtherEvent() async {
+    isOtherEventLoading(true);
+    final response = await api.getApi('/events/other-events');
+    log("hjgj${response.body}");
+
+    final parsed = eventModelFromJson(response.body);
+    otherEvent.value = parsed;
+
+   
+    isOtherEventLoading(false); 
+  }
 }
+
+
