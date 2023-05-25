@@ -19,7 +19,7 @@ class EventModel {
   final DateTime? lastDateToApply;
   final String? institutionName;
   final dynamic imgUrl;
-  final int? postedBy;
+  final PostedBy? postedBy;
 
   EventModel({
     this.eventType,
@@ -50,7 +50,7 @@ class EventModel {
     DateTime? lastDateToApply,
     String? institutionName,
     dynamic imgUrl,
-    int? postedBy,
+    PostedBy? postedBy,
   }) =>
       EventModel(
         eventType: eventType ?? this.eventType,
@@ -88,7 +88,9 @@ class EventModel {
             : DateTime.parse(json["last_date_to_apply"]),
         institutionName: json["institution_name"] ?? '',
         imgUrl: json["img_url"] ?? '',
-        postedBy: json["posted_by"],
+        postedBy: json["posted_by"] == null
+            ? null
+            : PostedBy.fromJson(json["posted_by"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -109,6 +111,47 @@ class EventModel {
             "${lastDateToApply!.year.toString().padLeft(4, '0')}-${lastDateToApply!.month.toString().padLeft(2, '0')}-${lastDateToApply!.day.toString().padLeft(2, '0')}",
         "institution_name": institutionName,
         "img_url": imgUrl,
-        "posted_by": postedBy,
+        "posted_by": postedBy?.toJson(),
+      };
+}
+
+class PostedBy {
+  final int? id;
+  final String? firstName;
+  final dynamic? lastName;
+  final dynamic? imgUrl;
+
+  PostedBy({
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.imgUrl,
+  });
+
+  PostedBy copyWith({
+    int? id,
+    String? firstName,
+    dynamic? lastName,
+    dynamic? imgUrl,
+  }) =>
+      PostedBy(
+        id: id ?? this.id,
+        firstName: firstName ?? this.firstName,
+        lastName: lastName ?? this.lastName,
+        imgUrl: imgUrl ?? this.imgUrl,
+      );
+
+  factory PostedBy.fromJson(Map<String, dynamic> json) => PostedBy(
+        id: json["id"],
+        firstName: json["first_name"] ?? '',
+        lastName: json["last_name"] ?? '',
+        imgUrl: json["img_url"] ?? '',
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "first_name": firstName ?? '',
+        "last_name": lastName ?? '',
+        "img_url": imgUrl ?? '',
       };
 }
