@@ -55,11 +55,11 @@ class AlumniProfileController extends GetxController {
     UserData alumni = user.value.data![0];
 
     alumni = alumni.copyWith(
-      department: getIdofDepartment(),
-      currentCompany: currentCompanyController.text,
-      academicYearFrom: int.parse(year1Controller.text),
-      academicYearTo: int.parse(year2Controller.text),
-    );
+        department: getIdofDepartment(),
+        currentCompany: currentCompanyController.text,
+        academicYearFrom: int.parse(year1Controller.text),
+        academicYearTo: int.parse(year2Controller.text),
+        user: user.value.id);
 
     try {
       final response = await api.putApi(
@@ -71,7 +71,7 @@ class AlumniProfileController extends GetxController {
             ? uploadImage()
             : Get.snackbar("Profile Image", "please choose your Profile image");
       } else {
-        Get.snackbar("Error", "${response.body}");
+        Get.snackbar("Error", "${response.body['error']}");
       }
     } catch (e) {
       log(e.toString());
