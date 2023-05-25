@@ -254,7 +254,7 @@ class NavigationDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 22),
               ),
               onTap: () {
-                
+                 eventsController.fetchCollageEvent();
                 Get.toNamed('/collageEvent-page');
               },
             ),
@@ -264,7 +264,7 @@ class NavigationDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 22),
               ),
               onTap: () {
-                
+                eventsController.fetchOtherEvent();
                 Get.toNamed('/otherEvent-page');
               },
             ),

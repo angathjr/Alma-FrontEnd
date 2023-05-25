@@ -32,14 +32,14 @@ class OtherEventsDetailsScreen extends StatelessWidget {
               ),
             ),
             Text(
-               "${controller.jobs[1].eventName}",
+               "${controller.otherEvent[0].eventName}",
               style: TextStyle(
                   fontFamily: 'Helvatica',
                   fontSize: 23,
                   fontWeight: FontWeight.bold),
             ),
             Text(
-               "${controller.jobs[0].eventDate}",
+               "${controller.otherEvent[0].eventDate}",
               style: TextStyle(
                 fontFamily: 'Helvatica',
                 fontSize: 20,
@@ -64,7 +64,7 @@ class OtherEventsDetailsScreen extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.only(left: 0.03 * width, top: 0.01 * height),
                 child: Text(
-                   "Requirements :${controller.jobs[1].skillsRequired}",
+                   "Requirements :${controller.otherEvent[0].skillsRequired}",
                   style: const TextStyle(
                       fontSize: 17,
                       fontFamily: 'Helvatica',
@@ -84,7 +84,7 @@ class OtherEventsDetailsScreen extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.only(left: 0.03 * width, top: 0.01 * height),
                 child: Text(
-                 "Description: ${controller.jobs[1].description}",
+                 "Description: ${controller.otherEvent[0].eventDescription}",
                   style: const TextStyle(
                       fontSize: 17,
                       fontFamily: 'Helvatica',

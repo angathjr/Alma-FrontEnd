@@ -2,10 +2,7 @@ import 'package:alma/events/controllers/event_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 import 'OtherEventDetailsScreen.dart';
-
-
 
 class OtherEventScreen extends StatelessWidget {
   OtherEventScreen({super.key});
@@ -25,13 +22,13 @@ class OtherEventScreen extends StatelessWidget {
           ),
           backgroundColor: Colors.black),
       body: Obx(
-        () => controller.isJobLoading.value
+        () => controller.isOtherEventLoading.value
             ? const Center(
                 child: CircularProgressIndicator(),
               )
             : ListView.builder(
                 shrinkWrap: true,
-                itemCount: controller.jobs.length,
+                itemCount: controller.otherEvent.length,
                 itemBuilder: ((context, index) {
                   return Center(
                     child: InkWell(
@@ -81,7 +78,7 @@ class OtherEventScreen extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "${controller.jobs[index].eventName}",
+                                        "${controller.otherEvent[index].eventName}",
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 21,
@@ -91,7 +88,7 @@ class OtherEventScreen extends StatelessWidget {
                                         height: .005 * height,
                                       ),
                                       Text(
-                                        "${controller.jobs[index].companyName}",
+                                        "${controller.otherEvent[index].companyName}",
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 15,
@@ -110,7 +107,7 @@ class OtherEventScreen extends StatelessWidget {
                                     width: .030 * width,
                                   ),
                                   Text(
-                                    "${controller.jobs[index].eventDate}",
+                                    "${controller.otherEvent[index].eventDate}",
                                     style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 13,

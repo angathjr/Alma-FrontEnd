@@ -24,13 +24,13 @@ class CollageEventScreen extends StatelessWidget {
           ),
           backgroundColor: Colors.black),
       body: Obx(
-        () => controller.isJobLoading.value
+        () => controller.isCollageEventLoading.value
             ? const Center(
                 child: CircularProgressIndicator(),
               )
             : ListView.builder(
                 shrinkWrap: true,
-                itemCount: controller.jobs.length,
+                itemCount: controller.collageEvent.length,
                 itemBuilder: ((context, index) {
                   return Center(
                     child: InkWell(
@@ -80,7 +80,7 @@ class CollageEventScreen extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "${controller.jobs[index].eventName}",
+                                        "${controller.collageEvent[index].eventName}",
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 21,
@@ -90,7 +90,7 @@ class CollageEventScreen extends StatelessWidget {
                                         height: .005 * height,
                                       ),
                                       Text(
-                                        "${controller.jobs[index].companyName}",
+                                        "${controller.collageEvent[index].companyName}",
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 15,
@@ -109,7 +109,7 @@ class CollageEventScreen extends StatelessWidget {
                                     width: .030 * width,
                                   ),
                                   Text(
-                                    "${controller.jobs[1].eventDate}",
+                                    "${controller.collageEvent[index].eventDate}",
                                     style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 13,
