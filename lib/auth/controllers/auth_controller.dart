@@ -41,8 +41,7 @@ class AuthController extends GetxController {
       Map data = {'access_token': auth.accessToken};
       final response = await apiNoAuth.postApi('/users/google', data);
 
-      log(data.toString());
-
+     
       final apiToken = response.body['key'];
 
       log('Api Token: $apiToken');
@@ -52,17 +51,17 @@ class AuthController extends GetxController {
       final Response userResponse = await api.getApi('/users/current_user');
       log('${userResponse.statusCode}');
 
-      log(userResponse.body.toString());
+      log("${userResponse.body}");
 
       final UserModel userModel = userModelFromJson(userResponse.body);
-      log(userModel.toString());
-      _storage.write('user', userModel.toJson());
+     
+      await _storage.write('user', userModel.toJson());
       log('nameis${userModel.firstName}');
 
       if (userModel.isVerified ?? false) {
-        _storage.write('isVerified', true);
+        await _storage.write('isVerified', true);
       } else {
-        _storage.write('isVerified', false);
+        await _storage.write('isVerified', false);
       }
       loginText.value="Logged in ";
       isSigningIn(false);

@@ -7,7 +7,8 @@ String userModelToJson(UserModel data) => json.encode(data.toJson());
 
 class UserModel {
   UserModel(
-      {this.firstName,
+      {this.id,
+      this.firstName,
       this.lastName,
       this.isVerified,
       this.isSuperuser,
@@ -18,6 +19,7 @@ class UserModel {
       this.data,
       this.imageUrl});
 
+  final int? id;
   final String? firstName;
   final String? lastName;
   final bool? isVerified;
@@ -30,6 +32,7 @@ class UserModel {
   final String? imageUrl;
 
   UserModel copyWith({
+    int? id,
     String? firstName,
     String? lastName,
     bool? isVerified,
@@ -42,6 +45,7 @@ class UserModel {
     List<UserData>? data,
   }) =>
       UserModel(
+        id: id ?? this.id,
         firstName: firstName ?? this.firstName,
         lastName: lastName ?? this.lastName,
         isVerified: isVerified ?? this.isVerified,
@@ -55,6 +59,7 @@ class UserModel {
       );
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+        id: json["id"],
         firstName: json["first_name"] ?? '',
         lastName: json["last_name"] ?? '',
         isVerified: json["is_verified"] ?? false,
@@ -71,6 +76,7 @@ class UserModel {
       );
 
   Map<String, dynamic> toJson() => {
+        "id": id,
         "first_name": firstName ?? '',
         "last_name": lastName ?? '',
         "is_verified": isVerified ?? false,
@@ -87,17 +93,17 @@ class UserModel {
 }
 
 class UserData {
-  UserData({
-    this.tkmMail,
-    this.department,
-    this.designation,
-    this.joinedYear,
-    this.yearOfGraduate,
-    this.currentCompany,
-    // this.previousCompanies,
-    this.academicYearFrom,
-    this.academicYearTo,
-  });
+  UserData(
+      {this.tkmMail,
+      this.department,
+      this.designation,
+      this.joinedYear,
+      this.yearOfGraduate,
+      this.currentCompany,
+      // this.previousCompanies,
+      this.academicYearFrom,
+      this.academicYearTo,
+      this.user});
 
   final String? tkmMail;
   final int? department;
@@ -108,6 +114,7 @@ class UserData {
   // final List<String>? previousCompanies;
   final int? academicYearFrom;
   final int? academicYearTo;
+  final int? user;
 
   UserData copyWith({
     String? tkmMail,
@@ -119,6 +126,7 @@ class UserData {
     List<String>? previousCompanies,
     int? academicYearFrom,
     int? academicYearTo,
+    int? user,
   }) =>
       UserData(
         tkmMail: tkmMail ?? this.tkmMail,
@@ -130,6 +138,7 @@ class UserData {
         // previousCompanies: previousCompanies ?? this.previousCompanies,
         academicYearFrom: academicYearFrom ?? this.academicYearFrom,
         academicYearTo: academicYearTo ?? this.academicYearTo,
+        user: user ?? this.user,
       );
 
   factory UserData.fromJson(Map<String, dynamic> json) => UserData(
@@ -144,6 +153,7 @@ class UserData {
         //     : List<String>.from(json["previous_companies"]!.map((x) => x)),
         academicYearFrom: json["academic_year_from"] ?? 0,
         academicYearTo: json["academic_year_to"] ?? 0,
+        user: json["user"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -158,5 +168,6 @@ class UserData {
         //     : List<String>.from(previousCompanies!.map((x) => x)),
         "academic_year_from": academicYearFrom,
         "academic_year_to": academicYearTo,
+        "user": user,
       };
 }
