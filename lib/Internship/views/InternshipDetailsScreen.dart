@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../../events/controllers/event_controller.dart';
 
 class InternshipDetailsScreen extends StatelessWidget {
   const InternshipDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final EventsController controller = Get.find();
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -24,14 +29,14 @@ class InternshipDetailsScreen extends StatelessWidget {
             ),
           ),
           Text(
-            'UI Engineer Intern',
+             "${controller.internship[0].eventName}",
             style: TextStyle(
                 fontFamily: 'Helvatica',
                 fontSize: 23,
                 fontWeight: FontWeight.bold),
           ),
           Text(
-            '3 months',
+            " ${controller.internship[1].eventDate}",
             style: TextStyle(
               fontFamily: 'Helvatica',
               fontSize: 20,
@@ -43,38 +48,8 @@ class InternshipDetailsScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Container(
-                width: 0.43 * width,
-                height: 0.06 * height,
-                decoration: BoxDecoration(
-                    color: Color(0xff292A36),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Center(
-                  child: Text(
-                    'Description',
-                    style: TextStyle(
-                      fontFamily: 'Helvatica',
-                      fontSize: 17,
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                width: 0.43 * width,
-                height: 0.06 * height,
-                decoration: BoxDecoration(
-                    color: Color(0xff292A36),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Center(
-                  child: Text(
-                    'About Company',
-                    style: TextStyle(
-                      fontFamily: 'Helvatica',
-                      fontSize: 17,
-                    ),
-                  ),
-                ),
-              ),
+              
+             
             ],
           ),
           SizedBox(
@@ -89,8 +64,8 @@ class InternshipDetailsScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(left: 0.03 * width, top: 0.01 * height),
               child: Text(
-                'Requiremnets :',
-                style: TextStyle(
+                "Requirements :\n\${controller.internship[1].skillsRequired}",
+                style: const TextStyle(
                     fontSize: 17,
                     fontFamily: 'Helvatica',
                     fontWeight: FontWeight.bold),
@@ -101,7 +76,7 @@ class InternshipDetailsScreen extends StatelessWidget {
             height: 0.03 * height,
           ),
           Container(
-            height: 0.2 * height,
+            height: 0.25 * height,
             width: 0.95 * width,
             decoration: BoxDecoration(
                 color: Color(0xff292A36),
@@ -109,8 +84,8 @@ class InternshipDetailsScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(left: 0.03 * width, top: 0.01 * height),
               child: Text(
-                'Benefits :',
-                style: TextStyle(
+                "Description: \n${controller.internship[1].description}",
+                style: const TextStyle(
                     fontSize: 17,
                     fontFamily: 'Helvatica',
                     fontWeight: FontWeight.bold),
