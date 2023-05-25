@@ -234,7 +234,7 @@ class NavigationDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 22),
               ),
               onTap: () {
-                 eventsController.fetchJob();
+                eventsController.fetchJob();
                 Get.toNamed('/job-page');
               },
             ),

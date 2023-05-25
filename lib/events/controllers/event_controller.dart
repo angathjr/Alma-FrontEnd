@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import '../../auth/models/user.dart';
+
 
 class EventsController extends GetxController {
   final TextEditingController companyNameController = TextEditingController();
@@ -22,25 +22,37 @@ class EventsController extends GetxController {
   final TextEditingController eventDescriptionController =
       TextEditingController();
 
-  var events = <EventModel>[].obs;
-  var jobs = <EventModel>[].obs;
-  var internship = <EventModel>[].obs;
+
 
   final ApiProviderNoAuth api = Get.find();
   final _storage = GetStorage();
+
+
+
+  var events = <EventModel>[].obs;
+  var jobs = <EventModel>[].obs;
+  var internship = <EventModel>[].obs;
+  var isJobLoading=false.obs;
+  var isInternshipLoading=false.obs;
+
+
   late EventModel eventModel;
 
+
+
   void fetchJob() async {
+    isJobLoading(true);
     final response = await api.getApi('/events/job');
     log("hjgj${response.body}");
 
     final parsed = eventModelFromJson(response.body);
     jobs.value = parsed;
-//print(jobs[0].eventName);
-    log("hellooooo${jobs[0].eventDate}");
+
+    isJobLoading(false);
   }
 
   void fetchInternship() async {
+    isInternshipLoading(true);
     final response = await api.getApi('/events/internship');
     log("hjgj${response.body}");
 
@@ -48,5 +60,6 @@ class EventsController extends GetxController {
     internship.value = parsed;
 //print(jobs[0].eventName);
     log("hellooooo${internship[0].eventDate}");
+    isInternshipLoading(false); 
   }
 }
