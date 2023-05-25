@@ -39,7 +39,7 @@ class JobScreen extends StatelessWidget {
                                Navigator.push(
                                  context,
                                  MaterialPageRoute(
-                                   builder: (context) => JobsDetailsScreen(controller: index)
+                                   builder: (context) => JobsDetailsScreen()
                                  ),
                                );
                              },
