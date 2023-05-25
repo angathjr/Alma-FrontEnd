@@ -4,8 +4,8 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../../events/controllers/event_controller.dart';
 
-class JobsDetailsScreen extends StatelessWidget {
-  const JobsDetailsScreen({super.key});
+class OtherEventsDetailsScreen extends StatelessWidget {
+  const OtherEventsDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class JobsDetailsScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text('Jobs Details '),
+        title: Text('Other Events Details '),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -50,10 +50,7 @@ class JobsDetailsScreen extends StatelessWidget {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                
-               
-              ],
+              
             ),
             SizedBox(
               height: 0.03 * height,

@@ -2,12 +2,13 @@ import 'package:alma/events/controllers/event_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'CollageEventDetails.dart';
+
+import 'OtherEventDetailsScreen.dart';
 
 
 
-class CollageEventScreen extends StatelessWidget {
-  CollageEventScreen({super.key});
+class OtherEventScreen extends StatelessWidget {
+  OtherEventScreen({super.key});
 
   final EventsController controller = Get.find();
 
@@ -19,7 +20,7 @@ class CollageEventScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
           title: const Text(
-            'Collage Events',
+            'Other Events',
             style: TextStyle(color: Colors.white),
           ),
           backgroundColor: Colors.black),
@@ -38,7 +39,7 @@ class CollageEventScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CollageEventsDetailsScreen()),
+                              builder: (context) => OtherEventsDetailsScreen()),
                         );
                       },
                       child: Padding(
@@ -109,7 +110,7 @@ class CollageEventScreen extends StatelessWidget {
                                     width: .030 * width,
                                   ),
                                   Text(
-                                    "${controller.jobs[1].eventDate}",
+                                    "${controller.jobs[index].eventDate}",
                                     style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 13,
