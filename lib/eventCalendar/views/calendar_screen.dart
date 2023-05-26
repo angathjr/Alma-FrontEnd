@@ -13,6 +13,7 @@ class CalendarScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+        backgroundColor: Color(0xff050408),
         appBar: AppBar(
           title: const Center(
             child: Text(
@@ -25,9 +26,6 @@ class CalendarScreen extends StatelessWidget {
         body: Column(
           children: [
             SizedBox(
-              //color: Colors.red,
-              height: height * 0.4,
-              // width: width * 01,
               child: Obx(
                 () => TableCalendar(
                   rowHeight: height * 0.055,
@@ -80,7 +78,7 @@ class CalendarScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: width * 0.08),
               width: width,
               height: height * 0.03,
-              child: Row(
+              child:  Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   Text(
@@ -97,57 +95,96 @@ class CalendarScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            SizedBox(
-              width: 0.9 * width,
-              height: 0.129 * height,
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
-                    child: Container(
-                      width: 0.8 * width,
-                      height: 0.127 * height,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 53, 52, 57),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Attend ACM Meeting',
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                      left: 5,
-                      top: 25,
-                      child: Container(
-                        height: 0.065 * height,
-                        width: 0.206 * width,
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text(
-                                '21',
-                                style: TextStyle(
-                                  fontSize: 18,
+            Obx(
+              () => Expanded(
+                child: controller.isEventsFetched.value == false
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : controller.events.isEmpty
+                        ? const Center(
+                            child: Text(
+                              'No events scheduled',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          )
+                        : ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: controller.events.length,
+                            itemBuilder: ((context, index) {
+                              return Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: height * 0.01),
+                                child: SizedBox(
+                                  width: 0.9 * width,
+                                  height: 0.129 * height,
+                                  child: Stack(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            50, 0, 0, 0),
+                                        child: Container(
+                                          width: 0.8 * width,
+                                          height: 0.127 * height,
+                                          decoration: BoxDecoration(
+                                            color: const Color.fromARGB(
+                                                255, 53, 52, 57),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                "${controller.events[index].eventName}",
+                                                style: const TextStyle(
+                                                    fontSize: 20,
+                                                    color: Colors.white),
+                                              ),
+                                              Text(
+                                                "${controller.events[index].eventDescription}",
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                          left: 5,
+                                          top: 25,
+                                          child: Container(
+                                            height: 0.065 * height,
+                                            width: 0.206 * width,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xff6D6AFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                            ),
+                                            child: Center(
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    "${controller.events[index].eventDate!.day}",
+                                                    style: const TextStyle(
+                                                      fontSize: 18,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    "${controller.events[index].eventDate!.month}",
+                                                    style: const TextStyle(
+                                                        fontSize: 18),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ))
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                'MAY',
-                                style: TextStyle(fontSize: 18),
-                              )
-                            ],
-                          ),
-                        ),
-                        decoration: BoxDecoration(
-                          color: Color(0xff6D6AFF),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ))
-                ],
+                              );
+                            })),
               ),
             )
           ],

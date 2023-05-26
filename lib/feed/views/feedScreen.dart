@@ -1,10 +1,12 @@
 import 'package:alma/core/constants.dart';
+import 'package:alma/events/controllers/event_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FeedPage extends StatelessWidget {
-  const FeedPage({Key? key}) : super(key: key);
+   FeedPage({Key? key}) : super(key: key);
 
+  EventsController controller =Get.put(EventsController());
   @override
   Widget build(BuildContext context) {
     // print("feed");
@@ -15,10 +17,7 @@ class FeedPage extends StatelessWidget {
 
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(
-        title: Text("Home"),
-        // backgroundColor: Colors.black,
-      ),
+      appBar: AppBar(title: Text("Home"), backgroundColor: Colors.transparent),
       drawer: NavigationDrawer(),
       backgroundColor: Colors.transparent,
       body: Column(
@@ -188,8 +187,8 @@ class Test {
 }
 
 class NavigationDrawer extends StatelessWidget {
-  const NavigationDrawer({super.key});
-
+  NavigationDrawer({super.key});
+  final EventsController eventsController = Get.find();
   @override
   Widget build(BuildContext context) => Drawer(
         child: Column(
@@ -226,7 +225,7 @@ class NavigationDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 22),
               ),
               onTap: () {
-                 Get.toNamed('/calender-page');
+                Get.toNamed('/calender-page');
               },
             ),
             ListTile(
@@ -235,7 +234,8 @@ class NavigationDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 22),
               ),
               onTap: () {
-                 Get.toNamed('/job-page');
+                eventsController.fetchJob();
+                Get.toNamed('/job-page');
               },
             ),
             ListTile(
@@ -244,7 +244,28 @@ class NavigationDrawer extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 22),
               ),
               onTap: () {
-                 Get.toNamed('/internship-page');
+                 eventsController.fetchInternship();
+                Get.toNamed('/internship-page');
+              },
+            ),
+             ListTile(
+              title: const Text(
+                'Collage Events',
+                style: TextStyle(color: Colors.white, fontSize: 22),
+              ),
+              onTap: () {
+                 eventsController.fetchCollageEvent();
+                Get.toNamed('/collageEvent-page');
+              },
+            ),
+            ListTile(
+              title: const Text(
+                'Other Events',
+                style: TextStyle(color: Colors.white, fontSize: 22),
+              ),
+              onTap: () {
+                eventsController.fetchOtherEvent();
+                Get.toNamed('/otherEvent-page');
               },
             ),
           ],

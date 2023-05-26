@@ -1,12 +1,13 @@
-import 'package:alma/Internship/views/InternshipDetailsScreen.dart';
 import 'package:alma/events/controllers/event_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'CollageEventDetails.dart';
 
 
-class InternshipScreen extends StatelessWidget {
-  InternshipScreen({super.key});
+
+class CollageEventScreen extends StatelessWidget {
+  CollageEventScreen({super.key});
 
   final EventsController controller = Get.find();
 
@@ -18,18 +19,18 @@ class InternshipScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
           title: const Text(
-            'Internship',
+            'Collage Events',
             style: TextStyle(color: Colors.white),
           ),
           backgroundColor: Colors.black),
       body: Obx(
-        () => controller.isInternshipLoading.value
+        () => controller.isCollageEventLoading.value
             ? const Center(
                 child: CircularProgressIndicator(),
               )
             : ListView.builder(
                 shrinkWrap: true,
-                itemCount: controller.internship.length,
+                itemCount: controller.collageEvent.length,
                 itemBuilder: ((context, index) {
                   return Center(
                     child: InkWell(
@@ -37,7 +38,7 @@ class InternshipScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => InternshipDetailsScreen()),
+                              builder: (context) => CollageEventsDetailsScreen()),
                         );
                       },
                       child: Padding(
@@ -79,7 +80,7 @@ class InternshipScreen extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "${controller.internship[index].eventName}",
+                                        "${controller.collageEvent[index].eventName}",
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 21,
@@ -89,7 +90,7 @@ class InternshipScreen extends StatelessWidget {
                                         height: .005 * height,
                                       ),
                                       Text(
-                                        "${controller.internship[index].companyName}",
+                                        "${controller.collageEvent[index].companyName}",
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 15,
@@ -108,7 +109,7 @@ class InternshipScreen extends StatelessWidget {
                                     width: .030 * width,
                                   ),
                                   Text(
-                                    "${controller.internship[1].eventDate}",
+                                    "${controller.collageEvent[index].eventDate}",
                                     style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 13,

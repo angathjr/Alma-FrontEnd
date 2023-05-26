@@ -21,7 +21,7 @@ class ApiProviderNoAuth extends GetConnect {
     });
 
     httpClient.baseUrl =
-        'https://alumniportalbackend-production-b9b8.up.railway.app';
+        'https://alma-backend.up.railway.app';
 
     httpClient.addRequestModifier<dynamic>((request) {
       //add header

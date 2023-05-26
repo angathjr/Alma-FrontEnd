@@ -36,7 +36,7 @@ class AlumniProfileController extends GetxController {
   var imageUrl = ''.obs;
   var isImageSelected = false.obs;
   var isUpdated = false.obs;
-  var submitText="Submit".obs;
+  var submitText = "Submit".obs;
 
   @override
   void onInit() {
@@ -52,41 +52,29 @@ class AlumniProfileController extends GetxController {
 //api calls
 
   void registerAlumni() async {
-    isUpdated(false);
-    if (firstNameController.text.isEmpty ||
-        lastNameController.text.isEmpty ||
-        phoneNumberController.text.isEmpty ||
-        ktuRegController.text.isEmpty ||
-        currentCompanyController.text.isEmpty ||
-        year1Controller.text.isEmpty ||
-        year2Controller.text.isEmpty) {
-      Get.snackbar('Error', 'Please fill all the fields');
-    } else {
-      UserData alumni = user.value.data![0];
+    UserData alumni = user.value.data![0];
 
-      alumni = alumni.copyWith(
+    alumni = alumni.copyWith(
         department: getIdofDepartment(),
         currentCompany: currentCompanyController.text,
         academicYearFrom: int.parse(year1Controller.text),
         academicYearTo: int.parse(year2Controller.text),
-      );
+        user: user.value.id);
 
-      try {
-        final response = await api.putApi(
-            '/users/alumni/${user.value.username}', alumni.toJson());
+    try {
+      final response = await api.putApi(
+          '/users/alumni/${user.value.username}', alumni.toJson());
 
-        log("alumni response is ${response.body}");
-        if (response.statusCode == 200) {
-          isImageSelected.value
-              ? uploadImage()
-              : Get.snackbar(
-                  "Profile Image", "please choose your Profile image");
-        } else {
-          Get.snackbar("Error", "${response.body}");
-        }
-      } catch (e) {
-        log(e.toString());
+      log("alumni response is ${response.body}");
+      if (response.statusCode == 200) {
+        isImageSelected.value
+            ? uploadImage()
+            : Get.snackbar("Profile Image", "please choose your Profile image");
+      } else {
+        Get.snackbar("Error", "${response.body['error']}");
       }
+    } catch (e) {
+      log(e.toString());
     }
   }
 
@@ -97,19 +85,47 @@ class AlumniProfileController extends GetxController {
   }
 
   void updateUser() async {
-    userModel = userModel.copyWith(
+    isUpdated(false);
+    if (firstNameController.text.isEmpty ||
+        lastNameController.text.isEmpty ||
+        phoneNumberController.text.isEmpty ||
+        ktuRegController.text.isEmpty ||
+        currentCompanyController.text.isEmpty ||
+        year1Controller.text.isEmpty ||
+        year2Controller.text.isEmpty) {
+      Get.snackbar('Error', 'Please fill all the fields');
+    } else {
+      userModel = userModel.copyWith(
         firstName: firstNameController.text.trim(),
         lastName: lastNameController.text.trim(),
         phoneNumber: phoneNumberController.text.trim(),
         imageUrl: imageUrl.value,
-        isVerified: true);
+      );
+
+      try {
+        final response = await api.putApi(
+            '/users/user/${user.value.username}', userModel.toJson());
+        log("user response${response.body}");
+        if (response.statusCode == 200) {
+          registerAlumni();
+        } else {
+          Get.snackbar("Error", "${response.body["phone_number"][0]}");
+        }
+      } catch (e) {
+        log(e.toString());
+      }
+    }
+  }
+
+  void updateVerification() async {
+    userModel = userModel.copyWith(isVerified: true);
 
     try {
       final response = await api.putApi(
           '/users/user/${user.value.username}', userModel.toJson());
       log("user response${response.body}");
       if (response.statusCode == 200) {
-        userModel = UserModel.fromJson(response.body);
+        // userModel = UserModel.fromJson(response.body);
         await _storage.write('user', userModel.toJson());
         await _storage.write('isVerified', true);
         log("new user model is ${userModel.toJson()}");
@@ -151,7 +167,7 @@ class AlumniProfileController extends GetxController {
         selectedImage.value,
       );
       imageUrl.value = await profileRef.getDownloadURL();
-      updateUser();
+      updateVerification();
 
       log(imageUrl.value);
     } catch (e) {

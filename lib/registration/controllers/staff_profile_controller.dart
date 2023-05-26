@@ -57,14 +57,17 @@ class StaffProfileController extends GetxController {
       staff = staff.copyWith(
           joinedYear: int.parse(joinedYearController.text),
           designation: designationController.text,
+          tkmMail: tkmMailController.text,
           department: getIdofDepartment());
 
       try {
+
         final response = await api.putApi(
             '/users/staff/${user.value.username}', staff.toJson());
+            
         log("staff response is ${response.body}");
         if (response.statusCode == 200) {
-          userModel = UserModel.fromJson(response.body);
+          // userModel = UserModel.fromJson(response.body);
           isImageSelected.value
               ? uploadImage()
               : Get.snackbar(

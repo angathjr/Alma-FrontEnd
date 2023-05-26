@@ -31,7 +31,7 @@ class ApiProvider extends GetConnect {
     });
 
     httpClient.baseUrl =
-        'https://alumniportalbackend-production-b9b8.up.railway.app';
+        'https://alma-backend.up.railway.app';
 
     // Response Modifiers
     httpClient.addResponseModifier((request, response) {

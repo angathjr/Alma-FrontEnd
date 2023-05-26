@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:alma/auth/models/user.dart';
-
 List<EventModel> eventModelFromJson(List<dynamic> str) =>
     List<EventModel>.from((str).map((x) => EventModel.fromJson(x)));
 
@@ -9,76 +7,78 @@ String eventModelToJson(List<EventModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class EventModel {
-  final int? id;
   final String? eventType;
   final String? eventName;
   final DateTime? eventDate;
   final String? eventDescription;
   final String? role;
+  final List<String>? skillsRequired;
   final String? description;
   final DateTime? endDate;
   final String? companyName;
   final DateTime? lastDateToApply;
   final String? institutionName;
-  final List<SkillsRequired>? skillsRequired;
-  final UserModel? user;
+  final dynamic imgUrl;
+  final PostedBy? postedBy;
 
   EventModel({
-    this.id,
     this.eventType,
     this.eventName,
     this.eventDate,
     this.eventDescription,
     this.role,
+    this.skillsRequired,
     this.description,
     this.endDate,
     this.companyName,
     this.lastDateToApply,
     this.institutionName,
-    this.skillsRequired,
-    this.user,
+    this.imgUrl,
+    this.postedBy,
   });
 
   EventModel copyWith({
-    int? id,
     String? eventType,
     String? eventName,
     DateTime? eventDate,
     String? eventDescription,
     String? role,
+    List<String>? skillsRequired,
     String? description,
     DateTime? endDate,
     String? companyName,
     DateTime? lastDateToApply,
     String? institutionName,
-    List<SkillsRequired>? skillsRequired,
-    UserModel? user,
+    dynamic imgUrl,
+    PostedBy? postedBy,
   }) =>
       EventModel(
-        id: id ?? this.id,
         eventType: eventType ?? this.eventType,
         eventName: eventName ?? this.eventName,
         eventDate: eventDate ?? this.eventDate,
         eventDescription: eventDescription ?? this.eventDescription,
         role: role ?? this.role,
+        skillsRequired: skillsRequired ?? this.skillsRequired,
         description: description ?? this.description,
         endDate: endDate ?? this.endDate,
         companyName: companyName ?? this.companyName,
         lastDateToApply: lastDateToApply ?? this.lastDateToApply,
         institutionName: institutionName ?? this.institutionName,
-        skillsRequired: skillsRequired ?? this.skillsRequired,
-        user: user ?? this.user,
+        imgUrl: imgUrl ?? this.imgUrl,
+        postedBy: postedBy ?? this.postedBy,
       );
 
   factory EventModel.fromJson(Map<String, dynamic> json) => EventModel(
-        id: json["id"],
-        eventType: json["event_type"] ?? '',
+        eventType: json["event_type"],
         eventName: json["event_name"] ?? '',
         eventDate: json["event_date"] == null
             ? null
             : DateTime.parse(json["event_date"]),
-        eventDescription: json["event_description"] ?? '',
+        eventDescription: json["event_description"],
         role: json["role"] ?? '',
+        skillsRequired: json["skills_required"] == null
+            ? []
+            : List<String>.from(json["skills_required"]!.map((x) => x)),
         description: json["description"] ?? '',
         endDate:
             json["end_date"] == null ? null : DateTime.parse(json["end_date"]),
@@ -87,20 +87,22 @@ class EventModel {
             ? null
             : DateTime.parse(json["last_date_to_apply"]),
         institutionName: json["institution_name"] ?? '',
-        skillsRequired: json["skills_required"] == null
-            ? []
-            : List<SkillsRequired>.from(json["skills_required"]!
-                .map((x) => SkillsRequired.fromJson(x))),
+        imgUrl: json["img_url"] ?? '',
+        postedBy: json["posted_by"] == null
+            ? null
+            : PostedBy.fromJson(json["posted_by"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
         "event_type": eventType,
         "event_name": eventName,
         "event_date":
             "${eventDate!.year.toString().padLeft(4, '0')}-${eventDate!.month.toString().padLeft(2, '0')}-${eventDate!.day.toString().padLeft(2, '0')}",
         "event_description": eventDescription,
         "role": role,
+        "skills_required": skillsRequired == null
+            ? []
+            : List<dynamic>.from(skillsRequired!.map((x) => x)),
         "description": description,
         "end_date":
             "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
@@ -108,32 +110,48 @@ class EventModel {
         "last_date_to_apply":
             "${lastDateToApply!.year.toString().padLeft(4, '0')}-${lastDateToApply!.month.toString().padLeft(2, '0')}-${lastDateToApply!.day.toString().padLeft(2, '0')}",
         "institution_name": institutionName,
-        "skills_required": skillsRequired == null
-            ? []
-            : List<dynamic>.from(skillsRequired!.map((x) => x.toJson())),
-        "user": user!.toJson(),
+        "img_url": imgUrl,
+        "posted_by": postedBy?.toJson(),
       };
 }
 
-class SkillsRequired {
-  final String? name;
+class PostedBy {
+  final int? id;
+  final String? firstName;
+  final dynamic? lastName;
+  final dynamic? imgUrl;
 
-  SkillsRequired({
-    this.name,
+  PostedBy({
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.imgUrl,
   });
 
-  SkillsRequired copyWith({
-    String? name,
+  PostedBy copyWith({
+    int? id,
+    String? firstName,
+    dynamic? lastName,
+    dynamic? imgUrl,
   }) =>
-      SkillsRequired(
-        name: name ?? this.name,
+      PostedBy(
+        id: id ?? this.id,
+        firstName: firstName ?? this.firstName,
+        lastName: lastName ?? this.lastName,
+        imgUrl: imgUrl ?? this.imgUrl,
       );
 
-  factory SkillsRequired.fromJson(Map<String, dynamic> json) => SkillsRequired(
-        name: json["name"] ?? '',
+  factory PostedBy.fromJson(Map<String, dynamic> json) => PostedBy(
+        id: json["id"],
+        firstName: json["first_name"] ?? '',
+        lastName: json["last_name"] ?? '',
+        imgUrl: json["img_url"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
-        "name": name,
+        "id": id,
+        "first_name": firstName ?? '',
+        "last_name": lastName ?? '',
+        "img_url": imgUrl ?? '',
       };
 }

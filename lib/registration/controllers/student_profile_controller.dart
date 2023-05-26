@@ -73,7 +73,7 @@ class StudentProfileController extends GetxController {
         log(response.statusCode.toString());
 
         if (response.statusCode == 200) {
-          userModel = UserModel.fromJson(response.body);
+          // userModel = UserModel.fromJson(response.body);
           print("user name in reg is ${userModel.username}");
           isImageSelected.value
               ? uploadImage()
@@ -149,9 +149,9 @@ class StudentProfileController extends GetxController {
         selectedImage.value,
       );
       imageUrl.value = await profileRef.getDownloadURL();
+      log(imageUrl.value);
       updateUser();
 
-      log(imageUrl.value);
     } catch (e) {
       log("error in uploading img ${e}");
     }

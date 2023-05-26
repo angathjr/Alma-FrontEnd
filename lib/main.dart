@@ -14,10 +14,13 @@ import 'package:alma/registration/views/student_profile_screen.dart';
 import 'package:alma/search/views/searchScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'Internship/views/InternshipDetailsScreen.dart';
 import 'auth/views/login_screen.dart';
+import 'events/views/CollageEvents.dart';
+import 'events/views/OtherEvent.dart';
 import 'getx_di.dart';
 
 void main() async {
@@ -26,6 +29,10 @@ void main() async {
   await GetStorage.init();
   GetXDependancyInjector().onInit();
   Paint.enableDithering = true;
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(MyApp());
 }
 
@@ -38,10 +45,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(
-        brightness: Brightness.dark,
-        useMaterial3: true,
-        fontFamily: 'Helvetica',
-      ),
+          brightness: Brightness.dark,
+          useMaterial3: true,
+          fontFamily: 'Helvetica',
+          appBarTheme: AppBarTheme(scrolledUnderElevation: 0)),
       // home: NavBarPage(),
       getPages: [
         GetPage(
@@ -56,12 +63,12 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/staff-profile', page: () => StaffProfileScreen()),
         GetPage(name: '/student-profile', page: () => StudentProfileScreen()),
         GetPage(name: '/job-description', page: () => JobDescriptionScreen()),
-        GetPage(
-            name: '/internship-description',
-            page: () => InternshipDescriptionScreen()),
+        GetPage( name: '/internship-description', page: () => InternshipDescriptionScreen()),
         GetPage(name: '/calender-page', page: () => CalendarScreen()),
         GetPage(name: '/job-page', page: () => JobScreen()),
         GetPage(name: '/internship-page', page: () => InternshipScreen()),
+         GetPage(name: '/collageEvent-page', page: () => CollageEventScreen()),
+         GetPage(name: '/otherEvent-page', page: () => OtherEventScreen()),
       ],
     );
   }

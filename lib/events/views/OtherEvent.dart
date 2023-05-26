@@ -1,12 +1,11 @@
-import 'package:alma/Internship/views/InternshipDetailsScreen.dart';
 import 'package:alma/events/controllers/event_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'OtherEventDetailsScreen.dart';
 
-
-class InternshipScreen extends StatelessWidget {
-  InternshipScreen({super.key});
+class OtherEventScreen extends StatelessWidget {
+  OtherEventScreen({super.key});
 
   final EventsController controller = Get.find();
 
@@ -18,18 +17,18 @@ class InternshipScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
           title: const Text(
-            'Internship',
+            'Other Events',
             style: TextStyle(color: Colors.white),
           ),
           backgroundColor: Colors.black),
       body: Obx(
-        () => controller.isInternshipLoading.value
+        () => controller.isOtherEventLoading.value
             ? const Center(
                 child: CircularProgressIndicator(),
               )
             : ListView.builder(
                 shrinkWrap: true,
-                itemCount: controller.internship.length,
+                itemCount: controller.otherEvent.length,
                 itemBuilder: ((context, index) {
                   return Center(
                     child: InkWell(
@@ -37,7 +36,7 @@ class InternshipScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => InternshipDetailsScreen()),
+                              builder: (context) => OtherEventsDetailsScreen()),
                         );
                       },
                       child: Padding(
@@ -79,7 +78,7 @@ class InternshipScreen extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "${controller.internship[index].eventName}",
+                                        "${controller.otherEvent[index].eventName}",
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 21,
@@ -89,7 +88,7 @@ class InternshipScreen extends StatelessWidget {
                                         height: .005 * height,
                                       ),
                                       Text(
-                                        "${controller.internship[index].companyName}",
+                                        "${controller.otherEvent[index].companyName}",
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 15,
@@ -108,7 +107,7 @@ class InternshipScreen extends StatelessWidget {
                                     width: .030 * width,
                                   ),
                                   Text(
-                                    "${controller.internship[1].eventDate}",
+                                    "${controller.otherEvent[index].eventDate}",
                                     style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 13,
