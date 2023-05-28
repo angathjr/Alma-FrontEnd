@@ -55,6 +55,7 @@ class StaffProfileController extends GetxController {
     } else {
       UserData staff = user.value.data!.first;
       staff = staff.copyWith(
+        user: user.value.id,
           joinedYear: int.parse(joinedYearController.text),
           designation: designationController.text,
           tkmMail: tkmMailController.text,
