@@ -59,8 +59,12 @@ class StudentProfileController extends GetxController {
       Get.snackbar('Error', 'Please fill all the fields');
     } else {
       UserData student = user.value.data![0];
+      log(student.toString());
+      print("inside reg studd");
+      log(student.user.toString());
 
       student = student.copyWith(
+        user: user.value.id,
         tkmMail: tkmMailController.text,
         department: getIdofDepartment(),
         academicYearFrom: int.parse(year1Controller.text),
