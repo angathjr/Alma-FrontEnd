@@ -25,11 +25,12 @@ class SearchPage extends StatelessWidget {
           child: Column(children: [
             Container(
               alignment: Alignment.center,
-              height: height * 0.065,
+              height: height * 0.055,
               decoration: BoxDecoration(
                   color: const Color(0xff1E1E1E),
                   borderRadius: BorderRadius.circular(20)),
               child: TextField(
+                onSubmitted: (value) => searchController.searchEvents(),
                 textAlign: TextAlign.left,
                 textAlignVertical: TextAlignVertical.center,
                 decoration: const InputDecoration(
@@ -37,7 +38,7 @@ class SearchPage extends StatelessWidget {
                     hintText: "Search here",
                     contentPadding: EdgeInsets.only(left: 20),
                     border: InputBorder.none),
-                onChanged: (value) => searchController.textFieldOnChanged(),
+                // onChanged: (value) => searchController.textFieldOnChanged(),
                 controller: searchController.searchTextController,
               ),
             ),

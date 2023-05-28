@@ -15,7 +15,7 @@ class EventSearchController extends GetxController {
   var events = <EventModel>[].obs;
   var isLoading = false.obs;
 
-  Future<void> searchEvents() async {
+  void searchEvents() async {
     isLoading(true);
 
     final query = searchTextController.text.trim();
