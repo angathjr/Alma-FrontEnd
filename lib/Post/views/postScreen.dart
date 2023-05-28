@@ -5,8 +5,7 @@ import 'package:get/get.dart';
 class postScreen extends StatelessWidget {
   const postScreen({super.key});
 
-  get builder => null;
-
+  
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;

@@ -74,7 +74,7 @@ class EventModel {
         eventDate: json["event_date"] == null
             ? null
             : DateTime.parse(json["event_date"]),
-        eventDescription: json["event_description"],
+        eventDescription: json["event_description"] ?? ' ',
         role: json["role"] ?? '',
         skillsRequired: json["skills_required"] == null
             ? []

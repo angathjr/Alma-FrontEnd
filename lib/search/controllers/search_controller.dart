@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:alma/auth/controllers/auth_controller.dart';
 import 'package:alma/core/api_provider.dart';
 import 'package:alma/core/api_provider_no_auth.dart';
@@ -13,22 +15,30 @@ class EventSearchController extends GetxController {
   var events = <EventModel>[].obs;
   var isLoading = false.obs;
 
-  void searchEvents() async {
+  Future<void> searchEvents() async {
     isLoading(true);
-    final response =
-        await api.getApi('/events/search/${searchTextController.text}');
-    // print(response.body);
+
+    final query = searchTextController.text.trim();
+
+    if (query.isEmpty) {
+      isLoading(false);
+      return;
+    }
+
+    final response = await api.getApi('/events/search/$query');
+
     if (response.body != '[]') {
       final parsed = eventModelFromJson(response.body);
       events.value = parsed;
     } else {
       print("no events");
     }
+
     isLoading(false);
   }
 
   void textFieldOnChanged() {
-    print(searchTextController.text);
-     searchEvents();
+    log(searchTextController.text);
+    if (searchTextController.text.trim().isNotEmpty) searchEvents();
   }
 }
