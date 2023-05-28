@@ -12,6 +12,7 @@ import 'package:get_storage/get_storage.dart';
 import 'auth/controllers/auth_controller.dart';
 import 'core/api_provider.dart';
 import 'core/api_provider_no_auth.dart';
+import 'fcm/controller/fcm_controller.dart';
 
 class GetXDependancyInjector {
   void onInit() {
@@ -28,5 +29,6 @@ class GetXDependancyInjector {
     Get.lazyPut(() => EventsController(), fenix: true);
     Get.lazyPut(() => EventSearchController(), fenix: true);
     Get.lazyPut(() => PostController(), fenix: true);
+    Get.lazyPut(() => FCMController(), fenix: true);
   }
 }
