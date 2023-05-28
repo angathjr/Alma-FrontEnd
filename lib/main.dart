@@ -18,6 +18,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'Internship/views/InternshipDetailsScreen.dart';
+import 'Post/views/CollageEventDescription.dart';
+import 'Post/views/OtherEventDescription.dart';
 import 'auth/views/login_screen.dart';
 import 'events/views/CollageEvents.dart';
 import 'events/views/OtherEvent.dart';
@@ -69,6 +71,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/internship-page', page: () => InternshipScreen()),
          GetPage(name: '/collageEvent-page', page: () => CollageEventScreen()),
          GetPage(name: '/otherEvent-page', page: () => OtherEventScreen()),
+         GetPage(name: '/collageEventdes-description', page: () => CollageEventDescriptionScreen()),
+         GetPage(name: '/otherEventdes-description', page: () => OtherEventDescriptionScreen()),
       ],
     );
   }
