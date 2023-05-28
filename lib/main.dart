@@ -13,6 +13,7 @@ import 'package:alma/registration/views/staff_profile_screen.dart';
 import 'package:alma/registration/views/student_profile_screen.dart';
 import 'package:alma/search/views/searchScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -25,16 +26,27 @@ import 'events/views/CollageEvents.dart';
 import 'events/views/OtherEvent.dart';
 import 'getx_di.dart';
 
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+}
+
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
   await GetStorage.init();
   GetXDependancyInjector().onInit();
+
   Paint.enableDithering = true;
+
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+    
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
   runApp(MyApp());
 }
 
@@ -65,14 +77,20 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/staff-profile', page: () => StaffProfileScreen()),
         GetPage(name: '/student-profile', page: () => StudentProfileScreen()),
         GetPage(name: '/job-description', page: () => JobDescriptionScreen()),
-        GetPage( name: '/internship-description', page: () => InternshipDescriptionScreen()),
+        GetPage(
+            name: '/internship-description',
+            page: () => InternshipDescriptionScreen()),
         GetPage(name: '/calender-page', page: () => CalendarScreen()),
         GetPage(name: '/job-page', page: () => JobScreen()),
         GetPage(name: '/internship-page', page: () => InternshipScreen()),
-         GetPage(name: '/collageEvent-page', page: () => CollageEventScreen()),
-         GetPage(name: '/otherEvent-page', page: () => OtherEventScreen()),
-         GetPage(name: '/collageEventdes-description', page: () => CollageEventDescriptionScreen()),
-         GetPage(name: '/otherEventdes-description', page: () => OtherEventDescriptionScreen()),
+        GetPage(name: '/collageEvent-page', page: () => CollageEventScreen()),
+        GetPage(name: '/otherEvent-page', page: () => OtherEventScreen()),
+        GetPage(
+            name: '/collageEventdes-description',
+            page: () => CollageEventDescriptionScreen()),
+        GetPage(
+            name: '/otherEventdes-description',
+            page: () => OtherEventDescriptionScreen()),
       ],
     );
   }
