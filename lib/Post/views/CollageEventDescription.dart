@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
-class JobDescriptionScreen extends StatefulWidget {
-  const JobDescriptionScreen({super.key});
+class CollageEventDescriptionScreen extends StatefulWidget {
+  const CollageEventDescriptionScreen({super.key});
 
   @override
-  State<JobDescriptionScreen> createState() => _JobDescriptionScreenState();
+  State<CollageEventDescriptionScreen> createState() => _CollageEventDescriptionScreenState();
 }
 
-class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
+class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionScreen> {
   @override
-  final TextEditingController company_name_controller = TextEditingController();
-  final TextEditingController role_controller = TextEditingController();
-  final TextEditingController skill1_controller = TextEditingController();
-  final TextEditingController skill2_controller = TextEditingController();
-  final TextEditingController skill3_controller = TextEditingController();
+  final TextEditingController event_name_controller = TextEditingController();
+  final TextEditingController event_Date = TextEditingController();
+  final TextEditingController event_time = TextEditingController();
+  final TextEditingController venue = TextEditingController();
+  final TextEditingController event_cordinator = TextEditingController();
+  final TextEditingController condact = TextEditingController();
   final TextEditingController description_controller = TextEditingController();
 
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
       backgroundColor: Colors.black,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text("Job Description"),
+        title: const Text("Collage Event Description"),
         backgroundColor: Colors.black,
       ),
       body: Center(
@@ -45,9 +46,9 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Padding(
-                            padding: EdgeInsets.fromLTRB(19, 30, 4, 10),
+                            padding: EdgeInsets.fromLTRB(19, 30, 4, 6),
                             child: Text(
-                              'Company name',
+                              'Event name',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 12,
@@ -64,7 +65,7 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                                 color: Color(0xff25262E),
                               ),
                               child: TextFormField(
-                                controller: company_name_controller,
+                                controller: event_name_controller,
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 5),
@@ -74,9 +75,9 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                             ),
                           ),
                           const Padding(
-                            padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
+                            padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
                             child: Text(
-                              'Role',
+                              'Event Date',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 12,
@@ -93,7 +94,7 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                                 color: Color(0xff25262E),
                               ),
                               child: TextFormField(
-                                controller: role_controller,
+                                controller: event_Date,
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 5),
@@ -103,9 +104,9 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                             ),
                           ),
                           const Padding(
-                            padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
+                            padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
                             child: Text(
-                              'Skills Required',
+                              'Event Time',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 12,
@@ -122,7 +123,7 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                                 color: Color(0xff25262E),
                               ),
                               child: TextFormField(
-                                controller: skill1_controller,
+                                controller: event_time,
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 5),
@@ -132,9 +133,9 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                             ),
                           ),
                           const Padding(
-                            padding: EdgeInsets.fromLTRB(19, 1, 4, 10),
+                            padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
                             child: Text(
-                              '',
+                              'Venue',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 12,
@@ -151,7 +152,7 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                                 color: Color(0xff25262E),
                               ),
                               child: TextFormField(
-                                controller: skill2_controller,
+                                controller: venue,
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 5),
@@ -161,9 +162,9 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                             ),
                           ),
                           const Padding(
-                            padding: EdgeInsets.fromLTRB(19, 1, 4, 10),
+                            padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
                             child: Text(
-                              '',
+                              'Event Coordinator',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 12,
@@ -180,7 +181,36 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                                 color: Color(0xff25262E),
                               ),
                               child: TextFormField(
-                                controller: skill3_controller,
+                                controller: event_cordinator,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(left: 5),
+                                ),
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
+                            child: Text(
+                              'Condact',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                          Center(
+                            child: Container(
+                              width: width * 0.8,
+                              height: height * .053,
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Color(0xff25262E),
+                              ),
+                              child: TextFormField(
+                                controller: condact,
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 5),

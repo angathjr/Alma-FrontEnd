@@ -1,7 +1,7 @@
 import 'package:alma/Navbar/controllers/navcontroller.dart';
 import 'package:alma/Post/views/postScreen.dart';
 import 'package:alma/core/constants.dart';
-import 'package:alma/feed/views/feedScreen.dart';
+import 'package:alma/home/views/feedScreen.dart';
 import 'package:alma/profile/views/profileScreen.dart';
 import 'package:alma/search/views/searchScreen.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,7 @@ class NavBarPage extends StatelessWidget {
   NavBarPage({Key? key}) : super(key: key);
 
   var pages = [
-    FeedPage(),
+    NewsFeedScreen(),
     SearchPage(),
     postScreen(),
     CalendarScreen(),
@@ -30,76 +30,77 @@ class NavBarPage extends StatelessWidget {
     double navHeight = (height - topHeight) - (width * 0.035 * 2);
 
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Container(
-      width: width,
-      height: height,
-      decoration: Constants.buildBoxDecoration(),
-      child: Column(
-        children: [
-          //pageview
+          width: width,
+          height: height,
+          decoration: Constants.buildBoxDecoration(),
+          child: Column(
+            children: [
+              //pageview
 
-          SizedBox(
-            width: width,
-            height: topHeight,
-            child: PageView(
-                physics: const NeverScrollableScrollPhysics(),
-                controller: navController.controller,
-                children: pages),
-          ),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.all(width * 0.03),
-              width: width,
-              color: Colors.transparent,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: const Color(0xff34353E).withOpacity(.40),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-
-                // The nav bar icons are placed here
-
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    buildNavIcons(
-                        navHeight: navHeight,
-                        name: 'home',
-                        w: 0.40,
-                        h: 0.40,
-                        index: 0),
-                    buildNavIcons(
-                        navHeight: navHeight,
-                        name: 'search',
-                        w: 0.35,
-                        h: 0.35,
-                        index: 1),
-                    buildNavIcons(
-                        navHeight: navHeight,
-                        name: 'add',
-                        w: 0.6,
-                        h: 0.6,
-                        index: 2),
-                    buildNavIcons(
-                        navHeight: navHeight,
-                        name: 'calendar',
-                        w: 0.35,
-                        h: 0.35,
-                        index: 3),
-                    buildNavIcons(
-                        navHeight: navHeight,
-                        name: 'user',
-                        w: 0.35,
-                        h: 0.35,
-                        index: 4),
-                  ],
-                ),
+              SizedBox(
+                width: width,
+                height: topHeight,
+                child: PageView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    controller: navController.controller,
+                    children: pages),
               ),
-            ),
-          )
-        ],
-      ),
-    ));
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(width * 0.03),
+                  width: width,
+                  color: Colors.transparent,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xff34353E).withOpacity(.40),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+
+                    // The nav bar icons are placed here
+
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildNavIcons(
+                            navHeight: navHeight,
+                            name: 'home',
+                            w: 0.40,
+                            h: 0.40,
+                            index: 0),
+                        buildNavIcons(
+                            navHeight: navHeight,
+                            name: 'search',
+                            w: 0.35,
+                            h: 0.35,
+                            index: 1),
+                        buildNavIcons(
+                            navHeight: navHeight,
+                            name: 'add',
+                            w: 0.6,
+                            h: 0.6,
+                            index: 2),
+                        buildNavIcons(
+                            navHeight: navHeight,
+                            name: 'calendar',
+                            w: 0.35,
+                            h: 0.35,
+                            index: 3),
+                        buildNavIcons(
+                            navHeight: navHeight,
+                            name: 'user',
+                            w: 0.35,
+                            h: 0.35,
+                            index: 4),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ));
   }
 
   InkWell buildNavIcons(

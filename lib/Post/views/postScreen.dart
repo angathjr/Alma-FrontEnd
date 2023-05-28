@@ -5,8 +5,7 @@ import 'package:get/get.dart';
 class postScreen extends StatelessWidget {
   const postScreen({super.key});
 
-  get builder => null;
-
+  
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -178,7 +177,7 @@ class postScreen extends StatelessWidget {
                               ),
                               InkWell(
                                 onTap: () {
-                                  Get.toNamed('/job-description');
+                                  Get.toNamed('/collageEventdes-description');
                                 },
                                 child: Container(
                                   alignment: Alignment.center,
@@ -203,7 +202,7 @@ class postScreen extends StatelessWidget {
                               ),
                               InkWell(
                                 onTap: () {
-                                  Get.toNamed('/job-description');
+                                 Get.toNamed('/otherEventdes-description');
                                 },
                                 child: Container(
                                   alignment: Alignment.center,
