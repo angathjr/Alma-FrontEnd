@@ -1,7 +1,7 @@
 import 'package:alma/Navbar/controllers/navcontroller.dart';
 import 'package:alma/Post/views/postScreen.dart';
 import 'package:alma/core/constants.dart';
-import 'package:alma/feed/views/feedScreen.dart';
+import 'package:alma/home/views/feedScreen.dart';
 import 'package:alma/profile/views/profileScreen.dart';
 import 'package:alma/search/views/searchScreen.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,7 @@ class NavBarPage extends StatelessWidget {
   NavBarPage({Key? key}) : super(key: key);
 
   var pages = [
-    FeedPage(),
+    NewsFeedScreen(),
     SearchPage(),
     postScreen(),
     CalendarScreen(),

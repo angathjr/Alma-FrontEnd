@@ -1,12 +1,13 @@
 import 'package:alma/core/constants.dart';
 import 'package:alma/events/controllers/event_controller.dart';
+import 'package:alma/home/views/drawer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class FeedPage extends StatelessWidget {
-   FeedPage({Key? key}) : super(key: key);
+class NewsFeedScreen extends StatelessWidget {
+  NewsFeedScreen({Key? key}) : super(key: key);
 
-  EventsController controller =Get.put(EventsController());
+  EventsController controller = Get.put(EventsController());
   @override
   Widget build(BuildContext context) {
     // print("feed");
@@ -18,7 +19,7 @@ class FeedPage extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(title: Text("Home"), backgroundColor: Colors.transparent),
-      drawer: NavigationDrawer(),
+      drawer: NavigationDrawerScreen(),
       backgroundColor: Colors.transparent,
       body: Column(
         children: [
@@ -184,91 +185,4 @@ class Test {
     Test("", "helhfhjfjfkjfrkjfrjfjfhjfgnfglo"),
     Test("h", "hergrkjgnirnygiujllo")
   ];
-}
-
-class NavigationDrawer extends StatelessWidget {
-  NavigationDrawer({super.key});
-  final EventsController eventsController = Get.find();
-  @override
-  Widget build(BuildContext context) => Drawer(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            DrawerHeader(
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 61, 77, 90),
-              ),
-              child: Column(
-                children: [
-                  Image.asset(
-                    'assets/images/pic.png',
-                    // height: height * .15,
-                    scale: 1.1,
-                  ),
-                  const Text(
-                    'Mohammed Shanil AV',
-                    style: TextStyle(color: Colors.white, fontSize: 22),
-                  ),
-                ],
-              ),
-            ),
-            ListTile(
-              title: const Text(''),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              title: const Text(
-                'Events',
-                style: TextStyle(color: Colors.white, fontSize: 22),
-              ),
-              onTap: () {
-                Get.toNamed('/calender-page');
-              },
-            ),
-            ListTile(
-              title: const Text(
-                'Jobs',
-                style: TextStyle(color: Colors.white, fontSize: 22),
-              ),
-              onTap: () {
-                eventsController.fetchJob();
-                Get.toNamed('/job-page');
-              },
-            ),
-            ListTile(
-              title: const Text(
-                'Internships',
-                style: TextStyle(color: Colors.white, fontSize: 22),
-              ),
-              onTap: () {
-                 eventsController.fetchInternship();
-                Get.toNamed('/internship-page');
-              },
-            ),
-             ListTile(
-              title: const Text(
-                'Collage Events',
-                style: TextStyle(color: Colors.white, fontSize: 22),
-              ),
-              onTap: () {
-                 eventsController.fetchCollageEvent();
-                Get.toNamed('/collageEvent-page');
-              },
-            ),
-            ListTile(
-              title: const Text(
-                'Other Events',
-                style: TextStyle(color: Colors.white, fontSize: 22),
-              ),
-              onTap: () {
-                eventsController.fetchOtherEvent();
-                Get.toNamed('/otherEvent-page');
-              },
-            ),
-          ],
-        ),
-      );
 }
