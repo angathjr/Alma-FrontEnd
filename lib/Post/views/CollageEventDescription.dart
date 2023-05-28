@@ -219,35 +219,7 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
                               ),
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
-                            child: Text(
-                              'Description',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                          Center(
-                            child: Container(
-                              width: width * 0.8,
-                              height: height * .53,
-                              decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
-                              ),
-                              child: TextFormField(
-                                controller: description_controller,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.only(left: 5),
-                                ),
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
+                         
                         ]),
                   ),
                 ),

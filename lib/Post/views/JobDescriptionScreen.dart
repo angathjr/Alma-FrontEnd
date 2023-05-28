@@ -12,10 +12,7 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
   final TextEditingController company_name_controller = TextEditingController();
   final TextEditingController role_controller = TextEditingController();
   final TextEditingController skill1_controller = TextEditingController();
-  final TextEditingController skill2_controller = TextEditingController();
-  final TextEditingController skill3_controller = TextEditingController();
-  final TextEditingController description_controller = TextEditingController();
-
+ 
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -115,7 +112,7 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                           Center(
                             child: Container(
                               width: width * 0.8,
-                              height: height * .053,
+                              height: height * .093,
                               decoration: const BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
@@ -131,93 +128,9 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                               ),
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.fromLTRB(19, 1, 4, 10),
-                            child: Text(
-                              '',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                          Center(
-                            child: Container(
-                              width: width * 0.8,
-                              height: height * .053,
-                              decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
-                              ),
-                              child: TextFormField(
-                                controller: skill2_controller,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.only(left: 5),
-                                ),
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.fromLTRB(19, 1, 4, 10),
-                            child: Text(
-                              '',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                          Center(
-                            child: Container(
-                              width: width * 0.8,
-                              height: height * .053,
-                              decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
-                              ),
-                              child: TextFormField(
-                                controller: skill3_controller,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.only(left: 5),
-                                ),
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
-                            child: Text(
-                              'Description',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                          Center(
-                            child: Container(
-                              width: width * 0.8,
-                              height: height * .53,
-                              decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
-                              ),
-                              child: TextFormField(
-                                controller: description_controller,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.only(left: 5),
-                                ),
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
+                        
+                          
+                         
                         ]),
                   ),
                 ),
