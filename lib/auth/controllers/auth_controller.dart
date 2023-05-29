@@ -63,6 +63,11 @@ class AuthController extends GetxController {
       } else {
         await _storage.write('isVerified', false);
       }
+
+
+      //for fcm 
+      await _storage.write('isDeviceAdded', false);
+      
       loginText.value="Logged in ";
       isSigningIn(false);
 
