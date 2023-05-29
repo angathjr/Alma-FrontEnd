@@ -29,6 +29,7 @@ class GetXDependancyInjector {
     Get.lazyPut(() => EventsController(), fenix: true);
     Get.lazyPut(() => EventSearchController(), fenix: true);
     Get.lazyPut(() => PostController(), fenix: true);
-    Get.lazyPut(() => FCMController(), fenix: true);
+    // Get.lazyPut(() => FCMController(), fenix: true);
+    Get.put(FCMController());
   }
 }
