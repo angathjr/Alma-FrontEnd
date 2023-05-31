@@ -18,7 +18,7 @@ class FCMController extends GetxController {
     super.onInit();
     messaging = FirebaseMessaging.instance;
     handleRequest();
-    fetchToken();
+    // fetchToken();
   }
 
   void handleRequest() async {
@@ -34,6 +34,7 @@ class FCMController extends GetxController {
   }
 
   void fetchToken() async {
+
     String? token = await messaging.getToken();
     String? platform;
     log("FirebaseMessaging token: $token");
@@ -43,14 +44,14 @@ class FCMController extends GetxController {
       platform="ios";
     }
     Map<String,dynamic> data = {'token': token,"device_type":platform};
+    
     var isDeviceAdded =storage.read('isDeviceAdded');
 
-
-    // if(isDeviceAdded==false){
-    //   final response=await api.postApi('/fcm/device', data);
-    //   await storage.write('isDeviceAdded', true);
-    //   log(response.body);
-    // }
+    if(isDeviceAdded==false){
+      final response=await api.postApi('/fcm/device', data);
+      await storage.write('isDeviceAdded', true);
+      log(response.body);
+    }
    
   }
 }
