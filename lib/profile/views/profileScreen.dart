@@ -115,25 +115,31 @@ class ProfilePage extends StatelessWidget {
                 width: 0.05 * width,
               ),
               Expanded(
-                child: Container(
-                  height: 0.3 * height,
-                  width: 0.445 * width,
-                  decoration: BoxDecoration(
-                      color: Color(0xff292A36),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.edit),
-                      const Text(
-                        'Edit Profile',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'Helvatica',
-                          //fontWeight: FontWeight.bold
+                child: InkWell(
+                   onTap: () {
+              Get.toNamed('/EditProfile');
+            },
+                  child: Container(
+                   
+                    height: 0.3 * height,
+                    width: 0.445 * width,
+                    decoration: BoxDecoration(
+                        color: Color(0xff292A36),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.edit),
+                        const Text(
+                          'Edit Profile',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Helvatica',
+                            //fontWeight: FontWeight.bold
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
