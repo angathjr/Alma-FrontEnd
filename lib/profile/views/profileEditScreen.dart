@@ -16,6 +16,8 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController mailController = TextEditingController();
   final TextEditingController bioController = TextEditingController();
+  final TextEditingController interestedAreasController =
+      TextEditingController();
 
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -37,7 +39,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
             ),
             Container(
               width: width * .89,
-              height: height * .54,
+              height: height * .64,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: Color(0xff13141B),
@@ -167,6 +169,32 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         ),
                         child: TextFormField(
                           controller: bioController,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            contentPadding: EdgeInsets.only(left: 5),
+                          ),
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      SizedBox(
+                        height: width * 0.06,
+                      ),
+                      const Text(
+                        'Interested Areas',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                        ),
+                      ),
+                      Container(
+                        width: width * 02,
+                        height: height * .053,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          color: Color(0xff25262E),
+                        ),
+                        child: TextFormField(
+                          controller: interestedAreasController,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
                             contentPadding: EdgeInsets.only(left: 5),
