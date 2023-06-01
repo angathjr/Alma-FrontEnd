@@ -57,7 +57,7 @@ class ProfilePage extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 0.08 * height,
+            height: 0.05 * height,
           ),
           Container(
             height: 0.2 * height,
@@ -69,6 +69,26 @@ class ProfilePage extends StatelessWidget {
               padding: EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
               child: Text(
                 'Bio',
+                style: TextStyle(
+                    fontFamily: 'Helvatica',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 0.004 * height,
+          ),
+          Container(
+            height: 0.15 * height,
+            width: 0.9 * width,
+            decoration: BoxDecoration(
+                color: Color(0xff292A36),
+                borderRadius: BorderRadius.circular(10)),
+            child: Padding(
+              padding: EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
+              child: Text(
+                'Interested Areas',
                 style: TextStyle(
                     fontFamily: 'Helvatica',
                     fontSize: 20,
