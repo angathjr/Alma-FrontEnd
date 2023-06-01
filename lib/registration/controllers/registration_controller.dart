@@ -28,7 +28,6 @@ class RegistrationController extends GetxController {
     // });
     user.value = UserModel.fromJson(_storage.read('user'));
     userModel = user.value;
-    print("oninit");
     log("username is ${user.value.username}");
     fetchDepartments();
   }
@@ -88,7 +87,6 @@ class RegistrationController extends GetxController {
     final parsed = departmentModelFromJson(response.body);
     departments.value = parsed;
     depNames.value = departments.map((e) => e.depName).toList();
-    log("list is $depNames");
     selectedDepartment.value = depNames.first;
     isdepartmentfetched(true);
   }
