@@ -1,17 +1,21 @@
 import 'dart:developer';
-
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../core/api_provider.dart';
 import '../../core/api_provider_no_auth.dart';
+import '../../fcm/controller/fcm_controller.dart';
 import '../models/user.dart';
 
 class AuthController extends GetxController {
+
   late GoogleSignIn _googleSignIn;
   final GetStorage _storage = GetStorage();
   final ApiProvider api = Get.find();
+
   final ApiProviderNoAuth apiNoAuth = Get.find();
+
+  final FCMController fcmController = Get.find();
 
   var loginText = "Continue with Google".obs;
   var isSigningIn = false.obs;
@@ -63,6 +67,11 @@ class AuthController extends GetxController {
       } else {
         await _storage.write('isVerified', false);
       }
+
+
+      //for fcm 
+      await _storage.write('isDeviceAdded', false);
+      fcmController.fetchToken();
       loginText.value="Logged in ";
       isSigningIn(false);
 
