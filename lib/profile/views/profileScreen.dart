@@ -11,7 +11,7 @@ class ProfilePage extends StatelessWidget {
   ProfilePage({Key? key}) : super(key: key);
 
   final AuthController authController = Get.find();
-   final ProfileController profileController = Get.find();
+  final ProfileController profileController = Get.find();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -30,39 +30,28 @@ class ProfilePage extends StatelessWidget {
       body: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(
-                width: 0.03 * width,
-              ),
-              const Text(
-                'Hi,',
-                style: TextStyle(fontSize: 25, fontFamily: 'Helvatica'),
-              ),
-              // SizedBox(
-              //   width: 0.015 * width,
-              // ),
-               Text(
-                "${profileController.user.value.username}",
-                style: TextStyle(
+              Padding(
+                padding: EdgeInsets.only(left: 0.04 * width),
+                child: Text(
+                  "Hi, ${profileController.user.value.username}",
+                  style: TextStyle(
                     fontSize: 25,
                     fontFamily: 'Helavtica',
-                    fontWeight: FontWeight.bold),
+                    //fontWeight: FontWeight.bold
+                  ),
+                ),
               ),
               SizedBox(
-                width: 0.24 * width,
-              ),
-               Expanded(
-                  child: SizedBox(
-                      width: width * 0.25,
-                      child: CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          foregroundColor: Colors.transparent,
-                          radius: 32,
-                          foregroundImage: NetworkImage(
-                            "${profileController.user.value.imageUrl}",
-                          ))),
-                ),
-             
+                  width: width * 0.25,
+                  child: CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      foregroundColor: Colors.transparent,
+                      radius: 32,
+                      foregroundImage: NetworkImage(
+                        "${profileController.user.value.imageUrl}",
+                      ))),
             ],
           ),
           SizedBox(
@@ -79,9 +68,9 @@ class ProfilePage extends StatelessWidget {
               child: const Text(
                 'Bio:',
                 style: TextStyle(
-                    fontFamily: 'Helvatica',
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                  fontFamily: 'Helvatica',
+                  fontSize: 20,
+                ),
               ),
             ),
           ),
@@ -99,9 +88,9 @@ class ProfilePage extends StatelessWidget {
               child: const Text(
                 'Interested Areas:',
                 style: TextStyle(
-                    fontFamily: 'Helvatica',
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                  fontFamily: 'Helvatica',
+                  fontSize: 20,
+                ),
               ),
             ),
           ),
@@ -116,11 +105,10 @@ class ProfilePage extends StatelessWidget {
               ),
               Expanded(
                 child: InkWell(
-                   onTap: () {
-              Get.toNamed('/EditProfile');
-            },
+                  onTap: () {
+                    Get.toNamed('/EditProfile');
+                  },
                   child: Container(
-                   
                     height: 0.3 * height,
                     width: 0.445 * width,
                     decoration: BoxDecoration(
