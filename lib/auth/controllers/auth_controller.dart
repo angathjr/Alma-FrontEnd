@@ -1,21 +1,20 @@
 import 'dart:developer';
+import 'package:alma/fcm/controller/fcm_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../core/api_provider.dart';
 import '../../core/api_provider_no_auth.dart';
-import '../../fcm/controller/fcm_controller.dart';
 import '../models/user.dart';
 
 class AuthController extends GetxController {
-
   late GoogleSignIn _googleSignIn;
   final GetStorage _storage = GetStorage();
   final ApiProvider api = Get.find();
 
   final ApiProviderNoAuth apiNoAuth = Get.find();
-
-  final FCMController fcmController = Get.find();
+  final FcmController fcmController=Get.put(FcmController());
+  
 
   var loginText = "Continue with Google".obs;
   var isSigningIn = false.obs;
@@ -34,8 +33,7 @@ class AuthController extends GetxController {
 
   Future<void> handleSignIn() async {
     try {
-
-      loginText.value="Logging you in ... ";
+      loginText.value = "Logging you in ... ";
       isSigningIn(true);
       final result = await _googleSignIn.signIn();
       final auth = await result!.authentication;
@@ -45,7 +43,6 @@ class AuthController extends GetxController {
       Map data = {'access_token': auth.accessToken};
       final response = await apiNoAuth.postApi('/users/google', data);
 
-     
       final apiToken = response.body['key'];
 
       log('Api Token: $apiToken');
@@ -58,7 +55,7 @@ class AuthController extends GetxController {
       log("${userResponse.body}");
 
       final UserModel userModel = userModelFromJson(userResponse.body);
-     
+
       await _storage.write('user', userModel.toJson());
       log('nameis${userModel.firstName}');
 
@@ -68,11 +65,10 @@ class AuthController extends GetxController {
         await _storage.write('isVerified', false);
       }
 
-
-      //for fcm 
+      //for fcm
       await _storage.write('isDeviceAdded', false);
       fcmController.fetchToken();
-      loginText.value="Logged in ";
+      loginText.value = "Logged in ";
       isSigningIn(false);
 
       Get.offAllNamed('/');
@@ -82,16 +78,13 @@ class AuthController extends GetxController {
       await Future.delayed(const Duration(seconds: 2));
       loginText.value = "Continue with Google";
       print(error);
-    }
-    finally{
+    } finally {
       isSigningIn(false);
-      loginText.value="Continue with Google";
+      loginText.value = "Continue with Google";
     }
-
   }
 
-
-  //to logout 
+  //to logout
   void logOut() async {
     await _googleSignIn.signOut();
     await _storage.erase();

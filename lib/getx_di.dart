@@ -1,5 +1,6 @@
 import 'package:alma/Post/controllers/post_controller.dart';
 import 'package:alma/eventCalendar/controllers/calendar_controller.dart';
+import 'package:alma/fcm/controller/fcm_controller.dart';
 import 'package:alma/profile/controllers/profile_controller.dart';
 import 'package:alma/registration/controllers/alumni_profile_controller.dart';
 import 'package:alma/registration/controllers/registration_controller.dart';
@@ -12,15 +13,14 @@ import 'package:get_storage/get_storage.dart';
 import 'auth/controllers/auth_controller.dart';
 import 'core/api_provider.dart';
 import 'core/api_provider_no_auth.dart';
-import 'fcm/controller/fcm_controller.dart';
 
 class GetXDependancyInjector {
   void onInit() {
     Get.put(ApiProvider());
     Get.put(ApiProviderNoAuth());
     Get.put(AuthController());
-    Get.lazyPut(() => RegistrationController(), fenix: true);
     Get.put(GetStorage());
+    Get.lazyPut(() => RegistrationController(), fenix: true);
     Get.lazyPut(() => ProfileController(), fenix: true);
     Get.lazyPut(() => AlumniProfileController(), fenix: true);
     Get.lazyPut(() => StaffProfileController(), fenix: true);
@@ -29,6 +29,7 @@ class GetXDependancyInjector {
     Get.lazyPut(() => EventsController(), fenix: true);
     Get.lazyPut(() => EventSearchController(), fenix: true);
     Get.lazyPut(() => PostController(), fenix: true);
-    Get.lazyPut(() => FCMController(), fenix: true);
+    // Get.put(FCMController());
+    Get.lazyPut(() => FcmController(), fenix: true);
   }
 }
