@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../core/constants.dart';
+import '../controllers/profile_controller.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({Key? key}) : super(key: key);
 
   final AuthController authController = Get.find();
+   final ProfileController profileController = Get.find();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -18,7 +20,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xff050408),
       appBar: AppBar(
-          title: Center(
+          title: const Center(
             child: Text(
               'Profile',
               style: TextStyle(color: Colors.white),
@@ -32,28 +34,35 @@ class ProfilePage extends StatelessWidget {
               SizedBox(
                 width: 0.03 * width,
               ),
-              Text(
-                'Hi',
+              const Text(
+                'Hi,',
                 style: TextStyle(fontSize: 25, fontFamily: 'Helvatica'),
               ),
-              SizedBox(
-                width: 0.015 * width,
-              ),
-              Text(
-                'Kishan',
+              // SizedBox(
+              //   width: 0.015 * width,
+              // ),
+               Text(
+                "${profileController.user.value.username}",
                 style: TextStyle(
                     fontSize: 25,
                     fontFamily: 'Helavtica',
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(
-                width: 0.44 * width,
+                width: 0.24 * width,
               ),
-              Image.asset(
-                'assets/images/pic.png',
-                width: 0.25 * width,
-                height: 0.067 * height,
-              )
+               Expanded(
+                  child: SizedBox(
+                      width: width * 0.25,
+                      child: CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          foregroundColor: Colors.transparent,
+                          radius: 32,
+                          foregroundImage: NetworkImage(
+                            "${profileController.user.value.imageUrl}",
+                          ))),
+                ),
+             
             ],
           ),
           SizedBox(
@@ -67,8 +76,8 @@ class ProfilePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10)),
             child: Padding(
               padding: EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
-              child: Text(
-                'Bio',
+              child: const Text(
+                'Bio:',
                 style: TextStyle(
                     fontFamily: 'Helvatica',
                     fontSize: 20,
@@ -87,8 +96,8 @@ class ProfilePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10)),
             child: Padding(
               padding: EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
-              child: Text(
-                'Interested Areas',
+              child: const Text(
+                'Interested Areas:',
                 style: TextStyle(
                     fontFamily: 'Helvatica',
                     fontSize: 20,
@@ -106,25 +115,31 @@ class ProfilePage extends StatelessWidget {
                 width: 0.05 * width,
               ),
               Expanded(
-                child: Container(
-                  height: 0.3 * height,
-                  width: 0.445 * width,
-                  decoration: BoxDecoration(
-                      color: Color(0xff292A36),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.edit),
-                      Text(
-                        'Edit Profile',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'Helvatica',
-                          //fontWeight: FontWeight.bold
+                child: InkWell(
+                   onTap: () {
+              Get.toNamed('/EditProfile');
+            },
+                  child: Container(
+                   
+                    height: 0.3 * height,
+                    width: 0.445 * width,
+                    decoration: BoxDecoration(
+                        color: Color(0xff292A36),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.edit),
+                        const Text(
+                          'Edit Profile',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Helvatica',
+                            //fontWeight: FontWeight.bold
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
