@@ -1,20 +1,21 @@
 import 'package:alma/core/constants.dart';
 import 'package:alma/events/controllers/event_controller.dart';
 import 'package:alma/home/views/drawer_screen.dart';
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class NewsFeedScreen extends StatelessWidget {
   NewsFeedScreen({Key? key}) : super(key: key);
 
-  EventsController controller = Get.put(EventsController());
+  EventsController controller = Get.find();
   @override
   Widget build(BuildContext context) {
+    final Test test;
     // print("feed");
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     double postSize = height * 0.6;
-    final Test test;
 
     return SafeArea(
         child: Scaffold(
@@ -41,7 +42,7 @@ class NewsFeedScreen extends StatelessWidget {
                       padding: const EdgeInsets.all(10),
                       width: width,
                       decoration: BoxDecoration(
-                          color: const Color(0xff1D1F27),
+                          color: Constants.cardColor().withOpacity(0.65),
                           borderRadius: BorderRadius.circular(15)),
                       child: Column(
                         children: [
@@ -80,13 +81,17 @@ class NewsFeedScreen extends StatelessWidget {
                                 ),
                                 const Spacer(),
                                 SizedBox(
-                                  width: width * 0.07,
-                                  height: width * 0.07,
-                                  child: Image.asset(
-                                    "assets/images/more.png",
-                                    alignment: Alignment.topRight,
-                                  ),
-                                )
+                                    width: width * 0.07,
+                                    height: width * 0.07,
+                                    child: const Icon(
+                                      FeatherIcons.moreHorizontal,
+                                      color: Colors.white,
+                                    )
+                                    //  Image.asset(
+                                    //   "assets/images/more.png",
+                                    //   alignment: Alignment.topRight,
+                                    // ),
+                                    )
                               ],
                             ),
                           ),

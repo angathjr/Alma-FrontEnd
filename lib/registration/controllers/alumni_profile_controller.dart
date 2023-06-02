@@ -52,18 +52,26 @@ class AlumniProfileController extends GetxController {
 //api calls
 
   void registerAlumni() async {
-    UserData alumni = user.value.data![0];
+    // UserData alumni = user.value.data![0];
 
-    alumni = alumni.copyWith(
-        department: getIdofDepartment(),
-        currentCompany: currentCompanyController.text,
-        academicYearFrom: int.parse(year1Controller.text),
-        academicYearTo: int.parse(year2Controller.text),
-        user: user.value.id);
+    // alumni = alumni.copyWith(
+    //     department: getIdofDepartment(),
+    //     currentCompany: currentCompanyController.text,
+    //     academicYearFrom: int.parse(year1Controller.text),
+    //     academicYearTo: int.parse(year2Controller.text),
+    //     user: user.value.id);
+
+    Map<String, dynamic> data = {
+      "department": getIdofDepartment(),
+      "current_company": currentCompanyController.text,
+      "academic_year_from": int.parse(year1Controller.text),
+      "academic_year_to": int.parse(year2Controller.text),
+      "user": user.value.id
+    };
 
     try {
-      final response = await api.putApi(
-          '/users/alumni/${user.value.username}', alumni.toJson());
+      final response =
+          await api.putApi('/users/alumni/${user.value.username}', data);
 
       log("alumni response is ${response.body}");
       if (response.statusCode == 200) {

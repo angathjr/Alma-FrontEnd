@@ -39,8 +39,8 @@ class LoginScreen extends StatelessWidget {
                         boxShadow: const [
                           BoxShadow(
                               color: Color.fromARGB(255, 53, 51, 51),
-                              blurRadius: 4,
-                              spreadRadius: 2)
+                              blurRadius: 3,
+                              spreadRadius: 1)
                         ],
                         color: const Color.fromARGB(255, 18, 18, 22),
                         border: Border.all(
@@ -75,7 +75,7 @@ class LoginScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                       vertical: 0.0, horizontal: width * 0.055),
                   child: Text(
-                    'By continuing you agree ALMA"s Terms of services & Privarcy Policy',
+                    'By continuing you agree ALMA\'s Terms of services & Privarcy Policy',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: width * 0.03,

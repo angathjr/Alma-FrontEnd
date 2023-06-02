@@ -3,7 +3,7 @@ import 'package:alma/Post/views/postScreen.dart';
 import 'package:alma/core/constants.dart';
 import 'package:alma/home/views/feedScreen.dart';
 import 'package:alma/profile/views/profileScreen.dart';
-import 'package:alma/search/views/searchScreen.dart';
+import 'package:alma/search/views/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,7 +34,8 @@ class NavBarPage extends StatelessWidget {
         body: Container(
           width: width,
           height: height,
-          decoration: Constants.buildBoxDecoration(),
+          // decoration: Constants.buildBoxDecoration(),
+          color: Colors.black,
           child: Column(
             children: [
               //pageview

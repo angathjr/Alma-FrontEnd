@@ -1,11 +1,8 @@
-
-
 import 'package:flutter/material.dart';
 
+const String NOIMAGE = "assets/images/pic.png";
 
-const String NOIMAGE ="assets/images/pic.png";
 class Constants {
-
   static var bgGradient = const [
     Color(0xff110D21),
     Color(0xff06070B),
@@ -17,19 +14,18 @@ class Constants {
 
   static BoxDecoration buildBoxDecoration() {
     return BoxDecoration(
-      color: Colors.red,
+        color: Colors.red,
         gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             stops: const [0.01, .25, .75, 1],
-            colors: Constants.bgGradient)
-    );
+            colors: Constants.bgGradient));
   }
 
+  static TextStyle txtStyle() => const TextStyle(
+        fontSize: 21,
+        color: Colors.white,
+      );
 
-  static TextStyle txtStyle ()=>const TextStyle(
-    fontSize: 21,
-    color: Colors.white,
-
-  );
+  static cardColor() => const Color(0xff1A1A1A);
 }

@@ -101,6 +101,7 @@ class ProfilePage extends StatelessWidget {
             //mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
+                
                 width: 0.05 * width,
               ),
               Expanded(

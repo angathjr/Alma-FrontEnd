@@ -12,7 +12,7 @@ import 'package:alma/registration/views/alumni_profile_screen.dart';
 import 'package:alma/registration/views/user_selection_screen.dart';
 import 'package:alma/registration/views/staff_profile_screen.dart';
 import 'package:alma/registration/views/student_profile_screen.dart';
-import 'package:alma/search/views/searchScreen.dart';
+import 'package:alma/search/views/search_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +32,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 }
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
@@ -42,7 +41,7 @@ void main() async {
   Paint.enableDithering = true;
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-    
+
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -63,7 +62,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           useMaterial3: true,
           fontFamily: 'Helvetica',
-          appBarTheme: AppBarTheme(scrolledUnderElevation: 0)),
+          appBarTheme: const AppBarTheme(scrolledUnderElevation: 0)),
       // home: NavBarPage(),
       getPages: [
         GetPage(
@@ -92,7 +91,7 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: '/otherEventdes-description',
             page: () => OtherEventDescriptionScreen()),
-             GetPage(name: '/EditProfile', page: () =>ProfileEditScreen()),
+        GetPage(name: '/EditProfile', page: () => ProfileEditScreen()),
       ],
     );
   }
