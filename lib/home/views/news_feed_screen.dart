@@ -2,6 +2,7 @@ import 'package:alma/core/constants.dart';
 import 'package:alma/events/controllers/event_controller.dart';
 import 'package:alma/home/views/drawer_screen.dart';
 import 'package:feather_icons/feather_icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -38,8 +39,13 @@ class NewsFeedScreen extends StatelessWidget {
                   pinned: false,
                   floating: true,
                   snap: true,
-                  title: Text("Home"),
+                  title: const Text("Home"),
                   backgroundColor: Colors.black,
+                ),
+                CupertinoSliverRefreshControl(
+                  onRefresh: () async {
+                    controller.fetchEvents();
+                  },
                 ),
                 SliverPadding(
                   padding: EdgeInsets.symmetric(horizontal: width * 0.04),
@@ -49,8 +55,8 @@ class NewsFeedScreen extends StatelessWidget {
                             child: SizedBox(
                                 height: height * 0.6,
                                 width: width,
-                                child: const Center(
-                                  child: CircularProgressIndicator(),
+                                child: CupertinoActivityIndicator(
+                                  radius: width * 0.04,
                                 )))
                         : controller.events.isEmpty
                             ? SliverToBoxAdapter(

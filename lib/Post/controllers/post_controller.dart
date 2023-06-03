@@ -28,6 +28,10 @@ class PostController extends GetxController {
 
   void addJobEvent() async {
     List<String> skills = skillsRequired.text.split(',');
+
+    if (isImageSelected.value) {
+      await uploadImage();
+    }
     Map jobdata = {
       "event_name": "custom event for job test",
       "company_name": companyName.text,
@@ -39,9 +43,6 @@ class PostController extends GetxController {
     };
     log("job data is $jobdata");
 
-    if (isImageSelected.value) {
-      await uploadImage();
-    }
     final response = await api.postApi('/events/add', jobdata);
     log("status code is ${response.statusCode}");
     log("response is ${response.body}");
@@ -53,7 +54,7 @@ class PostController extends GetxController {
       );
       clearcControllers();
       await Future.delayed(const Duration(milliseconds: 1400));
-      Get.to(() => NavBarPage());
+      Get.offAllNamed('/');
     } else {
       Get.snackbar("Failed", "Failed to add event");
     }
@@ -97,7 +98,7 @@ class PostController extends GetxController {
     }
   }
 
-  Future uploadImage() async {
+  Future<void> uploadImage() async {
     try {
       final storageRef = FirebaseStorage.instance.ref();
 
@@ -119,5 +120,6 @@ class PostController extends GetxController {
     startDate.clear();
     endDate.clear();
     skillsRequired.clear();
+    removeSelectedImage();
   }
 }

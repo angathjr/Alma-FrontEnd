@@ -20,7 +20,6 @@ class NavigationDrawerScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           DrawerHeader(
-            
             curve: Curves.linear,
             decoration: BoxDecoration(
               color: Constants.cardColor(),
