@@ -15,6 +15,12 @@ class FcmController extends GetxController {
   void onInit() {
     super.onInit();
     messaging = FirebaseMessaging.instance;
+    messaging.setForegroundNotificationPresentationOptions(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+
     handleRequest();
     // fetchToken();
   }

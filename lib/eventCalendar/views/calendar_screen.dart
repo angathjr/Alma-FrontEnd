@@ -13,7 +13,7 @@ class CalendarScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-        backgroundColor: Color(0xff050408),
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
           title: const Center(
             child: Text(
@@ -74,13 +74,16 @@ class CalendarScreen extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(
+              height: height * 0.01,
+            ),
             Container(
               padding: EdgeInsets.symmetric(horizontal: width * 0.08),
               width: width,
               height: height * 0.03,
-              child:  Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text(
                     'Scheduled Events',
                     style: TextStyle(color: Colors.white, fontSize: 18),
@@ -144,6 +147,8 @@ class CalendarScreen extends StatelessWidget {
                                               ),
                                               Text(
                                                 "${controller.events[index].eventDescription}",
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 3,
                                               )
                                             ],
                                           ),

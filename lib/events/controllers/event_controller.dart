@@ -1,11 +1,10 @@
 import 'dart:developer';
 import 'package:alma/core/api_provider_no_auth.dart';
 import 'package:alma/events/models/event_model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
-
 
 class EventsController extends GetxController {
   final TextEditingController companyNameController = TextEditingController();
@@ -22,27 +21,27 @@ class EventsController extends GetxController {
   final TextEditingController eventDescriptionController =
       TextEditingController();
 
-
-
   final ApiProviderNoAuth api = Get.find();
   final _storage = GetStorage();
-
-
 
   var events = <EventModel>[].obs;
   var jobs = <EventModel>[].obs;
   var internship = <EventModel>[].obs;
-   var collageEvent = <EventModel>[].obs;
-   var otherEvent = <EventModel>[].obs;
-  var isJobLoading=false.obs;
-  var isInternshipLoading=false.obs;
-  var isCollageEventLoading=false.obs;
-  var isOtherEventLoading=false.obs;
-
+  var collageEvent = <EventModel>[].obs;
+  var otherEvent = <EventModel>[].obs;
+  var isJobLoading = false.obs;
+  var isInternshipLoading = false.obs;
+  var isCollageEventLoading = false.obs;
+  var isOtherEventLoading = false.obs;
+  var isEventsloading = false.obs;
 
   late EventModel eventModel;
 
-
+  @override
+  void onInit() {
+    super.onInit();
+    fetchEvents();
+  }
 
   void fetchJob() async {
     isJobLoading(true);
@@ -64,9 +63,8 @@ class EventsController extends GetxController {
     internship.value = parsed;
 
     log("hellooooo${internship[0].eventDate}");
-    isInternshipLoading(false); 
+    isInternshipLoading(false);
   }
-
 
   void fetchCollageEvent() async {
     isCollageEventLoading(true);
@@ -76,11 +74,10 @@ class EventsController extends GetxController {
     final parsed = eventModelFromJson(response.body);
     collageEvent.value = parsed;
 
-   
-    isCollageEventLoading(false); 
+    isCollageEventLoading(false);
   }
 
-   void fetchOtherEvent() async {
+  void fetchOtherEvent() async {
     isOtherEventLoading(true);
     final response = await api.getApi('/events/other-events');
     log("hjgj${response.body}");
@@ -88,9 +85,15 @@ class EventsController extends GetxController {
     final parsed = eventModelFromJson(response.body);
     otherEvent.value = parsed;
 
-   
-    isOtherEventLoading(false); 
+    isOtherEventLoading(false);
+  }
+
+  void fetchEvents() async {
+    isEventsloading(true);
+    final response = await api.getApi('/events/all');
+    final parsed = eventModelFromJson(response.body);
+    events.value = parsed;
+    log("all events${response.body}");
+    isEventsloading(false);
   }
 }
-
-

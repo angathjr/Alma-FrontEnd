@@ -28,6 +28,7 @@ class EventCalendarController extends GetxController {
     String date = DateFormat('yyyy-MM-dd').format(selectedDay.value);
     final response = await apiProvider.getApi('/events/date=$date');
     events.value = eventModelFromJson(response.body);
+    log(" selected day events are ${response.body}");
     isEventsFetched(true);
   }
 }

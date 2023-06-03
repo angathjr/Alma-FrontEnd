@@ -102,43 +102,63 @@ class SearchPage extends StatelessWidget {
                               delegate: SliverChildBuilderDelegate(
                                   childCount: searchController.events.length,
                                   (BuildContext context, index) {
-                              return Padding(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: height * 0.005),
-                                child: Container(
-                                    width: width,
-                                    height: height * .22,
-                                    decoration: const BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(10)),
-                                        color: Colors.red),
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          flex: 4,
-                                          child: Container(
-                                            color: Colors.green,
-                                            child: Image.asset(NOIMAGE),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          flex: 5,
-                                          child: Container(
-                                            color: Colors.amber,
-                                            child: Column(children: [
-                                              Text(
-                                                  "${searchController.events[index].eventName}"),
-                                              Text(
-                                                  "${searchController.events[index].eventDescription}"),
-                                            ]),
-                                          ),
-                                        )
-                                      ],
-                                    )),
-                              );
+                              return SearchCard(
+                                  index: index,
+                                  height: height,
+                                  width: width,
+                                  searchController: searchController);
                             })),
                 ),
               ),
+            ],
+          )),
+    );
+  }
+}
+
+class SearchCard extends StatelessWidget {
+  const SearchCard({
+    super.key,
+    required this.height,
+    required this.width,
+    required this.searchController,
+    required this.index,
+  });
+
+  final double height;
+  final double width;
+  final int index;
+  final EventSearchController searchController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: height * 0.005),
+      child: Container(
+          width: width,
+          height: height * .22,
+          decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              color: Colors.red),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 4,
+                child: Container(
+                  color: Colors.green,
+                  child: Image.asset(NOIMAGE),
+                ),
+              ),
+              Expanded(
+                flex: 5,
+                child: Container(
+                  color: Colors.amber,
+                  child: Column(children: [
+                    Text("${searchController.events[index].eventName}"),
+                    Text("${searchController.events[index].eventDescription}"),
+                  ]),
+                ),
+              )
             ],
           )),
     );
