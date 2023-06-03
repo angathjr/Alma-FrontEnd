@@ -1,21 +1,22 @@
 import 'dart:developer';
-import 'package:alma/core/api_provider_no_auth.dart';
+import 'package:alma/core/api_provider.dart';
 import 'package:alma/events/models/event_model.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class EventCalendarController extends GetxController {
-  final ApiProviderNoAuth apiProvider = Get.find();
+  final ApiProvider apiProvider = Get.find();
 
   var selectedDay = DateTime.now().obs;
   var events = <EventModel>[].obs;
   var isEventsFetched = false.obs;
 
   @override
-  void onReady() {
-    // TODO: implement onReady
-    super.onReady();
-    fetchEvents();
+  void onInit() {
+    super.onInit();
+    Future.delayed(const Duration(seconds: 5), () {
+      fetchEvents();
+    });
   }
 
   void onDaySelected(DateTime day, DateTime focusedDay) {
@@ -27,8 +28,8 @@ class EventCalendarController extends GetxController {
     isEventsFetched(false);
     String date = DateFormat('yyyy-MM-dd').format(selectedDay.value);
     final response = await apiProvider.getApi('/events/date=$date');
-    events.value = eventModelFromJson(response.body);
     log(" selected day events are ${response.body}");
+    events.value = eventModelFromJson(response.body);
     isEventsFetched(true);
   }
 }

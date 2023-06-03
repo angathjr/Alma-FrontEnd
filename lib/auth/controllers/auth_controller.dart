@@ -13,7 +13,7 @@ class AuthController extends GetxController {
   final ApiProvider api = Get.find();
 
   final ApiProviderNoAuth apiNoAuth = Get.find();
-  final FcmController fcmController=Get.put(FcmController());
+  final FcmController fcmController=Get.find();
   
 
   var loginText = "Continue with Google".obs;
