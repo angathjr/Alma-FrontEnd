@@ -16,10 +16,10 @@ class StudentProfileScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.black,
+     
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+       
         title: const Text('Complete Your Profile'),
       ),
       body: SingleChildScrollView(
@@ -76,7 +76,7 @@ class StudentProfileScreen extends StatelessWidget {
               height: height * .62,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Color(0xff13141B),
+                
               ),
               child: Padding(
                 padding: EdgeInsets.all(width * 0.06),
@@ -88,15 +88,15 @@ class StudentProfileScreen extends StatelessWidget {
                           'First Name',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: const BoxDecoration(
+                          decoration:  BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff25262E),
+                            color: Constants.cardColor().withOpacity(0.7)
                           ),
                           child: TextFormField(
                             controller: controller.firstNameController,
@@ -114,15 +114,15 @@ class StudentProfileScreen extends StatelessWidget {
                           'Last Name',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: const BoxDecoration(
+                          decoration:  BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff25262E),
+                            color: Constants.cardColor().withOpacity(0.7)
                           ),
                           child: TextFormField(
                             controller: controller.lastNameController,
@@ -140,20 +140,21 @@ class StudentProfileScreen extends StatelessWidget {
                           'Phone Number',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: const BoxDecoration(
+                          decoration:  BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff25262E),
+                             color: Constants.cardColor().withOpacity(0.7)
                           ),
                           child: TextFormField(
                             controller: controller.phoneNumberController,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
+                              hintText: "+91",
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
                             style: const TextStyle(color: Colors.white),
@@ -166,15 +167,15 @@ class StudentProfileScreen extends StatelessWidget {
                           'Tkm Mail id',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: const BoxDecoration(
+                          decoration:  BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff25262E),
+                             color: Constants.cardColor().withOpacity(0.7)
                           ),
                           child: TextFormField(
                             controller: controller.tkmMailController,
@@ -192,15 +193,15 @@ class StudentProfileScreen extends StatelessWidget {
                           'Admission number',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: const BoxDecoration(
+                          decoration:  BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff25262E),
+                            color: Constants.cardColor().withOpacity(0.7)
                           ),
                           child: TextFormField(
                             controller: controller.admNoController,
@@ -218,16 +219,16 @@ class StudentProfileScreen extends StatelessWidget {
                           'Department',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         Container(
                             width: width * 02,
                             height: height * .053,
-                            decoration: const BoxDecoration(
+                            decoration:  BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
-                              color: Color(0xff25262E),
+                               color: Constants.cardColor().withOpacity(0.7)
                             ),
                             child: Obx(
                               () => (registrationController
@@ -273,7 +274,7 @@ class StudentProfileScreen extends StatelessWidget {
                           'Acadamic year',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         Row(
@@ -281,15 +282,16 @@ class StudentProfileScreen extends StatelessWidget {
                             Container(
                               width: width * 0.35,
                               height: height * .053,
-                              decoration: const BoxDecoration(
+                              decoration:  BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
+                                 color: Constants.cardColor().withOpacity(0.7)
                               ),
                               child: TextFormField(
                                 controller: controller.year1Controller,
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,
+                                  hintText: "Start",
                                   contentPadding: EdgeInsets.only(left: 5),
                                 ),
                                 style: TextStyle(color: Colors.white),
@@ -301,15 +303,16 @@ class StudentProfileScreen extends StatelessWidget {
                             Container(
                               width: width * 0.35,
                               height: height * .053,
-                              decoration: const BoxDecoration(
+                              decoration:  BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
+                                color: Constants.cardColor().withOpacity(0.7)
                               ),
                               child: TextFormField(
                                 controller: controller.year2Controller,
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,
+                                  hintText: "End",
                                   contentPadding: EdgeInsets.only(left: 5),
                                 ),
                                 style: TextStyle(color: Colors.white),
@@ -332,9 +335,9 @@ class StudentProfileScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 width: width * 0.35,
                 height: height * .053,
-                decoration: const BoxDecoration(
+                decoration:  BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Color(0xff25262E),
+                   color: Constants.cardColor().withOpacity(0.7)
                 ),
                 child: const Text(
                   "Submit",
