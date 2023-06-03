@@ -1,12 +1,9 @@
 import 'dart:developer';
 import 'package:alma/core/api_provider.dart';
-import 'package:alma/core/api_provider_no_auth.dart';
 import 'package:alma/events/models/event_model.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart' as http;
 
 class EventsController extends GetxController {
   final TextEditingController companyNameController = TextEditingController();
