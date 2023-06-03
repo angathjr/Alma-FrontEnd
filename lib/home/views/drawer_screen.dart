@@ -1,4 +1,6 @@
+import 'package:alma/core/constants.dart';
 import 'package:alma/profile/controllers/profile_controller.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../events/controllers/event_controller.dart';
@@ -12,12 +14,16 @@ class NavigationDrawerScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Drawer(
+      elevation: 0,
+      backgroundColor: Constants.cardColor(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           DrawerHeader(
-            decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 61, 77, 90),
+            
+            curve: Curves.linear,
+            decoration: BoxDecoration(
+              color: Constants.cardColor(),
             ),
             child: Column(
               children: [
@@ -27,37 +33,24 @@ class NavigationDrawerScreen extends StatelessWidget {
                       child: CircleAvatar(
                           backgroundColor: Colors.transparent,
                           foregroundColor: Colors.transparent,
-                          foregroundImage: NetworkImage(
+                          foregroundImage: CachedNetworkImageProvider(
                             "${profileController.user.value.imageUrl}",
                           ))),
                 ),
                 Text(
                   "${profileController.user.value.username}",
-                  style: TextStyle(color: Colors.white, fontSize: 22),
+                  style: const TextStyle(color: Colors.white, fontSize: 22),
                 ),
               ],
             ),
           ),
-          ListTile(
-            title: const Text(''),
-            onTap: () {
-              // Update the state of the app.
-              // ...
-            },
-          ),
-          ListTile(
-            title: const Text(
-              'Events',
-              style: TextStyle(color: Colors.white, fontSize: 22),
-            ),
-            onTap: () {
-              Get.toNamed('/calender-page');
-            },
+          SizedBox(
+            height: height * 0.06,
           ),
           ListTile(
             title: const Text(
               'Jobs',
-              style: TextStyle(color: Colors.white, fontSize: 22),
+              style: TextStyle(color: Colors.white, fontSize: 20),
             ),
             onTap: () {
               eventsController.fetchJob();
@@ -67,7 +60,7 @@ class NavigationDrawerScreen extends StatelessWidget {
           ListTile(
             title: const Text(
               'Internships',
-              style: TextStyle(color: Colors.white, fontSize: 22),
+              style: TextStyle(color: Colors.white, fontSize: 20),
             ),
             onTap: () {
               eventsController.fetchInternship();
@@ -77,7 +70,7 @@ class NavigationDrawerScreen extends StatelessWidget {
           ListTile(
             title: const Text(
               'Collage Events',
-              style: TextStyle(color: Colors.white, fontSize: 22),
+              style: TextStyle(color: Colors.white, fontSize: 20),
             ),
             onTap: () {
               eventsController.fetchCollageEvent();
@@ -87,7 +80,7 @@ class NavigationDrawerScreen extends StatelessWidget {
           ListTile(
             title: const Text(
               'Other Events',
-              style: TextStyle(color: Colors.white, fontSize: 22),
+              style: TextStyle(color: Colors.white, fontSize: 20),
             ),
             onTap: () {
               eventsController.fetchOtherEvent();
