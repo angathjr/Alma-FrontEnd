@@ -209,7 +209,7 @@ class EventSelectionScreen extends StatelessWidget {
                           flex: 3,
                           child: GestureDetector(
                             onTap: () {
-                              // controller.goToEventDetailCompletion();
+                              controller.goToEventDetailCompletion();
                             },
                             child: Container(
                               // width: width * 0.5,

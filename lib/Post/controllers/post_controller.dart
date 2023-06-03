@@ -47,13 +47,13 @@ class PostController extends GetxController {
   void goToEventDetailCompletion() {
     switch (selectedEventType.value) {
       case 'J':
-        Get.toNamed('/jobDetailCompletion');
+        Get.toNamed('/job-description');
         break;
       case 'I':
-        Get.toNamed('/internshipDetailCompletion');
+        Get.toNamed('/internship-description');
         break;
       case 'O':
-        Get.toNamed('/otherDetailCompletion');
+        Get.toNamed('/otherEventdes-description');
         break;
       case 'C':
         Get.toNamed('/collageEventsDesc');
