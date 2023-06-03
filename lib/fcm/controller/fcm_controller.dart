@@ -1,6 +1,8 @@
 import 'dart:developer';
 import 'package:alma/core/api_provider.dart';
+import 'package:alma/main.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'dart:io' show Platform;
 import 'package:get_storage/get_storage.dart';
@@ -22,7 +24,37 @@ class FcmController extends GetxController {
     );
 
     handleRequest();
+    handleForegroundNotifications();
     // fetchToken();
+  }
+
+  void handleForegroundNotifications() async {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      RemoteNotification? notification = message.notification;
+      AndroidNotification? android = message.notification?.android;
+
+      if (notification != null && android != null) {
+        flutterLocalNotificationsPlugin.show(
+            notification.hashCode,
+            notification.title,
+            notification.body,
+            NotificationDetails(
+              android: AndroidNotificationDetails(
+                notificationChannel.id,
+                notificationChannel.name,
+                channelDescription: notificationChannel.description,
+                icon: '@mipmap/ic_launcher',
+              ),
+            ));
+      }
+
+      log('Got a message whilst in the foreground!');
+      log('Message data: ${message.data}');
+
+      if (message.notification != null) {
+        log('Message also contained a notification: ${message.notification}');
+      }
+    });
   }
 
   void handleRequest() async {

@@ -11,6 +11,9 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+
     loadPages();
     return Scaffold(
       body: FractionallySizedBox(
@@ -18,9 +21,12 @@ class SplashScreen extends StatelessWidget {
         heightFactor: 1,
         child: Column(
           children: [
-            Image.asset(
-              'assets/images/splash.png',
-              fit: BoxFit.cover,
+            SizedBox(
+              width: width,
+              child: Image.asset(
+                'assets/images/splash.png',
+                fit: BoxFit.cover,
+              ),
             ),
           ],
         ),

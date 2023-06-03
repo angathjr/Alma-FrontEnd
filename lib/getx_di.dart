@@ -16,8 +16,8 @@ import 'core/api_provider_no_auth.dart';
 
 class GetXDependancyInjector {
   void onInit() {
-    Get.lazyPut(() => FcmController(), fenix: true);
     Get.put(ApiProvider());
+    Get.put(FcmController());
     Get.put(ApiProviderNoAuth());
     Get.put(AuthController());
     Get.put(GetStorage());

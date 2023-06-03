@@ -2,24 +2,21 @@ import 'package:alma/Internship/views/InternshipScreen.dart';
 import 'package:alma/Navbar/views/navbar.dart';
 import 'package:alma/Post/views/InternshipDescriptionScreen.dart';
 import 'package:alma/Post/views/JobDescriptionScreen.dart';
-import 'package:alma/Post/views/postScreen.dart';
 import 'package:alma/auth/views/splash_Screen.dart';
 import 'package:alma/eventCalendar/views/calendar_screen.dart';
 import 'package:alma/jobs/views/JobScreen.dart';
 import 'package:alma/profile/views/profileEditScreen.dart';
-import 'package:alma/profile/views/profileScreen.dart';
 import 'package:alma/registration/views/alumni_profile_screen.dart';
 import 'package:alma/registration/views/user_selection_screen.dart';
 import 'package:alma/registration/views/staff_profile_screen.dart';
 import 'package:alma/registration/views/student_profile_screen.dart';
-import 'package:alma/search/views/search_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'Internship/views/InternshipDetailsScreen.dart';
 import 'Post/views/CollageEventDescription.dart';
 import 'Post/views/OtherEventDescription.dart';
 import 'auth/views/login_screen.dart';
@@ -32,7 +29,19 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
 }
 
-void main() async {
+const AndroidNotificationChannel notificationChannel =
+    AndroidNotificationChannel(
+  'high_importance_channel',
+  'High Importance Notifications',
+  description: 'This channel is used for important notifications',
+  importance: Importance.high,
+  playSound: true,
+);
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();
@@ -47,6 +56,11 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(notificationChannel);
 
   runApp(MyApp());
 }
