@@ -1,5 +1,5 @@
 import 'package:alma/Navbar/controllers/navcontroller.dart';
-import 'package:alma/Post/views/postScreen.dart';
+import 'package:alma/Post/views/post_screen.dart';
 import 'package:alma/core/constants.dart';
 import 'package:alma/home/views/feedScreen.dart';
 import 'package:alma/profile/views/profileScreen.dart';
@@ -15,7 +15,7 @@ class NavBarPage extends StatelessWidget {
   var pages = [
     NewsFeedScreen(),
     SearchPage(),
-    postScreen(),
+    PostScreen(),
     CalendarScreen(),
     ProfilePage(),
   ];
@@ -55,7 +55,7 @@ class NavBarPage extends StatelessWidget {
                   color: Colors.transparent,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: const Color(0xff34353E).withOpacity(.40),
+                      color: const Color(0xff111111),
                       borderRadius: BorderRadius.circular(15),
                     ),
 

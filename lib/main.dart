@@ -74,11 +74,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.black,
+          scaffoldBackgroundColor: Colors.black,
           brightness: Brightness.dark,
           useMaterial3: true,
           fontFamily: 'Helvetica',
-          appBarTheme: const AppBarTheme(scrolledUnderElevation: 0,backgroundColor: Colors.black)),
+          appBarTheme: const AppBarTheme(
+              scrolledUnderElevation: 0, backgroundColor: Colors.black)),
       initialRoute: '/splash',
       getPages: [
         GetPage(
@@ -103,7 +104,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/collageEvent-page', page: () => CollageEventScreen()),
         GetPage(name: '/otherEvent-page', page: () => OtherEventScreen()),
         GetPage(
-            name: '/collageEventdes-description',
+            name: '/collageEventsDesc',
             page: () => CollageEventDescriptionScreen()),
         GetPage(
             name: '/otherEventdes-description',
