@@ -1,5 +1,5 @@
 import 'package:alma/Navbar/controllers/navcontroller.dart';
-import 'package:alma/Post/views/postScreen.dart';
+import 'package:alma/Post/views/post_screen.dart';
 import 'package:alma/core/constants.dart';
 import 'package:alma/home/views/feedScreen.dart';
 import 'package:alma/profile/views/profileScreen.dart';

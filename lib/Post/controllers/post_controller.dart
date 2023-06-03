@@ -10,7 +10,7 @@ import 'package:image_picker/image_picker.dart';
 
 class PostController extends GetxController {
   final ApiProviderNoAuth api = Get.find();
-  
+
   final TextEditingController companyName = TextEditingController();
   final TextEditingController role = TextEditingController();
   final TextEditingController description = TextEditingController();
@@ -19,6 +19,7 @@ class PostController extends GetxController {
 
   var imageUrl = ''.obs;
   var isImageSelected = false.obs;
+  var selectedEventType = "J".obs;
 
   Rx<File> selectedImage = Rx<File>(File(''));
 
@@ -38,9 +39,25 @@ class PostController extends GetxController {
     }
   }
 
-
   void removeSelectedImage() {
     selectedImage.value = File('');
     isImageSelected(false);
+  }
+
+  void goToEventDetailCompletion() {
+    switch (selectedEventType.value) {
+      case 'J':
+        Get.toNamed('/jobDetailCompletion');
+        break;
+      case 'I':
+        Get.toNamed('/internshipDetailCompletion');
+        break;
+      case 'O':
+        Get.toNamed('/otherDetailCompletion');
+        break;
+      case 'C':
+        Get.toNamed('/collageEventsDesc');
+        break;
+    }
   }
 }

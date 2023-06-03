@@ -103,7 +103,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/collageEvent-page', page: () => CollageEventScreen()),
         GetPage(name: '/otherEvent-page', page: () => OtherEventScreen()),
         GetPage(
-            name: '/collageEventdes-description',
+            name: '/collageEventsDesc',
             page: () => CollageEventDescriptionScreen()),
         GetPage(
             name: '/otherEventdes-description',

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:alma/Post/controllers/post_controller.dart';
 import 'package:alma/core/constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -6,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../profile/controllers/profile_controller.dart';
+import 'event_type_selection_screen.dart';
 
 class PostScreen extends StatelessWidget {
   PostScreen({super.key});
@@ -176,152 +179,26 @@ class PostScreen extends StatelessWidget {
               flex: 2,
               child: InkWell(
                 onTap: () {
-                  showModalBottomSheet<void>(
+                  showModalBottomSheet(
+                    isScrollControlled: true,
+                    isDismissible: true,
                     context: context,
-                    builder: (BuildContext context) {
-                      return SizedBox(
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              const Padding(
-                                padding: EdgeInsets.fromLTRB(20, 10, 30, 50),
-                                child: Text(
-                                  'Your Post Belongs to',
-                                  style: TextStyle(fontSize: 23),
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Get.toNamed('/job-description');
-                                },
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  width: width * .49,
-                                  height: height * .045,
-                                  decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    color: Color.fromARGB(255, 54, 57, 79),
-                                  ),
-                                  child: const Text(
-                                    "Job",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: width * 0.06,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Get.toNamed('/internship-description');
-                                },
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  width: width * .49,
-                                  height: height * .045,
-                                  decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    color: Color.fromARGB(255, 54, 57, 79),
-                                  ),
-                                  child: const Text(
-                                    "Internship",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: width * 0.06,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Get.toNamed('/collageEventdes-description');
-                                },
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  width: width * .49,
-                                  height: height * .045,
-                                  decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    color: Color.fromARGB(255, 54, 57, 79),
-                                  ),
-                                  child: const Text(
-                                    "Collage Events",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: width * 0.02,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Get.toNamed('/otherEventdes-description');
-                                },
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  width: width * .49,
-                                  height: height * .045,
-                                  decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    color: Color.fromARGB(255, 54, 57, 79),
-                                  ),
-                                  child: const Text(
-                                    "Other events",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: width * 0.09,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Get.toNamed('/job-description');
-                                },
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  width: width * .35,
-                                  height: height * .045,
-                                  decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(10)),
-                                      color: Constants.cardColor()),
-                                  child: const Text(
-                                    "Next",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
+                    backgroundColor: Colors.transparent,
+                    useSafeArea: true,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20))),
+                    builder: (context) => BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+                        child: EventSelectionScreen(
+                          height: height,
+                          width: width,
+                        )),
                   );
                 },
                 child: Container(
-                  width: width * .3,
+                  width: width,
                   height: height * .05,
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
