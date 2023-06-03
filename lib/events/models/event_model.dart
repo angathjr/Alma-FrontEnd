@@ -94,16 +94,16 @@ class EventModel {
       );
 
   Map<String, dynamic> toJson() => {
-        "event_type": eventType,
-        "event_name": eventName,
+        "event_type": eventType??'J',
+        "event_name": eventName??'',
         "event_date":
             "${eventDate!.year.toString().padLeft(4, '0')}-${eventDate!.month.toString().padLeft(2, '0')}-${eventDate!.day.toString().padLeft(2, '0')}",
-        "event_description": eventDescription,
-        "role": role,
+        "event_description": eventDescription??'',
+        "role": role??'',
         "skills_required": skillsRequired == null
             ? []
             : List<dynamic>.from(skillsRequired!.map((x) => x)),
-        "description": description,
+        "description": description??"",
         "end_date":
             "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
         "company_name": companyName,

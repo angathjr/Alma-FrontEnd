@@ -18,7 +18,6 @@ class ProfilePage extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      
       appBar: AppBar(
           title: const Center(
             child: Text(
@@ -36,19 +35,18 @@ class ProfilePage extends StatelessWidget {
                 padding: EdgeInsets.only(left: 0.04 * width),
                 child: Text(
                   "Hi, ${profileController.user.value.firstName}",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 25,
                     fontFamily: 'Helavtica',
-                    //fontWeight: FontWeight.bold
                   ),
                 ),
               ),
               SizedBox(
-                  width: width * 0.25,
+                  width: width * 0.4,
                   child: CircleAvatar(
+                      radius: width * 0.1,
                       backgroundColor: Colors.transparent,
                       foregroundColor: Colors.transparent,
-                      radius: 32,
                       foregroundImage: NetworkImage(
                         "${profileController.user.value.imageUrl}",
                       ))),
@@ -61,7 +59,7 @@ class ProfilePage extends StatelessWidget {
             height: 0.2 * height,
             width: 0.9 * width,
             decoration: BoxDecoration(
-               color: Constants.cardColor().withOpacity(0.7),
+                color: Constants.cardColor().withOpacity(0.7),
                 borderRadius: BorderRadius.circular(10)),
             child: Padding(
               padding: EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
@@ -101,7 +99,6 @@ class ProfilePage extends StatelessWidget {
             //mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
-                
                 width: 0.05 * width,
               ),
               InkWell(
@@ -112,13 +109,13 @@ class ProfilePage extends StatelessWidget {
                   height: 0.3 * height,
                   width: 0.445 * width,
                   decoration: BoxDecoration(
-                     color: Constants.cardColor().withOpacity(0.7),
+                      color: Constants.cardColor().withOpacity(0.7),
                       borderRadius: BorderRadius.circular(10)),
-                  child: Column(
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(Icons.edit),
-                      const Text(
+                      Text(
                         'Edit Profile',
                         style: TextStyle(
                           fontSize: 20,
@@ -142,9 +139,9 @@ class ProfilePage extends StatelessWidget {
                       height: 0.148 * height,
                       width: 0.445 * width,
                       decoration: BoxDecoration(
-                         color: Constants.cardColor().withOpacity(0.7),
+                          color: Constants.cardColor().withOpacity(0.7),
                           borderRadius: BorderRadius.circular(10)),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(Icons.post_add),
@@ -168,9 +165,9 @@ class ProfilePage extends StatelessWidget {
                         height: 0.148 * height,
                         width: 0.445 * width,
                         decoration: BoxDecoration(
-                           color: Constants.cardColor().withOpacity(0.7),
+                            color: Constants.cardColor().withOpacity(0.7),
                             borderRadius: BorderRadius.circular(10)),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.logout),

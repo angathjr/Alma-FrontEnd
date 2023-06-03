@@ -107,7 +107,7 @@ class JobScreen extends StatelessWidget {
                                     width: .030 * width,
                                   ),
                                   Text(
-                                    "${controller.jobs[1].eventDate}",
+                                    "${controller.jobs[index].eventDate}",
                                     style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 13,
