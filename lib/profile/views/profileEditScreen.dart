@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../controllers/profile_controller.dart';
 
 class ProfileEditScreen extends StatefulWidget {
-  const ProfileEditScreen({super.key});
+   ProfileEditScreen({super.key});
+
 
   @override
   State<ProfileEditScreen> createState() => _ProfileEditScreenState();
 }
 
 class _ProfileEditScreenState extends State<ProfileEditScreen> {
-  @override
+  final ProfileController profileController = Get.find();
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
@@ -19,6 +24,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
   final TextEditingController interestedAreasController =
       TextEditingController();
 
+  @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -32,177 +38,190 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
       body: Center(
         child: Column(
           children: [
-            Image.asset(
-              'assets/images/pic.png',
-              height: height * .15,
-              scale: 1.1,
-            ),
-            Container(
-              width: width * .89,
-              height: height * .64,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Color(0xff13141B),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(width * 0.06),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'First Name',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                        ),
-                      ),
-                      Container(
-                        width: width * 02,
-                        height: height * .053,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Color(0xff25262E),
-                        ),
-                        child: TextFormField(
-                          controller: firstNameController,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(left: 5),
+             SizedBox(
+                  width: width * 0.2,
+                  child: CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      foregroundColor: Colors.transparent,
+                      radius: 38,
+                      foregroundImage: NetworkImage(
+                        "${profileController.user.value.imageUrl}",
+                      ))),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                width: width * .89,
+                height: height * .64,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  color: Color(0xff13141B),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(width * 0.06),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'First Name',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
                           ),
-                          style: const TextStyle(color: Colors.white),
                         ),
-                      ),
-                      SizedBox(
-                        height: width * 0.06,
-                      ),
-                      const Text(
-                        'Last Name',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                        ),
-                      ),
-                      Container(
-                        width: width * 02,
-                        height: height * .053,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Color(0xff25262E),
-                        ),
-                        child: TextFormField(
-                          controller: lastNameController,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(left: 5),
+                        Container(
+                          width: width * 02,
+                          height: height * .053,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Color(0xff25262E),
                           ),
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      SizedBox(
-                        height: width * 0.06,
-                      ),
-                      const Text(
-                        'Phone Number',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                        ),
-                      ),
-                      Container(
-                        width: width * 02,
-                        height: height * .053,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Color(0xff25262E),
-                        ),
-                        child: TextFormField(
-                          controller: phoneNumberController,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(left: 5),
+                          child: TextFormField(
+                          
+                            controller: firstNameController,
+                            
+                          // initialValue:firstNameController.text ,
+
+                            decoration: const InputDecoration(
+                              
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: 5),
+                            ),
+                            style: const TextStyle(color: Colors.white),
                           ),
-                          style: const TextStyle(color: Colors.white),
                         ),
-                      ),
-                      SizedBox(
-                        height: width * 0.06,
-                      ),
-                      const Text(
-                        'Personal Mail id',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
+                        SizedBox(
+                          height: width * 0.06,
                         ),
-                      ),
-                      Container(
-                        width: width * 02,
-                        height: height * .053,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Color(0xff25262E),
-                        ),
-                        child: TextFormField(
-                          controller: mailController,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(left: 5),
+                        const Text(
+                          'Last Name',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
                           ),
-                          style: const TextStyle(color: Colors.white),
                         ),
-                      ),
-                      SizedBox(
-                        height: width * 0.06,
-                      ),
-                      const Text(
-                        'Bio',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                        ),
-                      ),
-                      Container(
-                        width: width * 02,
-                        height: height * .053,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Color(0xff25262E),
-                        ),
-                        child: TextFormField(
-                          controller: bioController,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(left: 5),
+                        Container(
+                          width: width * 02,
+                          height: height * .053,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Color(0xff25262E),
                           ),
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      SizedBox(
-                        height: width * 0.06,
-                      ),
-                      const Text(
-                        'Interested Areas',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                        ),
-                      ),
-                      Container(
-                        width: width * 02,
-                        height: height * .053,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: Color(0xff25262E),
-                        ),
-                        child: TextFormField(
-                          controller: interestedAreasController,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.only(left: 5),
+                          child: TextFormField(
+                            controller: lastNameController,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: 5),
+                            ),
+                            style: const TextStyle(color: Colors.white),
                           ),
-                          style: const TextStyle(color: Colors.white),
                         ),
-                      ),
-                    ]),
+                        SizedBox(
+                          height: width * 0.06,
+                        ),
+                        const Text(
+                          'Phone Number',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
+                        ),
+                        Container(
+                          width: width * 02,
+                          height: height * .053,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Color(0xff25262E),
+                          ),
+                          child: TextFormField(
+                           
+                            controller: phoneNumberController,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: 5),
+                            ),
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        SizedBox(
+                          height: width * 0.06,
+                        ),
+                        const Text(
+                          'Personal Mail id',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
+                        ),
+                        Container(
+                          width: width * 02,
+                          height: height * .053,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Color(0xff25262E),
+                          ),
+                          child: TextFormField(
+                            controller: mailController,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: 5),
+                            ),
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        SizedBox(
+                          height: width * 0.06,
+                        ),
+                        const Text(
+                          'Bio',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
+                        ),
+                        Container(
+                          width: width * 02,
+                          height: height * .053,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Color(0xff25262E),
+                          ),
+                          child: TextFormField(
+                            controller: bioController,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: 5),
+                            ),
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        SizedBox(
+                          height: width * 0.06,
+                        ),
+                        const Text(
+                          'Interested Areas',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
+                        ),
+                        Container(
+                          width: width * 02,
+                          height: height * .053,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            color: Color(0xff25262E),
+                          ),
+                          child: TextFormField(
+                            controller: interestedAreasController,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: 5),
+                            ),
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ]),
+                ),
               ),
             ),
             SizedBox(

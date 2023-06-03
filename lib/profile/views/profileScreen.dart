@@ -35,7 +35,7 @@ class ProfilePage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 0.04 * width),
                 child: Text(
-                  "Hi, ${profileController.user.value.username}",
+                  "Hi, ${profileController.user.value.firstName}",
                   style: TextStyle(
                     fontSize: 25,
                     fontFamily: 'Helavtica',
@@ -104,31 +104,29 @@ class ProfilePage extends StatelessWidget {
                 
                 width: 0.05 * width,
               ),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    Get.toNamed('/EditProfile');
-                  },
-                  child: Container(
-                    height: 0.3 * height,
-                    width: 0.445 * width,
-                    decoration: BoxDecoration(
-                        color: Color(0xff292A36),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.edit),
-                        const Text(
-                          'Edit Profile',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Helvatica',
-                            //fontWeight: FontWeight.bold
-                          ),
+              InkWell(
+                onTap: () {
+                  Get.toNamed('/EditProfile');
+                },
+                child: Container(
+                  height: 0.3 * height,
+                  width: 0.445 * width,
+                  decoration: BoxDecoration(
+                      color: Color(0xff292A36),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.edit),
+                      const Text(
+                        'Edit Profile',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Helvatica',
+                          //fontWeight: FontWeight.bold
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -140,7 +138,32 @@ class ProfilePage extends StatelessWidget {
                 width: 0.445 * width,
                 child: Column(
                   children: [
-                    Expanded(
+                    Container(
+                      height: 0.148 * height,
+                      width: 0.445 * width,
+                      decoration: BoxDecoration(
+                          color: Color(0xff292A36),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.post_add),
+                          Text(
+                            'My Posts',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'Helvatica',
+                              //fontWeight: FontWeight.bold
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 0.004 * height,
+                    ),
+                    GestureDetector(
+                      onTap: () => authController.signout(),
                       child: Container(
                         height: 0.148 * height,
                         width: 0.445 * width,
@@ -150,9 +173,9 @@ class ProfilePage extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.post_add),
+                            Icon(Icons.logout),
                             Text(
-                              'New Posts',
+                              'Log Out',
                               style: TextStyle(
                                 fontSize: 20,
                                 fontFamily: 'Helvatica',
@@ -160,35 +183,6 @@ class ProfilePage extends StatelessWidget {
                               ),
                             ),
                           ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 0.004 * height,
-                    ),
-                    GestureDetector(
-                      onTap: () => authController.signout(),
-                      child: Expanded(
-                        child: Container(
-                          height: 0.148 * height,
-                          width: 0.445 * width,
-                          decoration: BoxDecoration(
-                              color: Color(0xff292A36),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.logout),
-                              Text(
-                                'Log Out',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: 'Helvatica',
-                                  //fontWeight: FontWeight.bold
-                                ),
-                              ),
-                            ],
-                          ),
                         ),
                       ),
                     )
