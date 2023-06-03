@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 const String NOIMAGE = "assets/images/pic.png";
 
@@ -28,4 +30,11 @@ class Constants {
       );
 
   static cardColor() => const Color(0xff1A1A1A);
+
+  static Widget backButtonWidget() => IconButton(
+      onPressed: () => Get.back(),
+      icon: const Icon(
+        Iconsax.arrow_left_2,
+        color: Colors.white,
+      ));
 }

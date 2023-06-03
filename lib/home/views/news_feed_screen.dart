@@ -34,7 +34,7 @@ class NewsFeedScreen extends StatelessWidget {
                 SliverAppBar(
                   leading: IconButton(
                       onPressed: () => _openDrawer(),
-                      icon: Icon(Iconsax.menu, color: Colors.white)),
+                      icon: const Icon(Iconsax.menu, color: Colors.white)),
                   pinned: false,
                   floating: true,
                   snap: true,

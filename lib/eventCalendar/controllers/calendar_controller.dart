@@ -14,9 +14,10 @@ class EventCalendarController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    Future.delayed(const Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 6), () {
       fetchEvents();
     });
+    // fetchEvents();
   }
 
   void onDaySelected(DateTime day, DateTime focusedDay) {
