@@ -15,7 +15,7 @@ class NavBarPage extends StatelessWidget {
   var pages = [
     NewsFeedScreen(),
     SearchPage(),
-    postScreen(),
+    PostScreen(),
     CalendarScreen(),
     ProfilePage(),
   ];
@@ -55,7 +55,7 @@ class NavBarPage extends StatelessWidget {
                   color: Colors.transparent,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: const Color(0xff34353E).withOpacity(.40),
+                      color: const Color(0xff111111),
                       borderRadius: BorderRadius.circular(15),
                     ),
 

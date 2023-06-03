@@ -73,10 +73,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(
+          scaffoldBackgroundColor: Colors.black,
           brightness: Brightness.dark,
           useMaterial3: true,
           fontFamily: 'Helvetica',
-          appBarTheme: const AppBarTheme(scrolledUnderElevation: 0)),
+          appBarTheme: const AppBarTheme(
+              scrolledUnderElevation: 0, backgroundColor: Colors.black)),
       initialRoute: '/splash',
       getPages: [
         GetPage(
