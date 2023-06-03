@@ -25,6 +25,7 @@ import 'Post/views/OtherEventDescription.dart';
 import 'auth/views/login_screen.dart';
 import 'events/views/CollageEvents.dart';
 import 'events/views/OtherEvent.dart';
+import 'events/views/event_details_screen.dart';
 import 'getx_di.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -59,10 +60,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.black,
           brightness: Brightness.dark,
           useMaterial3: true,
           fontFamily: 'Helvetica',
-          appBarTheme: const AppBarTheme(scrolledUnderElevation: 0)),
+          appBarTheme: const AppBarTheme(scrolledUnderElevation: 0,backgroundColor: Colors.black)),
       initialRoute: '/splash',
       getPages: [
         GetPage(
@@ -93,6 +95,7 @@ class MyApp extends StatelessWidget {
             name: '/otherEventdes-description',
             page: () => OtherEventDescriptionScreen()),
         GetPage(name: '/EditProfile', page: () => ProfileEditScreen()),
+         GetPage(name: '/feedDetails', page: () => EventDetailsScreen()),
       ],
     );
   }
