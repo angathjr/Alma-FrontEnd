@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/constants.dart';
+
 class CollageEventDescriptionScreen extends StatefulWidget {
   const CollageEventDescriptionScreen({super.key});
 
@@ -21,11 +23,11 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.black,
+      
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text("Collage Event Description"),
-        backgroundColor: Colors.black,
+       
       ),
       body: Center(
         child: Padding(
@@ -39,7 +41,7 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
                   height: height * .769,
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: Color(0xff13141B),
+                   
                   ),
                   child: SingleChildScrollView(
                     child: Column(
@@ -51,7 +53,7 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
                               'Event name',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12,
+                                fontSize: 14,
                               ),
                             ),
                           ),
@@ -59,10 +61,10 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
                             child: Container(
                               width: width * 0.8,
                               height: height * .053,
-                              decoration: const BoxDecoration(
+                              decoration:  BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
+color: Constants.cardColor().withOpacity(0.7)
                               ),
                               child: TextFormField(
                                 controller: event_name_controller,
@@ -80,7 +82,7 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
                               'Event Date',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12,
+                                fontSize: 14,
                               ),
                             ),
                           ),
@@ -88,10 +90,10 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
                             child: Container(
                               width: width * 0.8,
                               height: height * .053,
-                              decoration: const BoxDecoration(
+                              decoration:  BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
+                                color: Constants.cardColor().withOpacity(0.7),
                               ),
                               child: TextFormField(
                                 controller: event_Date,
@@ -109,7 +111,7 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
                               'Event Time',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12,
+                                fontSize: 14,
                               ),
                             ),
                           ),
@@ -117,10 +119,10 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
                             child: Container(
                               width: width * 0.8,
                               height: height * .053,
-                              decoration: const BoxDecoration(
+                              decoration:  BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
+                                color: Constants.cardColor().withOpacity(0.7)
                               ),
                               child: TextFormField(
                                 controller: event_time,
@@ -138,7 +140,7 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
                               'Venue',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12,
+                                fontSize: 14,
                               ),
                             ),
                           ),
@@ -146,10 +148,10 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
                             child: Container(
                               width: width * 0.8,
                               height: height * .053,
-                              decoration: const BoxDecoration(
+                              decoration:  BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
+                               color: Constants.cardColor().withOpacity(0.7)
                               ),
                               child: TextFormField(
                                 controller: venue,
@@ -167,7 +169,7 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
                               'Event Coordinator',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12,
+                                fontSize: 14,
                               ),
                             ),
                           ),
@@ -175,10 +177,10 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
                             child: Container(
                               width: width * 0.8,
                               height: height * .053,
-                              decoration: const BoxDecoration(
+                              decoration:  BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
+                                color: Constants.cardColor().withOpacity(0.7)
                               ),
                               child: TextFormField(
                                 controller: event_cordinator,
@@ -193,10 +195,10 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
                           const Padding(
                             padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
                             child: Text(
-                              'Condact',
+                              'Contact',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12,
+                                fontSize: 14,
                               ),
                             ),
                           ),
@@ -204,10 +206,10 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
                             child: Container(
                               width: width * 0.8,
                               height: height * .053,
-                              decoration: const BoxDecoration(
+                              decoration:  BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
+                                color: Constants.cardColor().withOpacity(0.7)
                               ),
                               child: TextFormField(
                                 controller: condact,
@@ -231,9 +233,9 @@ class _CollageEventDescriptionScreenState extends State<CollageEventDescriptionS
                 alignment: Alignment.center,
                 width: width * 0.35,
                 height: height * .053,
-                decoration: const BoxDecoration(
+                decoration:  BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Color(0xff25262E),
+                 color: Constants.cardColor().withOpacity(0.7)
                 ),
                 child: const Text(
                   "Post",

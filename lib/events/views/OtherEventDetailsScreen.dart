@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../../core/constants.dart';
 import '../../events/controllers/event_controller.dart';
 
 class OtherEventsDetailsScreen extends StatelessWidget {
@@ -14,9 +15,9 @@ class OtherEventsDetailsScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.black,
+     
       appBar: AppBar(
-        backgroundColor: Colors.black,
+       
         title: Text('Other Events Details '),
       ),
       body: SingleChildScrollView(
@@ -59,7 +60,7 @@ class OtherEventsDetailsScreen extends StatelessWidget {
               height: 0.3 * height,
               width: 0.95 * width,
               decoration: BoxDecoration(
-                  color: Color(0xff292A36),
+                  color: Constants.cardColor().withOpacity(0.7),
                   borderRadius: BorderRadius.circular(10)),
               child: Padding(
                 padding: EdgeInsets.only(left: 0.03 * width, top: 0.01 * height),
@@ -79,7 +80,7 @@ class OtherEventsDetailsScreen extends StatelessWidget {
               height: 0.2 * height,
               width: 0.95 * width,
               decoration: BoxDecoration(
-                  color: Color(0xff292A36),
+                 color: Constants.cardColor().withOpacity(0.7),
                   borderRadius: BorderRadius.circular(10)),
               child: Padding(
                 padding: EdgeInsets.only(left: 0.03 * width, top: 0.01 * height),

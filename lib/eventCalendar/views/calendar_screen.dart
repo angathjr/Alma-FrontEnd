@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+import '../../core/constants.dart';
+
 class CalendarScreen extends StatelessWidget {
   CalendarScreen({super.key});
 
@@ -130,8 +132,7 @@ class CalendarScreen extends StatelessWidget {
                                           width: 0.8 * width,
                                           height: 0.127 * height,
                                           decoration: BoxDecoration(
-                                            color: const Color.fromARGB(
-                                                255, 53, 52, 57),
+                                            color: Constants.cardColor().withOpacity(0.7),
                                             borderRadius:
                                                 BorderRadius.circular(10),
                                           ),
@@ -161,7 +162,7 @@ class CalendarScreen extends StatelessWidget {
                                             height: 0.065 * height,
                                             width: 0.206 * width,
                                             decoration: BoxDecoration(
-                                              color: Color(0xff6D6AFF),
+                                              color: Color.fromARGB(255, 36, 36, 49),
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                             ),

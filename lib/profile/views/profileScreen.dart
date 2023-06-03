@@ -18,7 +18,7 @@ class ProfilePage extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Color(0xff050408),
+      
       appBar: AppBar(
           title: const Center(
             child: Text(
@@ -35,7 +35,7 @@ class ProfilePage extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 0.04 * width),
                 child: Text(
-                  "Hi, ${profileController.user.value.username}",
+                  "Hi, ${profileController.user.value.firstName}",
                   style: TextStyle(
                     fontSize: 25,
                     fontFamily: 'Helavtica',
@@ -61,7 +61,7 @@ class ProfilePage extends StatelessWidget {
             height: 0.2 * height,
             width: 0.9 * width,
             decoration: BoxDecoration(
-                color: Color(0xff292A36),
+               color: Constants.cardColor().withOpacity(0.7),
                 borderRadius: BorderRadius.circular(10)),
             child: Padding(
               padding: EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
@@ -81,7 +81,7 @@ class ProfilePage extends StatelessWidget {
             height: 0.15 * height,
             width: 0.9 * width,
             decoration: BoxDecoration(
-                color: Color(0xff292A36),
+                color: Constants.cardColor().withOpacity(0.7),
                 borderRadius: BorderRadius.circular(10)),
             child: Padding(
               padding: EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
@@ -104,31 +104,29 @@ class ProfilePage extends StatelessWidget {
                 
                 width: 0.05 * width,
               ),
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    Get.toNamed('/EditProfile');
-                  },
-                  child: Container(
-                    height: 0.3 * height,
-                    width: 0.445 * width,
-                    decoration: BoxDecoration(
-                        color: Color(0xff292A36),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.edit),
-                        const Text(
-                          'Edit Profile',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Helvatica',
-                            //fontWeight: FontWeight.bold
-                          ),
+              InkWell(
+                onTap: () {
+                  Get.toNamed('/EditProfile');
+                },
+                child: Container(
+                  height: 0.3 * height,
+                  width: 0.445 * width,
+                  decoration: BoxDecoration(
+                     color: Constants.cardColor().withOpacity(0.7),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.edit),
+                      const Text(
+                        'Edit Profile',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Helvatica',
+                          //fontWeight: FontWeight.bold
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -140,27 +138,25 @@ class ProfilePage extends StatelessWidget {
                 width: 0.445 * width,
                 child: Column(
                   children: [
-                    Expanded(
-                      child: Container(
-                        height: 0.148 * height,
-                        width: 0.445 * width,
-                        decoration: BoxDecoration(
-                            color: Color(0xff292A36),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.post_add),
-                            Text(
-                              'New Posts',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontFamily: 'Helvatica',
-                                //fontWeight: FontWeight.bold
-                              ),
+                    Container(
+                      height: 0.148 * height,
+                      width: 0.445 * width,
+                      decoration: BoxDecoration(
+                         color: Constants.cardColor().withOpacity(0.7),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.post_add),
+                          Text(
+                            'My Posts',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'Helvatica',
+                              //fontWeight: FontWeight.bold
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                     SizedBox(
@@ -168,27 +164,25 @@ class ProfilePage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () => authController.signout(),
-                      child: Expanded(
-                        child: Container(
-                          height: 0.148 * height,
-                          width: 0.445 * width,
-                          decoration: BoxDecoration(
-                              color: Color(0xff292A36),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.logout),
-                              Text(
-                                'Log Out',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: 'Helvatica',
-                                  //fontWeight: FontWeight.bold
-                                ),
+                      child: Container(
+                        height: 0.148 * height,
+                        width: 0.445 * width,
+                        decoration: BoxDecoration(
+                           color: Constants.cardColor().withOpacity(0.7),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.logout),
+                            Text(
+                              'Log Out',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: 'Helvatica',
+                                //fontWeight: FontWeight.bold
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     )

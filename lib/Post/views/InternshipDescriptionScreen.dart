@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/constants.dart';
+
 class InternshipDescriptionScreen extends StatefulWidget {
   const InternshipDescriptionScreen({super.key});
 
@@ -21,11 +23,11 @@ class _InternshipDescriptionScreenState
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.black,
+      
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text("Internship Description"),
-        backgroundColor: Colors.black,
+       
       ),
       body: Center(
         child: Column(
@@ -37,7 +39,7 @@ class _InternshipDescriptionScreenState
                 height: height * .76,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Color(0xff13141B),
+                 
                 ),
                 child: SingleChildScrollView(
                   child: Column(
@@ -49,7 +51,7 @@ class _InternshipDescriptionScreenState
                             'Company name',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 12,
+                              fontSize: 14,
                             ),
                           ),
                         ),
@@ -57,10 +59,10 @@ class _InternshipDescriptionScreenState
                           child: Container(
                             width: width * 0.8,
                             height: height * .053,
-                            decoration: const BoxDecoration(
+                            decoration:  BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
-                              color: Color(0xff25262E),
+                             color: Constants.cardColor().withOpacity(0.7)
                             ),
                             child: TextFormField(
                               controller: company_name_controller,
@@ -78,18 +80,18 @@ class _InternshipDescriptionScreenState
                             'Skill Required',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 12,
+                              fontSize: 14,
                             ),
                           ),
                         ),
                         Center(
                           child: Container(
                             width: width * 0.8,
-                            height: height * .053,
-                            decoration: const BoxDecoration(
+                              height: height * .093,
+                            decoration:  BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
-                              color: Color(0xff25262E),
+                              color: Constants.cardColor().withOpacity(0.7)
                             ),
                             child: TextFormField(
                               controller: skill1_controller,
@@ -105,61 +107,33 @@ class _InternshipDescriptionScreenState
                         const Padding(
                           padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
                           child: Text(
-                            'Time',
+                            'Start date',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 12,
+                              fontSize: 14,
                             ),
                           ),
                         ),
-                        Center(
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 27),
-                                child: Container(
-                                  width: width * 0.35,
-                                  height: height * .053,
-                                  decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    color: Color(0xff25262E),
-                                  ),
-                                  child: TextFormField(
-                                    controller: time1_controller,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: "From",
-                                      contentPadding: EdgeInsets.only(left: 5),
-                                    ),
-                                    style: const TextStyle(color: Colors.white),
-                                  ),
-                                ),
+                         Center(
+                          child: Container(
+                             width: width * 0.8,
+                            height: height * .053,
+                            decoration:  BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Constants.cardColor().withOpacity(0.7)
+                            ),
+                            child: TextFormField(
+                              controller: skill1_controller,
+                              decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.only(left: 5),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 20),
-                                child: Container(
-                                  width: width * 0.35,
-                                  height: height * .053,
-                                  decoration: const BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                    color: Color(0xff25262E),
-                                  ),
-                                  child: TextFormField(
-                                    controller: time2_controller,
-                                    decoration: const InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: "To",
-                                      contentPadding: EdgeInsets.only(left: 5),
-                                    ),
-                                    style: const TextStyle(color: Colors.white),
-                                  ),
-                                ),
-                              ),
-                            ],
+                              style: const TextStyle(color: Colors.white),
+                            ),
                           ),
                         ),
+                        
                         
                       ]),
                 ),
@@ -172,9 +146,9 @@ class _InternshipDescriptionScreenState
               alignment: Alignment.center,
               width: width * 0.35,
               height: height * .053,
-              decoration: const BoxDecoration(
+              decoration:  BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: Color(0xff25262E),
+               color: Constants.cardColor().withOpacity(0.7)
               ),
               child: const Text(
                 "Post",
