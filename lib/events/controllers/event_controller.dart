@@ -1,8 +1,6 @@
 import 'dart:developer';
 import 'package:alma/core/api_provider.dart';
-import 'package:alma/core/api_provider_no_auth.dart';
 import 'package:alma/events/models/event_model.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -94,6 +92,7 @@ class EventsController extends GetxController {
     isEventsloading(true);
     final response = await api.getApi('/events/all');
     log("all events${response.body}");
+    log("status code${response.statusCode}");
     final parsed = eventModelFromJson(response.body);
     events.value = parsed;
     isEventsloading(false);

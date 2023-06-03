@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -24,20 +25,20 @@ class ApiProvider extends GetConnect {
       final token = storage.read('authToken');
       // log('AuthTOken: $token');
       request.headers['Authorization'] = "token $token";
-      print("hello");
+
       log(request.headers.toString());
       log(request.url.toString());
       return request;
     });
 
-    httpClient.baseUrl =
-        'https://alma-backend.up.railway.app';
+    httpClient.baseUrl = 'https://alma-backend.up.railway.app';
+    httpClient.timeout = const Duration(seconds: 30);
 
     // Response Modifiers
     httpClient.addResponseModifier((request, response) {
-      // debugPrint(
-      //  '${response.body}',
-      // );`
+      debugPrint(
+        '${response.body}',
+      );
       errorHandler(response);
       return response;
     });
@@ -49,20 +50,20 @@ class ApiProvider extends GetConnect {
     try {
       log(response.statusCode.toString());
       log(response.body.toString());
-      // switch (response.statusCode) {
-      //   case 200:
-      //   case 201:
-      //   case 202:
-      //     var responseJson = response.body.toString();
-      //     return responseJson;
-      //   case 500:
-      //     throw "Server Error pls retry later";
-      //   case 403:
-      //     throw 'Invalid token header. No credentials provided.';
-      //   case 500:
-      //   default:
-      //     throw 'Error occurred retry';
-      // }
+      switch (response.statusCode) {
+        case 200:
+        case 201:
+        case 202:
+          var responseJson = response.body.toString();
+          return responseJson;
+        case 500:
+          throw "Server Error pls retry later";
+        case 403:
+          throw 'Invalid token header. No credentials provided.';
+        case 500:
+        default:
+          throw 'Error occurred retry';
+      }
     } catch (e) {
       print(e);
     }

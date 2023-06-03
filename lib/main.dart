@@ -62,6 +62,7 @@ Future<void> main() async {
       .resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(notificationChannel);
+      
 
   runApp(MyApp());
 }
@@ -90,7 +91,6 @@ class MyApp extends StatelessWidget {
                     ? NavBarPage()
                     : UserSelectionScreen()
                 : LoginScreen()),
-        GetPage(name: '/feed', page: () => NewsFeedScreen()),
         GetPage(name: '/login', page: () => LoginScreen()),
         GetPage(name: '/alumni-profile', page: () => AlumniProfileScreen()),
         GetPage(name: '/staff-profile', page: () => StaffProfileScreen()),

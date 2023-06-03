@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
+import 'package:alma/Navbar/views/navbar.dart';
 import 'package:alma/core/api_provider.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
@@ -45,10 +46,14 @@ class PostController extends GetxController {
     log("status code is ${response.statusCode}");
     log("response is ${response.body}");
     if (response.statusCode == 201) {
-      Get.snackbar("Success", "Event added successfully",
-          snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(
+        "Success",
+        "Event added successfully",
+        snackPosition: SnackPosition.BOTTOM,
+      );
       clearcControllers();
-      Get.to('/feed');
+      await Future.delayed(const Duration(milliseconds: 1400));
+      Get.to(() => NavBarPage());
     } else {
       Get.snackbar("Failed", "Failed to add event");
     }
