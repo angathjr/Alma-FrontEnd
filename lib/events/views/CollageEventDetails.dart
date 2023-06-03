@@ -18,7 +18,7 @@ class CollageEventsDetailsScreen extends StatelessWidget {
       
       appBar: AppBar(
        
-        title: Text('Collage Events Details '),
+        title: const Text('Collage Events Details '),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -34,14 +34,14 @@ class CollageEventsDetailsScreen extends StatelessWidget {
             ),
             Text(
                "${controller.collageEvent[0].eventName}",
-              style: TextStyle(
+              style: const TextStyle(
                   fontFamily: 'Helvatica',
                   fontSize: 23,
                   fontWeight: FontWeight.bold),
             ),
             Text(
                "${controller.collageEvent[0].eventDate}",
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'Helvatica',
                 fontSize: 20,
               ),
@@ -105,7 +105,7 @@ class CollageEventsDetailsScreen extends StatelessWidget {
             decoration: BoxDecoration(
                color: Constants.cardColor().withOpacity(0.7),
                 borderRadius: BorderRadius.circular(10)),
-            child: Center(
+            child: const Center(
               child: Text(
                 'Apply',
                 style: TextStyle(

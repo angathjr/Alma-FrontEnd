@@ -154,7 +154,6 @@ class SearchCard extends StatelessWidget {
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(15),
                         child: Image.network(
-                          
                           "${searchController.events[index].imgUrl}}",
                           fit: BoxFit.cover,
                         )),
@@ -164,31 +163,28 @@ class SearchCard extends StatelessWidget {
               Expanded(
                 flex: 5,
                 child: Container(
-                
                   child: Column(children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(10,30,10,10),
-                      child: Text("${searchController.events[index].eventName}",
-                       style: const TextStyle(
-                                       fontSize: 32,
-                                       fontFamily: 'Helavtica',
-                                       fontWeight: FontWeight.bold
-                                     ),
+                      padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
+                      child: Text(
+                        "${searchController.events[index].eventName}",
+                        style: const TextStyle(
+                            fontSize: 32,
+                            fontFamily: 'Helavtica',
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
-
-                    
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("${searchController.events[index].eventDescription}",
-                       overflow: TextOverflow.ellipsis,
-                       maxLines: 4,
-                       style: const TextStyle(
-                                       fontSize: 12,
-                                       fontFamily: 'Helavtica',
-                                       
-                                     ),
-                                     ),
+                      child: Text(
+                        "${searchController.events[index].eventDescription}",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 4,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontFamily: 'Helavtica',
+                        ),
+                      ),
                     ),
                   ]),
                 ),

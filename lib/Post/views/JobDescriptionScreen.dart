@@ -120,7 +120,7 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                               decoration:  BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
-                                //color: Color(0xff25262E),
+                                
                                 color: Constants.cardColor().withOpacity(0.7)
                               ),
                               child: TextFormField(

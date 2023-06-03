@@ -18,7 +18,7 @@ class ProfilePage extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Color(0xff050408),
+      
       appBar: AppBar(
           title: const Center(
             child: Text(
@@ -61,7 +61,7 @@ class ProfilePage extends StatelessWidget {
             height: 0.2 * height,
             width: 0.9 * width,
             decoration: BoxDecoration(
-                color: Color(0xff292A36),
+               color: Constants.cardColor().withOpacity(0.7),
                 borderRadius: BorderRadius.circular(10)),
             child: Padding(
               padding: EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
@@ -81,7 +81,7 @@ class ProfilePage extends StatelessWidget {
             height: 0.15 * height,
             width: 0.9 * width,
             decoration: BoxDecoration(
-                color: Color(0xff292A36),
+                color: Constants.cardColor().withOpacity(0.7),
                 borderRadius: BorderRadius.circular(10)),
             child: Padding(
               padding: EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
@@ -112,7 +112,7 @@ class ProfilePage extends StatelessWidget {
                   height: 0.3 * height,
                   width: 0.445 * width,
                   decoration: BoxDecoration(
-                      color: Color(0xff292A36),
+                     color: Constants.cardColor().withOpacity(0.7),
                       borderRadius: BorderRadius.circular(10)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -142,7 +142,7 @@ class ProfilePage extends StatelessWidget {
                       height: 0.148 * height,
                       width: 0.445 * width,
                       decoration: BoxDecoration(
-                          color: Color(0xff292A36),
+                         color: Constants.cardColor().withOpacity(0.7),
                           borderRadius: BorderRadius.circular(10)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -168,7 +168,7 @@ class ProfilePage extends StatelessWidget {
                         height: 0.148 * height,
                         width: 0.445 * width,
                         decoration: BoxDecoration(
-                            color: Color(0xff292A36),
+                           color: Constants.cardColor().withOpacity(0.7),
                             borderRadius: BorderRadius.circular(10)),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,

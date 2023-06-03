@@ -16,10 +16,10 @@ class StaffProfileScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.black,
+      
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+       
         title: const Text('Complete Your Profile'),
       ),
       body: SingleChildScrollView(
@@ -76,7 +76,7 @@ class StaffProfileScreen extends StatelessWidget {
               height: height * .62,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                color: Color(0xff13141B),
+                
               ),
               child: Padding(
                 padding: EdgeInsets.all(width * 0.06),
@@ -89,16 +89,16 @@ class StaffProfileScreen extends StatelessWidget {
                             'First Name',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 12,
+                              fontSize: 14,
                             ),
                           ),
                           Container(
                             width: width * 02,
                             height: height * .053,
-                            decoration: const BoxDecoration(
+                            decoration:  BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
-                              color: Color(0xff25262E),
+                               color: Constants.cardColor().withOpacity(0.7)
                             ),
                             child: TextFormField(
                               controller: staffController.firstNameController,
@@ -116,16 +116,16 @@ class StaffProfileScreen extends StatelessWidget {
                             'Last Name',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 12,
+                              fontSize: 14,
                             ),
                           ),
                           Container(
                             width: width * 02,
                             height: height * .053,
-                            decoration: const BoxDecoration(
+                            decoration:  BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
-                              color: Color(0xff25262E),
+                               color: Constants.cardColor().withOpacity(0.7)
                             ),
                             child: TextFormField(
                               controller: staffController.lastNameController,
@@ -143,16 +143,16 @@ class StaffProfileScreen extends StatelessWidget {
                             'Phone Number',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 12,
+                              fontSize: 14,
                             ),
                           ),
                           Container(
                             width: width * 02,
                             height: height * .053,
-                            decoration: const BoxDecoration(
+                            decoration:  BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
-                              color: Color(0xff25262E),
+                              color: Constants.cardColor().withOpacity(0.7)
                             ),
                             child: TextFormField(
                               controller: staffController.phoneNumberController,
@@ -170,16 +170,16 @@ class StaffProfileScreen extends StatelessWidget {
                             'TKM Mail id',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 12,
+                              fontSize: 14,
                             ),
                           ),
                           Container(
                             width: width * 02,
                             height: height * .053,
-                            decoration: const BoxDecoration(
+                            decoration:  BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
-                              color: Color(0xff25262E),
+                               color: Constants.cardColor().withOpacity(0.7)
                             ),
                             child: TextFormField(
                               controller: staffController.tkmMailController,
@@ -197,16 +197,16 @@ class StaffProfileScreen extends StatelessWidget {
                             'Joined Year',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 12,
+                              fontSize: 14,
                             ),
                           ),
                           Container(
                             width: width * 02,
                             height: height * .053,
-                            decoration: const BoxDecoration(
+                            decoration:  BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
-                              color: Color(0xff25262E),
+                               color: Constants.cardColor().withOpacity(0.7)
                             ),
                             child: TextFormField(
                               controller: staffController.joinedYearController,
@@ -224,16 +224,16 @@ class StaffProfileScreen extends StatelessWidget {
                             'Designation',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 12,
+                              fontSize: 14,
                             ),
                           ),
                           Container(
                             width: width * 02,
                             height: height * .053,
-                            decoration: const BoxDecoration(
+                            decoration:  BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(10)),
-                              color: Color(0xff25262E),
+                               color: Constants.cardColor().withOpacity(0.7)
                             ),
                             child: TextFormField(
                               controller: staffController.designationController,
@@ -251,16 +251,16 @@ class StaffProfileScreen extends StatelessWidget {
                             'Department',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 12,
+                              fontSize: 14,
                             ),
                           ),
                           Container(
                               width: width * 02,
                               height: height * .053,
-                              decoration: const BoxDecoration(
+                              decoration:  BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
+                                color: Constants.cardColor().withOpacity(0.7)
                               ),
                               child: Obx(
                                 () => (registrationController
@@ -316,9 +316,9 @@ class StaffProfileScreen extends StatelessWidget {
               child: Container(
                 width: width * 0.35,
                 height: height * .053,
-                decoration: const BoxDecoration(
+                decoration:  BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Color(0xff25262E),
+                  color: Constants.cardColor().withOpacity(0.7)
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

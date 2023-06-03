@@ -4,11 +4,11 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../../core/constants.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileEditScreen extends StatefulWidget {
-   ProfileEditScreen({super.key});
-
+  ProfileEditScreen({super.key});
 
   @override
   State<ProfileEditScreen> createState() => _ProfileEditScreenState();
@@ -38,23 +38,22 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
       body: Center(
         child: Column(
           children: [
-             SizedBox(
-                  width: width * 0.2,
-                  child: CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      foregroundColor: Colors.transparent,
-                      radius: 38,
-                      foregroundImage: NetworkImage(
-                        "${profileController.user.value.imageUrl}",
-                      ))),
+            SizedBox(
+                width: width * 0.2,
+                child: CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    foregroundColor: Colors.transparent,
+                    radius: 38,
+                    foregroundImage: NetworkImage(
+                      "${profileController.user.value.imageUrl}",
+                    ))),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Container(
                 width: width * .89,
-                height: height * .64,
+                height: height * .65,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Color(0xff13141B),
                 ),
                 child: Padding(
                   padding: EdgeInsets.all(width * 0.06),
@@ -65,24 +64,22 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                           'First Name',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff25262E),
-                          ),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                          
                             controller: firstNameController,
-                            
-                          // initialValue:firstNameController.text ,
+
+                            // initialValue:firstNameController.text ,
 
                             decoration: const InputDecoration(
-                              
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
@@ -96,16 +93,16 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                           'Last Name',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff25262E),
-                          ),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: lastNameController,
                             decoration: const InputDecoration(
@@ -122,18 +119,17 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                           'Phone Number',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff25262E),
-                          ),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                           
                             controller: phoneNumberController,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
@@ -149,16 +145,16 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                           'Personal Mail id',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff25262E),
-                          ),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: mailController,
                             decoration: const InputDecoration(
@@ -175,16 +171,16 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                           'Bio',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff25262E),
-                          ),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: bioController,
                             decoration: const InputDecoration(
@@ -201,16 +197,16 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                           'Interested Areas',
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 12,
+                            fontSize: 14,
                           ),
                         ),
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff25262E),
-                          ),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: interestedAreasController,
                             decoration: const InputDecoration(
@@ -231,11 +227,10 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
               alignment: Alignment.center,
               width: width * 0.35,
               height: height * .053,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: Color(0xff25262E),
-              ),
-              child: Text(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  color: Constants.cardColor().withOpacity(0.7)),
+              child: const Text(
                 'Submit',
                 style: TextStyle(
                   color: Colors.white,
