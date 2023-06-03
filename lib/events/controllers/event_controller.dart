@@ -35,6 +35,7 @@ class EventsController extends GetxController {
   var isCollageEventLoading = false.obs;
   var isOtherEventLoading = false.obs;
   var isEventsloading = false.obs;
+  var selectedIndex = 0.obs;
 
   late EventModel eventModel;
 

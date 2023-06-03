@@ -66,7 +66,9 @@ class NewsFeedScreen extends StatelessWidget {
                                   child: SizedBox(
                                     width: width,
                                     child: InkWell(
+
                                       onTap: () {
+                                        controller.selectedIndex.value=index;
                                         Get.toNamed('/feedDetails');
                                       },
                                       child: Container(
