@@ -65,126 +65,133 @@ class NewsFeedScreen extends StatelessWidget {
                                       vertical: height * 0.01),
                                   child: SizedBox(
                                     width: width,
-                                    child: Container(
-                                      padding: const EdgeInsets.all(10),
-                                      width: width,
-                                      decoration: BoxDecoration(
-                                          color: Constants.cardColor()
-                                              .withOpacity(0.65),
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                      child: Column(
-                                        children: [
-                                          //Row that contains profile pic and name
+                                    child: InkWell(
 
-                                          SizedBox(
-                                            width: width,
-                                            height: postSize * 0.1,
-                                            child: Row(
-                                              children: [
-                                                ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          360),
-                                                  child: SizedBox(
-                                                      width: width * 0.11,
-                                                      height: width * 0.11,
-                                                      child: controller
-                                                                  .events[index]
-                                                                  .postedBy!
-                                                                  .imgUrl ==
-                                                              ''
-                                                          ? Image.asset(NOIMAGE)
-                                                          : Image.network(
-                                                              "${controller.events[index].postedBy!.imgUrl}")),
-                                                ),
-                                                SizedBox(
-                                                  width: width * 0.02,
-                                                ),
-                                                Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      "${controller.events[index].postedBy!.firstName}",
-                                                      style:
-                                                          Constants.txtStyle()
-                                                              .copyWith(
-                                                                  fontSize: 17),
-                                                    ),
-                                                    Text(
-                                                      "1 hour ago",
-                                                      style:
-                                                          Constants.txtStyle()
-                                                              .copyWith(
-                                                                  fontSize: 11),
-                                                    )
-                                                  ],
-                                                ),
-                                                const Spacer(),
-                                                SizedBox(
-                                                    width: width * 0.07,
-                                                    height: width * 0.07,
-                                                    child: const Icon(
-                                                      FeatherIcons
-                                                          .moreHorizontal,
-                                                      color: Colors.white,
-                                                    ))
-                                              ],
-                                            ),
-                                          ),
-
-                                          SizedBox(
-                                            height: postSize * 0.03,
-                                          ),
-
-                                          //The image of the post ,if there is no img the size of the card changes according to it
-
-                                          if (controller.events[index].imgUrl !=
-                                              "")
-                                            Container(
-                                              height: postSize * 0.55,
+                                      onTap: () {
+                                        controller.selectedIndex.value=index;
+                                        Get.toNamed('/feedDetails');
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.all(10),
+                                        width: width,
+                                        decoration: BoxDecoration(
+                                            color: Constants.cardColor()
+                                                .withOpacity(0.65),
+                                            borderRadius:
+                                                BorderRadius.circular(15)),
+                                        child: Column(
+                                          children: [
+                                            //Row that contains profile pic and name
+                                    
+                                            SizedBox(
                                               width: width,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
+                                              height: postSize * 0.1,
+                                              child: Row(
+                                                children: [
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            360),
+                                                    child: SizedBox(
+                                                        width: width * 0.11,
+                                                        height: width * 0.11,
+                                                        child: controller
+                                                                    .events[index]
+                                                                    .postedBy!
+                                                                    .imgUrl ==
+                                                                ''
+                                                            ? Image.asset(NOIMAGE)
+                                                            : Image.network(
+                                                                "${controller.events[index].postedBy!.imgUrl}")),
+                                                  ),
+                                                  SizedBox(
+                                                    width: width * 0.02,
+                                                  ),
+                                                  Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                        "${controller.events[index].postedBy!.firstName}",
+                                                        style:
+                                                            Constants.txtStyle()
+                                                                .copyWith(
+                                                                    fontSize: 17),
+                                                      ),
+                                                      Text(
+                                                        "1 hour ago",
+                                                        style:
+                                                            Constants.txtStyle()
+                                                                .copyWith(
+                                                                    fontSize: 11),
+                                                      )
+                                                    ],
+                                                  ),
+                                                  const Spacer(),
+                                                  SizedBox(
+                                                      width: width * 0.07,
+                                                      height: width * 0.07,
+                                                      child: const Icon(
+                                                        FeatherIcons
+                                                            .moreHorizontal,
+                                                        color: Colors.white,
+                                                      ))
+                                                ],
                                               ),
-                                              child: ClipRRect(
+                                            ),
+                                    
+                                            SizedBox(
+                                              height: postSize * 0.03,
+                                            ),
+                                    
+                                            //The image of the post ,if there is no img the size of the card changes according to it
+                                    
+                                            if (controller.events[index].imgUrl !=
+                                                "")
+                                              Container(
+                                                height: postSize * 0.55,
+                                                width: width,
+                                                decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.circular(10),
-                                                  child: Image.network(
-                                                    "${controller.events[index].imgUrl}",
-                                                    fit: BoxFit.cover,
-                                                  )),
+                                                ),
+                                                child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(10),
+                                                    child: Image.network(
+                                                      "${controller.events[index].imgUrl}",
+                                                      fit: BoxFit.cover,
+                                                    )),
+                                              ),
+                                            SizedBox(
+                                              height: postSize * 0.06,
                                             ),
-                                          SizedBox(
-                                            height: postSize * 0.06,
-                                          ),
-                                          Container(
-                                            constraints: BoxConstraints(
-                                                maxHeight: (controller
-                                                            .events[index]
-                                                            .imgUrl !=
-                                                        "")
-                                                    ? postSize * 0.2
-                                                    : postSize),
-                                            //color: Colors.red,
-                                            child: Text(
-                                                "${controller.events[index].eventDescription}",
-                                                maxLines: (controller
-                                                            .events[index]
-                                                            .imgUrl !=
-                                                        "")
-                                                    ? 5
-                                                    : 20,
-                                                style: Constants.txtStyle()
-                                                    .copyWith(fontSize: 12),
-                                                overflow:
-                                                    TextOverflow.ellipsis),
-                                          )
-                                        ],
+                                            Container(
+                                              constraints: BoxConstraints(
+                                                  maxHeight: (controller
+                                                              .events[index]
+                                                              .imgUrl !=
+                                                          "")
+                                                      ? postSize * 0.2
+                                                      : postSize),
+                                              //color: Colors.red,
+                                              child: Text(
+                                                  "${controller.events[index].eventDescription}",
+                                                  maxLines: (controller
+                                                              .events[index]
+                                                              .imgUrl !=
+                                                          "")
+                                                      ? 5
+                                                      : 20,
+                                                  style: Constants.txtStyle()
+                                                      .copyWith(fontSize: 12),
+                                                  overflow:
+                                                      TextOverflow.ellipsis),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),

@@ -22,6 +22,7 @@ import 'Post/views/OtherEventDescription.dart';
 import 'auth/views/login_screen.dart';
 import 'events/views/CollageEvents.dart';
 import 'events/views/OtherEvent.dart';
+import 'events/views/event_details_screen.dart';
 import 'getx_di.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -109,6 +110,7 @@ class MyApp extends StatelessWidget {
             name: '/otherEventdes-description',
             page: () => OtherEventDescriptionScreen()),
         GetPage(name: '/EditProfile', page: () => ProfileEditScreen()),
+         GetPage(name: '/feedDetails', page: () => EventDetailsScreen()),
       ],
     );
   }
