@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/constants.dart';
+
 class JobDescriptionScreen extends StatefulWidget {
   const JobDescriptionScreen({super.key});
 
@@ -17,11 +19,11 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.black,
+      
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text("Job Description"),
-        backgroundColor: Colors.black,
+       
       ),
       body: Center(
         child: Padding(
@@ -33,9 +35,9 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                 child: Container(
                   width: width * .97,
                   height: height * .769,
-                  decoration: const BoxDecoration(
+                  decoration:  BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: Color(0xff13141B),
+                   //color: Constants.cardColor().withOpacity(0.7)
                   ),
                   child: SingleChildScrollView(
                     child: Column(
@@ -47,7 +49,7 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                               'Company name',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12,
+                                fontSize: 14,
                               ),
                             ),
                           ),
@@ -55,10 +57,11 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                             child: Container(
                               width: width * 0.8,
                               height: height * .053,
-                              decoration: const BoxDecoration(
+                              decoration:  BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
+                               // color: Color(0xff25262E),
+                               color: Constants.cardColor().withOpacity(0.7)
                               ),
                               child: TextFormField(
                                 controller: company_name_controller,
@@ -76,7 +79,7 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                               'Role',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12,
+                                fontSize: 14,
                               ),
                             ),
                           ),
@@ -84,10 +87,11 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                             child: Container(
                               width: width * 0.8,
                               height: height * .053,
-                              decoration: const BoxDecoration(
+                              decoration:  BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
+                                //color: Color(0xff25262E),
+                                color: Constants.cardColor().withOpacity(0.7)
                               ),
                               child: TextFormField(
                                 controller: role_controller,
@@ -105,7 +109,7 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                               'Skills Required',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12,
+                                fontSize: 14,
                               ),
                             ),
                           ),
@@ -113,10 +117,11 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                             child: Container(
                               width: width * 0.8,
                               height: height * .093,
-                              decoration: const BoxDecoration(
+                              decoration:  BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
-                                color: Color(0xff25262E),
+                                //color: Color(0xff25262E),
+                                color: Constants.cardColor().withOpacity(0.7)
                               ),
                               child: TextFormField(
                                 controller: skill1_controller,
@@ -142,9 +147,9 @@ class _JobDescriptionScreenState extends State<JobDescriptionScreen> {
                 alignment: Alignment.center,
                 width: width * 0.35,
                 height: height * .053,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Color(0xff25262E),
+                 color: Constants.cardColor().withOpacity(0.7)
                 ),
                 child: const Text(
                   "Post",

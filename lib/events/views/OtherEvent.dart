@@ -2,6 +2,7 @@ import 'package:alma/events/controllers/event_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../core/constants.dart';
 import 'OtherEventDetailsScreen.dart';
 
 class OtherEventScreen extends StatelessWidget {
@@ -20,7 +21,7 @@ class OtherEventScreen extends StatelessWidget {
             'Other Events',
             style: TextStyle(color: Colors.white),
           ),
-          backgroundColor: Colors.black),
+          ),
       body: Obx(
         () => controller.isOtherEventLoading.value
             ? const Center(
@@ -44,9 +45,9 @@ class OtherEventScreen extends StatelessWidget {
                         child: Container(
                           height: 0.25 * height,
                           width: 0.87 * width,
-                          decoration: const BoxDecoration(
+                          decoration:  BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff1A1B27),
+                            color: Constants.cardColor().withOpacity(0.7)
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

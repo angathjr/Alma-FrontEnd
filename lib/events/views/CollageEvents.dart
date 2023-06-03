@@ -2,6 +2,7 @@ import 'package:alma/events/controllers/event_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../core/constants.dart';
 import 'CollageEventDetails.dart';
 
 
@@ -16,13 +17,13 @@ class CollageEventScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.black,
+     
       appBar: AppBar(
           title: const Text(
             'Collage Events',
             style: TextStyle(color: Colors.white),
           ),
-          backgroundColor: Colors.black),
+         ),
       body: Obx(
         () => controller.isCollageEventLoading.value
             ? const Center(
@@ -46,9 +47,9 @@ class CollageEventScreen extends StatelessWidget {
                         child: Container(
                           height: 0.25 * height,
                           width: 0.87 * width,
-                          decoration: const BoxDecoration(
+                          decoration:  BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Color(0xff1A1B27),
+                           color: Constants.cardColor().withOpacity(0.7)
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
