@@ -45,81 +45,66 @@ class CollageEventScreen extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          height: 0.25 * height,
-                          width: 0.87 * width,
+                          width: width,
+          height: height * .22,
                           decoration:  BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                            color: Constants.cardColor().withOpacity(0.7)
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 0.015 * height,
-                              ),
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width: .030 * width,
-                                  ),
-                                  Container(
-                                    width: 0.31 * width,
-                                    height: 0.185 * height,
-                                    decoration: const BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(10)),
-                                        color: Color(0xffC0CEEF),
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/tcs.png'))),
-                                  ),
-                                  SizedBox(
-                                    width: .030 * width,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "${controller.collageEvent[index].eventName}",
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 21,
-                                        ),
+                          child: Row(children: [
+                             if (controller.collageEvent[index].imgUrl !="")
+                                  Expanded(
+                                    flex: 4,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                        height: height * 0.15,
+                                        width: width * .01,
+                                        
+                                        child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            child: Image.network(
+                                              "${controller.collageEvent[index].imgUrl}}",
+                                              fit: BoxFit.cover,
+                                            )),
                                       ),
-                                      SizedBox(
-                                        height: .005 * height,
-                                      ),
-                                      Text(
-                                        "${controller.collageEvent[index].companyName}",
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height: 0.025 * height,
-                              ),
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width: .030 * width,
-                                  ),
-                                  Text(
-                                    "${controller.collageEvent[index].eventDate}",
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 13,
                                     ),
                                   ),
-                                ],
-                              )
-                            ],
-                          ),
+                                  Expanded(
+                                    flex: 5,
+                                    child: Container(  
+                                      child: Column(children: [
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              10, 30, 10, 10),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(),
+                                            child: Text(
+                                              "${controller.collageEvent[index].eventName}",
+                                              style: const TextStyle(
+                                                  fontSize: 25,
+                                                  fontFamily: 'Helavtica',
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            "${controller.collageEvent[index].eventDescription}",
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 4,
+                                            style: const TextStyle(
+                                              fontSize: 12,
+                                              fontFamily: 'Helavtica',
+                                            ),
+                                          ),
+                                        ),
+                                      ]),
+                                    ),
+                                  )
+                          ],)
                         ),
                       ),
                     ),

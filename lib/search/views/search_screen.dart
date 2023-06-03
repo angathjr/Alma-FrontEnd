@@ -139,10 +139,11 @@ class SearchCard extends StatelessWidget {
           height: height * .22,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10)),
-            color: Constants.cardColor().withOpacity(0.65),
+            color: Constants.cardColor().withOpacity(0.7),
           ),
           child: Row(
             children: [
+               if (searchController    .events[index].imgUrl !="")
               Expanded(
                 flex: 4,
                 child: Padding(
