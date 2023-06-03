@@ -4,11 +4,18 @@ import 'package:alma/home/views/drawer_screen.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 class NewsFeedScreen extends StatelessWidget {
   NewsFeedScreen({Key? key}) : super(key: key);
 
-  EventsController controller = Get.find();
+  final EventsController controller = Get.find();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void _openDrawer() {
+    _scaffoldKey.currentState?.openDrawer();
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -17,12 +24,17 @@ class NewsFeedScreen extends StatelessWidget {
 
     return SafeArea(
         child: Scaffold(
+            key: _scaffoldKey,
             drawer: NavigationDrawerScreen(),
+            drawerEnableOpenDragGesture: true,
             backgroundColor: Colors.transparent,
             body: CustomScrollView(
               physics: const BouncingScrollPhysics(),
               slivers: [
-                const SliverAppBar(
+                SliverAppBar(
+                  leading: IconButton(
+                      onPressed: () => _openDrawer(),
+                      icon: Icon(Iconsax.menu, color: Colors.white)),
                   pinned: false,
                   floating: true,
                   snap: true,
@@ -66,9 +78,8 @@ class NewsFeedScreen extends StatelessWidget {
                                   child: SizedBox(
                                     width: width,
                                     child: InkWell(
-
                                       onTap: () {
-                                        controller.selectedIndex.value=index;
+                                        controller.selectedIndex.value = index;
                                         Get.toNamed('/feedDetails');
                                       },
                                       child: Container(
@@ -82,7 +93,7 @@ class NewsFeedScreen extends StatelessWidget {
                                         child: Column(
                                           children: [
                                             //Row that contains profile pic and name
-                                    
+
                                             SizedBox(
                                               width: width,
                                               height: postSize * 0.1,
@@ -96,11 +107,13 @@ class NewsFeedScreen extends StatelessWidget {
                                                         width: width * 0.11,
                                                         height: width * 0.11,
                                                         child: controller
-                                                                    .events[index]
+                                                                    .events[
+                                                                        index]
                                                                     .postedBy!
                                                                     .imgUrl ==
                                                                 ''
-                                                            ? Image.asset(NOIMAGE)
+                                                            ? Image.asset(
+                                                                NOIMAGE)
                                                             : Image.network(
                                                                 "${controller.events[index].postedBy!.imgUrl}")),
                                                   ),
@@ -109,23 +122,27 @@ class NewsFeedScreen extends StatelessWidget {
                                                   ),
                                                   Column(
                                                     mainAxisAlignment:
-                                                        MainAxisAlignment.center,
+                                                        MainAxisAlignment
+                                                            .center,
                                                     crossAxisAlignment:
-                                                        CrossAxisAlignment.start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: [
                                                       Text(
                                                         "${controller.events[index].postedBy!.firstName}",
                                                         style:
                                                             Constants.txtStyle()
                                                                 .copyWith(
-                                                                    fontSize: 17),
+                                                                    fontSize:
+                                                                        17),
                                                       ),
                                                       Text(
                                                         "1 hour ago",
                                                         style:
                                                             Constants.txtStyle()
                                                                 .copyWith(
-                                                                    fontSize: 11),
+                                                                    fontSize:
+                                                                        11),
                                                       )
                                                     ],
                                                   ),
@@ -141,14 +158,15 @@ class NewsFeedScreen extends StatelessWidget {
                                                 ],
                                               ),
                                             ),
-                                    
+
                                             SizedBox(
                                               height: postSize * 0.03,
                                             ),
-                                    
+
                                             //The image of the post ,if there is no img the size of the card changes according to it
-                                    
-                                            if (controller.events[index].imgUrl !=
+
+                                            if (controller
+                                                    .events[index].imgUrl !=
                                                 "")
                                               Container(
                                                 height: postSize * 0.55,
@@ -159,7 +177,8 @@ class NewsFeedScreen extends StatelessWidget {
                                                 ),
                                                 child: ClipRRect(
                                                     borderRadius:
-                                                        BorderRadius.circular(10),
+                                                        BorderRadius.circular(
+                                                            10),
                                                     child: Image.network(
                                                       "${controller.events[index].imgUrl}",
                                                       fit: BoxFit.cover,

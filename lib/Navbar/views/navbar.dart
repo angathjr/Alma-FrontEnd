@@ -1,6 +1,6 @@
 import 'package:alma/Navbar/controllers/navcontroller.dart';
 import 'package:alma/Post/views/post_screen.dart';
-import 'package:alma/home/views/feedScreen.dart';
+import 'package:alma/home/views/news_feed_screen.dart';
 import 'package:alma/profile/views/profileScreen.dart';
 import 'package:alma/search/views/search_screen.dart';
 import 'package:flutter/material.dart';
