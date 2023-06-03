@@ -139,10 +139,11 @@ class SearchCard extends StatelessWidget {
           height: height * .22,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10)),
-            color: Constants.cardColor().withOpacity(0.65),
+            color: Constants.cardColor().withOpacity(0.7),
           ),
           child: Row(
             children: [
+               if (searchController    .events[index].imgUrl !="")
               Expanded(
                 flex: 4,
                 child: Padding(
@@ -154,6 +155,7 @@ class SearchCard extends StatelessWidget {
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(15),
                         child: Image.network(
+                          
                           "${searchController.events[index].imgUrl}}",
                           fit: BoxFit.cover,
                         )),
@@ -163,28 +165,31 @@ class SearchCard extends StatelessWidget {
               Expanded(
                 flex: 5,
                 child: Container(
+                //  color: Colors.amber,
                   child: Column(children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
-                      child: Text(
-                        "${searchController.events[index].eventName}",
-                        style: const TextStyle(
-                            fontSize: 32,
-                            fontFamily: 'Helavtica',
-                            fontWeight: FontWeight.bold),
+                      padding: const EdgeInsets.fromLTRB(10,30,10,10),
+                      child: Text("${searchController.events[index].eventName}",
+                       style: const TextStyle(
+                                       fontSize: 32,
+                                       fontFamily: 'Helavtica',
+                                       fontWeight: FontWeight.bold
+                                     ),
                       ),
                     ),
+
+                    
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "${searchController.events[index].eventDescription}",
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 4,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontFamily: 'Helavtica',
-                        ),
-                      ),
+                      child: Text("${searchController.events[index].eventDescription}",
+                       overflow: TextOverflow.ellipsis,
+                       maxLines: 4,
+                       style: const TextStyle(
+                                       fontSize: 12,
+                                       fontFamily: 'Helavtica',
+                                       
+                                     ),
+                                     ),
                     ),
                   ]),
                 ),
