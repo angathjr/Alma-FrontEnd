@@ -1,5 +1,6 @@
 import 'package:alma/Navbar/controllers/navcontroller.dart';
 import 'package:alma/Post/views/post_screen.dart';
+import 'package:alma/events/controllers/event_controller.dart';
 import 'package:alma/home/views/news_feed_screen.dart';
 import 'package:alma/profile/views/profileScreen.dart';
 import 'package:alma/search/views/search_screen.dart';
@@ -12,6 +13,8 @@ import '../../eventCalendar/views/calendar_screen.dart';
 class NavBarPage extends StatelessWidget {
   NavBarPage({Key? key}) : super(key: key);
 
+  final navController = Get.put(NavController());
+  final EventsController eventsController = Get.find();
   var pages = [
     NewsFeedScreen(),
     SearchPage(),
@@ -19,8 +22,6 @@ class NavBarPage extends StatelessWidget {
     CalendarScreen(),
     ProfilePage(),
   ];
-
-  final navController = Get.put(NavController());
 
   @override
   Widget build(BuildContext context) {

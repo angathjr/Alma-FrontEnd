@@ -16,17 +16,17 @@ import 'core/api_provider_no_auth.dart';
 
 class GetXDependancyInjector {
   void onInit() {
+    Get.put(GetStorage());
     Get.put(ApiProvider());
     Get.put(FcmController());
     Get.put(ApiProviderNoAuth());
     Get.put(AuthController());
-    Get.put(GetStorage());
+    Get.lazyPut(() => EventsController(), fenix: true);
     Get.lazyPut(() => RegistrationController(), fenix: true);
     Get.lazyPut(() => ProfileController(), fenix: true);
     Get.lazyPut(() => AlumniProfileController(), fenix: true);
     Get.lazyPut(() => StaffProfileController(), fenix: true);
     Get.lazyPut(() => StudentProfileController(), fenix: true);
-    Get.lazyPut(() => EventsController(), fenix: true);
     Get.lazyPut(() => EventCalendarController(), fenix: true);
     Get.lazyPut(() => EventSearchController(), fenix: true);
     Get.lazyPut(() => PostController(), fenix: true);

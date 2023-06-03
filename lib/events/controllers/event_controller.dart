@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart' as http;
 
 class EventsController extends GetxController {
   final TextEditingController companyNameController = TextEditingController();
@@ -94,6 +95,7 @@ class EventsController extends GetxController {
     isEventsloading(true);
     final response = await api.getApi('/events/all');
     log("all events${response.body}");
+    log("status code${response.statusCode}");
     final parsed = eventModelFromJson(response.body);
     events.value = parsed;
     isEventsloading(false);
