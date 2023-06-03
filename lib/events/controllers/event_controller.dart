@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:alma/core/api_provider.dart';
 import 'package:alma/core/api_provider_no_auth.dart';
 import 'package:alma/events/models/event_model.dart';
 import 'package:flutter/foundation.dart';
@@ -21,7 +22,7 @@ class EventsController extends GetxController {
   final TextEditingController eventDescriptionController =
       TextEditingController();
 
-  final ApiProviderNoAuth api = Get.find();
+  final ApiProvider api = Get.find();
   final _storage = GetStorage();
 
   var events = <EventModel>[].obs;
@@ -91,9 +92,9 @@ class EventsController extends GetxController {
   void fetchEvents() async {
     isEventsloading(true);
     final response = await api.getApi('/events/all');
+    log("all events${response.body}");
     final parsed = eventModelFromJson(response.body);
     events.value = parsed;
-    log("all events${response.body}");
     isEventsloading(false);
   }
 }

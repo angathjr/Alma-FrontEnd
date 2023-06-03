@@ -16,6 +16,7 @@ class EventSearchController extends GetxController {
   var isLoading = false.obs;
 
   void searchEvents() async {
+    print("calling search");
     isLoading(true);
 
     final query = searchTextController.text.trim();

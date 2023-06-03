@@ -3,7 +3,7 @@ import 'package:alma/Navbar/views/navbar.dart';
 import 'package:alma/Post/views/InternshipDescriptionScreen.dart';
 import 'package:alma/Post/views/JobDescriptionScreen.dart';
 import 'package:alma/Post/views/postScreen.dart';
-import 'package:alma/auth/views/spalash_Screen.dart';
+import 'package:alma/auth/views/splash_Screen.dart';
 import 'package:alma/eventCalendar/views/calendar_screen.dart';
 import 'package:alma/jobs/views/JobScreen.dart';
 import 'package:alma/profile/views/profileEditScreen.dart';
@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           fontFamily: 'Helvetica',
           appBarTheme: const AppBarTheme(scrolledUnderElevation: 0)),
-      // home: NavBarPage(),
+      initialRoute: '/splash',
       getPages: [
         GetPage(
             name: '/',
@@ -82,6 +82,7 @@ class MyApp extends StatelessWidget {
             page: () => InternshipDescriptionScreen()),
         GetPage(name: '/calender-page', page: () => CalendarScreen()),
         GetPage(name: '/job-page', page: () => JobScreen()),
+        GetPage(name: '/splash', page: () => const SplashScreen()),
         GetPage(name: '/internship-page', page: () => InternshipScreen()),
         GetPage(name: '/collageEvent-page', page: () => CollageEventScreen()),
         GetPage(name: '/otherEvent-page', page: () => OtherEventScreen()),
