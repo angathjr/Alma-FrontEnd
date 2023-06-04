@@ -41,9 +41,8 @@ class PostController extends GetxController {
 
     if (isImageSelected.value) {
       await uploadImage();
-    }
     final response = await api.postApi('/events/add', jobdata);
-    log("status code is ${response.statusCode}");
+     log("status code is ${response.statusCode}");
     log("response is ${response.body}");
     if (response.statusCode == 201) {
       Get.snackbar(
@@ -51,9 +50,11 @@ class PostController extends GetxController {
         "Event added successfully",
         snackPosition: SnackPosition.BOTTOM,
       );
+    }
+   
       clearcControllers();
       await Future.delayed(const Duration(milliseconds: 1400));
-      Get.to(() => NavBarPage());
+      Get.offAllNamed("/");
     } else {
       Get.snackbar("Failed", "Failed to add event");
     }
