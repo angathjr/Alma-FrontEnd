@@ -107,7 +107,7 @@ class ProfilePage extends StatelessWidget {
                   Padding(
                     padding:
                         EdgeInsets.only(left: 0.04 * width, top: 0.01 * height),
-                    child: Text(
+                    child: const Text(
                       'Interested Areas:',
                       style: TextStyle(
                         fontFamily: 'Helvatica',
@@ -121,7 +121,7 @@ class ProfilePage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(left: 0.04 * width),
                     child: Text(
-                      '${profileController.user.value.areaOfInterest}',
+                      profileController.user.value.areaOfInterest!.join(", "),
                       style: TextStyle(fontSize: 18),
                     ),
                   )
