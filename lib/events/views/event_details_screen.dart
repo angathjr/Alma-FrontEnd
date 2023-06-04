@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../../core/constants.dart';
 import '../controllers/event_controller.dart';
 
@@ -42,20 +38,26 @@ class EventDetailsScreen extends StatelessWidget {
                 ),
               ),
             Container(
+              constraints: BoxConstraints(
+                  maxHeight:
+                      (controller.events[controller.selectedIndex.value].imgUrl !=
+                              "")
+                          ? height * 0.25
+                          : height * .5),
               child: Column(
 
                 children: [
                   Text(
                     "${controller.events[controller.selectedIndex.value].eventName}",
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 32,
                         fontFamily: 'Helavtica',
                         fontWeight: FontWeight.bold),
                   ),
-                   Row(
+                   const Row(
                      children: [
                        Padding(
-                         padding: const EdgeInsets.fromLTRB(15,10,5,1),
+                         padding: EdgeInsets.fromLTRB(15,10,5,1),
                          child: Text(
                           "Description:",
                           style: TextStyle(
@@ -82,12 +84,6 @@ class EventDetailsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              constraints: BoxConstraints(
-                  maxHeight:
-                      (controller.events[controller.selectedIndex.value].imgUrl !=
-                              "")
-                          ? height * 0.25
-                          : height * .5),
             )
           ]),
         ),

@@ -20,7 +20,7 @@ class JobDescriptionScreen extends StatelessWidget {
         leading: IconButton(
             onPressed: () {
               Get.back();
-              postController.clearcControllers();
+              postController.clearControllers();
             },
             icon: const Icon(Iconsax.arrow_left_2)),
         title: const Text("Job Description"),

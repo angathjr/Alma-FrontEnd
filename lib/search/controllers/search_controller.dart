@@ -1,7 +1,5 @@
 import 'dart:developer';
 
-import 'package:alma/auth/controllers/auth_controller.dart';
-import 'package:alma/core/api_provider.dart';
 import 'package:alma/core/api_provider_no_auth.dart';
 import 'package:alma/events/models/event_model.dart';
 import 'package:get/get.dart';
@@ -14,6 +12,7 @@ class EventSearchController extends GetxController {
 
   var events = <EventModel>[].obs;
   var isLoading = false.obs;
+  var selectedIndex = 0.obs;
 
   void searchEvents() async {
     print("calling search");
@@ -41,5 +40,10 @@ class EventSearchController extends GetxController {
   void textFieldOnChanged() {
     log(searchTextController.text);
     if (searchTextController.text.trim().isNotEmpty) searchEvents();
+  }
+
+  void clearSearchResults() {
+    events.clear();
+    searchTextController.clear();
   }
 }

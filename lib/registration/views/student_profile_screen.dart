@@ -1,5 +1,6 @@
 import 'package:alma/registration/controllers/registration_controller.dart';
 import 'package:alma/registration/controllers/student_profile_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,10 +17,8 @@ class StudentProfileScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-     
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-       
         title: const Text('Complete Your Profile'),
       ),
       body: SingleChildScrollView(
@@ -76,7 +75,6 @@ class StudentProfileScreen extends StatelessWidget {
               height: height * .62,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                
               ),
               child: Padding(
                 padding: EdgeInsets.all(width * 0.06),
@@ -94,10 +92,10 @@ class StudentProfileScreen extends StatelessWidget {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration:  BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Constants.cardColor().withOpacity(0.7)
-                          ),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: controller.firstNameController,
                             decoration: const InputDecoration(
@@ -120,10 +118,10 @@ class StudentProfileScreen extends StatelessWidget {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration:  BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Constants.cardColor().withOpacity(0.7)
-                          ),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: controller.lastNameController,
                             decoration: const InputDecoration(
@@ -146,10 +144,10 @@ class StudentProfileScreen extends StatelessWidget {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration:  BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                             color: Constants.cardColor().withOpacity(0.7)
-                          ),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: controller.phoneNumberController,
                             decoration: const InputDecoration(
@@ -173,10 +171,10 @@ class StudentProfileScreen extends StatelessWidget {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration:  BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                             color: Constants.cardColor().withOpacity(0.7)
-                          ),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: controller.tkmMailController,
                             decoration: const InputDecoration(
@@ -199,10 +197,10 @@ class StudentProfileScreen extends StatelessWidget {
                         Container(
                           width: width * 02,
                           height: height * .053,
-                          decoration:  BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            color: Constants.cardColor().withOpacity(0.7)
-                          ),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: controller.admNoController,
                             decoration: const InputDecoration(
@@ -225,17 +223,16 @@ class StudentProfileScreen extends StatelessWidget {
                         Container(
                             width: width * 02,
                             height: height * .053,
-                            decoration:  BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                               color: Constants.cardColor().withOpacity(0.7)
-                            ),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Constants.cardColor().withOpacity(0.7)),
                             child: Obx(
                               () => (registrationController
                                           .isdepartmentfetched.value ==
                                       false)
                                   ? const Center(
-                                      child: CircularProgressIndicator())
+                                      child: CupertinoActivityIndicator())
                                   : DropdownButtonHideUnderline(
                                       child: ButtonTheme(
                                         alignedDropdown: true,
@@ -282,11 +279,11 @@ class StudentProfileScreen extends StatelessWidget {
                             Container(
                               width: width * 0.35,
                               height: height * .053,
-                              decoration:  BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                 color: Constants.cardColor().withOpacity(0.7)
-                              ),
+                              decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color:
+                                      Constants.cardColor().withOpacity(0.7)),
                               child: TextFormField(
                                 controller: controller.year1Controller,
                                 decoration: const InputDecoration(
@@ -303,11 +300,11 @@ class StudentProfileScreen extends StatelessWidget {
                             Container(
                               width: width * 0.35,
                               height: height * .053,
-                              decoration:  BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                color: Constants.cardColor().withOpacity(0.7)
-                              ),
+                              decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color:
+                                      Constants.cardColor().withOpacity(0.7)),
                               child: TextFormField(
                                 controller: controller.year2Controller,
                                 decoration: const InputDecoration(
@@ -335,10 +332,9 @@ class StudentProfileScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 width: width * 0.35,
                 height: height * .053,
-                decoration:  BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                   color: Constants.cardColor().withOpacity(0.7)
-                ),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    color: Constants.cardColor().withOpacity(0.7)),
                 child: const Text(
                   "Submit",
                   style: TextStyle(
