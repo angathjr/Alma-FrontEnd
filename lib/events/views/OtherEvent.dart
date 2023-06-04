@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../core/constants.dart';
-import 'OtherEventDetailsScreen.dart';
 
 class OtherEventScreen extends StatelessWidget {
   OtherEventScreen({super.key});

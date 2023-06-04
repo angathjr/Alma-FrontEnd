@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../core/constants.dart';
-import 'CollageEventDetails.dart';
 
 class CollageEventScreen extends StatelessWidget {
   CollageEventScreen({super.key});
