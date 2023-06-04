@@ -111,12 +111,12 @@ class ProfilePage extends StatelessWidget {
               SizedBox(
                 width: 0.05 * width,
               ),
-              InkWell(
-                onTap: () {
-                  Get.toNamed('/EditProfile');
-                },
-                child: Expanded(
-                  flex: 3,
+              Expanded(
+                flex: 1,
+                child: InkWell(
+                  onTap: () {
+                    Get.toNamed('/EditProfile');
+                  },
                   child: Container(
                     height: 0.3 * height,
                     width: 0.445 * width,
