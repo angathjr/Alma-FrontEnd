@@ -1,28 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../../core/constants.dart';
 import '../controllers/profile_controller.dart';
 
-class ProfileEditScreen extends StatefulWidget {
+class ProfileEditScreen extends StatelessWidget {
   ProfileEditScreen({super.key});
 
-  @override
-  State<ProfileEditScreen> createState() => _ProfileEditScreenState();
-}
-
-class _ProfileEditScreenState extends State<ProfileEditScreen> {
-  final ProfileController profileController = Get.find();
-  final TextEditingController firstNameController = TextEditingController();
-  final TextEditingController lastNameController = TextEditingController();
-  final TextEditingController phoneNumberController = TextEditingController();
-  final TextEditingController mailController = TextEditingController();
-  final TextEditingController bioController = TextEditingController();
-  final TextEditingController interestedAreasController =
-      TextEditingController();
+  final ProfileController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -36,25 +20,20 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
         title: const Text('Edit Profile'),
       ),
       body: Center(
-        child: Column(
-          children: [
-            SizedBox(
-                width: width * 0.2,
-                child: CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                    foregroundColor: Colors.transparent,
-                    radius: 38,
-                    foregroundImage: NetworkImage(
-                      "${profileController.user.value.imageUrl}",
-                    ))),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                width: width * .89,
-                height: height * .65,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                  width: width * 0.2,
+                  child: CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      foregroundColor: Colors.transparent,
+                      radius: 38,
+                      foregroundImage: NetworkImage(
+                        "${controller.user.value.imageUrl}",
+                      ))),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
                 child: Padding(
                   padding: EdgeInsets.all(width * 0.06),
                   child: Column(
@@ -75,7 +54,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: firstNameController,
+                            controller: controller.firstNameController,
 
                             // initialValue:firstNameController.text ,
 
@@ -104,7 +83,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: lastNameController,
+                            controller: controller.lastNameController,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -130,7 +109,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: phoneNumberController,
+                            controller: controller.phoneNumberController,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -156,7 +135,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: mailController,
+                            controller: controller.mailController,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -182,7 +161,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: bioController,
+                            controller: controller.bioController,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -205,10 +184,10 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  BorderRadius.all(const Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: interestedAreasController,
+                            controller: controller.interestedAreasController,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -219,26 +198,29 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                       ]),
                 ),
               ),
-            ),
-            SizedBox(
-              height: width * 0.05,
-            ),
-            Container(
-              alignment: Alignment.center,
-              width: width * 0.35,
-              height: height * .053,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Constants.cardColor().withOpacity(0.7)),
-              child: const Text(
-                'Submit',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
+              SizedBox(
+                height: width * 0.05,
+              ),
+              Container(
+                alignment: Alignment.center,
+                width: width * 0.35,
+                height: height * .053,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    color: Constants.cardColor().withOpacity(0.7)),
+                child: const Text(
+                  'Submit',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
                 ),
               ),
-            ),
-          ],
+              const SizedBox(
+                height: 20,
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -43,7 +43,7 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(right: 0.02 * width),
+                padding: EdgeInsets.only(right: 0.04 * width),
                 child: CircleAvatar(
                     backgroundColor: Colors.transparent,
                     foregroundColor: Colors.transparent,
@@ -67,7 +67,7 @@ class ProfilePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10)),
               child: Padding(
                 padding:
-                    EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
+                    EdgeInsets.only(left: 0.04 * width, top: 0.01 * height),
                 child: const Text(
                   'Bio:',
                   style: TextStyle(
