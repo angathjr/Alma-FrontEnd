@@ -43,7 +43,7 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(right: 0.02 * width),
+                padding: EdgeInsets.only(right: 0.04 * width),
                 child: CircleAvatar(
                     backgroundColor: Colors.transparent,
                     foregroundColor: Colors.transparent,
@@ -67,7 +67,7 @@ class ProfilePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10)),
               child: Padding(
                 padding:
-                    EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
+                    EdgeInsets.only(left: 0.04 * width, top: 0.01 * height),
                 child: const Text(
                   'Bio:',
                   style: TextStyle(
@@ -111,12 +111,12 @@ class ProfilePage extends StatelessWidget {
               SizedBox(
                 width: 0.05 * width,
               ),
-              InkWell(
-                onTap: () {
-                  Get.toNamed('/EditProfile');
-                },
-                child: Expanded(
-                  flex: 3,
+              Expanded(
+                flex: 1,
+                child: InkWell(
+                  onTap: () {
+                    Get.toNamed('/EditProfile');
+                  },
                   child: Container(
                     height: 0.3 * height,
                     width: 0.445 * width,
