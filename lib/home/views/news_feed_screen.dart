@@ -122,6 +122,20 @@ class NewsFeedScreen extends StatelessWidget {
                                                             ? Image.asset(
                                                                 NOIMAGE)
                                                             : CachedNetworkImage(
+                                                               progressIndicatorBuilder:
+                                                          (context, url,
+                                                                  downloadProgress) =>
+                                                              Center(
+                                                        child: CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation(
+                                                                    context
+                                                                        .theme
+                                                                        .disabledColor),
+                                                            value:
+                                                                downloadProgress
+                                                                    .progress),
+                                                      ),
                                                                 imageUrl:
                                                                     "${controller.events[index].postedBy!.imgUrl}")),
                                                   ),
@@ -247,47 +261,4 @@ class NewsFeedScreen extends StatelessWidget {
 
   // The app bar of the home screen is set as an widget function here
 
-  SizedBox appBarWidget(double height, double width) {
-    return SizedBox(
-      height: height * 0.06,
-      width: width,
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.only(left: 10, right: 10),
-            height: width * 0.13,
-            width: width * 0.13,
-            child: Image.asset("assets/appbar/menu.png"),
-          ),
-          Text(
-            "Home",
-            style: Constants.txtStyle(),
-          ),
-          const Spacer(),
-          Container(
-            padding: const EdgeInsets.only(right: 10),
-            width: width * 0.08,
-            height: width * 0.08,
-            child: Image.asset("assets/appbar/bell.png"),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class Test {
-  final String img;
-  final String text;
-
-  Test(
-    this.img,
-    this.text,
-  );
-
-  static List<Test> test = [
-    Test("null", "hello"),
-    Test("", "helhfhjfjfkjfrkjfrjfjfhjfgnfglo"),
-    Test("h", "hergrkjgnirnygiujllo")
-  ];
 }

@@ -1,7 +1,9 @@
 import 'package:alma/events/controllers/event_controller.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../core/constants.dart';
 
@@ -17,6 +19,12 @@ class JobScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+         leading: IconButton(
+          onPressed: () {
+            Get.back();
+
+          },
+          icon: const Icon(Iconsax.arrow_left_2)),
         title: const Text(
           'Jobs',
           style: TextStyle(color: Colors.white),
@@ -64,10 +72,12 @@ class JobScreen extends StatelessWidget {
                                           child: ClipRRect(
                                               borderRadius:
                                                   BorderRadius.circular(15),
-                                              child: Image.network(
-                                                "${controller.jobs[index].imgUrl}}",
+                                              child: CachedNetworkImage(
+                                                
+                                                imageUrl: "${controller.jobs[index].imgUrl}}",
                                                 fit: BoxFit.cover,
-                                              )),
+                                              )
+                                              ),
                                         ),
                                       ),
                                     ),
@@ -84,7 +94,7 @@ class JobScreen extends StatelessWidget {
                                             child: Text(
                                               "${controller.jobs[index].eventName}",
                                               style: const TextStyle(
-                                                  fontSize: 25,
+                                                  fontSize: 22,
                                                   fontFamily: 'Helavtica',
                                                   fontWeight: FontWeight.bold),
                                             ),
@@ -97,7 +107,7 @@ class JobScreen extends StatelessWidget {
                                             overflow: TextOverflow.ellipsis,
                                             maxLines: 4,
                                             style: const TextStyle(
-                                              fontSize: 12,
+                                              fontSize: 14,
                                               fontFamily: 'Helavtica',
                                             ),
                                           ),

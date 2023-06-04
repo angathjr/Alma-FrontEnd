@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import '../../core/constants.dart';
 import '../controllers/event_controller.dart';
 
@@ -14,36 +15,44 @@ class EventDetailsScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: Text('feed Details'),
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Iconsax.arrow_left_2)),
+        title: Text(
+          "${controller.selectedEvent.value.eventName}",
+          style: TextStyle(fontSize: width * 0.05),
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
-      body: Container(
-        height: height,
-        width: width,
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: width * 0.04),
         child: SingleChildScrollView(
           child: Column(children: [
+            SizedBox(
+              height: height * 0.03,
+            ),
             if (controller.selectedEvent.value.imgUrl != "")
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  // height: height * 0.58,
-                  width: width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: CachedNetworkImage(
-                        progressIndicatorBuilder:
-                            (context, url, downloadProgress) => Center(
-                          child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation(
-                                  context.theme.disabledColor),
-                              value: downloadProgress.progress),
-                        ),
-                        imageUrl: "${controller.selectedEvent.value.imgUrl}",
-                        fit: BoxFit.cover,
-                      )),
+              Container(
+                // height: height * 0.58,
+                width: width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
                 ),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: CachedNetworkImage(
+                      progressIndicatorBuilder:
+                          (context, url, downloadProgress) => Center(
+                        child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation(
+                                context.theme.disabledColor),
+                            value: downloadProgress.progress),
+                      ),
+                      imageUrl: "${controller.selectedEvent.value.imgUrl}",
+                      fit: BoxFit.cover,
+                    )),
               ),
             Container(
               constraints: BoxConstraints(
@@ -52,24 +61,27 @@ class EventDetailsScreen extends StatelessWidget {
                       : height * .5),
               child: Column(
                 children: [
+                  SizedBox(
+                    height: height * 0.03,
+                  ),
                   Text(
                     "${controller.selectedEvent.value.eventName}",
                     style: const TextStyle(
-                        fontSize: 32,
+                        fontSize: 27,
                         fontFamily: 'Helavtica',
                         fontWeight: FontWeight.bold),
                   ),
+                  SizedBox(
+                    height: height * 0.03,
+                  ),
                   Row(
                     children: [
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(15, 10, 5, 1),
-                        child: Text(
-                          "Description:",
-                          style: TextStyle(
-                              fontSize: 22,
-                              fontFamily: 'Helavtica',
-                              fontWeight: FontWeight.bold),
-                        ),
+                      Text(
+                        "Description:",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Helavtica',
+                            fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -80,7 +92,7 @@ class EventDetailsScreen extends StatelessWidget {
                         maxLines: (controller.selectedEvent.value.imgUrl != "")
                             ? 5
                             : 20,
-                        style: Constants.txtStyle().copyWith(fontSize: 14),
+                        style: Constants.txtStyle().copyWith(fontSize: 16),
                         overflow: TextOverflow.ellipsis),
                   ),
                 ],
