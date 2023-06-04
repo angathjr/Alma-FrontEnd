@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import '../../core/constants.dart';
 import '../controllers/profile_controller.dart';
 
@@ -16,6 +17,12 @@ class ProfileEditScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+         leading: IconButton(
+          onPressed: () {
+            Get.back();
+
+          },
+          icon: const Icon(Iconsax.arrow_left_2)),
         backgroundColor: Colors.black,
         title: const Text('Edit Profile'),
       ),
