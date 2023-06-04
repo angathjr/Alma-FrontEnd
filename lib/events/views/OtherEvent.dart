@@ -33,13 +33,9 @@ class OtherEventScreen extends StatelessWidget {
                 itemCount: controller.otherEvent.length,
                 itemBuilder: ((context, index) {
                   return Center(
-                    child: InkWell(
+                    child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => OtherEventsDetailsScreen()),
-                        );
+                        controller.gotoEvent(controller.otherEvent[index]);
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -48,7 +44,7 @@ class OtherEventScreen extends StatelessWidget {
                             height: height * .22,
                             decoration: BoxDecoration(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
+                                    const BorderRadius.all(Radius.circular(10)),
                                 color: Constants.cardColor().withOpacity(0.7)),
                             child: Row(
                               children: [

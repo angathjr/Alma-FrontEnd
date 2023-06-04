@@ -10,6 +10,7 @@ class SearchPage extends StatelessWidget {
   SearchPage({super.key});
 
   final EventSearchController searchController = Get.find();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -104,8 +105,7 @@ class SearchPage extends StatelessWidget {
                                   childCount: searchController.events.length,
                                   (BuildContext context, index) {
                               return GestureDetector(
-                                onTap: () => Get.toNamed('/eventDetails',
-                                    arguments: searchController.events[index]),
+                               onTap: ()=>searchController.gotoEvent(searchController.events[index]),
                                 child: SearchCard(
                                     index: index,
                                     height: height,

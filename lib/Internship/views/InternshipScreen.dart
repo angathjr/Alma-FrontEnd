@@ -33,13 +33,9 @@ class InternshipScreen extends StatelessWidget {
                 itemCount: controller.internship.length,
                 itemBuilder: ((context, index) {
                   return Center(
-                    child: InkWell(
+                    child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => InternshipDetailsScreen()),
-                        );
+                        controller.gotoEvent(controller.internship[index]);
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
