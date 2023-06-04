@@ -84,7 +84,7 @@ class CalendarScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: width * 0.08),
               width: width,
               height: height * 0.03,
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
