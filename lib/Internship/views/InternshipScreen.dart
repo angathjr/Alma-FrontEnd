@@ -1,7 +1,9 @@
 import 'package:alma/events/controllers/event_controller.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../core/constants.dart';
 
@@ -17,6 +19,12 @@ class InternshipScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+         leading: IconButton(
+          onPressed: () {
+            Get.back();
+
+          },
+          icon: const Icon(Iconsax.arrow_left_2)),
           title: const Text(
             'Internship',
             style: TextStyle(color: Colors.white),
@@ -57,10 +65,11 @@ class InternshipScreen extends StatelessWidget {
                                       child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(15),
-                                          child: Image.network(
-                                            "${controller.internship[index].imgUrl}}",
-                                            fit: BoxFit.cover,
-                                          )),
+                                          child: CachedNetworkImage(
+                                                
+                                                imageUrl: "${controller.internship[index].imgUrl}}",
+                                                fit: BoxFit.cover,
+                                              )),
                                     ),
                                   ),
                                 ),
