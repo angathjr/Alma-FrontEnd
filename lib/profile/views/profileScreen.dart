@@ -33,7 +33,7 @@ class ProfilePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 0.04 * width),
+                padding: EdgeInsets.only(left: 0.05 * width),
                 child: Text(
                   "Hi, ${profileController.user.value.firstName}",
                   style: const TextStyle(
@@ -43,7 +43,7 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(right: 0.04 * width),
+                padding: EdgeInsets.only(right: 0.05 * width),
                 child: CircleAvatar(
                     backgroundColor: Colors.transparent,
                     foregroundColor: Colors.transparent,
@@ -65,16 +65,28 @@ class ProfilePage extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Constants.cardColor().withOpacity(0.7),
                   borderRadius: BorderRadius.circular(10)),
-              child: Padding(
-                padding:
-                    EdgeInsets.only(left: 0.04 * width, top: 0.01 * height),
-                child: const Text(
-                  'Bio:',
-                  style: TextStyle(
-                    fontFamily: 'Helvatica',
-                    fontSize: 20,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsets.only(left: 0.04 * width, top: 0.01 * height),
+                    child: Text(
+                      'Bio:',
+                      style: TextStyle(
+                        fontFamily: 'Helvatica',
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    height: 0.01 * height,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 0.04 * width),
+                    child: Text('${profileController.user.value.bio}'),
+                  )
+                ],
               ),
             ),
           ),
@@ -89,16 +101,31 @@ class ProfilePage extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Constants.cardColor().withOpacity(0.7),
                   borderRadius: BorderRadius.circular(10)),
-              child: Padding(
-                padding:
-                    EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
-                child: const Text(
-                  'Interested Areas:',
-                  style: TextStyle(
-                    fontFamily: 'Helvatica',
-                    fontSize: 20,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsets.only(left: 0.04 * width, top: 0.01 * height),
+                    child: Text(
+                      'Interested Areas:',
+                      style: TextStyle(
+                        fontFamily: 'Helvatica',
+                        fontSize: 20,
+                      ),
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    height: 0.01 * height,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 0.04 * width),
+                    child: Text(
+                      '${profileController.user.value.areaOfInterest}',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  )
+                ],
               ),
             ),
           ),
