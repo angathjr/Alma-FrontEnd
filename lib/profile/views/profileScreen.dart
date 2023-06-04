@@ -1,6 +1,7 @@
 import 'package:alma/auth/controllers/auth_controller.dart';
 import 'package:alma/events/controllers/event_controller.dart';
 import 'package:alma/registration/controllers/staff_profile_controller.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -41,33 +42,38 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                  width: width * 0.4,
-                  child: CircleAvatar(
-                      radius: width * 0.1,
-                      backgroundColor: Colors.transparent,
-                      foregroundColor: Colors.transparent,
-                      foregroundImage: NetworkImage(
-                        "${profileController.user.value.imageUrl}",
-                      ))),
+              Padding(
+                padding: EdgeInsets.only(right: 0.02 * width),
+                child: CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    foregroundColor: Colors.transparent,
+                    radius: 30,
+                    foregroundImage: CachedNetworkImageProvider(
+                      "${profileController.user.value.imageUrl}",
+                    )),
+              ),
             ],
           ),
           SizedBox(
-            height: 0.05 * height,
+            height: 0.04 * height,
           ),
-          Container(
-            height: 0.2 * height,
-            width: 0.9 * width,
-            decoration: BoxDecoration(
-                color: Constants.cardColor().withOpacity(0.7),
-                borderRadius: BorderRadius.circular(10)),
-            child: Padding(
-              padding: EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
-              child: const Text(
-                'Bio:',
-                style: TextStyle(
-                  fontFamily: 'Helvatica',
-                  fontSize: 20,
+          Expanded(
+            flex: 1,
+            child: Container(
+              //height: 0.2 * height,
+              width: 0.9 * width,
+              decoration: BoxDecoration(
+                  color: Constants.cardColor().withOpacity(0.7),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Padding(
+                padding:
+                    EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
+                child: const Text(
+                  'Bio:',
+                  style: TextStyle(
+                    fontFamily: 'Helvatica',
+                    fontSize: 20,
+                  ),
                 ),
               ),
             ),
@@ -75,19 +81,23 @@ class ProfilePage extends StatelessWidget {
           SizedBox(
             height: 0.004 * height,
           ),
-          Container(
-            height: 0.15 * height,
-            width: 0.9 * width,
-            decoration: BoxDecoration(
-                color: Constants.cardColor().withOpacity(0.7),
-                borderRadius: BorderRadius.circular(10)),
-            child: Padding(
-              padding: EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
-              child: const Text(
-                'Interested Areas:',
-                style: TextStyle(
-                  fontFamily: 'Helvatica',
-                  fontSize: 20,
+          Expanded(
+            flex: 1,
+            child: Container(
+              //height: 0.15 * height,
+              width: 0.9 * width,
+              decoration: BoxDecoration(
+                  color: Constants.cardColor().withOpacity(0.7),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Padding(
+                padding:
+                    EdgeInsets.only(left: 0.02 * width, top: 0.01 * height),
+                child: const Text(
+                  'Interested Areas:',
+                  style: TextStyle(
+                    fontFamily: 'Helvatica',
+                    fontSize: 20,
+                  ),
                 ),
               ),
             ),
@@ -105,74 +115,53 @@ class ProfilePage extends StatelessWidget {
                 onTap: () {
                   Get.toNamed('/EditProfile');
                 },
-                child: Container(
-                  height: 0.3 * height,
-                  width: 0.445 * width,
-                  decoration: BoxDecoration(
-                      color: Constants.cardColor().withOpacity(0.7),
-                      borderRadius: BorderRadius.circular(10)),
-                  child:  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.edit),
-                      Text(
-                        'Edit Profile',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'Helvatica',
-                          //fontWeight: FontWeight.bold
+                child: Expanded(
+                  flex: 3,
+                  child: Container(
+                    height: 0.3 * height,
+                    width: 0.445 * width,
+                    decoration: BoxDecoration(
+                        color: Constants.cardColor().withOpacity(0.7),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.edit),
+                        Text(
+                          'Edit Profile',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Helvatica',
+                            //fontWeight: FontWeight.bold
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
               SizedBox(
                 width: 0.01 * width,
               ),
-              Container(
-                height: 0.3 * height,
-                width: 0.445 * width,
-                child: Column(
-                  children: [
-                    Container(
-                      height: 0.148 * height,
-                      width: 0.445 * width,
-                      decoration: BoxDecoration(
-                          color: Constants.cardColor().withOpacity(0.7),
-                          borderRadius: BorderRadius.circular(10)),
-                      child:  Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.post_add),
-                          Text(
-                            'My Posts',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontFamily: 'Helvatica',
-                              //fontWeight: FontWeight.bold
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 0.004 * height,
-                    ),
-                    GestureDetector(
-                      onTap: () => authController.signout(),
-                      child: Container(
+              Expanded(
+                flex: 1,
+                child: Container(
+                  height: 0.3 * height,
+                  width: 0.445 * width,
+                  child: Column(
+                    children: [
+                      Container(
                         height: 0.148 * height,
                         width: 0.445 * width,
                         decoration: BoxDecoration(
                             color: Constants.cardColor().withOpacity(0.7),
                             borderRadius: BorderRadius.circular(10)),
-                        child:  Column(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.logout),
+                            Icon(Icons.post_add),
                             Text(
-                              'Log Out',
+                              'My Posts',
                               style: TextStyle(
                                 fontSize: 20,
                                 fontFamily: 'Helvatica',
@@ -182,8 +171,35 @@ class ProfilePage extends StatelessWidget {
                           ],
                         ),
                       ),
-                    )
-                  ],
+                      SizedBox(
+                        height: 0.004 * height,
+                      ),
+                      GestureDetector(
+                        onTap: () => authController.signout(),
+                        child: Container(
+                          height: 0.148 * height,
+                          width: 0.445 * width,
+                          decoration: BoxDecoration(
+                              color: Constants.cardColor().withOpacity(0.7),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.logout),
+                              Text(
+                                'Log Out',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: 'Helvatica',
+                                  //fontWeight: FontWeight.bold
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
@@ -191,16 +207,6 @@ class ProfilePage extends StatelessWidget {
               )
             ],
           ),
-          // SizedBox(
-          //   height: 0.02 * height,
-          // ),
-          // Container(
-          //   height: 0.18 * height,
-          //   width: 0.9 * width,
-          //   decoration: BoxDecoration(
-          //       color: Color(0xff292A36),
-          //       borderRadius: BorderRadius.circular(10)),
-          // )
         ],
       ),
     );
