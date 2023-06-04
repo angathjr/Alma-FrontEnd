@@ -13,15 +13,19 @@ class UserModel {
       this.isVerified,
       this.isSuperuser,
       this.email,
+      this.bio,
       this.userType,
       this.username,
       this.phoneNumber,
+      this.areaOfInterest,
       this.data,
       this.imageUrl});
 
   final int? id;
+  final List<String>? areaOfInterest;
   final String? firstName;
   final String? lastName;
+  final String? bio;
   final bool? isVerified;
   final bool? isSuperuser;
   final String? email;
@@ -43,6 +47,8 @@ class UserModel {
     String? phoneNumber,
     String? imageUrl,
     List<UserData>? data,
+    String? bio,
+    List<String>? areaOfInterest,
   }) =>
       UserModel(
         id: id ?? this.id,
@@ -56,6 +62,8 @@ class UserModel {
         phoneNumber: phoneNumber ?? this.phoneNumber,
         imageUrl: imageUrl ?? this.imageUrl,
         data: data ?? this.data,
+        bio: bio ?? this.bio,
+        areaOfInterest: areaOfInterest ?? this.areaOfInterest,
       );
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
@@ -69,6 +77,10 @@ class UserModel {
         username: json["username"] ?? '',
         imageUrl: json["img_url"] ?? '',
         phoneNumber: json["phone_number"] ?? '',
+        bio: json["bio"] ?? '',
+        areaOfInterest: json["area_of_interest"] == null
+            ? []
+            : List<String>.from(json["area_of_interest"].map((x) => x)),
         data: json["data"] == null
             ? []
             : List<UserData>.from(
@@ -86,6 +98,10 @@ class UserModel {
         "username": username ?? '',
         "phone_number": phoneNumber ?? '',
         "img_url": imageUrl ?? '',
+        "bio": bio ?? '',
+        "area_of_interest": areaOfInterest == null
+            ? []
+            : List<dynamic>.from(areaOfInterest!.map((x) => x)),
         "data": data == null
             ? []
             : List<dynamic>.from(data!.map((x) => x.toJson())),
