@@ -1,5 +1,6 @@
 import 'package:alma/registration/controllers/registration_controller.dart';
 import 'package:alma/registration/controllers/staff_profile_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,10 +17,8 @@ class StaffProfileScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-       
         title: const Text('Complete Your Profile'),
       ),
       body: SingleChildScrollView(
@@ -76,7 +75,6 @@ class StaffProfileScreen extends StatelessWidget {
               height: height * .62,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                
               ),
               child: Padding(
                 padding: EdgeInsets.all(width * 0.06),
@@ -95,11 +93,10 @@ class StaffProfileScreen extends StatelessWidget {
                           Container(
                             width: width * 02,
                             height: height * .053,
-                            decoration:  BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                               color: Constants.cardColor().withOpacity(0.7)
-                            ),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
                               controller: staffController.firstNameController,
                               decoration: const InputDecoration(
@@ -122,11 +119,10 @@ class StaffProfileScreen extends StatelessWidget {
                           Container(
                             width: width * 02,
                             height: height * .053,
-                            decoration:  BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                               color: Constants.cardColor().withOpacity(0.7)
-                            ),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
                               controller: staffController.lastNameController,
                               decoration: const InputDecoration(
@@ -149,11 +145,10 @@ class StaffProfileScreen extends StatelessWidget {
                           Container(
                             width: width * 02,
                             height: height * .053,
-                            decoration:  BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              color: Constants.cardColor().withOpacity(0.7)
-                            ),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
                               controller: staffController.phoneNumberController,
                               decoration: const InputDecoration(
@@ -176,11 +171,10 @@ class StaffProfileScreen extends StatelessWidget {
                           Container(
                             width: width * 02,
                             height: height * .053,
-                            decoration:  BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                               color: Constants.cardColor().withOpacity(0.7)
-                            ),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
                               controller: staffController.tkmMailController,
                               decoration: const InputDecoration(
@@ -203,11 +197,10 @@ class StaffProfileScreen extends StatelessWidget {
                           Container(
                             width: width * 02,
                             height: height * .053,
-                            decoration:  BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                               color: Constants.cardColor().withOpacity(0.7)
-                            ),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
                               controller: staffController.joinedYearController,
                               decoration: const InputDecoration(
@@ -230,11 +223,10 @@ class StaffProfileScreen extends StatelessWidget {
                           Container(
                             width: width * 02,
                             height: height * .053,
-                            decoration:  BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                               color: Constants.cardColor().withOpacity(0.7)
-                            ),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10)),
+                                color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
                               controller: staffController.designationController,
                               decoration: const InputDecoration(
@@ -257,17 +249,17 @@ class StaffProfileScreen extends StatelessWidget {
                           Container(
                               width: width * 02,
                               height: height * .053,
-                              decoration:  BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                color: Constants.cardColor().withOpacity(0.7)
-                              ),
+                              decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color:
+                                      Constants.cardColor().withOpacity(0.7)),
                               child: Obx(
                                 () => (registrationController
                                             .isdepartmentfetched.value ==
                                         false)
                                     ? const Center(
-                                        child: CircularProgressIndicator())
+                                        child: CupertinoActivityIndicator())
                                     : DropdownButtonHideUnderline(
                                         child: ButtonTheme(
                                           alignedDropdown: true,
@@ -316,10 +308,9 @@ class StaffProfileScreen extends StatelessWidget {
               child: Container(
                 width: width * 0.35,
                 height: height * .053,
-                decoration:  BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Constants.cardColor().withOpacity(0.7)
-                ),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    color: Constants.cardColor().withOpacity(0.7)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [

@@ -1,4 +1,5 @@
 import 'package:alma/eventCalendar/controllers/calendar_controller.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -104,7 +105,7 @@ class CalendarScreen extends StatelessWidget {
               () => Expanded(
                 child: controller.isEventsFetched.value == false
                     ? const Center(
-                        child: CircularProgressIndicator(),
+                        child: CupertinoActivityIndicator(),
                       )
                     : controller.events.isEmpty
                         ? const Center(

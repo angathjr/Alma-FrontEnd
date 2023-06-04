@@ -30,76 +30,92 @@ class NavBarPage extends StatelessWidget {
     double topHeight = height * 0.915;
     double navHeight = (height - topHeight) - (width * 0.035 * 2);
 
-    return Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Container(
-          width: width,
-          height: height,
-          // decoration: Constants.buildBoxDecoration(),
-          color: Colors.black,
-          child: Column(
-            children: [
-              //pageview
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          body: Container(
+            width: width,
+            height: height,
+            // decoration: Constants.buildBoxDecoration(),
+            color: Colors.black,
+            child: Column(
+              children: [
+                //pageview
 
-              SizedBox(
-                width: width,
-                height: topHeight,
-                child: PageView(
-                    physics: const NeverScrollableScrollPhysics(),
-                    controller: navController.controller,
-                    children: pages),
-              ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(width * 0.03),
+                SizedBox(
                   width: width,
-                  color: Colors.transparent,
+                  height: topHeight,
+                  child: PageView(
+                      physics: const NeverScrollableScrollPhysics(),
+                      controller: navController.controller,
+                      children: pages),
+                ),
+                Expanded(
                   child: Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xff111111),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
+                    padding: EdgeInsets.all(width * 0.03),
+                    width: width,
+                    color: Colors.transparent,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xff111111),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
 
-                    // The nav bar icons are placed here
+                      // The nav bar icons are placed here
 
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        buildNavIcons(
-                            navHeight: navHeight,
-                            width: width,
-                            index: 0,
-                            icon: const Icon(Iconsax.home)),
-                        buildNavIcons(
-                            navHeight: navHeight,
-                            width: width,
-                            index: 1,
-                            icon: const Icon(Iconsax.search_normal_1)),
-                        buildNavIcons(
-                            navHeight: navHeight,
-                            width: width,
-                            index: 2,
-                            icon: const Icon(
-                              Iconsax.add_square,
-                            )),
-                        buildNavIcons(
-                            navHeight: navHeight,
-                            width: width,
-                            index: 3,
-                            icon: const Icon(Iconsax.calendar_search)),
-                        buildNavIcons(
-                            width: width,
-                            navHeight: navHeight,
-                            index: 4,
-                            icon: const Icon(Iconsax.user)),
-                      ],
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          buildNavIcons(
+                              navHeight: navHeight,
+                              width: width,
+                              index: 0,
+                              icon: Icon(
+                                Iconsax.home,
+                                size: width * 0.055,
+                              )),
+                          buildNavIcons(
+                              navHeight: navHeight,
+                              width: width,
+                              index: 1,
+                              icon: Icon(
+                                Iconsax.search_normal_1,
+                                size: width * 0.055,
+                              )),
+                          buildNavIcons(
+                              navHeight: navHeight,
+                              width: width,
+                              index: 2,
+                              icon: Icon(
+                                Iconsax.add_square,
+                                size: width * 0.055,
+                              )),
+                          buildNavIcons(
+                              navHeight: navHeight,
+                              width: width,
+                              index: 3,
+                              icon: Icon(
+                                Iconsax.calendar_search,
+                                size: width * 0.055,
+                              )),
+                          buildNavIcons(
+                              width: width,
+                              navHeight: navHeight,
+                              index: 4,
+                              icon: Icon(
+                                Iconsax.user,
+                                size: width * 0.055,
+                              )),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              )
-            ],
-          ),
-        ));
+                )
+              ],
+            ),
+          )),
+    );
   }
 
   Widget buildNavIcons(
@@ -122,7 +138,6 @@ class NavBarPage extends StatelessWidget {
             icon: Stack(
               children: [
                 Center(child: icon),
-                // if (index == navController.index.value)
                 Center(
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 300),

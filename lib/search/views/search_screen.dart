@@ -1,4 +1,5 @@
 import 'package:feather_icons/feather_icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -80,7 +81,7 @@ class SearchPage extends StatelessWidget {
                               height: height * 0.6,
                               width: width,
                               child: const Center(
-                                child: CircularProgressIndicator(),
+                                child: CupertinoActivityIndicator(),
                               )))
                       : searchController.events.isEmpty
                           ? SliverToBoxAdapter(
@@ -102,11 +103,15 @@ class SearchPage extends StatelessWidget {
                               delegate: SliverChildBuilderDelegate(
                                   childCount: searchController.events.length,
                                   (BuildContext context, index) {
-                              return SearchCard(
-                                  index: index,
-                                  height: height,
-                                  width: width,
-                                  searchController: searchController);
+                              return GestureDetector(
+                                onTap: () => Get.toNamed('/eventDetails',
+                                    arguments: searchController.events[index]),
+                                child: SearchCard(
+                                    index: index,
+                                    height: height,
+                                    width: width,
+                                    searchController: searchController),
+                              );
                             })),
                 ),
               ),
@@ -143,53 +148,50 @@ class SearchCard extends StatelessWidget {
           ),
           child: Row(
             children: [
-               if (searchController    .events[index].imgUrl !="")
-              Expanded(
-                flex: 4,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: height * 0.15,
-                    width: width * .01,
-                    //color: Colors.green,
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: Image.network(
-                          
-                          "${searchController.events[index].imgUrl}}",
-                          fit: BoxFit.cover,
-                        )),
+              if (searchController.events[index].imgUrl != "")
+                Expanded(
+                  flex: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: height * 0.15,
+                      width: width * .01,
+                      //color: Colors.green,
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.network(
+                            "${searchController.events[index].imgUrl}}",
+                            fit: BoxFit.cover,
+                          )),
+                    ),
                   ),
                 ),
-              ),
               Expanded(
                 flex: 5,
                 child: Container(
-                //  color: Colors.amber,
+                  //  color: Colors.amber,
                   child: Column(children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(10,30,10,10),
-                      child: Text("${searchController.events[index].eventName}",
-                       style: const TextStyle(
-                                       fontSize: 32,
-                                       fontFamily: 'Helavtica',
-                                       fontWeight: FontWeight.bold
-                                     ),
+                      padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
+                      child: Text(
+                        "${searchController.events[index].eventName}",
+                        style: const TextStyle(
+                            fontSize: 32,
+                            fontFamily: 'Helavtica',
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
-
-                    
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("${searchController.events[index].eventDescription}",
-                       overflow: TextOverflow.ellipsis,
-                       maxLines: 4,
-                       style: const TextStyle(
-                                       fontSize: 12,
-                                       fontFamily: 'Helavtica',
-                                       
-                                     ),
-                                     ),
+                      child: Text(
+                        "${searchController.events[index].eventDescription}",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 4,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontFamily: 'Helavtica',
+                        ),
+                      ),
                     ),
                   ]),
                 ),
