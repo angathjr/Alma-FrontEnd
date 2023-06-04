@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -159,8 +160,22 @@ class SearchCard extends StatelessWidget {
                       //color: Colors.green,
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(15),
-                          child: Image.network(
-                            "${searchController.events[index].imgUrl}}",
+                          child: CachedNetworkImage(
+                             progressIndicatorBuilder:
+                                                          (context, url,
+                                                                  downloadProgress) =>
+                                                              Center(
+                                                        child: CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation(
+                                                                    context
+                                                                        .theme
+                                                                        .disabledColor),
+                                                            value:
+                                                                downloadProgress
+                                                                    .progress),
+                                                      ),
+                            imageUrl: "${searchController.events[index].imgUrl}}",
                             fit: BoxFit.cover,
                           )),
                     ),
