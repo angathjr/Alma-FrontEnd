@@ -59,7 +59,7 @@ class EventDetailsScreen extends StatelessWidget {
                         fontFamily: 'Helavtica',
                         fontWeight: FontWeight.bold),
                   ),
-                  const Row(
+                  Row(
                     children: [
                       Padding(
                         padding: EdgeInsets.fromLTRB(15, 10, 5, 1),
