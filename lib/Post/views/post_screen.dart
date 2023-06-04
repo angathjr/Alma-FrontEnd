@@ -32,7 +32,6 @@ class PostScreen extends StatelessWidget {
               flex: 3,
               child: Container(
                 width: width,
-                
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
                     color: Constants.cardColor().withOpacity(0.7)),
