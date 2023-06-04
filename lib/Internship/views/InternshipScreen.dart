@@ -1,4 +1,3 @@
-import 'package:alma/Internship/views/InternshipDetailsScreen.dart';
 import 'package:alma/events/controllers/event_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
