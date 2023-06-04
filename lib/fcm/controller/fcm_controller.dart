@@ -70,22 +70,26 @@ class FcmController extends GetxController {
   }
 
   void fetchToken() async {
-    String? token = await messaging.getToken();
-    String? platform;
-    log("FirebaseMessaging token: $token");
-    if (Platform.isAndroid) {
-      platform = "android";
-    } else {
-      platform = "ios";
-    }
-    Map<String, dynamic> data = {'token': token, "device_type": platform};
+    try {
+      String? token = await messaging.getToken();
+      String? platform;
+      log("FirebaseMessaging token: $token");
+      if (Platform.isAndroid) {
+        platform = "android";
+      } else {
+        platform = "ios";
+      }
+      Map<String, dynamic> data = {'token': token, "device_type": platform};
 
-    var isDeviceAdded = storage.read('isDeviceAdded');
+      var isDeviceAdded = storage.read('isDeviceAdded');
 
-    if (isDeviceAdded == false) {
-      final response = await api.postApi('/fcm/device', data);
-      await storage.write('isDeviceAdded', true);
-      log(response.body);
+      if (isDeviceAdded == false) {
+        final response = await api.postApi('/fcm/device', data);
+        await storage.write('isDeviceAdded', true);
+        log(response.body);
+      }
+    } catch (error) {
+      log("Error fetching token: $error");
     }
   }
 }

@@ -24,7 +24,7 @@ class CollageEventScreen extends StatelessWidget {
       ),
       body: Obx(
         () => controller.isCollageEventLoading.value
-            ?  const Center(
+            ? const Center(
                 child: CupertinoActivityIndicator(),
               )
             : ListView.builder(
@@ -32,14 +32,9 @@ class CollageEventScreen extends StatelessWidget {
                 itemCount: controller.collageEvent.length,
                 itemBuilder: ((context, index) {
                   return Center(
-                    child: InkWell(
+                    child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  CollageEventsDetailsScreen()),
-                        );
+                        controller.gotoEvent(controller.collageEvent[index]);
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

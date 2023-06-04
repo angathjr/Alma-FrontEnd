@@ -34,7 +34,7 @@ class EventsController extends GetxController {
   var isOtherEventLoading = false.obs;
   var isEventsloading = false.obs;
   var selectedIndex = 0.obs;
-
+  var selectedEvent = EventModel().obs;
   late EventModel eventModel;
 
   @override
@@ -44,57 +44,84 @@ class EventsController extends GetxController {
   }
 
   void fetchJob() async {
-    isJobLoading(true);
-    final response = await api.getApi('/events/job');
-    log("hjgj${response.body}");
+    try {
+      isJobLoading(true);
+      final response = await api.getApi('/events/job');
+      log("hjgj${response.body}");
 
-    final parsed = eventModelFromJson(response.body);
-    jobs.value = parsed;
-
-    isJobLoading(false);
+      final parsed = eventModelFromJson(response.body);
+      jobs.value = parsed;
+    } catch (error) {
+      log("Error fetching job: $error");
+    } finally {
+      isJobLoading(false);
+    }
   }
 
   void fetchInternship() async {
-    isInternshipLoading(true);
-    final response = await api.getApi('/events/internship');
-    log("hjgj${response.body}");
+    try {
+      isInternshipLoading(true);
+      final response = await api.getApi('/events/internship');
+      log("hjgj${response.body}");
 
-    final parsed = eventModelFromJson(response.body);
-    internship.value = parsed;
+      final parsed = eventModelFromJson(response.body);
+      internship.value = parsed;
 
-    log("hellooooo${internship[0].eventDate}");
-    isInternshipLoading(false);
+      log("hellooooo${internship[0].eventDate}");
+    } catch (error) {
+      log("Error fetching internship: $error");
+    } finally {
+      isInternshipLoading(false);
+    }
   }
 
   void fetchCollageEvent() async {
-    isCollageEventLoading(true);
-    final response = await api.getApi('/events/college-events');
-    log("hjgj${response.body}");
+    try {
+      isCollageEventLoading(true);
+      final response = await api.getApi('/events/college-events');
+      log("hjgj${response.body}");
 
-    final parsed = eventModelFromJson(response.body);
-    collageEvent.value = parsed;
-
-    isCollageEventLoading(false);
+      final parsed = eventModelFromJson(response.body);
+      collageEvent.value = parsed;
+    } catch (error) {
+      log("Error fetching college events: $error");
+    } finally {
+      isCollageEventLoading(false);
+    }
   }
 
   void fetchOtherEvent() async {
-    isOtherEventLoading(true);
-    final response = await api.getApi('/events/other-events');
-    log("hjgj${response.body}");
+    try {
+      isOtherEventLoading(true);
+      final response = await api.getApi('/events/other-events');
+      log("hjgj${response.body}");
 
-    final parsed = eventModelFromJson(response.body);
-    otherEvent.value = parsed;
-
-    isOtherEventLoading(false);
+      final parsed = eventModelFromJson(response.body);
+      otherEvent.value = parsed;
+    } catch (error) {
+      log("Error fetching other events: $error");
+    } finally {
+      isOtherEventLoading(false);
+    }
   }
 
   void fetchEvents() async {
-    isEventsloading(true);
-    final response = await api.getApi('/events/all');
-    log("all events${response.body}");
-    log("status code${response.statusCode}");
-    final parsed = eventModelFromJson(response.body);
-    events.value = parsed;
-    isEventsloading(false);
+    try {
+      isEventsloading(true);
+      final response = await api.getApi('/events/all');
+      log("all events${response.body}");
+      log("status code${response.statusCode}");
+      final parsed = eventModelFromJson(response.body);
+      events.value = parsed;
+    } catch (error) {
+      log("Error fetching events: $error");
+    } finally {
+      isEventsloading(false);
+    }
+  }
+
+  void gotoEvent(EventModel eventdata) {
+    selectedEvent.value = eventdata;
+    Get.toNamed('/feedDetails');
   }
 }

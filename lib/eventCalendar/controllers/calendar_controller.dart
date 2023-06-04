@@ -14,7 +14,7 @@ class EventCalendarController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    
+
     fetchEvents();
   }
 
@@ -24,11 +24,16 @@ class EventCalendarController extends GetxController {
   }
 
   void fetchEvents() async {
-    isEventsFetched(false);
-    String date = DateFormat('yyyy-MM-dd').format(selectedDay.value);
-    final response = await apiProvider.getApi('/events/date=$date');
-    log(" selected day events are ${response.body}");
-    events.value = eventModelFromJson(response.body);
-    isEventsFetched(true);
+    try {
+      isEventsFetched(false);
+      String date = DateFormat('yyyy-MM-dd').format(selectedDay.value);
+      final response = await apiProvider.getApi('/events/date=$date');
+      log(" selected day events are ${response.body}");
+      events.value = eventModelFromJson(response.body);
+    } catch (error) {
+      log("Error fetching events: $error");
+    } finally {
+      isEventsFetched(true);
+    }
   }
 }

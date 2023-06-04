@@ -1,6 +1,7 @@
 import 'package:alma/core/constants.dart';
 import 'package:alma/events/controllers/event_controller.dart';
 import 'package:alma/home/views/drawer_screen.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -42,11 +43,11 @@ class NewsFeedScreen extends StatelessWidget {
                   title: const Text("Home"),
                   backgroundColor: Colors.black,
                 ),
-                CupertinoSliverRefreshControl(
-                  onRefresh: () async {
-                    controller.fetchEvents();
-                  },
-                ),
+                // CupertinoSliverRefreshControl(
+                //   onRefresh: () async {
+                //     controller.fetchEvents();
+                //   },
+                // ),
                 SliverPadding(
                   padding: EdgeInsets.symmetric(horizontal: width * 0.04),
                   sliver: Obx(
@@ -85,8 +86,8 @@ class NewsFeedScreen extends StatelessWidget {
                                     width: width,
                                     child: InkWell(
                                       onTap: () {
-                                        controller.selectedIndex.value = index;
-                                        Get.toNamed('/feedDetails');
+                                        controller.gotoEvent(
+                                            controller.events[index]);
                                       },
                                       child: Container(
                                         padding: const EdgeInsets.all(10),
@@ -120,8 +121,9 @@ class NewsFeedScreen extends StatelessWidget {
                                                                 ''
                                                             ? Image.asset(
                                                                 NOIMAGE)
-                                                            : Image.network(
-                                                                "${controller.events[index].postedBy!.imgUrl}")),
+                                                            : CachedNetworkImage(
+                                                                imageUrl:
+                                                                    "${controller.events[index].postedBy!.imgUrl}")),
                                                   ),
                                                   SizedBox(
                                                     width: width * 0.02,
@@ -185,8 +187,23 @@ class NewsFeedScreen extends StatelessWidget {
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             10),
-                                                    child: Image.network(
-                                                      "${controller.events[index].imgUrl}",
+                                                    child: CachedNetworkImage(
+                                                      progressIndicatorBuilder:
+                                                          (context, url,
+                                                                  downloadProgress) =>
+                                                              Center(
+                                                        child: CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation(
+                                                                    context
+                                                                        .theme
+                                                                        .disabledColor),
+                                                            value:
+                                                                downloadProgress
+                                                                    .progress),
+                                                      ),
+                                                      imageUrl:
+                                                          "${controller.events[index].imgUrl}",
                                                       fit: BoxFit.cover,
                                                     )),
                                               ),

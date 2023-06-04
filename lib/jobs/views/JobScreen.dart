@@ -33,13 +33,9 @@ class JobScreen extends StatelessWidget {
                 itemCount: controller.jobs.length,
                 itemBuilder: ((context, index) {
                   return Center(
-                    child: InkWell(
+                    child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => JobsDetailsScreen()),
-                        );
+                        controller.gotoEvent(controller.jobs[index]);
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

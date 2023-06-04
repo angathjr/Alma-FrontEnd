@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../core/constants.dart';
@@ -20,63 +21,63 @@ class EventDetailsScreen extends StatelessWidget {
         width: width,
         child: SingleChildScrollView(
           child: Column(children: [
-            if (controller.events[controller.selectedIndex.value].imgUrl != "")
+            if (controller.selectedEvent.value.imgUrl != "")
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
-                 // height: height * 0.58,
+                  // height: height * 0.58,
                   width: width,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Image.network(
-                        "${controller.events[controller.selectedIndex.value].imgUrl}",
+                      child: CachedNetworkImage(
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) => Center(
+                          child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation(
+                                  context.theme.disabledColor),
+                              value: downloadProgress.progress),
+                        ),
+                        imageUrl: "${controller.selectedEvent.value.imgUrl}",
                         fit: BoxFit.cover,
                       )),
                 ),
               ),
             Container(
               constraints: BoxConstraints(
-                  maxHeight:
-                      (controller.events[controller.selectedIndex.value].imgUrl !=
-                              "")
-                          ? height * 0.25
-                          : height * .5),
+                  maxHeight: (controller.selectedEvent.value.imgUrl != "")
+                      ? height * 0.25
+                      : height * .5),
               child: Column(
-
                 children: [
                   Text(
-                    "${controller.events[controller.selectedIndex.value].eventName}",
+                    "${controller.selectedEvent.value.eventName}",
                     style: const TextStyle(
                         fontSize: 32,
                         fontFamily: 'Helavtica',
                         fontWeight: FontWeight.bold),
                   ),
-                   const Row(
-                     children: [
-                       Padding(
-                         padding: EdgeInsets.fromLTRB(15,10,5,1),
-                         child: Text(
+                  const Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(15, 10, 5, 1),
+                        child: Text(
                           "Description:",
                           style: TextStyle(
                               fontSize: 22,
                               fontFamily: 'Helavtica',
-                               fontWeight: FontWeight.bold
-                              ),
-                                         ),
-                       ),
-                     ],
-                   ),
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
                   Padding(
-                     padding: const EdgeInsets.fromLTRB(15,10,12,1),
+                    padding: const EdgeInsets.fromLTRB(15, 10, 12, 1),
                     child: Text(
-                        "${controller.events[controller.selectedIndex.value].eventDescription}",
-                        maxLines: (controller
-                                    .events[controller.selectedIndex.value]
-                                    .imgUrl !=
-                                "")
+                        "${controller.selectedEvent.value.eventDescription}",
+                        maxLines: (controller.selectedEvent.value.imgUrl != "")
                             ? 5
                             : 20,
                         style: Constants.txtStyle().copyWith(fontSize: 14),

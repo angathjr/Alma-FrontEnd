@@ -28,7 +28,6 @@ class PostController extends GetxController {
   Rx<File> selectedImage = Rx<File>(File(''));
 
   void addCollegeAndOtherEvent() async {
-
     if (isImageSelected.value) {
       await uploadImage();
     }
@@ -42,19 +41,23 @@ class PostController extends GetxController {
     };
     log("college or other  data is $jobdata");
 
-    final response = await api.postApi('/events/add', jobdata);
-    log("status code is ${response.statusCode}");
-    log("response is ${response.body}");
-    if (response.statusCode == 201) {
-      Get.snackbar(
-        "Success",
-        "Event added successfully",
-      );
-      clearAll();
-      await Future.delayed(const Duration(milliseconds: 1400));
-      Get.offAllNamed('/');
-    } else {
-      Get.snackbar("Failed", "Failed to add  event ");
+    try {
+      final response = await api.postApi('/events/add', jobdata);
+      log("status code is ${response.statusCode}");
+      log("response is ${response.body}");
+      if (response.statusCode == 201) {
+        Get.snackbar(
+          "Success",
+          "Event added successfully",
+        );
+        clearAll();
+        await Future.delayed(const Duration(milliseconds: 1400));
+        Get.offAllNamed('/');
+      } else {
+        Get.snackbar("Failed", "Failed to add  event ");
+      }
+    } catch (e) {
+      log("error is $e");
     }
   }
 
@@ -75,19 +78,23 @@ class PostController extends GetxController {
     };
     log("internship  data is $jobdata");
 
-    final response = await api.postApi('/events/add', jobdata);
-    log("status code is ${response.statusCode}");
-    log("response is ${response.body}");
-    if (response.statusCode == 201) {
-      Get.snackbar(
-        "Success",
-        "Internship added successfully",
-      );
-      clearAll();
-      await Future.delayed(const Duration(milliseconds: 1400));
-      Get.offAllNamed('/');
-    } else {
-      Get.snackbar("Failed", "Failed to add internship");
+    try {
+      final response = await api.postApi('/events/add', jobdata);
+      log("status code is ${response.statusCode}");
+      log("response is ${response.body}");
+      if (response.statusCode == 201) {
+        Get.snackbar(
+          "Success",
+          "Internship added successfully",
+        );
+        clearAll();
+        await Future.delayed(const Duration(milliseconds: 1400));
+        Get.offAllNamed('/');
+      } else {
+        Get.snackbar("Failed", "Failed to add internship");
+      }
+    } catch (e) {
+      log("error is $e");
     }
   }
 
@@ -108,20 +115,24 @@ class PostController extends GetxController {
     };
     log("job data is $jobdata");
 
-    final response = await api.postApi('/events/add', jobdata);
-     log("status code is ${response.statusCode}");
-    log("response is ${response.body}");
-    if (response.statusCode == 201) {
-      Get.snackbar(
-        "Success",
-        "Job added successfully",
-        snackPosition: SnackPosition.TOP,
-      );
-      clearAll();
-      await Future.delayed(const Duration(milliseconds: 1400));
-      Get.offAllNamed('/');
-    } else {
-      Get.snackbar("Failed", "Failed to add Job");
+    try {
+      final response = await api.postApi('/events/add', jobdata);
+      log("status code is ${response.statusCode}");
+      log("response is ${response.body}");
+      if (response.statusCode == 201) {
+        Get.snackbar(
+          "Success",
+          "Job added successfully",
+          snackPosition: SnackPosition.TOP,
+        );
+        clearAll();
+        await Future.delayed(const Duration(milliseconds: 1400));
+        Get.offAllNamed('/');
+      } else {
+        Get.snackbar("Failed", "Failed to add Job");
+      }
+    } catch (e) {
+      log("error is $e");
     }
   }
 
