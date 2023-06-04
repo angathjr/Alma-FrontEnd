@@ -13,8 +13,7 @@ class AuthController extends GetxController {
   final ApiProvider api = Get.find();
 
   final ApiProviderNoAuth apiNoAuth = Get.find();
-  final FcmController fcmController=Get.find();
-  
+  final FcmController fcmController = Get.find();
 
   var loginText = "Continue with Google".obs;
   var isSigningIn = false.obs;
@@ -86,8 +85,6 @@ class AuthController extends GetxController {
 
   //to logout
   void logOut() async {
-    await _googleSignIn.signOut();
-    await _storage.erase();
-    Get.offAllNamed('/login');
+    fcmController.removeDevice();
   }
 }

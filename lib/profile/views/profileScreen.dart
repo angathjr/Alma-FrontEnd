@@ -150,7 +150,7 @@ class ProfilePage extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Constants.cardColor().withOpacity(0.7),
                         borderRadius: BorderRadius.circular(10)),
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.edit),
@@ -172,7 +172,7 @@ class ProfilePage extends StatelessWidget {
               ),
               Expanded(
                 flex: 1,
-                child: Container(
+                child: SizedBox(
                   height: 0.3 * height,
                   width: 0.445 * width,
                   child: Column(
@@ -183,7 +183,7 @@ class ProfilePage extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: Constants.cardColor().withOpacity(0.7),
                             borderRadius: BorderRadius.circular(10)),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.post_add),
@@ -202,14 +202,14 @@ class ProfilePage extends StatelessWidget {
                         height: 0.004 * height,
                       ),
                       GestureDetector(
-                        onTap: () => authController.signout(),
+                        onTap: () => authController.logOut(),
                         child: Container(
                           height: 0.148 * height,
                           width: 0.445 * width,
                           decoration: BoxDecoration(
                               color: Constants.cardColor().withOpacity(0.7),
                               borderRadius: BorderRadius.circular(10)),
-                          child: Column(
+                          child: const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(Icons.logout),

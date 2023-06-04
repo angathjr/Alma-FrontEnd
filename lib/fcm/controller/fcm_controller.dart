@@ -6,11 +6,13 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'dart:io' show Platform;
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class FcmController extends GetxController {
   final ApiProvider api = Get.find();
   late FirebaseMessaging messaging;
   late NotificationSettings settings;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
   final storage = GetStorage();
 
   @override
@@ -72,6 +74,7 @@ class FcmController extends GetxController {
   void fetchToken() async {
     try {
       String? token = await messaging.getToken();
+
       String? platform;
       log("FirebaseMessaging token: $token");
       if (Platform.isAndroid) {
@@ -79,7 +82,11 @@ class FcmController extends GetxController {
       } else {
         platform = "ios";
       }
-      Map<String, dynamic> data = {'token': token, "device_type": platform};
+      Map<String, dynamic> data = {
+        'token': token,
+        "device_type": platform,
+        "is_active": true
+      };
 
       var isDeviceAdded = storage.read('isDeviceAdded');
 
@@ -88,6 +95,32 @@ class FcmController extends GetxController {
         await storage.write('isDeviceAdded', true);
         log(response.body);
       }
+    } catch (error) {
+      log("Error fetching token: $error");
+    }
+  }
+
+  void removeDevice() async {
+    try {
+      String? token = await messaging.getToken();
+
+      String? platform;
+      log("FirebaseMessaging token: $token");
+      if (Platform.isAndroid) {
+        platform = "android";
+      } else {
+        platform = "ios";
+      }
+      Map<String, dynamic> data = {
+        'token': token,
+        "device_type": platform,
+        "is_active": false
+      };
+      final response = await api.postApi('/fcm/device', data);
+      log("${response.body}");
+      await _googleSignIn.signOut();
+      await storage.erase();
+      Get.offAllNamed('/');
     } catch (error) {
       log("Error fetching token: $error");
     }
