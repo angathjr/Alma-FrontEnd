@@ -77,7 +77,7 @@ class InternshipScreen extends StatelessWidget {
                                         child: Text(
                                           "${controller.internship[index].eventName}",
                                           style: const TextStyle(
-                                              fontSize: 25,
+                                              fontSize: 22,
                                               fontFamily: 'Helavtica',
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -90,7 +90,7 @@ class InternshipScreen extends StatelessWidget {
                                         overflow: TextOverflow.ellipsis,
                                         maxLines: 4,
                                         style: const TextStyle(
-                                          fontSize: 12,
+                                          fontSize: 14,
                                           fontFamily: 'Helavtica',
                                         ),
                                       ),

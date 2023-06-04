@@ -85,7 +85,7 @@ class JobScreen extends StatelessWidget {
                                             child: Text(
                                               "${controller.jobs[index].eventName}",
                                               style: const TextStyle(
-                                                  fontSize: 25,
+                                                  fontSize: 22,
                                                   fontFamily: 'Helavtica',
                                                   fontWeight: FontWeight.bold),
                                             ),
@@ -98,7 +98,7 @@ class JobScreen extends StatelessWidget {
                                             overflow: TextOverflow.ellipsis,
                                             maxLines: 4,
                                             style: const TextStyle(
-                                              fontSize: 12,
+                                              fontSize: 14,
                                               fontFamily: 'Helavtica',
                                             ),
                                           ),
