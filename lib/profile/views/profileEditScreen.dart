@@ -17,12 +17,11 @@ class ProfileEditScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-         leading: IconButton(
-          onPressed: () {
-            Get.back();
-
-          },
-          icon: const Icon(Iconsax.arrow_left_2)),
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Iconsax.arrow_left_2)),
         backgroundColor: Colors.black,
         title: const Text('Edit Profile'),
       ),
@@ -61,10 +60,8 @@ class ProfileEditScreen extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: controller.firstNameController,
-
-                            // initialValue:firstNameController.text ,
-
+                            //controller: controller.firstNameController,
+                            initialValue: controller.user.value.firstName,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -90,7 +87,8 @@ class ProfileEditScreen extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: controller.lastNameController,
+                            //controller: controller.lastNameController,
+                            initialValue: controller.user.value.lastName,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -116,7 +114,8 @@ class ProfileEditScreen extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: controller.phoneNumberController,
+                            //controller: controller.phoneNumberController,
+                            initialValue: controller.user.value.phoneNumber,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -142,7 +141,8 @@ class ProfileEditScreen extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: controller.mailController,
+                            //controller: controller.mailController,
+                            initialValue: controller.user.value.email,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -168,7 +168,8 @@ class ProfileEditScreen extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: controller.bioController,
+                            //controller: controller.bioController,
+                            initialValue: controller.user.value.bio,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -194,7 +195,9 @@ class ProfileEditScreen extends StatelessWidget {
                                   BorderRadius.all(const Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: controller.interestedAreasController,
+                            //controller: controller.interestedAreasController,
+                            initialValue: controller.user.value.areaOfInterest!
+                                .join(", "),
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
