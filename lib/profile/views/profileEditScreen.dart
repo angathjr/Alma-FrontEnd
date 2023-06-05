@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../core/constants.dart';
+import '../../registration/controllers/student_profile_controller.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileEditScreen extends StatelessWidget {
   ProfileEditScreen({super.key});
 
   final ProfileController controller = Get.find();
+  final StudentProfileController controllerEdit = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +31,51 @@ class ProfileEditScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                  width: width * 0.2,
-                  child: CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      foregroundColor: Colors.transparent,
-                      radius: 38,
-                      foregroundImage: NetworkImage(
-                        "${controller.user.value.imageUrl}",
-                      ))),
+              Container(
+                alignment: Alignment.center,
+                width: width,
+                child: SizedBox(
+                  height: height * .17,
+                  width: width * 0.3,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Obx(
+                        () => CircleAvatar(
+                          backgroundImage:
+                              AssetImage("${controller.user.value.imageUrl}"),
+                          foregroundImage: controllerEdit
+                                      .isImageSelected.value ==
+                                  true
+                              ? FileImage(controllerEdit.selectedImage.value)
+                                  as ImageProvider<Object>
+                              : AssetImage("${controller.user.value.imageUrl}"),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: height * 0.01,
+                        right: width * 0.02,
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: width * 0.09,
+                          height: width * 0.09,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                              onPressed: () => controllerEdit.selectImage(),
+                              icon: Icon(
+                                Icons.camera_alt,
+                                size: width * 0.05,
+                                color: Colors.black,
+                              )),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Padding(
