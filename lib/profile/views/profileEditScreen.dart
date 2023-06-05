@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../core/constants.dart';
+import '../../registration/controllers/student_profile_controller.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileEditScreen extends StatelessWidget {
   ProfileEditScreen({super.key});
 
   final ProfileController controller = Get.find();
+  final StudentProfileController controllerEdit = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +19,11 @@ class ProfileEditScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-         leading: IconButton(
-          onPressed: () {
-            Get.back();
-
-          },
-          icon: const Icon(Iconsax.arrow_left_2)),
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Iconsax.arrow_left_2)),
         backgroundColor: Colors.black,
         title: const Text('Edit Profile'),
       ),
@@ -30,15 +31,51 @@ class ProfileEditScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                  width: width * 0.2,
-                  child: CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      foregroundColor: Colors.transparent,
-                      radius: 38,
-                      foregroundImage: NetworkImage(
-                        "${controller.user.value.imageUrl}",
-                      ))),
+              Container(
+                alignment: Alignment.center,
+                width: width,
+                child: SizedBox(
+                  height: height * .17,
+                  width: width * 0.3,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Obx(
+                        () => CircleAvatar(
+                          backgroundImage:
+                              AssetImage("${controller.user.value.imageUrl}"),
+                          foregroundImage: controllerEdit
+                                      .isImageSelected.value ==
+                                  true
+                              ? FileImage(controllerEdit.selectedImage.value)
+                                  as ImageProvider<Object>
+                              : AssetImage("${controller.user.value.imageUrl}"),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: height * 0.01,
+                        right: width * 0.02,
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: width * 0.09,
+                          height: width * 0.09,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                              onPressed: () => controllerEdit.selectImage(),
+                              icon: Icon(
+                                Icons.camera_alt,
+                                size: width * 0.05,
+                                color: Colors.black,
+                              )),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Padding(
@@ -61,10 +98,8 @@ class ProfileEditScreen extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: controller.firstNameController,
-
-                            // initialValue:firstNameController.text ,
-
+                            //controller: controller.firstNameController,
+                            initialValue: controller.user.value.firstName,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -90,7 +125,8 @@ class ProfileEditScreen extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: controller.lastNameController,
+                            //controller: controller.lastNameController,
+                            initialValue: controller.user.value.lastName,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -116,7 +152,8 @@ class ProfileEditScreen extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: controller.phoneNumberController,
+                            //controller: controller.phoneNumberController,
+                            initialValue: controller.user.value.phoneNumber,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -142,7 +179,8 @@ class ProfileEditScreen extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: controller.mailController,
+                            //controller: controller.mailController,
+                            initialValue: controller.user.value.email,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -168,7 +206,8 @@ class ProfileEditScreen extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: controller.bioController,
+                            //controller: controller.bioController,
+                            initialValue: controller.user.value.bio,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -194,7 +233,9 @@ class ProfileEditScreen extends StatelessWidget {
                                   BorderRadius.all(const Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: controller.interestedAreasController,
+                            //controller: controller.interestedAreasController,
+                            initialValue: controller.user.value.areaOfInterest!
+                                .join(", "),
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),

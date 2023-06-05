@@ -17,6 +17,10 @@ class ProfileController extends GetxController {
 
   var user = (UserModel()).obs;
 
+  get selectedImage => null;
+
+  get isImageSelected => null;
+
   @override
   void onInit() {
     _storage.listenKey('user', (value) {
@@ -25,4 +29,6 @@ class ProfileController extends GetxController {
     user.value = UserModel.fromJson(_storage.read('user'));
     super.onInit();
   }
+
+  selectImage() {}
 }

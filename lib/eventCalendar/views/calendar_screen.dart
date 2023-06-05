@@ -84,7 +84,7 @@ class CalendarScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: width * 0.08),
               width: width,
               height: height * 0.03,
-              child: const Row(
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -133,7 +133,8 @@ class CalendarScreen extends StatelessWidget {
                                           width: 0.8 * width,
                                           height: 0.127 * height,
                                           decoration: BoxDecoration(
-                                            color: Constants.cardColor().withOpacity(0.7),
+                                            color: Constants.cardColor()
+                                                .withOpacity(0.7),
                                             borderRadius:
                                                 BorderRadius.circular(10),
                                           ),
@@ -163,7 +164,8 @@ class CalendarScreen extends StatelessWidget {
                                             height: 0.065 * height,
                                             width: 0.206 * width,
                                             decoration: BoxDecoration(
-                                              color: Color.fromARGB(255, 36, 36, 49),
+                                              color: Color.fromARGB(
+                                                  255, 36, 36, 49),
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                             ),

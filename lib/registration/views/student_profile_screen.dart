@@ -36,14 +36,16 @@ class StudentProfileScreen extends StatelessWidget {
                   children: [
                     Obx(
                       () => CircleAvatar(
-                        backgroundImage: const AssetImage(
-                          NOIMAGE,
+                        backgroundImage: AssetImage(
+                          "${controller.user.value.imageUrl}",
                         ),
                         foregroundImage:
                             controller.isImageSelected.value == true
                                 ? FileImage(controller.selectedImage.value)
                                     as ImageProvider<Object>
-                                : const AssetImage(NOIMAGE),
+                                : AssetImage(
+                                    "${controller.user.value.imageUrl}",
+                                  ),
                       ),
                     ),
                     Positioned(

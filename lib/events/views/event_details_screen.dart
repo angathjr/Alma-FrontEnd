@@ -15,19 +15,24 @@ class EventDetailsScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-         leading: IconButton(
-          onPressed: () {
-            Get.back();
-
-          },
-          icon: const Icon(Iconsax.arrow_left_2)),
-        title: Text("${controller.selectedEvent.value.eventName}",style: TextStyle(fontSize: width*0.05),overflow: TextOverflow.ellipsis,),
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Iconsax.arrow_left_2)),
+        title: Text(
+          "${controller.selectedEvent.value.eventName}",
+          style: TextStyle(fontSize: width * 0.05),
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: width*0.04),
+        padding: EdgeInsets.symmetric(horizontal: width * 0.04),
         child: SingleChildScrollView(
           child: Column(children: [
-            SizedBox(height: height*0.03,),
+            SizedBox(
+              height: height * 0.03,
+            ),
             if (controller.selectedEvent.value.imgUrl != "")
               Container(
                 // height: height * 0.58,
@@ -56,7 +61,9 @@ class EventDetailsScreen extends StatelessWidget {
                       : height * .5),
               child: Column(
                 children: [
-                    SizedBox(height: height*0.03,),
+                  SizedBox(
+                    height: height * 0.03,
+                  ),
                   Text(
                     "${controller.selectedEvent.value.eventName}",
                     style: const TextStyle(
@@ -64,10 +71,11 @@ class EventDetailsScreen extends StatelessWidget {
                         fontFamily: 'Helavtica',
                         fontWeight: FontWeight.bold),
                   ),
-                   SizedBox(height: height*0.03,),
-                   Row(
+                  SizedBox(
+                    height: height * 0.03,
+                  ),
+                  Row(
                     children: [
-                      
                       Text(
                         "Description:",
                         style: TextStyle(
