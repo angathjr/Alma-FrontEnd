@@ -107,7 +107,7 @@ class ProfilePage extends StatelessWidget {
                   Padding(
                     padding:
                         EdgeInsets.only(left: 0.04 * width, top: 0.01 * height),
-                    child: Text(
+                    child: const Text(
                       'Interested Areas:',
                       style: TextStyle(
                         fontFamily: 'Helvatica',
@@ -121,7 +121,7 @@ class ProfilePage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(left: 0.04 * width),
                     child: Text(
-                      '${profileController.user.value.areaOfInterest}',
+                      profileController.user.value.areaOfInterest!.join(", "),
                       style: TextStyle(fontSize: 18),
                     ),
                   )
@@ -150,7 +150,7 @@ class ProfilePage extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Constants.cardColor().withOpacity(0.7),
                         borderRadius: BorderRadius.circular(10)),
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.edit),
@@ -172,7 +172,7 @@ class ProfilePage extends StatelessWidget {
               ),
               Expanded(
                 flex: 1,
-                child: Container(
+                child: SizedBox(
                   height: 0.3 * height,
                   width: 0.445 * width,
                   child: Column(
@@ -183,7 +183,7 @@ class ProfilePage extends StatelessWidget {
                         decoration: BoxDecoration(
                             color: Constants.cardColor().withOpacity(0.7),
                             borderRadius: BorderRadius.circular(10)),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.post_add),
@@ -202,14 +202,14 @@ class ProfilePage extends StatelessWidget {
                         height: 0.004 * height,
                       ),
                       GestureDetector(
-                        onTap: () => authController.signout(),
+                        onTap: () => authController.logOut(),
                         child: Container(
                           height: 0.148 * height,
                           width: 0.445 * width,
                           decoration: BoxDecoration(
                               color: Constants.cardColor().withOpacity(0.7),
                               borderRadius: BorderRadius.circular(10)),
-                          child: Column(
+                          child: const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(Icons.logout),

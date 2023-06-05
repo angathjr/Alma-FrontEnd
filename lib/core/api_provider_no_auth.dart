@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/request/request.dart';
+
 import 'package:get_storage/get_storage.dart';
 
 class ApiProviderNoAuth extends GetConnect {
@@ -20,8 +20,8 @@ class ApiProviderNoAuth extends GetConnect {
       return request;
     });
 
-    httpClient.baseUrl =
-        'https://alma-backend.up.railway.app';
+    httpClient.baseUrl = 'https://alma-backend.up.railway.app';
+    httpClient.timeout = const Duration(seconds: 40);
 
     httpClient.addRequestModifier<dynamic>((request) {
       //add header

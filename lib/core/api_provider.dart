@@ -32,7 +32,7 @@ class ApiProvider extends GetConnect {
     });
 
     httpClient.baseUrl = 'https://alma-backend.up.railway.app';
-    httpClient.timeout = const Duration(seconds: 30);
+    httpClient.timeout = const Duration(seconds: 40);
 
     // Response Modifiers
     httpClient.addResponseModifier((request, response) {
