@@ -38,7 +38,7 @@ class NavBarPage extends StatelessWidget {
             width: width,
             height: height,
             // decoration: Constants.buildBoxDecoration(),
-            color: Colors.black,
+            // color: Colors.black,
             child: Column(
               children: [
                 //pageview

@@ -68,19 +68,17 @@ class EventDetailsScreen extends StatelessWidget {
                     "${controller.selectedEvent.value.eventName}",
                     style: const TextStyle(
                         fontSize: 27,
-                        fontFamily: 'Helavtica',
                         fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     height: height * 0.03,
                   ),
                   Row(
-                    children: [
+                    children: const [
                       Text(
                         "Description:",
                         style: TextStyle(
                             fontSize: 20,
-                            fontFamily: 'Helavtica',
                             fontWeight: FontWeight.bold),
                       ),
                     ],

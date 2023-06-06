@@ -50,7 +50,7 @@ class InternshipScreen extends StatelessWidget {
                           width: width,
                           height: height * .22,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderRadius: const BorderRadius.all(Radius.circular(10)),
                             color: Constants.cardColor().withOpacity(0.65),
                           ),
                           child: Row(
@@ -60,7 +60,7 @@ class InternshipScreen extends StatelessWidget {
                                   flex: 4,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Container(
+                                    child: SizedBox(
                                       height: height * 0.15,
                                       child: ClipRRect(
                                           borderRadius:
@@ -75,36 +75,32 @@ class InternshipScreen extends StatelessWidget {
                                 ),
                               Expanded(
                                 flex: 5,
-                                child: Container(
-                                  child: Column(children: [
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          10, 30, 10, 10),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(),
-                                        child: Text(
-                                          "${controller.internship[index].eventName}",
-                                          style: const TextStyle(
-                                              fontSize: 22,
-                                              fontFamily: 'Helavtica',
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                child: Column(children: [
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(
+                                        10, 30, 10, 10),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(),
                                       child: Text(
-                                        "${controller.internship[index].eventDescription}",
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 4,
+                                        "${controller.internship[index].eventName}",
                                         style: const TextStyle(
-                                          fontSize: 14,
-                                          fontFamily: 'Helavtica',
-                                        ),
+                                            fontSize: 22,
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     ),
-                                  ]),
-                                ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "${controller.internship[index].eventDescription}",
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 4,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ),
+                                ]),
                               )
                             ],
                           ),

@@ -53,7 +53,7 @@ class OtherEventDescriptionScreen extends StatelessWidget {
                             height: height * .053,
                             decoration: BoxDecoration(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
+                                    const BorderRadius.all(Radius.circular(10)),
                                 color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
                               controller: controller.eventName,
@@ -61,7 +61,7 @@ class OtherEventDescriptionScreen extends StatelessWidget {
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
                               ),
-                              style: TextStyle(color: Colors.white),
+                              style: const TextStyle(color: Colors.white),
                             ),
                           ),
                         ),
@@ -76,52 +76,33 @@ class OtherEventDescriptionScreen extends StatelessWidget {
                           ),
                         ),
                         Center(
-                          child: Container(
-                            width: width * 0.8,
-                            height: height * .053,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                color: Constants.cardColor().withOpacity(0.7)),
-                            child: TextFormField(
-                              controller: controller.startDate,
-                              decoration: const InputDecoration(
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.only(left: 5),
-                              ),
-                              style: TextStyle(color: Colors.white),
+                            
+                            child: Obx(
+                              () => Container(
+                                  padding: EdgeInsets.only(left: width * 0.02),
+                                  alignment: Alignment.center,
+                                  width: width * 0.8,
+                                  height: height * .053,
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    color:
+                                        Constants.cardColor().withOpacity(0.7),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(controller.eventDate.value),
+                                      IconButton(
+                                          onPressed: () => controller.pickDate(
+                                              context, height),
+                                          icon: const Icon(Iconsax.calendar))
+                                    ],
+                                  )),
                             ),
                           ),
-                        ),
-                        // const Padding(
-                        //   padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
-                        //   child: Text(
-                        //     'Event Time',
-                        //     style: TextStyle(
-                        //       color: Colors.white,
-                        //       fontSize: 14,
-                        //     ),
-                        //   ),
-                        // ),
-                        // Center(
-                        //   child: Container(
-                        //     width: width * 0.8,
-                        //     height: height * .053,
-                        //     decoration: BoxDecoration(
-                        //         borderRadius:
-                        //             BorderRadius.all(Radius.circular(10)),
-                        //         color:
-                        //             Constants.cardColor().withOpacity(0.7)),
-                        //     child: TextFormField(
-                        //       controller: event_time,
-                        //       decoration: const InputDecoration(
-                        //         border: InputBorder.none,
-                        //         contentPadding: EdgeInsets.only(left: 5),
-                        //       ),
-                        //       style: TextStyle(color: Colors.white),
-                        //     ),
-                        //   ),
-                        // ),
+                        
                         const Padding(
                           padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
                           child: Text(
@@ -138,7 +119,7 @@ class OtherEventDescriptionScreen extends StatelessWidget {
                             height: height * .053,
                             decoration: BoxDecoration(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
+                                    const BorderRadius.all(Radius.circular(10)),
                                 color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
                               controller: controller.venue,
@@ -146,72 +127,14 @@ class OtherEventDescriptionScreen extends StatelessWidget {
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
                               ),
-                              style: TextStyle(color: Colors.white),
+                              style: const TextStyle(color: Colors.white),
                             ),
                           ),
                         ),
-                        // const Padding(
-                        //   padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
-                        //   child: Text(
-                        //     'Event Coordinator',
-                        //     style: TextStyle(
-                        //       color: Colors.white,
-                        //       fontSize: 14,
-                        //     ),
-                        //   ),
-                        // ),
-                        // Center(
-                        //   child: Container(
-                        //     width: width * 0.8,
-                        //     height: height * .053,
-                        //     decoration:  BoxDecoration(
-                        //       borderRadius:
-                        //           BorderRadius.all(Radius.circular(10)),
-                        //      color: Constants.cardColor().withOpacity(0.7)
-                        //     ),
-                        //     child: TextFormField(
-                        //       controller: event_cordinator,
-                        //       decoration: const InputDecoration(
-                        //         border: InputBorder.none,
-                        //         contentPadding: EdgeInsets.only(left: 5),
-                        //       ),
-                        //       style: TextStyle(color: Colors.white),
-                        //     ),
-                        //   ),
-                        // ),
-                        // const Padding(
-                        //   padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
-                        //   child: Text(
-                        //     'Contact',
-                        //     style: TextStyle(
-                        //       color: Colors.white,
-                        //       fontSize: 14,
-                        //     ),
-                        //   ),
-                        // ),
-                        // Center(
-                        //   child: Container(
-                        //     width: width * 0.8,
-                        //     height: height * .053,
-                        //     decoration:  BoxDecoration(
-                        //       borderRadius:
-                        //           BorderRadius.all(Radius.circular(10)),
-                        //      color: Constants.cardColor().withOpacity(0.7)
-                        //     ),
-                        //     child: TextFormField(
-                        //       controller: condact,
-                        //       decoration: const InputDecoration(
-                        //         border: InputBorder.none,
-                        //         contentPadding: EdgeInsets.only(left: 5),
-                        //       ),
-                        //       style: TextStyle(color: Colors.white),
-                        //     ),
-                        //   ),
-                        // ),
                       ]),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               GestureDetector(
                 onTap: () => controller.addCollegeAndOtherEvent(),
                 child: Container(
@@ -219,13 +142,17 @@ class OtherEventDescriptionScreen extends StatelessWidget {
                   width: width * 0.35,
                   height: height * .053,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
                       color: Constants.cardColor().withOpacity(0.7)),
-                  child: const Text(
-                    "Post",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
+                  child: Obx(
+                    () => FittedBox(
+                      child: Text(
+                        controller.postingText.value,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                      ),
                     ),
                   ),
                 ),

@@ -94,7 +94,7 @@ class StudentProfileScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: controller.firstNameController,
@@ -120,7 +120,7 @@ class StudentProfileScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: controller.lastNameController,
@@ -146,7 +146,7 @@ class StudentProfileScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: controller.phoneNumberController,
@@ -173,7 +173,7 @@ class StudentProfileScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: controller.tkmMailController,
@@ -199,7 +199,7 @@ class StudentProfileScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: controller.admNoController,
@@ -225,7 +225,7 @@ class StudentProfileScreen extends StatelessWidget {
                             height: height * .053,
                             decoration: BoxDecoration(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
+                                    const BorderRadius.all(Radius.circular(10)),
                                 color: Constants.cardColor().withOpacity(0.7)),
                             child: Obx(
                               () => (registrationController
@@ -281,7 +281,7 @@ class StudentProfileScreen extends StatelessWidget {
                               height: height * .053,
                               decoration: BoxDecoration(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
+                                      const BorderRadius.all(Radius.circular(10)),
                                   color:
                                       Constants.cardColor().withOpacity(0.7)),
                               child: TextFormField(
@@ -291,7 +291,7 @@ class StudentProfileScreen extends StatelessWidget {
                                   hintText: "Start",
                                   contentPadding: EdgeInsets.only(left: 5),
                                 ),
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                               ),
                             ),
                             SizedBox(
@@ -302,7 +302,7 @@ class StudentProfileScreen extends StatelessWidget {
                               height: height * .053,
                               decoration: BoxDecoration(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
+                                      const BorderRadius.all(Radius.circular(10)),
                                   color:
                                       Constants.cardColor().withOpacity(0.7)),
                               child: TextFormField(
@@ -312,7 +312,7 @@ class StudentProfileScreen extends StatelessWidget {
                                   hintText: "End",
                                   contentPadding: EdgeInsets.only(left: 5),
                                 ),
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                               ),
                             ),
                           ],
@@ -333,7 +333,7 @@ class StudentProfileScreen extends StatelessWidget {
                 width: width * 0.35,
                 height: height * .053,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                     color: Constants.cardColor().withOpacity(0.7)),
                 child: const Text(
                   "Submit",

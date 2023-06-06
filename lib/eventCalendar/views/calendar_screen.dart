@@ -88,7 +88,7 @@ class CalendarScreen extends StatelessWidget {
               height: height * 0.03,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+                children: const [
                   Text(
                     'Scheduled Events',
                     style: TextStyle(color: Colors.white, fontSize: 18),
@@ -170,7 +170,7 @@ class CalendarScreen extends StatelessWidget {
                                               height: 0.065 * height,
                                               width: 0.206 * width,
                                               decoration: BoxDecoration(
-                                                color: Color.fromARGB(
+                                                color: const Color.fromARGB(
                                                     255, 36, 36, 49),
                                                 borderRadius:
                                                     BorderRadius.circular(10),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 
 class feedDetailedScreen extends StatelessWidget {
   const feedDetailedScreen({super.key});
@@ -9,15 +8,15 @@ class feedDetailedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
      double width = MediaQuery.of(context).size.width;
      double height = MediaQuery.of(context).size.height;
-     double postSize = height * 0.6;
+    
     // final Test test;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: const Text("Home"),
         backgroundColor: Colors.black,
       ),
       
-      drawer:  NavigationDrawer(),
+      drawer:  const NavigationDrawer(),
     );
   }
   

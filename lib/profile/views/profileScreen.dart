@@ -2,9 +2,11 @@ import 'package:alma/auth/controllers/auth_controller.dart';
 import 'package:alma/profile/views/alumni_edit_profile_screen.dart';
 import 'package:alma/profile/views/staff_edit_profile_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import '../../core/constants.dart';
 import '../controllers/profile_controller.dart';
 
@@ -42,7 +44,6 @@ class ProfilePage extends StatelessWidget {
                       "Hi, ${profileController.user.value.firstName}",
                       style: const TextStyle(
                         fontSize: 25,
-                        fontFamily: 'Helavtica',
                       ),
                     ),
                   ),
@@ -68,7 +69,6 @@ class ProfilePage extends StatelessWidget {
                   duration: const Duration(milliseconds: 2500),
                   verticalOffset: -20,
                   child: Container(
-                    //height: 0.2 * height,
                     width: 0.9 * width,
                     decoration: BoxDecoration(
                         color: Constants.cardColor().withOpacity(0.7),
@@ -82,7 +82,6 @@ class ProfilePage extends StatelessWidget {
                           child: const Text(
                             'Bio:',
                             style: TextStyle(
-                              fontFamily: 'Helvatica',
                               fontSize: 20,
                             ),
                           ),
@@ -123,7 +122,6 @@ class ProfilePage extends StatelessWidget {
                           child: const Text(
                             'Interested Areas:',
                             style: TextStyle(
-                              fontFamily: 'Helvatica',
                               fontSize: 20,
                             ),
                           ),
@@ -136,7 +134,7 @@ class ProfilePage extends StatelessWidget {
                           child: Text(
                             profileController.user.value.areaOfInterest!
                                 .join(", "),
-                            style: TextStyle(fontSize: 18),
+                            style: const TextStyle(fontSize: 18),
                           ),
                         )
                       ],
@@ -174,12 +172,12 @@ class ProfilePage extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.edit),
+                              Icon(FeatherIcons.edit3),
                               Text(
                                 'Edit Profile',
                                 style: TextStyle(
                                   fontSize: 20,
-                                  fontFamily: 'Helvatica',
+
                                   //fontWeight: FontWeight.bold
                                 ),
                               ),
@@ -203,25 +201,29 @@ class ProfilePage extends StatelessWidget {
                         horizontalOffset: 20,
                         child: Column(
                           children: [
-                            Container(
-                              height: 0.148 * height,
-                              width: 0.445 * width,
-                              decoration: BoxDecoration(
-                                  color: Constants.cardColor().withOpacity(0.7),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.post_add),
-                                  Text(
-                                    'My Posts',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontFamily: 'Helvatica',
-                                      //fontWeight: FontWeight.bold
+                            GestureDetector(
+                              onTap: () => profileController.fetchMyEvents(),
+                              child: Container(
+                                height: 0.148 * height,
+                                width: 0.445 * width,
+                                decoration: BoxDecoration(
+                                    color:
+                                        Constants.cardColor().withOpacity(0.7),
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Iconsax.note),
+                                    Text(
+                                      'My Posts',
+                                      style: TextStyle(
+                                        fontSize: 20,
+
+                                        //fontWeight: FontWeight.bold
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                             SizedBox(
@@ -243,12 +245,12 @@ class ProfilePage extends StatelessWidget {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Icon(Icons.logout),
+                                      Icon(Iconsax.logout),
                                       Text(
                                         'Log Out',
                                         style: TextStyle(
                                           fontSize: 20,
-                                          fontFamily: 'Helvatica',
+                                          fontFamily: 'Helvetica',
                                           //fontWeight: FontWeight.bold
                                         ),
                                       ),

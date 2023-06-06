@@ -1,6 +1,6 @@
 import 'package:alma/core/constants.dart';
 import 'package:alma/events/controllers/event_controller.dart';
-import 'package:alma/home/views/drawer_screen.dart';
+import 'package:alma/profile/controllers/profile_controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,15 +9,11 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-class NewsFeedScreen extends StatelessWidget {
-  NewsFeedScreen({Key? key}) : super(key: key);
+class MyEventsScreen extends StatelessWidget {
+  MyEventsScreen({Key? key}) : super(key: key);
 
-  final EventsController controller = Get.find();
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  void _openDrawer() {
-    _scaffoldKey.currentState?.openDrawer();
-  }
+  final EventsController eventsController = Get.find();
+  final ProfileController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -27,31 +23,29 @@ class NewsFeedScreen extends StatelessWidget {
 
     return SafeArea(
         child: Scaffold(
-            key: _scaffoldKey,
-            drawer: NavigationDrawerScreen(),
-            drawerEnableOpenDragGesture: true,
             backgroundColor: Colors.transparent,
             body: CustomScrollView(
               physics: const BouncingScrollPhysics(),
               slivers: [
                 SliverAppBar(
                   leading: IconButton(
-                      onPressed: () => _openDrawer(),
-                      icon: const Icon(Iconsax.menu, color: Colors.white)),
+                    onPressed: () {
+                      Get.back();
+                    },
+                    icon: const Icon(
+                      Iconsax.arrow_left_2,
+                      color: Colors.white,
+                    ),
+                  ),
                   pinned: false,
                   floating: true,
                   snap: true,
                   centerTitle: true,
                   title: const Text(
-                    "Alma",
+                    "My Events",
                   ),
                   backgroundColor: Colors.black,
                 ),
-                // CupertinoSliverRefreshControl(
-                //   onRefresh: () async {
-                //     controller.fetchEvents();
-                //   },
-                // ),
                 SliverPadding(
                   padding: EdgeInsets.symmetric(horizontal: width * 0.04),
                   sliver: Obx(
@@ -103,7 +97,7 @@ class NewsFeedScreen extends StatelessWidget {
                                             width: width,
                                             child: InkWell(
                                               onTap: () {
-                                                controller.gotoEvent(
+                                                eventsController.gotoEvent(
                                                     controller.events[index]);
                                               },
                                               child: Container(
@@ -112,7 +106,7 @@ class NewsFeedScreen extends StatelessWidget {
                                                 width: width,
                                                 decoration: BoxDecoration(
                                                     color: Constants.cardColor()
-                                                        .withOpacity(0.7),
+                                                        .withOpacity(0.65),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             15)),
@@ -136,10 +130,9 @@ class NewsFeedScreen extends StatelessWidget {
                                                                 height: width *
                                                                     0.11,
                                                                 child: controller
-                                                                            .events[
-                                                                                index]
-                                                                            .postedBy!
-                                                                            .imgUrl ==
+                                                                            .user
+                                                                            .value
+                                                                            .imageUrl ==
                                                                         ''
                                                                     ? Image.asset(
                                                                         NOIMAGE)
@@ -151,7 +144,7 @@ class NewsFeedScreen extends StatelessWidget {
                                                                               child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(context.theme.disabledColor), value: downloadProgress.progress),
                                                                             ),
                                                                         imageUrl:
-                                                                            "${controller.events[index].postedBy!.imgUrl}")),
+                                                                            "${controller.user.value.imageUrl}")),
                                                           ),
                                                           SizedBox(
                                                             width: width * 0.02,
@@ -165,7 +158,7 @@ class NewsFeedScreen extends StatelessWidget {
                                                                     .start,
                                                             children: [
                                                               Text(
-                                                                "${controller.events[index].postedBy!.firstName}",
+                                                                "${controller.user.value.username}",
                                                                 style: Constants
                                                                         .txtStyle()
                                                                     .copyWith(
@@ -285,4 +278,6 @@ class NewsFeedScreen extends StatelessWidget {
               ],
             )));
   }
+
+  // The app bar of the home screen is set as an widget function here
 }
