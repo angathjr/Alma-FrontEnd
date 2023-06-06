@@ -50,7 +50,7 @@ class JobScreen extends StatelessWidget {
                           width: width,
                           height: height * .22,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderRadius: const BorderRadius.all(Radius.circular(10)),
                             color: Constants.cardColor().withOpacity(0.65),
                           ),
                           child: Column(
@@ -66,7 +66,7 @@ class JobScreen extends StatelessWidget {
                                       flex: 4,
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: Container(
+                                        child: SizedBox(
                                           height: height * 0.15,
                                           width: width * .01,
                                           child: ClipRRect(
@@ -83,37 +83,35 @@ class JobScreen extends StatelessWidget {
                                     ),
                                   Expanded(
                                     flex: 5,
-                                    child: Container(
-                                      child: Column(children: [
-                                        Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              10, 30, 10, 10),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsets.symmetric(),
-                                            child: Text(
-                                              "${controller.jobs[index].eventName}",
-                                              style: const TextStyle(
-                                                  fontSize: 22,
-                                                  fontFamily: 'Helavtica',
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
+                                    child: Column(children: [
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            10, 30, 10, 10),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsets.symmetric(),
                                           child: Text(
-                                            "${controller.jobs[index].eventDescription}",
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 4,
+                                            "${controller.jobs[index].eventName}",
                                             style: const TextStyle(
-                                              fontSize: 14,
-                                              fontFamily: 'Helavtica',
-                                            ),
+                                                fontSize: 22,
+                                                fontFamily: 'Helavtica',
+                                                fontWeight: FontWeight.bold),
                                           ),
                                         ),
-                                      ]),
-                                    ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          "${controller.jobs[index].eventDescription}",
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 4,
+                                          style: const TextStyle(
+                                            fontSize: 14,
+                                            fontFamily: 'Helavtica',
+                                          ),
+                                        ),
+                                      ),
+                                    ]),
                                   )
                                 ],
                               ),

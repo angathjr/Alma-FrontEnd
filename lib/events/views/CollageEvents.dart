@@ -50,7 +50,7 @@ class CollageEventScreen extends StatelessWidget {
                             height: height * .22,
                             decoration: BoxDecoration(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
+                                    const BorderRadius.all(Radius.circular(10)),
                                 color: Constants.cardColor().withOpacity(0.7)),
                             child: Row(
                               children: [
@@ -59,7 +59,7 @@ class CollageEventScreen extends StatelessWidget {
                                     flex: 4,
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Container(
+                                      child: SizedBox(
                                         height: height * 0.15,
                                         width: width * .01,
                                         child: ClipRRect(
@@ -75,36 +75,34 @@ class CollageEventScreen extends StatelessWidget {
                                   ),
                                 Expanded(
                                   flex: 5,
-                                  child: Container(
-                                    child: Column(children: [
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            10, 30, 10, 10),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(),
-                                          child: Text(
-                                            "${controller.collageEvent[index].eventName}",
-                                            style: const TextStyle(
-                                                fontSize: 25,
-                                                fontFamily: 'Helavtica',
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
+                                  child: Column(children: [
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 30, 10, 10),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(),
                                         child: Text(
-                                          "${controller.collageEvent[index].eventDescription}",
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 4,
+                                          "${controller.collageEvent[index].eventName}",
                                           style: const TextStyle(
-                                            fontSize: 12,
-                                            fontFamily: 'Helavtica',
-                                          ),
+                                              fontSize: 25,
+                                              fontFamily: 'Helavtica',
+                                              fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                    ]),
-                                  ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        "${controller.collageEvent[index].eventDescription}",
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 4,
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: 'Helavtica',
+                                        ),
+                                      ),
+                                    ),
+                                  ]),
                                 )
                               ],
                             )),

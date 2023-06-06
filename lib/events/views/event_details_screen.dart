@@ -75,7 +75,7 @@ class EventDetailsScreen extends StatelessWidget {
                     height: height * 0.03,
                   ),
                   Row(
-                    children: [
+                    children: const [
                       Text(
                         "Description:",
                         style: TextStyle(

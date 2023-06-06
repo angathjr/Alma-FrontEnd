@@ -60,7 +60,7 @@ class OtherEventScreen extends StatelessWidget {
                                     flex: 4,
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Container(
+                                      child: SizedBox(
                                         height: height * 0.15,
                                         width: width * .01,
                                         child: ClipRRect(
@@ -76,36 +76,34 @@ class OtherEventScreen extends StatelessWidget {
                                   ),
                                 Expanded(
                                   flex: 5,
-                                  child: Container(
-                                    child: Column(children: [
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            10, 30, 10, 10),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(),
-                                          child: Text(
-                                            "${controller.otherEvent[index].eventName}",
-                                            style: const TextStyle(
-                                                fontSize: 25,
-                                                fontFamily: 'Helavtica',
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
+                                  child: Column(children: [
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 30, 10, 10),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(),
                                         child: Text(
-                                          "${controller.otherEvent[index].eventDescription}",
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 4,
+                                          "${controller.otherEvent[index].eventName}",
                                           style: const TextStyle(
-                                            fontSize: 12,
-                                            fontFamily: 'Helavtica',
-                                          ),
+                                              fontSize: 25,
+                                              fontFamily: 'Helavtica',
+                                              fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                    ]),
-                                  ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        "${controller.otherEvent[index].eventDescription}",
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 4,
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: 'Helavtica',
+                                        ),
+                                      ),
+                                    ),
+                                  ]),
                                 )
                               ],
                             )),

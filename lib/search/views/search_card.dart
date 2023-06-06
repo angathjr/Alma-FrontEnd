@@ -37,7 +37,7 @@ class SearchCard extends StatelessWidget {
                   flex: 4,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Container(
+                    child: SizedBox(
                       height: height * 0.15,
                       width: width * .01,
                       //color: Colors.green,
@@ -60,33 +60,32 @@ class SearchCard extends StatelessWidget {
                 ),
               Expanded(
                 flex: 5,
-                child: Container(
-                  //  color: Colors.amber,
-                  child: Column(children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
-                      child: Text(
-                        "${searchController.events[index].eventName}",
-                        style: const TextStyle(
-                            fontSize: 32,
-                            fontFamily: 'Helavtica',
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "${searchController.events[index].eventDescription}",
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 4,
-                        style: const TextStyle(
-                          fontSize: 12,
+                child: Column(children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
+                    child: Text(
+                      "${searchController.events[index].eventName}",
+                       overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: const TextStyle(
+                          fontSize: 23,
                           fontFamily: 'Helavtica',
-                        ),
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "${searchController.events[index].eventDescription}",
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 4,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontFamily: 'Helavtica',
                       ),
                     ),
-                  ]),
-                ),
+                  ),
+                ]),
               )
             ],
           )),

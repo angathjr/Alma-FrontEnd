@@ -96,7 +96,7 @@ class AlumniProfileScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: controller.firstNameController,
@@ -122,7 +122,7 @@ class AlumniProfileScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: controller.lastNameController,
@@ -148,7 +148,7 @@ class AlumniProfileScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: controller.phoneNumberController,
@@ -157,7 +157,7 @@ class AlumniProfileScreen extends StatelessWidget {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                         SizedBox(
@@ -175,7 +175,7 @@ class AlumniProfileScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: controller.ktuRegController,
@@ -183,7 +183,7 @@ class AlumniProfileScreen extends StatelessWidget {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                         SizedBox(
@@ -200,7 +200,7 @@ class AlumniProfileScreen extends StatelessWidget {
                           width: width * 02,
                           height: height * .053,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderRadius: const BorderRadius.all(Radius.circular(10)),
                             color: Constants.cardColor().withOpacity(0.7),
                           ),
                           child: TextFormField(
@@ -209,7 +209,7 @@ class AlumniProfileScreen extends StatelessWidget {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                         SizedBox(
@@ -227,12 +227,12 @@ class AlumniProfileScreen extends StatelessWidget {
                             height: height * .053,
                             decoration: BoxDecoration(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
+                                    const BorderRadius.all(Radius.circular(10)),
                                 color: Constants.cardColor().withOpacity(0.7)),
                             child: Obx(
                               () => (regController.isdepartmentfetched.value ==
                                       false)
-                                  ? Center(child: CupertinoActivityIndicator())
+                                  ? const Center(child: CupertinoActivityIndicator())
                                   : DropdownButtonHideUnderline(
                                       child: ButtonTheme(
                                         alignedDropdown: true,
@@ -280,7 +280,7 @@ class AlumniProfileScreen extends StatelessWidget {
                               height: height * .053,
                               decoration: BoxDecoration(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
+                                      const BorderRadius.all(Radius.circular(10)),
                                   color:
                                       Constants.cardColor().withOpacity(0.7)),
                               child: TextFormField(
@@ -291,7 +291,7 @@ class AlumniProfileScreen extends StatelessWidget {
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 5),
                                 ),
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                               ),
                             ),
                             SizedBox(
@@ -302,7 +302,7 @@ class AlumniProfileScreen extends StatelessWidget {
                               height: height * .053,
                               decoration: BoxDecoration(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
+                                      const BorderRadius.all(Radius.circular(10)),
                                   color:
                                       Constants.cardColor().withOpacity(0.7)),
                               child: TextFormField(
@@ -313,7 +313,7 @@ class AlumniProfileScreen extends StatelessWidget {
                                   hintText: "end",
                                   contentPadding: EdgeInsets.only(left: 5),
                                 ),
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                               ),
                             ),
                           ],
@@ -333,7 +333,7 @@ class AlumniProfileScreen extends StatelessWidget {
                 width: width * 0.35,
                 height: height * .053,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                     color: Constants.cardColor().withOpacity(0.7)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
