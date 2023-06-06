@@ -311,6 +311,7 @@ class StaffProfileScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                     color: Constants.cardColor().withOpacity(0.7)),
+             
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

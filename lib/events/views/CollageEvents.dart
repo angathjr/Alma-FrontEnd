@@ -24,7 +24,7 @@ class CollageEventScreen extends StatelessWidget {
             },
             icon: const Icon(Iconsax.arrow_left_2)),
         title: const Text(
-          'Collage Events',
+          'College Events',
           style: TextStyle(color: Colors.white),
         ),
       ),

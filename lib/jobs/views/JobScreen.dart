@@ -31,6 +31,7 @@ class JobScreen extends StatelessWidget {
         ),
       ),
       body: Obx(
+
         () => controller.isJobLoading.value
             ? const Center(
                 child: CupertinoActivityIndicator(),
@@ -38,6 +39,7 @@ class JobScreen extends StatelessWidget {
             : ListView.builder(
                 shrinkWrap: true,
                 itemCount: controller.jobs.length,
+                
                 itemBuilder: ((context, index) {
                   return Center(
                     child: GestureDetector(

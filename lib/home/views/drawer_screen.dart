@@ -96,7 +96,7 @@ class NavigationDrawerScreen extends StatelessWidget {
                 duration: const Duration(milliseconds: 2500),
                 child: ListTile(
                   title: const Text(
-                    'Collage Events',
+                    'College Events',
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   onTap: () {
