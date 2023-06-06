@@ -88,10 +88,10 @@ class MyApp extends StatelessWidget {
             name: '/',
             page: () => storage.hasData('authToken')
                 ? storage.read('isVerified') ?? false
-                    ? NavBarPage()
+                    ? NavBarScreen()
                     : UserSelectionScreen()
                 : LoginScreen()),
-        GetPage(name: '/navBar', page: () => NavBarPage()),
+        GetPage(name: '/navBar', page: () => NavBarScreen()),
         GetPage(name: '/login', page: () => LoginScreen()),
         GetPage(name: '/alumni-profile', page: () => AlumniProfileScreen()),
         GetPage(name: '/staff-profile', page: () => StaffProfileScreen()),

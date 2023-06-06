@@ -121,7 +121,7 @@ class StaffProfileScreen extends StatelessWidget {
                             height: height * .053,
                             decoration: BoxDecoration(
                                 borderRadius:
-                                    BorderRadius.all(const Radius.circular(10)),
+                                    const BorderRadius.all(Radius.circular(10)),
                                 color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
                               controller: staffController.lastNameController,
@@ -311,9 +311,9 @@ class StaffProfileScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                     color: Constants.cardColor().withOpacity(0.7)),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
                       "Submit",
                       style: TextStyle(

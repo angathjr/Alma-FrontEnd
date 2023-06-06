@@ -158,7 +158,7 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                               //color: Color(0xff25262E),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
-                            controller: controller.eventName,
+                            controller: controller.duration,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),

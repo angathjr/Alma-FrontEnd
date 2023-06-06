@@ -162,7 +162,7 @@ class AlumniDirectoryScreen extends StatelessWidget {
                                                                 TextOverflow
                                                                     .ellipsis,
                                                             maxLines: 4,
-                                                            style: TextStyle(
+                                                            style: const TextStyle(
                                                               fontSize: 14,
                                                             ),
                                                           ),
