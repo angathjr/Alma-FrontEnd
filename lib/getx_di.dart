@@ -33,5 +33,6 @@ class GetXDependancyInjector {
     Get.lazyPut(() => EventSearchController(), fenix: true);
     Get.lazyPut(() => PostController(), fenix: true);
     Get.lazyPut(() => AlumniDirController(), fenix: true);
+    Get.lazyPut(() => ProfileController(), fenix: true);
   }
 }

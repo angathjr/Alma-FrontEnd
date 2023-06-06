@@ -232,7 +232,8 @@ class PostController extends GetxController {
     try {
       final storageRef = FirebaseStorage.instance.ref();
 
-      final profileRef = storageRef.child('jobs/${companyName.text}');
+      final profileRef = storageRef
+          .child('events/${eventName.text + DateTime.now().toString()}');
       await profileRef.putFile(
         selectedImage.value,
       );
