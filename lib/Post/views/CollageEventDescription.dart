@@ -106,6 +106,35 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                                   )),
                             ),
                           ),
+                             const Padding(
+                        padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
+                        child: Text(
+                          'Duration',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Container(
+                          width: width * 0.8,
+                          height: height * .053,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              //color: Color(0xff25262E),
+                              color: Constants.cardColor().withOpacity(0.7)),
+                          child: TextFormField(
+                            controller: controller.eventName,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: 5),
+                            ),
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
                           const Padding(
                             padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
                             child: Text(
