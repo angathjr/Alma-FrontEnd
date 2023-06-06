@@ -85,7 +85,6 @@ class InternshipScreen extends StatelessWidget {
                                         "${controller.internship[index].eventName}",
                                         style: const TextStyle(
                                             fontSize: 22,
-                                            fontFamily: 'Helavtica',
                                             fontWeight: FontWeight.bold),
                                       ),
                                     ),
@@ -98,7 +97,6 @@ class InternshipScreen extends StatelessWidget {
                                       maxLines: 4,
                                       style: const TextStyle(
                                         fontSize: 14,
-                                        fontFamily: 'Helavtica',
                                       ),
                                     ),
                                   ),

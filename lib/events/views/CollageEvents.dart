@@ -85,7 +85,6 @@ class CollageEventScreen extends StatelessWidget {
                                           "${controller.collageEvent[index].eventName}",
                                           style: const TextStyle(
                                               fontSize: 25,
-                                              fontFamily: 'Helavtica',
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ),
@@ -98,7 +97,6 @@ class CollageEventScreen extends StatelessWidget {
                                         maxLines: 4,
                                         style: const TextStyle(
                                           fontSize: 12,
-                                          fontFamily: 'Helavtica',
                                         ),
                                       ),
                                     ),

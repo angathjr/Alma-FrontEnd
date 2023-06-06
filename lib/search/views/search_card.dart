@@ -65,12 +65,10 @@ class SearchCard extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
                     child: Text(
                       "${searchController.events[index].eventName}",
-                       overflow: TextOverflow.ellipsis,
+                      overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                       style: const TextStyle(
-                          fontSize: 23,
-                          fontFamily: 'Helavtica',
-                          fontWeight: FontWeight.bold),
+                          fontSize: 23, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Padding(
@@ -81,7 +79,6 @@ class SearchCard extends StatelessWidget {
                       maxLines: 4,
                       style: const TextStyle(
                         fontSize: 14,
-                        fontFamily: 'Helavtica',
                       ),
                     ),
                   ),

@@ -68,7 +68,6 @@ class EventDetailsScreen extends StatelessWidget {
                     "${controller.selectedEvent.value.eventName}",
                     style: const TextStyle(
                         fontSize: 27,
-                        fontFamily: 'Helavtica',
                         fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
@@ -80,7 +79,6 @@ class EventDetailsScreen extends StatelessWidget {
                         "Description:",
                         style: TextStyle(
                             fontSize: 20,
-                            fontFamily: 'Helavtica',
                             fontWeight: FontWeight.bold),
                       ),
                     ],

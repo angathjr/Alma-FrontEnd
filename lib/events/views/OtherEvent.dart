@@ -86,7 +86,6 @@ class OtherEventScreen extends StatelessWidget {
                                           "${controller.otherEvent[index].eventName}",
                                           style: const TextStyle(
                                               fontSize: 25,
-                                              fontFamily: 'Helavtica',
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ),
@@ -99,7 +98,6 @@ class OtherEventScreen extends StatelessWidget {
                                         maxLines: 4,
                                         style: const TextStyle(
                                           fontSize: 12,
-                                          fontFamily: 'Helavtica',
                                         ),
                                       ),
                                     ),

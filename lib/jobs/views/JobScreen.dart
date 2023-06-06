@@ -94,7 +94,6 @@ class JobScreen extends StatelessWidget {
                                             "${controller.jobs[index].eventName}",
                                             style: const TextStyle(
                                                 fontSize: 22,
-                                                fontFamily: 'Helavtica',
                                                 fontWeight: FontWeight.bold),
                                           ),
                                         ),
@@ -107,7 +106,6 @@ class JobScreen extends StatelessWidget {
                                           maxLines: 4,
                                           style: const TextStyle(
                                             fontSize: 14,
-                                            fontFamily: 'Helavtica',
                                           ),
                                         ),
                                       ),
