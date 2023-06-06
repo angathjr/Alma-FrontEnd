@@ -37,7 +37,7 @@ class NavigationDrawerScreen extends StatelessWidget {
                           ))),
                 ),
                 Text(
-                  "${profileController.user.value.username}",
+                  "${profileController.user.value.firstName}",
                   style: const TextStyle(color: Colors.white, fontSize: 22),
                 ),
               ],
