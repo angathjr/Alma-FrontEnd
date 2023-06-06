@@ -18,7 +18,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'AlumniDirectory/views/AlumniDirectory.dart';
+import 'alumniDirectory/views/alumni_directory.dart.dart';
 import 'Post/views/CollageEventDescription.dart';
 import 'Post/views/OtherEventDescription.dart';
 import 'auth/views/login_screen.dart';
@@ -115,8 +115,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/EditProfile', page: () => ProfileEditScreen()),
         GetPage(name: '/feedDetails', page: () => EventDetailsScreen()),
         GetPage(name: '/myEvents', page: () => MyEventsScreen()),
-         GetPage(name: '/alumniDirectory-page', page: () => AlumniDirectory()),
-        
+        GetPage(name: '/alumni-dir', page: () => AlumniDirectoryScreen()),
       ],
     );
   }

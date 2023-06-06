@@ -3,12 +3,14 @@ import 'package:alma/profile/controllers/profile_controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../alumniDirectory/controllers/alumni_controller.dart';
 import '../../events/controllers/event_controller.dart';
 
 class NavigationDrawerScreen extends StatelessWidget {
   NavigationDrawerScreen({super.key});
   final EventsController eventsController = Get.find();
   final ProfileController profileController = Get.find();
+  final AlumniDirController alumniDirController = Get.find();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -83,20 +85,18 @@ class NavigationDrawerScreen extends StatelessWidget {
             ),
             onTap: () {
               eventsController.fetchOtherEvent();
-              Get.toNamed('/otherEvent-page');
+              Get.toNamed('/alumni-dir');
             },
-            
           ),
-            ListTile(
+          ListTile(
             title: const Text(
               'Alumni Directory',
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
             onTap: () {
-              eventsController.fetchOtherEvent();
-              Get.toNamed('/alumniDirectory-page');
+              alumniDirController.fetchAlumni();
+              Get.toNamed('/alumni-dir');
             },
-            
           ),
         ],
       ),
