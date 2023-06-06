@@ -66,6 +66,8 @@ class EventDetailsScreen extends StatelessWidget {
                   ),
                   Text(
                     "${controller.selectedEvent.value.eventName}",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 3,
                     style: const TextStyle(
                         fontSize: 27,
                         fontWeight: FontWeight.bold),

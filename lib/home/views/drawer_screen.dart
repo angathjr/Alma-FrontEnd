@@ -85,6 +85,18 @@ class NavigationDrawerScreen extends StatelessWidget {
               eventsController.fetchOtherEvent();
               Get.toNamed('/otherEvent-page');
             },
+            
+          ),
+            ListTile(
+            title: const Text(
+              'Alumni Directory',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            onTap: () {
+              eventsController.fetchOtherEvent();
+              Get.toNamed('/alumniDirectory-page');
+            },
+            
           ),
         ],
       ),
