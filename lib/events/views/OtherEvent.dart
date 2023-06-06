@@ -19,12 +19,11 @@ class OtherEventScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-         leading: IconButton(
-          onPressed: () {
-            Get.back();
-
-          },
-          icon: const Icon(Iconsax.arrow_left_2)),
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Iconsax.arrow_left_2)),
         title: const Text(
           'Other Events',
           style: TextStyle(color: Colors.white),
@@ -67,10 +66,22 @@ class OtherEventScreen extends StatelessWidget {
                                             borderRadius:
                                                 BorderRadius.circular(15),
                                             child: CachedNetworkImage(
-                                                
-                                                imageUrl: "${controller.otherEvent[index].imgUrl}}",
-                                                fit: BoxFit.cover,
-                                              )),
+                                              progressIndicatorBuilder:
+                                                  (context, url,
+                                                          downloadProgress) =>
+                                                      Center(
+                                                child: CircularProgressIndicator(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation(
+                                                            context.theme
+                                                                .disabledColor),
+                                                    value: downloadProgress
+                                                        .progress),
+                                              ),
+                                              imageUrl:
+                                                  "${controller.otherEvent[index].imgUrl}}",
+                                              fit: BoxFit.cover,
+                                            )),
                                       ),
                                     ),
                                   ),

@@ -19,6 +19,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'alumniDirectory/views/alumni_directory.dart.dart';
 import 'Post/views/CollageEventDescription.dart';
 import 'Post/views/OtherEventDescription.dart';
 import 'auth/views/login_screen.dart';
@@ -88,10 +89,10 @@ class MyApp extends StatelessWidget {
             name: '/',
             page: () => storage.hasData('authToken')
                 ? storage.read('isVerified') ?? false
-                    ? NavBarPage()
+                    ? NavBarScreen()
                     : UserSelectionScreen()
                 : LoginScreen()),
-        GetPage(name: '/navBar', page: () => NavBarPage()),
+        GetPage(name: '/navBar', page: () => NavBarScreen()),
         GetPage(name: '/login', page: () => LoginScreen()),
         GetPage(name: '/alumni-profile', page: () => AlumniProfileScreen()),
         GetPage(name: '/staff-profile', page: () => StaffProfileScreen()),
@@ -117,6 +118,7 @@ class MyApp extends StatelessWidget {
         // name: '/AlumniEditProfile', page: () => AlumniEditProfileScreen()),
         GetPage(name: '/feedDetails', page: () => EventDetailsScreen()),
         GetPage(name: '/myEvents', page: () => MyEventsScreen()),
+        GetPage(name: '/alumni-dir', page: () => AlumniDirectoryScreen()),
       ],
     );
   }

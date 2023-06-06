@@ -21,6 +21,8 @@ class EventModel {
   final String? institutionName;
   final dynamic imgUrl;
   final PostedBy? postedBy;
+  final String? duration;
+  final String? eventLink;
 
   EventModel(
       {this.eventType,
@@ -36,6 +38,8 @@ class EventModel {
       this.institutionName,
       this.imgUrl,
       this.postedBy,
+      this.duration,
+      this.eventLink,
       this.venue});
 
   EventModel copyWith(
@@ -52,11 +56,15 @@ class EventModel {
           String? institutionName,
           dynamic imgUrl,
           PostedBy? postedBy,
+          String? duration,
+          String? eventLink,
           String? venue}) =>
       EventModel(
           eventType: eventType ?? this.eventType,
           eventName: eventName ?? this.eventName,
           eventDate: eventDate ?? this.eventDate,
+          duration: duration ?? this.duration,
+          eventLink: eventLink ?? this.eventLink,
           eventDescription: eventDescription ?? this.eventDescription,
           role: role ?? this.role,
           skillsRequired: skillsRequired ?? this.skillsRequired,
@@ -92,11 +100,14 @@ class EventModel {
       postedBy: json["posted_by"] == null
           ? null
           : PostedBy.fromJson(json["posted_by"]),
-      venue: json["venue"] ?? '');
+      venue: json["venue"] ?? '',
+      duration: json["duration"] ?? '',
+      eventLink: json["event_link"] ?? '');
 
   Map<String, dynamic> toJson() => {
         "event_type": eventType ?? 'J',
         "event_name": eventName ?? '',
+        "duration": duration ?? "",
         "event_date":
             "${eventDate!.year.toString().padLeft(4, '0')}-${eventDate!.month.toString().padLeft(2, '0')}-${eventDate!.day.toString().padLeft(2, '0')}",
         "event_description": eventDescription ?? '',
@@ -113,7 +124,8 @@ class EventModel {
         "institution_name": institutionName,
         "img_url": imgUrl,
         "posted_by": postedBy?.toJson(),
-        "venue": venue ?? ''
+        "venue": venue ?? '',
+        "event_link": eventLink ?? ''
       };
 }
 

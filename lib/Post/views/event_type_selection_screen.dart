@@ -71,7 +71,7 @@ class EventSelectionScreen extends StatelessWidget {
                                       color:
                                           controller.selectedEventType.value !=
                                                   "J"
-                                              ? Colors.grey.withOpacity(0.4)
+                                              ? Colors.white12
                                               : Colors.grey),
                                   height: height,
                                   child: Column(
@@ -104,7 +104,7 @@ class EventSelectionScreen extends StatelessWidget {
                                       color:
                                           controller.selectedEventType.value !=
                                                   "I"
-                                              ? Colors.grey.withOpacity(0.4)
+                                              ? Colors.white12
                                               : Colors.grey),
                                   height: height,
                                   child: Column(
@@ -148,7 +148,7 @@ class EventSelectionScreen extends StatelessWidget {
                                       color:
                                           controller.selectedEventType.value !=
                                                   "C"
-                                              ? Colors.grey.withOpacity(0.4)
+                                              ? Colors.white12
                                               : Colors.grey),
                                   height: height,
                                   child: Column(
@@ -181,7 +181,7 @@ class EventSelectionScreen extends StatelessWidget {
                                       color:
                                           controller.selectedEventType.value !=
                                                   "O"
-                                              ? Colors.grey.withOpacity(0.4)
+                                              ? Colors.white12
                                               : Colors.grey),
                                   height: height,
                                   child: Column(

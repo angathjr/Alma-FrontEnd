@@ -18,12 +18,11 @@ class CollageEventScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-         leading: IconButton(
-          onPressed: () {
-            Get.back();
-
-          },
-          icon: const Icon(Iconsax.arrow_left_2)),
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Iconsax.arrow_left_2)),
         title: const Text(
           'Collage Events',
           style: TextStyle(color: Colors.white),
@@ -34,80 +33,99 @@ class CollageEventScreen extends StatelessWidget {
             ? const Center(
                 child: CupertinoActivityIndicator(),
               )
-            : ListView.builder(
-                shrinkWrap: true,
-                itemCount: controller.collageEvent.length,
-                itemBuilder: ((context, index) {
-                  return Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        controller.gotoEvent(controller.collageEvent[index]);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                            width: width,
-                            height: height * .22,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
-                                color: Constants.cardColor().withOpacity(0.7)),
-                            child: Row(
-                              children: [
-                                if (controller.collageEvent[index].imgUrl != "")
-                                  Expanded(
-                                    flex: 4,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: SizedBox(
-                                        height: height * 0.15,
-                                        width: width * .01,
-                                        child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            child:CachedNetworkImage(
-                                                
-                                                imageUrl: "${controller.collageEvent[index].imgUrl}}",
-                                                fit: BoxFit.cover,
-                                              )),
-                                      ),
-                                    ),
-                                  ),
-                                Expanded(
-                                  flex: 5,
-                                  child: Column(children: [
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          10, 30, 10, 10),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(),
-                                        child: Text(
-                                          "${controller.collageEvent[index].eventName}",
-                                          style: const TextStyle(
-                                              fontSize: 25,
-                                              fontWeight: FontWeight.bold),
+            : Padding(
+                padding: EdgeInsets.symmetric(horizontal: width * 0.04),
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: controller.collageEvent.length,
+                    itemBuilder: ((context, index) {
+                      return Center(
+                        child: GestureDetector(
+                          onTap: () {
+                            controller
+                                .gotoEvent(controller.collageEvent[index]);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: Container(
+                                width: width,
+                                height: height * .22,
+                                decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    color:
+                                        Constants.cardColor().withOpacity(0.7)),
+                                child: Row(
+                                  children: [
+                                    if (controller.collageEvent[index].imgUrl !=
+                                        "")
+                                      Expanded(
+                                        flex: 4,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: SizedBox(
+                                            height: height * 0.15,
+                                            width: width * .01,
+                                            child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                                child: CachedNetworkImage(
+                                                  progressIndicatorBuilder:
+                                                      (context, url,
+                                                              downloadProgress) =>
+                                                          Center(
+                                                    child: CircularProgressIndicator(
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation(
+                                                                context.theme
+                                                                    .disabledColor),
+                                                        value: downloadProgress
+                                                            .progress),
+                                                  ),
+                                                  imageUrl:
+                                                      "${controller.collageEvent[index].imgUrl}}",
+                                                  fit: BoxFit.cover,
+                                                )),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        "${controller.collageEvent[index].eventDescription}",
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 4,
-                                        style: const TextStyle(
-                                          fontSize: 12,
+                                    Expanded(
+                                      flex: 5,
+                                      child: Column(children: [
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              10, 30, 10, 10),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsets.symmetric(),
+                                            child: Text(
+                                              "${controller.collageEvent[index].eventName}",
+                                              style: const TextStyle(
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  ]),
-                                )
-                              ],
-                            )),
-                      ),
-                    ),
-                  );
-                })),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            "${controller.collageEvent[index].eventDescription}",
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 4,
+                                            style: const TextStyle(
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                        ),
+                                      ]),
+                                    )
+                                  ],
+                                )),
+                          ),
+                        ),
+                      );
+                    })),
+              ),
       ),
     );
   }

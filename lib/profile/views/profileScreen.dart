@@ -39,9 +39,9 @@ class ProfilePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 0.05 * width),
+                    padding: EdgeInsets.only(left: 0.07 * width),
                     child: Text(
-                      "Hi, ${profileController.user.value.firstName}",
+                      "Hi, ${profileController.user.value.firstName!.capitalizeFirst}",
                       style: const TextStyle(
                         fontSize: 25,
                       ),
@@ -52,7 +52,7 @@ class ProfilePage extends StatelessWidget {
                     child: CircleAvatar(
                         backgroundColor: Colors.transparent,
                         foregroundColor: Colors.transparent,
-                        radius: 30,
+                        radius: width * 0.1,
                         foregroundImage: CachedNetworkImageProvider(
                           "${profileController.user.value.imageUrl}",
                         )),
@@ -82,6 +82,7 @@ class ProfilePage extends StatelessWidget {
                           child: const Text(
                             'Bio:',
                             style: TextStyle(
+                              color: Colors.white70,
                               fontSize: 20,
                             ),
                           ),
@@ -91,7 +92,13 @@ class ProfilePage extends StatelessWidget {
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 0.04 * width),
-                          child: Text('${profileController.user.value.bio}'),
+                          child: Text(
+                            '${profileController.user.value.bio}',
+                            style: const TextStyle(
+                                fontStyle: FontStyle.italic,
+                                color: Colors.white60,
+                                fontSize: 15),
+                          ),
                         )
                       ],
                     ),
@@ -122,6 +129,7 @@ class ProfilePage extends StatelessWidget {
                           child: const Text(
                             'Interested Areas:',
                             style: TextStyle(
+                              color: Colors.white70,
                               fontSize: 20,
                             ),
                           ),
@@ -134,7 +142,8 @@ class ProfilePage extends StatelessWidget {
                           child: Text(
                             profileController.user.value.areaOfInterest!
                                 .join(", "),
-                            style: const TextStyle(fontSize: 18),
+                            style: const TextStyle(
+                                fontSize: 16, color: Colors.white60),
                           ),
                         )
                       ],
@@ -172,14 +181,18 @@ class ProfilePage extends StatelessWidget {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(FeatherIcons.edit3),
+                              const Icon(
+                                FeatherIcons.edit3,
+                                color: Colors.white70,
+                              ),
                               Text(
                                 'Edit Profile',
                                 style: TextStyle(
-                                  fontSize: 20,
+                                    fontSize: width * 0.045,
+                                    color: Colors.white60
 
-                                  //fontWeight: FontWeight.bold
-                                ),
+                                    //fontWeight: FontWeight.bold
+                                    ),
                               ),
                             ],
                           ),
@@ -213,14 +226,18 @@ class ProfilePage extends StatelessWidget {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Icon(Iconsax.note),
+                                    const Icon(
+                                      Iconsax.note,
+                                      color: Colors.white70,
+                                    ),
                                     Text(
                                       'My Posts',
                                       style: TextStyle(
-                                        fontSize: 20,
+                                          fontSize: width * 0.045,
+                                          color: Colors.white60
 
-                                        //fontWeight: FontWeight.bold
-                                      ),
+                                          //fontWeight: FontWeight.bold
+                                          ),
                                     ),
                                   ],
                                 ),
@@ -245,14 +262,17 @@ class ProfilePage extends StatelessWidget {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Icon(Iconsax.logout),
+                                      const Icon(
+                                        Iconsax.logout,
+                                        color: Colors.white70,
+                                      ),
                                       Text(
                                         'Log Out',
                                         style: TextStyle(
-                                          fontSize: 20,
-                                          fontFamily: 'Helvetica',
-                                          //fontWeight: FontWeight.bold
-                                        ),
+                                            fontSize: width * 0.045,
+                                            color: Colors.white60
+                                            //fontWeight: FontWeight.bold
+                                            ),
                                       ),
                                     ],
                                   ),

@@ -10,12 +10,12 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../eventCalendar/views/calendar_screen.dart';
 
-class NavBarPage extends StatelessWidget {
-  NavBarPage({Key? key}) : super(key: key);
+class NavBarScreen extends StatelessWidget {
+  NavBarScreen({Key? key}) : super(key: key);
 
   final navController = Get.put(NavController());
   final EventsController eventsController = Get.find();
-  var pages = [
+  final pages = [
     NewsFeedScreen(),
     SearchPage(),
     PostScreen(),
