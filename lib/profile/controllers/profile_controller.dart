@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:alma/core/api_provider.dart';
 import 'package:alma/events/models/event_model.dart';
 import 'package:flutter/foundation.dart';

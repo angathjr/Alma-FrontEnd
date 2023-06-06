@@ -166,9 +166,9 @@ class ProfilePage extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Constants.cardColor().withOpacity(0.7),
                               borderRadius: BorderRadius.circular(10)),
-                          child: const Column(
+                          child:  Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: const [
                               Icon(FeatherIcons.edit3),
                               Text(
                                 'Edit Profile',
@@ -207,9 +207,9 @@ class ProfilePage extends StatelessWidget {
                                     color:
                                         Constants.cardColor().withOpacity(0.7),
                                     borderRadius: BorderRadius.circular(10)),
-                                child: const Column(
+                                child:  Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
+                                  children: const [
                                     Icon(Iconsax.note),
                                     Text(
                                       'My Posts',
@@ -239,9 +239,9 @@ class ProfilePage extends StatelessWidget {
                                       color: Constants.cardColor()
                                           .withOpacity(0.7),
                                       borderRadius: BorderRadius.circular(10)),
-                                  child: const Column(
+                                  child:  Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
+                                    children: const [
                                       Icon(Iconsax.logout),
                                       Text(
                                         'Log Out',

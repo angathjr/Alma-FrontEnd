@@ -135,6 +135,43 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                               ),
                             ),
                           ),
+                           const Padding(
+                          padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
+                          child: Text(
+                            'Last Date to Apply',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                       Center(
+                            
+                            child: Obx(
+                              () => Container(
+                                  padding: EdgeInsets.only(left: width * 0.02),
+                                  alignment: Alignment.center,
+                                  width: width * 0.8,
+                                  height: height * .053,
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    color:
+                                        Constants.cardColor().withOpacity(0.7),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(controller.eventDate.value),
+                                      IconButton(
+                                          onPressed: () => controller.pickDate(
+                                              context, height),
+                                          icon: const Icon(Iconsax.calendar))
+                                    ],
+                                  )),
+                            ),
+                          ),
                         ]),
                   ),
                 ),

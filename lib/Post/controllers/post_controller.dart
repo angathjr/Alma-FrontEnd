@@ -20,6 +20,7 @@ class PostController extends GetxController {
   final TextEditingController endDate = TextEditingController();
   final TextEditingController skillsRequired = TextEditingController();
   final TextEditingController venue = TextEditingController();
+   
 
   var imageUrl = ''.obs;
   var isImageSelected = false.obs;
