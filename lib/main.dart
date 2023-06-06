@@ -6,6 +6,7 @@ import 'package:alma/auth/views/splash_Screen.dart';
 import 'package:alma/eventCalendar/views/calendar_screen.dart';
 import 'package:alma/home/views/news_feed_screen.dart';
 import 'package:alma/jobs/views/JobScreen.dart';
+import 'package:alma/profile/views/my_events_screen.dart';
 import 'package:alma/profile/views/profileEditScreen.dart';
 import 'package:alma/registration/views/alumni_profile_screen.dart';
 import 'package:alma/registration/views/user_selection_screen.dart';
@@ -62,7 +63,6 @@ Future<void> main() async {
       .resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin>()
       ?.createNotificationChannel(notificationChannel);
-      
 
   runApp(MyApp());
 }
@@ -91,6 +91,7 @@ class MyApp extends StatelessWidget {
                     ? NavBarPage()
                     : UserSelectionScreen()
                 : LoginScreen()),
+        GetPage(name: '/navBar', page: () => NavBarPage()),
         GetPage(name: '/login', page: () => LoginScreen()),
         GetPage(name: '/alumni-profile', page: () => AlumniProfileScreen()),
         GetPage(name: '/staff-profile', page: () => StaffProfileScreen()),
@@ -113,6 +114,7 @@ class MyApp extends StatelessWidget {
             page: () => OtherEventDescriptionScreen()),
         GetPage(name: '/EditProfile', page: () => ProfileEditScreen()),
         GetPage(name: '/feedDetails', page: () => EventDetailsScreen()),
+        GetPage(name: '/myEvents', page: () => MyEventsScreen()),
       ],
     );
   }
