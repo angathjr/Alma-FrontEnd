@@ -1,8 +1,13 @@
 import 'dart:developer';
+import 'dart:io';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../auth/models/user.dart';
 import '../../core/api_provider.dart';
@@ -24,6 +29,12 @@ class ProfileEditController extends GetxController {
 
   var isUpdating = false.obs;
   var submitText = "Submit".obs;
+
+  //pick image
+  Rx<File> selectedImage = Rx<File>(File(''));
+  var imageUrl = ''.obs;
+  var isImageSelected = false.obs;
+  var isUpdated = false.obs;
 
   @override
   void onInit() {
@@ -54,6 +65,9 @@ class ProfileEditController extends GetxController {
   }
 
   void updateGeneralProfile() async {
+    if (isImageSelected.value) {
+      await uploadImage();
+    }
     isUpdating(true);
     submitText("Updating...");
     List<String> area_of_interest = interestedAreasController.text.split(',');
@@ -66,6 +80,7 @@ class ProfileEditController extends GetxController {
         'email': mailController.text,
         'bio': bioController.text,
         'area_of_interest': area_of_interest,
+        "img_url": imageUrl.value
       });
 
       UserModel userdata = UserModel.fromJson(response.body);
@@ -125,6 +140,38 @@ class ProfileEditController extends GetxController {
       Get.back();
     } catch (e) {
       print(e);
+    }
+  }
+
+  void selectImage() async {
+    final ImagePicker picker = ImagePicker();
+    try {
+      final XFile? image =
+          await picker.pickImage(source: ImageSource.gallery, imageQuality: 60);
+      if (image == null) return;
+      selectedImage.value = File(image.path);
+      isImageSelected(true);
+      if (kDebugMode) {
+        log("image location is ${selectedImage.value}");
+      }
+    } on PlatformException catch (e) {
+      print("failed to pick image $e");
+    }
+  }
+
+  Future<void> uploadImage() async {
+    try {
+      final storageRef = FirebaseStorage.instance.ref();
+
+      final profileRef =
+          storageRef.child('profile-images/${user.value.username}');
+      await profileRef.putFile(
+        selectedImage.value,
+      );
+      imageUrl.value = await profileRef.getDownloadURL();
+      log(imageUrl.value);
+    } catch (e) {
+      log("error in uploading img ${e}");
     }
   }
 }

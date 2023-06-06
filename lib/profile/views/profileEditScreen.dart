@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:alma/profile/controllers/profile_edit_controller.dart';
 import 'package:alma/profile/views/general_profile_edit_screen.dart';
 import 'package:alma/profile/views/staff_edit_profile_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -12,14 +15,13 @@ import 'alumni_edit_profile_screen.dart';
 class ProfileEditScreen extends StatelessWidget {
   ProfileEditScreen({super.key});
 
-  final ProfileController controller = Get.find();
+  final ProfileEditController controller = Get.find();
   final ProfileTabController tabController = Get.find();
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    final ProfileController profileController = Get.find();
     return Scaffold(
       backgroundColor: Colors.black,
       resizeToAvoidBottomInset: false,
@@ -27,6 +29,7 @@ class ProfileEditScreen extends StatelessWidget {
         leading: IconButton(
             onPressed: () {
               Get.back();
+              controller.selectedImage.value = File('');
             },
             icon: const Icon(Iconsax.arrow_left_2)),
         backgroundColor: Colors.black,

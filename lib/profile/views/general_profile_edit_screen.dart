@@ -193,19 +193,22 @@ class GeneralProfileEditScreen extends StatelessWidget {
                           onTap: () {
                             controller.updateGeneralProfile();
                           },
-                          child: Container(
-                            alignment: Alignment.center,
-                            width: width * 0.35,
-                            height: height * .053,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(20)),
-                                color: Constants.cardColor().withOpacity(0.7)),
-                            child: const Text(
-                              'Submit',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
+                          child: Obx(
+                            () => Container(
+                              alignment: Alignment.center,
+                              width: width * 0.35,
+                              height: height * .053,
+                              decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(20)),
+                                  color:
+                                      Constants.cardColor().withOpacity(0.7)),
+                              child: Text(
+                                controller.submitText.value,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
                               ),
                             ),
                           ),
