@@ -1,6 +1,8 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:alma/core/api_provider.dart';
+import 'package:alma/events/models/event_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,9 +22,14 @@ class ProfileController extends GetxController {
       TextEditingController();
 
   final _storage = GetStorage();
+  final ApiProvider api = Get.find();
 
   var user = (UserModel()).obs;
+  var events = <EventModel>[].obs;
 
+  var isEventsloading = false.obs;
+
+  //pick image
   Rx<File> selectedImage = Rx<File>(File(''));
   var imageUrl = ''.obs;
   var isImageSelected = false.obs;
@@ -50,6 +57,22 @@ class ProfileController extends GetxController {
       }
     } on PlatformException catch (e) {
       print("failed to pick image $e");
+    }
+  }
+
+  void fetchMyEvents() async {
+    try {
+      isEventsloading(true);
+      Get.toNamed('/myEvents');
+      final response = await api.getApi('/events/my-events/');
+      final parsed = eventModelFromJson(response.body);
+      events.value = parsed;
+      log("${response.body}");
+      isEventsloading(false);
+    } catch (e) {
+      log(e.toString());
+    } finally {
+      isEventsloading(false);
     }
   }
 }
