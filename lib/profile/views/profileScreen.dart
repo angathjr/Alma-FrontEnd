@@ -200,12 +200,13 @@ class ProfilePage extends StatelessWidget {
                         child: Column(
                           children: [
                             GestureDetector(
-                              onTap: ()=>profileController.fetchMyEvents(),
+                              onTap: () => profileController.fetchMyEvents(),
                               child: Container(
                                 height: 0.148 * height,
                                 width: 0.445 * width,
                                 decoration: BoxDecoration(
-                                    color: Constants.cardColor().withOpacity(0.7),
+                                    color:
+                                        Constants.cardColor().withOpacity(0.7),
                                     borderRadius: BorderRadius.circular(10)),
                                 child: const Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -221,27 +222,6 @@ class ProfilePage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                              ),
-                            ),
-                            Container(
-                              height: 0.148 * height,
-                              width: 0.445 * width,
-                              decoration: BoxDecoration(
-                                  color: Constants.cardColor().withOpacity(0.7),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child:  Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.post_add),
-                                  Text(
-                                    'My Posts',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontFamily: 'Helvatica',
-                                      //fontWeight: FontWeight.bold
-                                    ),
-                                  ),
-                                ],
                               ),
                             ),
                             SizedBox(
