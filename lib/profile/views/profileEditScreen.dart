@@ -45,11 +45,12 @@ class ProfileEditScreen extends StatelessWidget {
                         () => CircleAvatar(
                           backgroundImage: CachedNetworkImageProvider(
                               "${controller.user.value.imageUrl}"),
-                          foregroundImage: controller.isImageSelected.value ==
-                                  true
-                              ? FileImage(controller.selectedImage.value)
-                                  as ImageProvider<Object>
-                              : AssetImage("${controller.user.value.imageUrl}"),
+                          foregroundImage:
+                              controller.isImageSelected.value == true
+                                  ? FileImage(controller.selectedImage.value)
+                                      as ImageProvider<Object>
+                                  : CachedNetworkImageProvider(
+                                      "${controller.user.value.imageUrl}"),
                         ),
                       ),
                       Positioned(

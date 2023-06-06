@@ -3,6 +3,7 @@ import 'package:alma/alumniDirectory/views/alumni_directory.dart.dart';
 import 'package:alma/eventCalendar/controllers/calendar_controller.dart';
 import 'package:alma/fcm/controller/fcm_controller.dart';
 import 'package:alma/profile/controllers/profile_controller.dart';
+import 'package:alma/profile/controllers/profile_edit_controller.dart';
 import 'package:alma/profile/controllers/tab_controller.dart';
 import 'package:alma/registration/controllers/alumni_profile_controller.dart';
 import 'package:alma/registration/controllers/registration_controller.dart';
@@ -35,5 +36,6 @@ class GetXDependancyInjector {
     Get.lazyPut(() => PostController(), fenix: true);
     Get.lazyPut(() => AlumniDirController(), fenix: true);
     Get.lazyPut(() => ProfileTabController(), fenix: true);
+    Get.lazyPut(() => ProfileEditController(), fenix: true);
   }
 }
