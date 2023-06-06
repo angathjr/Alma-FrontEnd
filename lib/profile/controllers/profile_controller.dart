@@ -1,6 +1,12 @@
+import 'dart:developer';
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../auth/models/user.dart';
 
@@ -17,9 +23,10 @@ class ProfileController extends GetxController {
 
   var user = (UserModel()).obs;
 
-  get selectedImage => null;
-
-  get isImageSelected => null;
+  Rx<File> selectedImage = Rx<File>(File(''));
+  var imageUrl = ''.obs;
+  var isImageSelected = false.obs;
+  var isUpdated = false.obs;
 
   @override
   void onInit() {
@@ -30,5 +37,19 @@ class ProfileController extends GetxController {
     super.onInit();
   }
 
-  selectImage() {}
+  void selectImage() async {
+    final ImagePicker picker = ImagePicker();
+    try {
+      final XFile? image =
+          await picker.pickImage(source: ImageSource.gallery, imageQuality: 60);
+      if (image == null) return;
+      selectedImage.value = File(image.path);
+      isImageSelected(true);
+      if (kDebugMode) {
+        log("image location is ${selectedImage.value}");
+      }
+    } on PlatformException catch (e) {
+      print("failed to pick image $e");
+    }
+  }
 }

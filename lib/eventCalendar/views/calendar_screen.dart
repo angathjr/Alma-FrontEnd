@@ -1,4 +1,5 @@
 import 'package:alma/eventCalendar/controllers/calendar_controller.dart';
+import 'package:alma/events/controllers/event_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,7 @@ class CalendarScreen extends StatelessWidget {
   CalendarScreen({super.key});
 
   final EventCalendarController controller = Get.find();
+  final EventsController eventsController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +86,7 @@ class CalendarScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: width * 0.08),
               width: width,
               height: height * 0.03,
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
@@ -121,75 +123,80 @@ class CalendarScreen extends StatelessWidget {
                               return Padding(
                                 padding: EdgeInsets.symmetric(
                                     vertical: height * 0.01),
-                                child: SizedBox(
-                                  width: 0.9 * width,
-                                  height: 0.129 * height,
-                                  child: Stack(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            50, 0, 0, 0),
-                                        child: Container(
-                                          width: 0.8 * width,
-                                          height: 0.127 * height,
-                                          decoration: BoxDecoration(
-                                            color: Constants.cardColor()
-                                                .withOpacity(0.7),
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                "${controller.events[index].eventName}",
-                                                style: const TextStyle(
-                                                    fontSize: 20,
-                                                    color: Colors.white),
-                                              ),
-                                              Text(
-                                                "${controller.events[index].eventDescription}",
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 3,
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      Positioned(
-                                          left: 5,
-                                          top: 25,
+                                child: GestureDetector(
+                                  onTap: () => eventsController
+                                      .gotoEvent(controller.events[index]),
+                                  child: SizedBox(
+                                    width: 0.9 * width,
+                                    height: 0.129 * height,
+                                    child: Stack(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              50, 0, 0, 0),
                                           child: Container(
-                                            height: 0.065 * height,
-                                            width: 0.206 * width,
+                                            width: 0.8 * width,
+                                            height: 0.127 * height,
                                             decoration: BoxDecoration(
-                                              color: Color.fromARGB(
-                                                  255, 36, 36, 49),
+                                              color: Constants.cardColor()
+                                                  .withOpacity(0.7),
                                               borderRadius:
                                                   BorderRadius.circular(10),
                                             ),
-                                            child: Center(
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    "${controller.events[index].eventDate!.day}",
-                                                    style: const TextStyle(
-                                                      fontSize: 18,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    "${controller.events[index].eventDate!.month}",
-                                                    style: const TextStyle(
-                                                        fontSize: 18),
-                                                  )
-                                                ],
-                                              ),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  "${controller.events[index].eventName}",
+                                                  style: const TextStyle(
+                                                      fontSize: 20,
+                                                      color: Colors.white),
+                                                ),
+                                                Text(
+                                                  "${controller.events[index].eventDescription}",
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  maxLines: 3,
+                                                )
+                                              ],
                                             ),
-                                          ))
-                                    ],
+                                          ),
+                                        ),
+                                        Positioned(
+                                            left: 5,
+                                            top: 25,
+                                            child: Container(
+                                              height: 0.065 * height,
+                                              width: 0.206 * width,
+                                              decoration: BoxDecoration(
+                                                color: Color.fromARGB(
+                                                    255, 36, 36, 49),
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              child: Center(
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      "${controller.events[index].eventDate!.day}",
+                                                      style: const TextStyle(
+                                                        fontSize: 18,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "${controller.events[index].eventDate!.month}",
+                                                      style: const TextStyle(
+                                                          fontSize: 18),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ))
+                                      ],
+                                    ),
                                   ),
                                 ),
                               );

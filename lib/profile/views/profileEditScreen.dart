@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../core/constants.dart';
-import '../../registration/controllers/student_profile_controller.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileEditScreen extends StatelessWidget {
   ProfileEditScreen({super.key});
 
   final ProfileController controller = Get.find();
-  final StudentProfileController controllerEdit = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +41,11 @@ class ProfileEditScreen extends StatelessWidget {
                       Obx(
                         () => CircleAvatar(
                           backgroundImage:
-                              AssetImage("${controller.user.value.imageUrl}"),
-                          foregroundImage: controllerEdit
+                              NetworkImage("${controller.user.value.imageUrl}"),
+                          foregroundImage: controller
                                       .isImageSelected.value ==
                                   true
-                              ? FileImage(controllerEdit.selectedImage.value)
+                              ? FileImage(controller.selectedImage.value)
                                   as ImageProvider<Object>
                               : AssetImage("${controller.user.value.imageUrl}"),
                         ),
@@ -64,7 +62,7 @@ class ProfileEditScreen extends StatelessWidget {
                             shape: BoxShape.circle,
                           ),
                           child: IconButton(
-                              onPressed: () => controllerEdit.selectImage(),
+                              onPressed: () => controller.selectImage(),
                               icon: Icon(
                                 Icons.camera_alt,
                                 size: width * 0.05,
