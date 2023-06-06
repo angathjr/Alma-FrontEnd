@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:alma/Post/controllers/post_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,34 +38,6 @@ class JobDescriptionScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Padding(
-                        padding: EdgeInsets.fromLTRB(19, 30, 4, 10),
-                        child: Text(
-                          'Company name',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                      Center(
-                        child: Container(
-                          width: width * 0.8,
-                          height: height * .053,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                              color: Constants.cardColor().withOpacity(0.7)),
-                          child: TextFormField(
-                            controller: postController.companyName,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(left: 5),
-                            ),
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                      const Padding(
                         padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
                         child: Text(
                           'Job Name',
@@ -83,6 +57,34 @@ class JobDescriptionScreen extends StatelessWidget {
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: postController.eventName,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: 5),
+                            ),
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(19, 30, 4, 10),
+                        child: Text(
+                          'Company name',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Container(
+                          width: width * 0.8,
+                          height: height * .053,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              color: Constants.cardColor().withOpacity(0.7)),
+                          child: TextFormField(
+                            controller: postController.companyName,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
@@ -115,47 +117,51 @@ class JobDescriptionScreen extends StatelessWidget {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                       ),
                       const Padding(
-                          padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
-                          child: Text(
-                            'Last Date to Apply',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                            ),
+                        padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
+                        child: Text(
+                          'Last Date to Apply',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
                           ),
                         ),
-                       Center(
-                            
-                            child: Obx(
-                              () => Container(
-                                  padding: EdgeInsets.only(left: width * 0.02),
-                                  alignment: Alignment.center,
-                                  width: width * 0.8,
-                                  height: height * .053,
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(10)),
-                                    color:
-                                        Constants.cardColor().withOpacity(0.7),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(postController.eventDate.value),
-                                      IconButton(
-                                          onPressed: () => postController.pickDate(
-                                              context, height),
-                                          icon: const Icon(Iconsax.calendar))
-                                    ],
-                                  )),
-                            ),
-                          ),
+                      ),
+                      Center(
+                        child: Obx(
+                          () => Container(
+                              padding: EdgeInsets.only(left: width * 0.02),
+                              alignment: Alignment.center,
+                              width: width * 0.8,
+                              height: height * .053,
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                                color: Constants.cardColor().withOpacity(0.7),
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(postController.lastDayToAppy.value),
+                                  IconButton(
+                                      onPressed: () {
+                                        postController.pickDate(
+                                            context, height);
+
+                                        postController.lastDayToAppy.value =
+                                            postController.selectedDate.value;
+                                        log(postController.lastDayToAppy.value);
+                                      },
+                                      icon: const Icon(Iconsax.calendar))
+                                ],
+                              )),
+                        ),
+                      ),
                       const Padding(
                         padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
                         child: Text(

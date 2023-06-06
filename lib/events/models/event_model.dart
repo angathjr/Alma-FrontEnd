@@ -22,6 +22,7 @@ class EventModel {
   final dynamic imgUrl;
   final PostedBy? postedBy;
   final String? duration;
+  final String? eventLink;
 
   EventModel(
       {this.eventType,
@@ -38,6 +39,7 @@ class EventModel {
       this.imgUrl,
       this.postedBy,
       this.duration,
+      this.eventLink,
       this.venue});
 
   EventModel copyWith(
@@ -55,12 +57,14 @@ class EventModel {
           dynamic imgUrl,
           PostedBy? postedBy,
           String? duration,
+          String? eventLink,
           String? venue}) =>
       EventModel(
           eventType: eventType ?? this.eventType,
           eventName: eventName ?? this.eventName,
           eventDate: eventDate ?? this.eventDate,
           duration: duration ?? this.duration,
+          eventLink: eventLink ?? this.eventLink,
           eventDescription: eventDescription ?? this.eventDescription,
           role: role ?? this.role,
           skillsRequired: skillsRequired ?? this.skillsRequired,
@@ -97,7 +101,8 @@ class EventModel {
           ? null
           : PostedBy.fromJson(json["posted_by"]),
       venue: json["venue"] ?? '',
-      duration: json["duration"] ?? '');
+      duration: json["duration"] ?? '',
+      eventLink: json["event_link"] ?? '');
 
   Map<String, dynamic> toJson() => {
         "event_type": eventType ?? 'J',
@@ -119,7 +124,8 @@ class EventModel {
         "institution_name": institutionName,
         "img_url": imgUrl,
         "posted_by": postedBy?.toJson(),
-        "venue": venue ?? ''
+        "venue": venue ?? '',
+        "event_link": eventLink ?? ''
       };
 }
 

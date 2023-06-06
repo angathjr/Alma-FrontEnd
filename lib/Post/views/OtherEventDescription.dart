@@ -68,44 +68,6 @@ class OtherEventDescriptionScreen extends StatelessWidget {
                         const Padding(
                           padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
                           child: Text(
-                            'Event Date',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                        Center(
-                            
-                            child: Obx(
-                              () => Container(
-                                  padding: EdgeInsets.only(left: width * 0.02),
-                                  alignment: Alignment.center,
-                                  width: width * 0.8,
-                                  height: height * .053,
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(10)),
-                                    color:
-                                        Constants.cardColor().withOpacity(0.7),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(controller.eventDate.value),
-                                      IconButton(
-                                          onPressed: () => controller.pickDate(
-                                              context, height),
-                                          icon: const Icon(Iconsax.calendar))
-                                    ],
-                                  )),
-                            ),
-                          ),
-                        
-                        const Padding(
-                          padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
-                          child: Text(
                             'Venue',
                             style: TextStyle(
                               color: Colors.white,
@@ -130,7 +92,47 @@ class OtherEventDescriptionScreen extends StatelessWidget {
                               style: const TextStyle(color: Colors.white),
                             ),
                           ),
-                        ), const Padding(
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
+                          child: Text(
+                            'Event Date',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        Center(
+                          child: Obx(
+                            () => Container(
+                                padding: EdgeInsets.only(left: width * 0.02),
+                                alignment: Alignment.center,
+                                width: width * 0.8,
+                                height: height * .053,
+                                decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
+                                  color: Constants.cardColor().withOpacity(0.7),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(controller.eventDate.value),
+                                    IconButton(
+                                        onPressed: () {
+                                          controller.pickDate(context, height);
+
+                                          controller.eventDate.value =
+                                              controller.selectedDate.value;
+                                        },
+                                        icon: const Icon(Iconsax.calendar))
+                                  ],
+                                )),
+                          ),
+                        ),
+                        const Padding(
                           padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
                           child: Text(
                             'Last Date to Apply',
@@ -140,33 +142,35 @@ class OtherEventDescriptionScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                       Center(
-                            
-                            child: Obx(
-                              () => Container(
-                                  padding: EdgeInsets.only(left: width * 0.02),
-                                  alignment: Alignment.center,
-                                  width: width * 0.8,
-                                  height: height * .053,
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(10)),
-                                    color:
-                                        Constants.cardColor().withOpacity(0.7),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(controller.eventDate.value),
-                                      IconButton(
-                                          onPressed: () => controller.pickDate(
-                                              context, height),
-                                          icon: const Icon(Iconsax.calendar))
-                                    ],
-                                  )),
-                            ),
+                        Center(
+                          child: Obx(
+                            () => Container(
+                                padding: EdgeInsets.only(left: width * 0.02),
+                                alignment: Alignment.center,
+                                width: width * 0.8,
+                                height: height * .053,
+                                decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
+                                  color: Constants.cardColor().withOpacity(0.7),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(controller.eventDate.value),
+                                    IconButton(
+                                        onPressed: () {
+                                          controller.pickDate(context, height);
+
+                                          controller.lastDayToAppy.value =
+                                              controller.selectedDate.value;
+                                        },
+                                        icon: const Icon(Iconsax.calendar))
+                                  ],
+                                )),
                           ),
+                        ),
                       ]),
                 ),
               ),
@@ -200,7 +204,6 @@ class OtherEventDescriptionScreen extends StatelessWidget {
           ),
         ),
       ),
-      
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:alma/core/constants.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -21,14 +22,13 @@ class PostController extends GetxController {
   final TextEditingController skillsRequired = TextEditingController();
   final TextEditingController venue = TextEditingController();
   final TextEditingController duration = TextEditingController();
-   
+  final TextEditingController eventLink = TextEditingController();
 
   var imageUrl = ''.obs;
   var isImageSelected = false.obs;
   var selectedEventType = "J".obs;
   var isImageUploaded = false.obs;
 
-  var choosendate = DateTime.now().obs;
   var eventDate = ''.obs;
   var lastDayToAppy = ''.obs;
   var isPosting = false.obs;
@@ -38,6 +38,12 @@ class PostController extends GetxController {
   Rx<File> selectedImage = Rx<File>(File(''));
 
   void addCollegeAndOtherEvent() async {
+    if (eventDate.value == '' ||
+        lastDayToAppy.value == '' ||
+        eventName.text.isEmpty) {
+      Get.snackbar("Failed", "Please fill event date and name");
+      return;
+    }
     isPosting(true);
     postingText("Posting...");
     if (isImageSelected.value) {
@@ -75,53 +81,71 @@ class PostController extends GetxController {
     } catch (e) {
       postingText("Try Again");
       log("error is $e");
+    } finally {
+      isPosting(false);
+      postingText("Post");
     }
   }
 
   void addInternshipEvent() async {
-    List<String> skills = skillsRequired.text.split(',');
-    isPosting(true);
-    postingText("Posting...");
+    if (eventDate.value == '' ||
+        lastDayToAppy.value == '' ||
+        eventName.text.isEmpty) {
+      Get.snackbar("Failed", "Please fill event date and name");
+      return;
+    } else {
+      List<String> skills = skillsRequired.text.split(',');
+      isPosting(true);
+      postingText("Posting...");
 
-    if (isImageSelected.value) {
-      await uploadImage();
-    }
-    Map jobdata = {
-      "event_name": "custom event for Internship testing ",
-      "company_name": companyName.text,
-      "event_description": description.text,
-      "skills_required": skills,
-      "event_date": eventDate.value,
-      "img_url": imageUrl.value,
-      "event_type": selectedEventType.value,
-      "last_date_to_apply": lastDayToAppy.value,
-      "duration": duration.text,
-    };
-    log("internship  data is $jobdata");
-
-    try {
-      final response = await api.postApi('/events/add', jobdata);
-      log("status code is ${response.statusCode}");
-      log("response is ${response.body}");
-      if (response.statusCode == 201) {
-        Get.snackbar(
-          "Success",
-          "Internship added successfully",
-        );
-        clearAll();
-        isPosting(false);
-        postingText("Done");
-        await Future.delayed(const Duration(milliseconds: 1400));
-        Get.offAllNamed('/');
-      } else {
-        Get.snackbar("Failed", "Failed to add internship");
+      if (isImageSelected.value) {
+        await uploadImage();
       }
-    } catch (e) {
-      log("error is $e");
+      Map jobdata = {
+        "event_name": eventName.text,
+        "company_name": companyName.text,
+        "event_description": description.text,
+        "skills_required": skills,
+        "event_date": eventDate.value,
+        "img_url": imageUrl.value,
+        "event_type": selectedEventType.value,
+        "last_date_to_apply": lastDayToAppy.value,
+        "duration": duration.text,
+        "event_link": eventLink.text
+      };
+      log("internship  data is $jobdata");
+
+      try {
+        final response = await api.postApi('/events/add', jobdata);
+        log("status code is ${response.statusCode}");
+        log("response is ${response.body}");
+        if (response.statusCode == 201) {
+          Get.snackbar(
+            "Success",
+            "Internship added successfully",
+          );
+          clearAll();
+          isPosting(false);
+          postingText("Done");
+          await Future.delayed(const Duration(milliseconds: 1400));
+          Get.offAllNamed('/');
+        } else {
+          Get.snackbar("Failed", "Failed to add internship");
+        }
+      } catch (e) {
+        log("error is $e");
+      } finally {
+        isPosting(false);
+        postingText("Post");
+      }
     }
   }
 
   void addJobEvent() async {
+    if (lastDayToAppy.value == '' || eventName.text.isEmpty) {
+      Get.snackbar("Failed", "Please fill the dates and name");
+      return;
+    }
     List<String> skills = skillsRequired.text.split(',');
     isPosting(true);
     postingText("Posting...");
@@ -130,7 +154,7 @@ class PostController extends GetxController {
       await uploadImage();
     }
     Map jobdata = {
-      "event_name": "custom event for job test",
+      "event_name": eventName.text,
       "company_name": companyName.text,
       "role": role.text,
       "event_description": description.text,
@@ -161,6 +185,9 @@ class PostController extends GetxController {
       }
     } catch (e) {
       log("error is $e");
+    } finally {
+      isPosting(false);
+      postingText("Post");
     }
   }
 
@@ -217,8 +244,8 @@ class PostController extends GetxController {
     }
   }
 
-  void pickDate(ctx, h) {
-    showCupertinoModalPopup(
+  void pickDate(ctx, h) async {
+    await showCupertinoModalPopup(
         context: ctx,
         builder: (_) => Container(
               width: MediaQuery.of(ctx).size.width,
@@ -231,14 +258,14 @@ class PostController extends GetxController {
               child: SizedBox(
                 width: MediaQuery.of(ctx).size.width,
                 child: CupertinoDatePicker(
+                  initialDateTime: DateTime.now(),
                   mode: CupertinoDatePickerMode.date,
                   maximumYear: 2055,
                   minimumYear: 2021,
                   dateOrder: DatePickerDateOrder.ymd,
                   onDateTimeChanged: (val) {
-                    choosendate.value = val;
-                    selectedDate.value =
-                        DateFormat('yyyy/MM/dd').format(choosendate.value);
+                    print(val);
+                    selectedDate.value = DateFormat('yyyy-MM-dd').format(val);
                   },
                 ),
               ),
@@ -264,5 +291,10 @@ class PostController extends GetxController {
     endDate.clear();
     skillsRequired.clear();
     venue.clear();
+    duration.clear();
+    eventLink.clear();
+    lastDayToAppy.value = '';
+    selectedDate.value = '';
+    eventDate.value = '';
   }
 }

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -55,12 +54,41 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                               width: width * 0.8,
                               height: height * .053,
                               decoration: BoxDecoration(
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(10)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
                                   color:
                                       Constants.cardColor().withOpacity(0.7)),
                               child: TextFormField(
                                 controller: controller.eventName,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(left: 5),
+                                ),
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
+                            child: Text(
+                              'Venue',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                          Center(
+                            child: Container(
+                              width: width * 0.8,
+                              height: height * .053,
+                              decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
+                                  color:
+                                      Constants.cardColor().withOpacity(0.7)),
+                              child: TextFormField(
+                                controller: controller.venue,
                                 decoration: const InputDecoration(
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 5),
@@ -80,7 +108,6 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                             ),
                           ),
                           Center(
-
                             child: Obx(
                               () => Container(
                                   padding: EdgeInsets.only(left: width * 0.02),
@@ -99,17 +126,22 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                                     children: [
                                       Text(controller.eventDate.value),
                                       IconButton(
-                                          onPressed: () => controller.pickDate(
-                                              context, height),
+                                          onPressed: () {
+                                            controller.pickDate(
+                                                context, height);
+
+                                            controller.eventDate.value =
+                                                controller.selectedDate.value;
+                                          },
                                           icon: const Icon(Iconsax.calendar))
                                     ],
                                   )),
                             ),
                           ),
                           const Padding(
-                            padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
+                            padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
                             child: Text(
-                              'Venue',
+                              'Last Date to Apply',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 14,
@@ -117,36 +149,6 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                             ),
                           ),
                           Center(
-                            child: Container(
-                              width: width * 0.8,
-                              height: height * .053,
-                              decoration: BoxDecoration(
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(10)),
-                                  color:
-                                      Constants.cardColor().withOpacity(0.7)),
-                              child: TextFormField(
-                                controller: controller.venue,
-                                decoration: const InputDecoration(
-                                  border: InputBorder.none,
-                                  contentPadding: EdgeInsets.only(left: 5),
-                                ),
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                           const Padding(
-                          padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
-                          child: Text(
-                            'Last Date to Apply',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                       Center(
-                            
                             child: Obx(
                               () => Container(
                                   padding: EdgeInsets.only(left: width * 0.02),
@@ -163,10 +165,14 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(controller.eventDate.value),
+                                      Text(controller.lastDayToAppy.value),
                                       IconButton(
-                                          onPressed: () => controller.pickDate(
-                                              context, height),
+                                          onPressed: () {
+                                            controller.pickDate(
+                                                context, height);
+                                            controller.lastDayToAppy.value =
+                                                controller.selectedDate.value;
+                                          },
                                           icon: const Icon(Iconsax.calendar))
                                     ],
                                   )),
@@ -186,17 +192,17 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(20)),
                       color: Constants.cardColor().withOpacity(0.7)),
-                  child:  Obx(
-                  () => FittedBox(
-                    child: Text(
-                      controller.postingText.value,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
+                  child: Obx(
+                    () => FittedBox(
+                      child: Text(
+                        controller.postingText.value,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                   ),
-                ),
                 ),
               ),
               const SizedBox(
