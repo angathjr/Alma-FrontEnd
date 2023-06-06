@@ -1,4 +1,6 @@
 import 'package:alma/auth/controllers/auth_controller.dart';
+import 'package:alma/profile/views/alumni_edit_profile_screen.dart';
+import 'package:alma/profile/views/staff_edit_profile_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
@@ -163,6 +165,8 @@ class ProfilePage extends StatelessWidget {
                     child: InkWell(
                       onTap: () {
                         Get.toNamed('/EditProfile');
+                        //Get.to(() => StaffProfileEdit());
+                        // Get.toNamed('/AlumniEditProfile');
                       },
                       child: SlideAnimation(
                         curve: Curves.fastLinearToSlowEaseIn,
