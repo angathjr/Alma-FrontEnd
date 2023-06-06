@@ -24,7 +24,7 @@ class CollageEventDescriptionScreen extends StatelessWidget {
               controller.clearControllers();
             },
             icon: const Icon(Iconsax.arrow_left_2)),
-        title: const Text("Collage Event Description"),
+        title: const Text("College Event Description"),
       ),
       body: Center(
         child: Padding(
