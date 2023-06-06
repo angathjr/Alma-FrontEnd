@@ -1,21 +1,25 @@
 import 'dart:developer';
 import 'dart:io';
+import 'dart:ui';
 import 'package:alma/core/api_provider.dart';
+import 'package:alma/core/constants.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 
 class PostController extends GetxController {
   final ApiProvider api = Get.find();
 
   final TextEditingController companyName = TextEditingController();
+  final TextEditingController startDate = TextEditingController();
   final TextEditingController eventName = TextEditingController();
   final TextEditingController role = TextEditingController();
   final TextEditingController description = TextEditingController();
-  final TextEditingController startDate = TextEditingController();
   final TextEditingController endDate = TextEditingController();
   final TextEditingController skillsRequired = TextEditingController();
   final TextEditingController venue = TextEditingController();
@@ -24,6 +28,8 @@ class PostController extends GetxController {
   var isImageSelected = false.obs;
   var selectedEventType = "J".obs;
   var isImageUploaded = false.obs;
+  var choosendate = DateTime.now().obs;
+  var eventDate = ''.obs;
 
   Rx<File> selectedImage = Rx<File>(File(''));
 
@@ -35,7 +41,7 @@ class PostController extends GetxController {
       "event_name": eventName.text,
       "event_description": description.text,
       "venue": venue.text,
-      "event_date": startDate.text,
+      // "event_date": startDate.text,
       "img_url": imageUrl.value,
       "event_type": selectedEventType.value
     };
@@ -72,7 +78,7 @@ class PostController extends GetxController {
       "company_name": companyName.text,
       "event_description": description.text,
       "skills_required": skills,
-      "event_date": startDate.text,
+      // "event_date": startDate.text,
       "img_url": imageUrl.value,
       "event_type": selectedEventType.value
     };
@@ -189,12 +195,40 @@ class PostController extends GetxController {
     }
   }
 
+  void pickDate(ctx, h) {
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              width: MediaQuery.of(ctx).size.width,
+              decoration: BoxDecoration(
+                  color: Constants.cardColor(),
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20))),
+              height: h * 0.5,
+              child: SizedBox(
+                // height: 400,
+                width: MediaQuery.of(ctx).size.width,
+                child: CupertinoDatePicker(
+                  mode: CupertinoDatePickerMode.date,
+                  maximumYear: 2055,
+                  minimumYear: 2021,
+                  dateOrder: DatePickerDateOrder.ymd,
+                  onDateTimeChanged: (val) {
+                    choosendate.value = val;
+                    eventDate.value =
+                        DateFormat('yyyy/MM/dd').format(choosendate.value);
+                  },
+                ),
+              ),
+            ));
+  }
+
   void clearAll() {
     companyName.clear();
     eventName.clear();
     role.clear();
     description.clear();
-    startDate.clear();
     endDate.clear();
     skillsRequired.clear();
     venue.clear();
@@ -206,9 +240,20 @@ class PostController extends GetxController {
     eventName.clear();
     role.clear();
     description.clear();
-    startDate.clear();
     endDate.clear();
     skillsRequired.clear();
     venue.clear();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    companyName.dispose();
+    eventName.dispose();
+    role.dispose();
+    description.dispose();
+    endDate.dispose();
+    skillsRequired.dispose();
+    venue.dispose();
   }
 }
