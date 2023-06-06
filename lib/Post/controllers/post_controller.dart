@@ -14,7 +14,6 @@ class PostController extends GetxController {
   final ApiProvider api = Get.find();
 
   final TextEditingController companyName = TextEditingController();
-  final TextEditingController startDate = TextEditingController();
   final TextEditingController eventName = TextEditingController();
   final TextEditingController role = TextEditingController();
   final TextEditingController description = TextEditingController();
@@ -43,7 +42,7 @@ class PostController extends GetxController {
       "event_name": eventName.text,
       "event_description": description.text,
       "venue": venue.text,
-      // "event_date": startDate.text,
+      "event_date": eventDate.value,
       "img_url": imageUrl.value,
       "event_type": selectedEventType.value
     };
@@ -85,7 +84,7 @@ class PostController extends GetxController {
       "company_name": companyName.text,
       "event_description": description.text,
       "skills_required": skills,
-      // "event_date": startDate.text,
+      "event_date": eventDate.value,
       "img_url": imageUrl.value,
       "event_type": selectedEventType.value
     };
