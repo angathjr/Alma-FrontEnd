@@ -1,4 +1,6 @@
 import 'package:alma/auth/controllers/auth_controller.dart';
+import 'package:alma/profile/views/alumni_edit_profile_screen.dart';
+import 'package:alma/profile/views/staff_edit_profile_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -156,6 +158,8 @@ class ProfilePage extends StatelessWidget {
                     child: InkWell(
                       onTap: () {
                         Get.toNamed('/EditProfile');
+                        //Get.to(() => StaffProfileEdit());
+                        // Get.toNamed('/AlumniEditProfile');
                       },
                       child: SlideAnimation(
                         curve: Curves.fastLinearToSlowEaseIn,
@@ -167,7 +171,7 @@ class ProfilePage extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Constants.cardColor().withOpacity(0.7),
                               borderRadius: BorderRadius.circular(10)),
-                          child: const Column(
+                          child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(Icons.edit),
@@ -205,7 +209,7 @@ class ProfilePage extends StatelessWidget {
                               decoration: BoxDecoration(
                                   color: Constants.cardColor().withOpacity(0.7),
                                   borderRadius: BorderRadius.circular(10)),
-                              child: const Column(
+                              child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Icon(Icons.post_add),
@@ -236,7 +240,7 @@ class ProfilePage extends StatelessWidget {
                                       color: Constants.cardColor()
                                           .withOpacity(0.7),
                                       borderRadius: BorderRadius.circular(10)),
-                                  child: const Column(
+                                  child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(Icons.logout),
