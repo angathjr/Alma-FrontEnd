@@ -3,8 +3,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import '../../registration/views/staff_profile_screen.dart';
 import '../controllers/profile_controller.dart';
 import '../controllers/tab_controller.dart';
+import 'alumni_edit_profile_screen.dart';
 
 class ProfileEditScreen extends StatelessWidget {
   ProfileEditScreen({super.key});
@@ -16,6 +18,7 @@ class ProfileEditScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final ProfileController profileController = Get.find();
     return Scaffold(
       backgroundColor: Colors.black,
       resizeToAvoidBottomInset: false,
@@ -97,7 +100,16 @@ class ProfileEditScreen extends StatelessWidget {
                 child: TabBarView(
                     physics: const NeverScrollableScrollPhysics(),
                     controller: tabController.tabController,
-                    children: [GeneralProfileEditScreen(), Placeholder()]),
+                    children: [
+                      GeneralProfileEditScreen(),
+                      (controller.user.value.userType == "ALUMNI")
+                          ? AlumniEditProfileScreen()
+                          : ((controller.user.value.userType == "STAFF")
+                              ? StaffProfileScreen()
+                              : Container(
+                                  child: Center(child: Text('NONE')),
+                                ))
+                    ]),
               )
             ],
           ),
