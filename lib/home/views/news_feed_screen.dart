@@ -40,7 +40,10 @@ class NewsFeedScreen extends StatelessWidget {
                   pinned: false,
                   floating: true,
                   snap: true,
-                  title: const Text("Home"),
+                  centerTitle: true,
+                  title: const Text(
+                    "Alma",
+                  ),
                   backgroundColor: Colors.black,
                 ),
                 // CupertinoSliverRefreshControl(
@@ -122,20 +125,15 @@ class NewsFeedScreen extends StatelessWidget {
                                                             ? Image.asset(
                                                                 NOIMAGE)
                                                             : CachedNetworkImage(
-                                                               progressIndicatorBuilder:
-                                                          (context, url,
-                                                                  downloadProgress) =>
-                                                              Center(
-                                                        child: CircularProgressIndicator(
-                                                            valueColor:
-                                                                AlwaysStoppedAnimation(
-                                                                    context
-                                                                        .theme
-                                                                        .disabledColor),
-                                                            value:
-                                                                downloadProgress
-                                                                    .progress),
-                                                      ),
+                                                                progressIndicatorBuilder:
+                                                                    (context,
+                                                                            url,
+                                                                            downloadProgress) =>
+                                                                        Center(
+                                                                          child: CircularProgressIndicator(
+                                                                              valueColor: AlwaysStoppedAnimation(context.theme.disabledColor),
+                                                                              value: downloadProgress.progress),
+                                                                        ),
                                                                 imageUrl:
                                                                     "${controller.events[index].postedBy!.imgUrl}")),
                                                   ),
@@ -260,5 +258,4 @@ class NewsFeedScreen extends StatelessWidget {
   }
 
   // The app bar of the home screen is set as an widget function here
-
 }
