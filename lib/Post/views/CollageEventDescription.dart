@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -56,7 +56,7 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                               height: height * .053,
                               decoration: BoxDecoration(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
+                                      const BorderRadius.all(Radius.circular(10)),
                                   color:
                                       Constants.cardColor().withOpacity(0.7)),
                               child: TextFormField(
@@ -80,6 +80,7 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                             ),
                           ),
                           Center(
+
                             child: Obx(
                               () => Container(
                                   padding: EdgeInsets.only(left: width * 0.02),
@@ -121,7 +122,7 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                               height: height * .053,
                               decoration: BoxDecoration(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
+                                      const BorderRadius.all(Radius.circular(10)),
                                   color:
                                       Constants.cardColor().withOpacity(0.7)),
                               child: TextFormField(
@@ -130,7 +131,7 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                                   border: InputBorder.none,
                                   contentPadding: EdgeInsets.only(left: 5),
                                 ),
-                                style: TextStyle(color: Colors.white),
+                                style: const TextStyle(color: Colors.white),
                               ),
                             ),
                           ),
@@ -146,7 +147,7 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                   width: width * 0.35,
                   height: height * .053,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
                       color: Constants.cardColor().withOpacity(0.7)),
                   child: const Text(
                     "Post",

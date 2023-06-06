@@ -112,7 +112,7 @@ class NewsFeedScreen extends StatelessWidget {
                                                 width: width,
                                                 decoration: BoxDecoration(
                                                     color: Constants.cardColor()
-                                                        .withOpacity(0.65),
+                                                        .withOpacity(0.7),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             15)),
@@ -285,6 +285,4 @@ class NewsFeedScreen extends StatelessWidget {
               ],
             )));
   }
-
-  // The app bar of the home screen is set as an widget function here
 }

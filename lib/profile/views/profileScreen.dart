@@ -167,7 +167,7 @@ class ProfilePage extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Constants.cardColor().withOpacity(0.7),
                               borderRadius: BorderRadius.circular(10)),
-                          child: const Column(
+                          child:  Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const [
                               Icon(Icons.edit),
@@ -240,7 +240,7 @@ class ProfilePage extends StatelessWidget {
                                       color: Constants.cardColor()
                                           .withOpacity(0.7),
                                       borderRadius: BorderRadius.circular(10)),
-                                  child: const Column(
+                                  child:  Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: const [
                                       Icon(Icons.logout),
