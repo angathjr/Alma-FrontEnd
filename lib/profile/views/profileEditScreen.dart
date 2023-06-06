@@ -1,14 +1,17 @@
+import 'package:alma/profile/views/general_profile_edit_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../core/constants.dart';
 import '../controllers/profile_controller.dart';
+import '../controllers/tab_controller.dart';
 
 class ProfileEditScreen extends StatelessWidget {
   ProfileEditScreen({super.key});
 
   final ProfileController controller = Get.find();
+  final ProfileTabController tabController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -74,196 +77,27 @@ class ProfileEditScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Padding(
-                  padding: EdgeInsets.all(width * 0.06),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'First Name',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                        ),
-                        Container(
-                          width: width * 02,
-                          height: height * .053,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                              color: Constants.cardColor().withOpacity(0.7)),
-                          child: TextFormField(
-                            //controller: controller.firstNameController,
-                            initialValue: controller.user.value.firstName,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(left: 5),
-                            ),
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        SizedBox(
-                          height: width * 0.06,
-                        ),
-                        const Text(
-                          'Last Name',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                        ),
-                        Container(
-                          width: width * 02,
-                          height: height * .053,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                              color: Constants.cardColor().withOpacity(0.7)),
-                          child: TextFormField(
-                            //controller: controller.lastNameController,
-                            initialValue: controller.user.value.lastName,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(left: 5),
-                            ),
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        SizedBox(
-                          height: width * 0.06,
-                        ),
-                        const Text(
-                          'Phone Number',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                        ),
-                        Container(
-                          width: width * 02,
-                          height: height * .053,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                              color: Constants.cardColor().withOpacity(0.7)),
-                          child: TextFormField(
-                            //controller: controller.phoneNumberController,
-                            initialValue: controller.user.value.phoneNumber,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(left: 5),
-                            ),
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        SizedBox(
-                          height: width * 0.06,
-                        ),
-                        const Text(
-                          'Personal Mail id',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                        ),
-                        Container(
-                          width: width * 02,
-                          height: height * .053,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                              color: Constants.cardColor().withOpacity(0.7)),
-                          child: TextFormField(
-                            //controller: controller.mailController,
-                            initialValue: controller.user.value.email,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(left: 5),
-                            ),
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        SizedBox(
-                          height: width * 0.06,
-                        ),
-                        const Text(
-                          'Bio',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                        ),
-                        Container(
-                          width: width * 02,
-                          height: height * .053,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                              color: Constants.cardColor().withOpacity(0.7)),
-                          child: TextFormField(
-                            //controller: controller.bioController,
-                            initialValue: controller.user.value.bio,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(left: 5),
-                            ),
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        SizedBox(
-                          height: width * 0.06,
-                        ),
-                        const Text(
-                          'Interested Areas',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                        ),
-                        Container(
-                          width: width * 02,
-                          height: height * .053,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                              color: Constants.cardColor().withOpacity(0.7)),
-                          child: TextFormField(
-                            //controller: controller.interestedAreasController,
-                            initialValue: controller.user.value.areaOfInterest!
-                                .join(", "),
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                              contentPadding: EdgeInsets.only(left: 5),
-                            ),
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ]),
+              SizedBox(
+                height: height * 0.03,
+                child: TabBar(
+                  physics: const BouncingScrollPhysics(),
+                  isScrollable: false,
+                  controller: tabController.tabController,
+                  tabs: tabController.tabs,
+                  indicatorColor: Colors.red,
+                  indicatorWeight: 2.5,
+                  indicatorSize: TabBarIndicatorSize.label,
+                  padding: EdgeInsets.only(right: width * 0.19),
                 ),
               ),
               SizedBox(
-                height: width * 0.05,
+                height: height * 0.01,
               ),
-              Container(
-                alignment: Alignment.center,
-                width: width * 0.35,
-                height: height * .053,
-                decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
-                    color: Constants.cardColor().withOpacity(0.7)),
-                child: const Text(
-                  'Submit',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: height * 0.78,
+                child: TabBarView(
+                    controller: tabController.tabController,
+                    children: [GeneralProfileEditScreen(), Placeholder()]),
               )
             ],
           ),

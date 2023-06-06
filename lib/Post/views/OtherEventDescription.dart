@@ -158,7 +158,7 @@ class OtherEventDescriptionScreen extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(controller.eventDate.value),
+                                    Text(controller.lastDayToAppy.value),
                                     IconButton(
                                         onPressed: () {
                                           controller.pickDate(context, height);
