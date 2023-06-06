@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 
 class feedDetailedScreen extends StatelessWidget {
   const feedDetailedScreen({super.key});
@@ -13,11 +12,11 @@ class feedDetailedScreen extends StatelessWidget {
     // final Test test;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: const Text("Home"),
         backgroundColor: Colors.black,
       ),
       
-      drawer:  NavigationDrawer(),
+      drawer:  const NavigationDrawer(),
     );
   }
   

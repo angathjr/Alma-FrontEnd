@@ -1,12 +1,10 @@
 import 'dart:ui';
-
 import 'package:alma/Post/controllers/post_controller.dart';
 import 'package:alma/core/constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-
 import '../../profile/controllers/profile_controller.dart';
 import 'event_type_selection_screen.dart';
 

@@ -51,8 +51,8 @@ class JobDescriptionScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              // color: Color(0xff25262E),
+                                  const BorderRadius.all(Radius.circular(10)),
+                            
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: postController.companyName,
@@ -60,7 +60,7 @@ class JobDescriptionScreen extends StatelessWidget {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                       ),
@@ -80,8 +80,8 @@ class JobDescriptionScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              //color: Color(0xff25262E),
+                                  const BorderRadius.all(Radius.circular(10)),
+                             
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: postController.eventName,
@@ -89,7 +89,7 @@ class JobDescriptionScreen extends StatelessWidget {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                       ),
@@ -109,8 +109,8 @@ class JobDescriptionScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              //color: Color(0xff25262E),
+                                  const BorderRadius.all(Radius.circular(10)),
+                             
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: postController.role,
@@ -138,7 +138,7 @@ class JobDescriptionScreen extends StatelessWidget {
                           height: height * .093,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: postController.skillsRequired,
@@ -146,7 +146,7 @@ class JobDescriptionScreen extends StatelessWidget {
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.only(left: 5),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                         ),
                       ),

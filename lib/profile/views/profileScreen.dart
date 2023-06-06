@@ -66,7 +66,7 @@ class ProfilePage extends StatelessWidget {
                   duration: const Duration(milliseconds: 2500),
                   verticalOffset: -20,
                   child: Container(
-                    //height: 0.2 * height,
+                    
                     width: 0.9 * width,
                     decoration: BoxDecoration(
                         color: Constants.cardColor().withOpacity(0.7),
@@ -169,7 +169,7 @@ class ProfilePage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10)),
                           child:  Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: const [
                               Icon(Icons.edit),
                               Text(
                                 'Edit Profile',
@@ -209,7 +209,7 @@ class ProfilePage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10)),
                                 child:  Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
+                                  children: const [
                                     Icon(Icons.post_add),
                                     Text(
                                       'My Posts',
@@ -241,7 +241,7 @@ class ProfilePage extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10)),
                                   child:  Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
+                                    children: const [
                                       Icon(Icons.logout),
                                       Text(
                                         'Log Out',

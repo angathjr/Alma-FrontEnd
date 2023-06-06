@@ -93,7 +93,7 @@ class ProfileEditScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             //controller: controller.firstNameController,
@@ -120,7 +120,7 @@ class ProfileEditScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             //controller: controller.lastNameController,
@@ -147,7 +147,7 @@ class ProfileEditScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             //controller: controller.phoneNumberController,
@@ -174,7 +174,7 @@ class ProfileEditScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             //controller: controller.mailController,
@@ -201,7 +201,7 @@ class ProfileEditScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             //controller: controller.bioController,
@@ -228,7 +228,7 @@ class ProfileEditScreen extends StatelessWidget {
                           height: height * .053,
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.all(const Radius.circular(10)),
+                                  const BorderRadius.all(Radius.circular(10)),
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             //controller: controller.interestedAreasController,
@@ -252,7 +252,7 @@ class ProfileEditScreen extends StatelessWidget {
                 width: width * 0.35,
                 height: height * .053,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                    borderRadius: const BorderRadius.all(Radius.circular(20)),
                     color: Constants.cardColor().withOpacity(0.7)),
                 child: const Text(
                   'Submit',
