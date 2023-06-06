@@ -20,15 +20,19 @@ class PostController extends GetxController {
   final TextEditingController endDate = TextEditingController();
   final TextEditingController skillsRequired = TextEditingController();
   final TextEditingController venue = TextEditingController();
+  final TextEditingController duration = TextEditingController();
    
 
   var imageUrl = ''.obs;
   var isImageSelected = false.obs;
   var selectedEventType = "J".obs;
   var isImageUploaded = false.obs;
+
   var choosendate = DateTime.now().obs;
   var eventDate = ''.obs;
+  var lastDayToAppy = ''.obs;
   var isPosting = false.obs;
+  var selectedDate = ''.obs;
   var postingText = 'Post'.obs;
 
   Rx<File> selectedImage = Rx<File>(File(''));
@@ -39,18 +43,20 @@ class PostController extends GetxController {
     if (isImageSelected.value) {
       await uploadImage();
     }
-    Map jobdata = {
+    Map data = {
       "event_name": eventName.text,
       "event_description": description.text,
       "venue": venue.text,
       "event_date": eventDate.value,
       "img_url": imageUrl.value,
-      "event_type": selectedEventType.value
+      "event_type": selectedEventType.value,
+      "last_date_to_apply": lastDayToAppy.value,
+      "duration": duration.text,
     };
-    log("college or other  data is $jobdata");
+    log("college or other  data is $data");
 
     try {
-      final response = await api.postApi('/events/add', jobdata);
+      final response = await api.postApi('/events/add', data);
       log("status code is ${response.statusCode}");
       log("response is ${response.body}");
       if (response.statusCode == 201) {
@@ -87,7 +93,9 @@ class PostController extends GetxController {
       "skills_required": skills,
       "event_date": eventDate.value,
       "img_url": imageUrl.value,
-      "event_type": selectedEventType.value
+      "event_type": selectedEventType.value,
+      "last_date_to_apply": lastDayToAppy.value,
+      "duration": duration.text,
     };
     log("internship  data is $jobdata");
 
@@ -128,7 +136,8 @@ class PostController extends GetxController {
       "event_description": description.text,
       "skills_required": skills,
       "img_url": imageUrl.value,
-      "event_type": selectedEventType.value
+      "event_type": selectedEventType.value,
+      "last_date_to_apply": lastDayToAppy.value,
     };
     log("job data is $jobdata");
 
@@ -220,7 +229,6 @@ class PostController extends GetxController {
                       topRight: Radius.circular(20))),
               height: h * 0.5,
               child: SizedBox(
-                // height: 400,
                 width: MediaQuery.of(ctx).size.width,
                 child: CupertinoDatePicker(
                   mode: CupertinoDatePickerMode.date,
@@ -229,7 +237,7 @@ class PostController extends GetxController {
                   dateOrder: DatePickerDateOrder.ymd,
                   onDateTimeChanged: (val) {
                     choosendate.value = val;
-                    eventDate.value =
+                    selectedDate.value =
                         DateFormat('yyyy/MM/dd').format(choosendate.value);
                   },
                 ),
