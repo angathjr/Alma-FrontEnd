@@ -47,11 +47,11 @@ class NewsFeedScreen extends StatelessWidget {
                   ),
                   backgroundColor: Colors.black,
                 ),
-                // CupertinoSliverRefreshControl(
-                //   onRefresh: () async {
-                //     controller.fetchEvents();
-                //   },
-                // ),
+                CupertinoSliverRefreshControl(
+                  onRefresh: () async {
+                    controller.fetchEvents();
+                  },
+                ),
                 SliverPadding(
                   padding: EdgeInsets.symmetric(horizontal: width * 0.04),
                   sliver: Obx(

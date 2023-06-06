@@ -70,6 +70,18 @@ class CollageEventScreen extends StatelessWidget {
                                                 borderRadius:
                                                     BorderRadius.circular(15),
                                                 child: CachedNetworkImage(
+                                                  progressIndicatorBuilder:
+                                                      (context, url,
+                                                              downloadProgress) =>
+                                                          Center(
+                                                    child: CircularProgressIndicator(
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation(
+                                                                context.theme
+                                                                    .disabledColor),
+                                                        value: downloadProgress
+                                                            .progress),
+                                                  ),
                                                   imageUrl:
                                                       "${controller.collageEvent[index].imgUrl}}",
                                                   fit: BoxFit.cover,
