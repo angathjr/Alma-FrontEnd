@@ -57,7 +57,7 @@ class EventDetailsScreen extends StatelessWidget {
             Container(
               constraints: BoxConstraints(
                   maxHeight: (controller.selectedEvent.value.imgUrl != "")
-                      ? height * 0.25
+                      ? height * 0.12
                       : height * .5),
               child: Column(
                 children: [
@@ -72,9 +72,15 @@ class EventDetailsScreen extends StatelessWidget {
                         fontSize: 27,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
-                    height: height * 0.03,
-                  ),
+                  
+                ],
+              ),
+            ),
+            Column(children:
+             [
+              // SizedBox(
+              //       height: height * 0.03,
+              //     ),
                   Row(
                     children: const [
                       Text(
@@ -86,18 +92,23 @@ class EventDetailsScreen extends StatelessWidget {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(15, 10, 12, 1),
-                    child: Text(
-                        "${controller.selectedEvent.value.eventDescription}",
-                        maxLines: (controller.selectedEvent.value.imgUrl != "")
-                            ? 5
-                            : 20,
-                        style: Constants.txtStyle().copyWith(fontSize: 16),
-                        overflow: TextOverflow.ellipsis),
-                  ),
-                ],
-              ),
-            )
+                    padding: const EdgeInsets.fromLTRB(15, 10, 12, 0),
+                    child: Container(
+                      width: width,
+                      child: Text(
+                        
+                          "${controller.selectedEvent.value.eventDescription}",
+                          softWrap: false,
+                          
+                                
+                               
+                          style: Constants.txtStyle().copyWith(fontSize: 16),
+                          // overflow: TextOverflow.ellipsis
+                          
+                          ),
+                    ),
+                        
+                  ),],)
           ]),
         ),
       ),
