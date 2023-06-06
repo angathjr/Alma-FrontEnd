@@ -250,8 +250,8 @@ class StaffProfileScreen extends StatelessWidget {
                               width: width * 02,
                               height: height * .053,
                               decoration: BoxDecoration(
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(10)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
                                   color:
                                       Constants.cardColor().withOpacity(0.7)),
                               child: Obx(
@@ -312,6 +312,7 @@ class StaffProfileScreen extends StatelessWidget {
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                     color: Constants.cardColor().withOpacity(0.7)),
                 child:  Row(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -330,6 +331,4 @@ class StaffProfileScreen extends StatelessWidget {
       ),
     );
   }
-
- 
-} 
+}
