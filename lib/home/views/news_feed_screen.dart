@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -78,179 +79,207 @@ class NewsFeedScreen extends StatelessWidget {
                                   ),
                                 ),
                               )
-                            : SliverList(
-                                delegate: SliverChildBuilderDelegate(
-                                    childCount: controller.events.length,
-                                    (BuildContext context, index) {
-                                return Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: height * 0.01),
-                                  child: SizedBox(
-                                    width: width,
-                                    child: InkWell(
-                                      onTap: () {
-                                        controller.gotoEvent(
-                                            controller.events[index]);
-                                      },
-                                      child: Container(
-                                        padding: const EdgeInsets.all(10),
-                                        width: width,
-                                        decoration: BoxDecoration(
-                                            color: Constants.cardColor()
-                                                .withOpacity(0.65),
-                                            borderRadius:
-                                                BorderRadius.circular(15)),
-                                        child: Column(
-                                          children: [
-                                            //Row that contains profile pic and name
-
-                                            SizedBox(
-                                              width: width,
-                                              height: postSize * 0.1,
-                                              child: Row(
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            360),
-                                                    child: SizedBox(
-                                                        width: width * 0.11,
-                                                        height: width * 0.11,
-                                                        child: controller
-                                                                    .events[
-                                                                        index]
-                                                                    .postedBy!
-                                                                    .imgUrl ==
-                                                                ''
-                                                            ? Image.asset(
-                                                                NOIMAGE)
-                                                            : CachedNetworkImage(
-                                                                progressIndicatorBuilder:
-                                                                    (context,
-                                                                            url,
-                                                                            downloadProgress) =>
-                                                                        Center(
-                                                                          child: CircularProgressIndicator(
-                                                                              valueColor: AlwaysStoppedAnimation(context.theme.disabledColor),
-                                                                              value: downloadProgress.progress),
-                                                                        ),
-                                                                imageUrl:
-                                                                    "${controller.events[index].postedBy!.imgUrl}")),
-                                                  ),
-                                                  SizedBox(
-                                                    width: width * 0.02,
-                                                  ),
-                                                  Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        "${controller.events[index].postedBy!.firstName}",
-                                                        style:
-                                                            Constants.txtStyle()
-                                                                .copyWith(
-                                                                    fontSize:
-                                                                        17),
-                                                      ),
-                                                      Text(
-                                                        "1 hour ago",
-                                                        style:
-                                                            Constants.txtStyle()
-                                                                .copyWith(
-                                                                    fontSize:
-                                                                        11),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  const Spacer(),
-                                                  SizedBox(
-                                                      width: width * 0.07,
-                                                      height: width * 0.07,
-                                                      child: const Icon(
-                                                        FeatherIcons
-                                                            .moreHorizontal,
-                                                        color: Colors.white,
-                                                      ))
-                                                ],
-                                              ),
-                                            ),
-
-                                            SizedBox(
-                                              height: postSize * 0.03,
-                                            ),
-
-                                            //The image of the post ,if there is no img the size of the card changes according to it
-
-                                            if (controller
-                                                    .events[index].imgUrl !=
-                                                "")
-                                              Container(
-                                                height: postSize * 0.55,
+                            : AnimationLimiter(
+                                child: SliverList(
+                                    delegate: SliverChildBuilderDelegate(
+                                        childCount: controller.events.length,
+                                        (BuildContext context, index) {
+                                  return AnimationConfiguration.staggeredList(
+                                    position: index,
+                                    duration: const Duration(milliseconds: 100),
+                                    child: SlideAnimation(
+                                      curve: Curves.fastLinearToSlowEaseIn,
+                                      duration:
+                                          const Duration(milliseconds: 1500),
+                                      verticalOffset: -50,
+                                      child: FadeInAnimation(
+                                        curve: Curves.fastLinearToSlowEaseIn,
+                                        duration:
+                                            const Duration(milliseconds: 1500),
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              vertical: height * 0.01),
+                                          child: SizedBox(
+                                            width: width,
+                                            child: InkWell(
+                                              onTap: () {
+                                                controller.gotoEvent(
+                                                    controller.events[index]);
+                                              },
+                                              child: Container(
+                                                padding:
+                                                    const EdgeInsets.all(10),
                                                 width: width,
                                                 decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                ),
-                                                child: ClipRRect(
+                                                    color: Constants.cardColor()
+                                                        .withOpacity(0.65),
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            10),
-                                                    child: CachedNetworkImage(
-                                                      progressIndicatorBuilder:
-                                                          (context, url,
-                                                                  downloadProgress) =>
-                                                              Center(
-                                                        child: CircularProgressIndicator(
-                                                            valueColor:
-                                                                AlwaysStoppedAnimation(
-                                                                    context
-                                                                        .theme
-                                                                        .disabledColor),
-                                                            value:
-                                                                downloadProgress
-                                                                    .progress),
+                                                            15)),
+                                                child: Column(
+                                                  children: [
+                                                    //Row that contains profile pic and name
+
+                                                    SizedBox(
+                                                      width: width,
+                                                      height: postSize * 0.1,
+                                                      child: Row(
+                                                        children: [
+                                                          ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        360),
+                                                            child: SizedBox(
+                                                                width: width *
+                                                                    0.11,
+                                                                height: width *
+                                                                    0.11,
+                                                                child: controller
+                                                                            .events[
+                                                                                index]
+                                                                            .postedBy!
+                                                                            .imgUrl ==
+                                                                        ''
+                                                                    ? Image.asset(
+                                                                        NOIMAGE)
+                                                                    : CachedNetworkImage(
+                                                                        progressIndicatorBuilder: (context,
+                                                                                url,
+                                                                                downloadProgress) =>
+                                                                            Center(
+                                                                              child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(context.theme.disabledColor), value: downloadProgress.progress),
+                                                                            ),
+                                                                        imageUrl:
+                                                                            "${controller.events[index].postedBy!.imgUrl}")),
+                                                          ),
+                                                          SizedBox(
+                                                            width: width * 0.02,
+                                                          ),
+                                                          Column(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                "${controller.events[index].postedBy!.firstName}",
+                                                                style: Constants
+                                                                        .txtStyle()
+                                                                    .copyWith(
+                                                                        fontSize:
+                                                                            17),
+                                                              ),
+                                                              Text(
+                                                                "1 hour ago",
+                                                                style: Constants
+                                                                        .txtStyle()
+                                                                    .copyWith(
+                                                                        fontSize:
+                                                                            11),
+                                                              )
+                                                            ],
+                                                          ),
+                                                          const Spacer(),
+                                                          SizedBox(
+                                                              width:
+                                                                  width * 0.07,
+                                                              height:
+                                                                  width * 0.07,
+                                                              child: const Icon(
+                                                                FeatherIcons
+                                                                    .moreHorizontal,
+                                                                color: Colors
+                                                                    .white,
+                                                              ))
+                                                        ],
                                                       ),
-                                                      imageUrl:
-                                                          "${controller.events[index].imgUrl}",
-                                                      fit: BoxFit.cover,
-                                                    )),
+                                                    ),
+
+                                                    SizedBox(
+                                                      height: postSize * 0.03,
+                                                    ),
+
+                                                    //The image of the post ,if there is no img the size of the card changes according to it
+
+                                                    if (controller.events[index]
+                                                            .imgUrl !=
+                                                        "")
+                                                      Container(
+                                                        height: postSize * 0.55,
+                                                        width: width,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                        ),
+                                                        child: ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10),
+                                                            child:
+                                                                CachedNetworkImage(
+                                                              progressIndicatorBuilder:
+                                                                  (context, url,
+                                                                          downloadProgress) =>
+                                                                      Center(
+                                                                child: CircularProgressIndicator(
+                                                                    valueColor:
+                                                                        AlwaysStoppedAnimation(context
+                                                                            .theme
+                                                                            .disabledColor),
+                                                                    value: downloadProgress
+                                                                        .progress),
+                                                              ),
+                                                              imageUrl:
+                                                                  "${controller.events[index].imgUrl}",
+                                                              fit: BoxFit.cover,
+                                                            )),
+                                                      ),
+                                                    SizedBox(
+                                                      height: postSize * 0.06,
+                                                    ),
+                                                    Container(
+                                                      constraints: BoxConstraints(
+                                                          maxHeight: (controller
+                                                                      .events[
+                                                                          index]
+                                                                      .imgUrl !=
+                                                                  "")
+                                                              ? postSize * 0.2
+                                                              : postSize),
+                                                      //color: Colors.red,
+                                                      child: Text(
+                                                          "${controller.events[index].eventDescription}",
+                                                          maxLines: (controller
+                                                                      .events[
+                                                                          index]
+                                                                      .imgUrl !=
+                                                                  "")
+                                                              ? 5
+                                                              : 20,
+                                                          style: Constants
+                                                                  .txtStyle()
+                                                              .copyWith(
+                                                                  fontSize: 12),
+                                                          overflow: TextOverflow
+                                                              .ellipsis),
+                                                    )
+                                                  ],
+                                                ),
                                               ),
-                                            SizedBox(
-                                              height: postSize * 0.06,
                                             ),
-                                            Container(
-                                              constraints: BoxConstraints(
-                                                  maxHeight: (controller
-                                                              .events[index]
-                                                              .imgUrl !=
-                                                          "")
-                                                      ? postSize * 0.2
-                                                      : postSize),
-                                              //color: Colors.red,
-                                              child: Text(
-                                                  "${controller.events[index].eventDescription}",
-                                                  maxLines: (controller
-                                                              .events[index]
-                                                              .imgUrl !=
-                                                          "")
-                                                      ? 5
-                                                      : 20,
-                                                  style: Constants.txtStyle()
-                                                      .copyWith(fontSize: 12),
-                                                  overflow:
-                                                      TextOverflow.ellipsis),
-                                            )
-                                          ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                );
-                              })),
+                                  );
+                                })),
+                              ),
                   ),
                 )
               ],

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 import '../../core/constants.dart';
@@ -11,7 +12,6 @@ class SearchPage extends StatelessWidget {
   SearchPage({super.key});
 
   final EventSearchController searchController = Get.find();
-  
 
   @override
   Widget build(BuildContext context) {
@@ -101,19 +101,38 @@ class SearchPage extends StatelessWidget {
                                 ),
                               ),
                             )
-                          : SliverList(
-                              delegate: SliverChildBuilderDelegate(
-                                  childCount: searchController.events.length,
-                                  (BuildContext context, index) {
-                              return GestureDetector(
-                               onTap: ()=>searchController.gotoEvent(searchController.events[index]),
-                                child: SearchCard(
-                                    index: index,
-                                    height: height,
-                                    width: width,
-                                    searchController: searchController),
-                              );
-                            })),
+                          : AnimationLimiter(
+                              child: SliverList(
+                                  delegate: SliverChildBuilderDelegate(
+                                      childCount:
+                                          searchController.events.length,
+                                      (BuildContext context, index) {
+                                return AnimationConfiguration.staggeredList(
+                                  position: index,
+                                  duration: const Duration(milliseconds: 100),
+                                  child: SlideAnimation(
+                                    curve: Curves.fastLinearToSlowEaseIn,
+                                    duration:
+                                        const Duration(milliseconds: 1500),
+                                    verticalOffset: -50,
+                                    child: FadeInAnimation(
+                                      curve: Curves.fastLinearToSlowEaseIn,
+                                      duration:
+                                          const Duration(milliseconds: 1500),
+                                      child: GestureDetector(
+                                        onTap: () => searchController.gotoEvent(
+                                            searchController.events[index]),
+                                        child: SearchCard(
+                                            index: index,
+                                            height: height,
+                                            width: width,
+                                            searchController: searchController),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              })),
+                            ),
                 ),
               ),
             ],
@@ -161,21 +180,15 @@ class SearchCard extends StatelessWidget {
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(15),
                           child: CachedNetworkImage(
-                             progressIndicatorBuilder:
-                                                          (context, url,
-                                                                  downloadProgress) =>
-                                                              Center(
-                                                        child: CircularProgressIndicator(
-                                                            valueColor:
-                                                                AlwaysStoppedAnimation(
-                                                                    context
-                                                                        .theme
-                                                                        .disabledColor),
-                                                            value:
-                                                                downloadProgress
-                                                                    .progress),
-                                                      ),
-                            imageUrl: "${searchController.events[index].imgUrl}}",
+                            progressIndicatorBuilder:
+                                (context, url, downloadProgress) => Center(
+                              child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation(
+                                      context.theme.disabledColor),
+                                  value: downloadProgress.progress),
+                            ),
+                            imageUrl:
+                                "${searchController.events[index].imgUrl}}",
                             fit: BoxFit.cover,
                           )),
                     ),
