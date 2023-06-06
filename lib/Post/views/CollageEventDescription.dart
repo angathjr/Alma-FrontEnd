@@ -93,35 +93,7 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        // const Padding(
-                        //   padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
-                        //   child: Text(
-                        //     'Event Time',
-                        //     style: TextStyle(
-                        //       color: Colors.white,
-                        //       fontSize: 14,
-                        //     ),
-                        //   ),
-                        // ),
-                        // Center(
-                        //   child: Container(
-                        //     width: width * 0.8,
-                        //     height: height * .053,
-                        //     decoration:  BoxDecoration(
-                        //       borderRadius:
-                        //           BorderRadius.all(Radius.circular(10)),
-                        //       color: Constants.cardColor().withOpacity(0.7)
-                        //     ),
-                        //     child: TextFormField(
-                        //       controller: event_time,
-                        //       decoration: const InputDecoration(
-                        //         border: InputBorder.none,
-                        //         contentPadding: EdgeInsets.only(left: 5),
-                        //       ),
-                        //       style: TextStyle(color: Colors.white),
-                        //     ),
-                        //   ),
-                        // ),
+                        
                         const Padding(
                           padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
                           child: Text(
@@ -150,64 +122,7 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        // const Padding(
-                        //   padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
-                        //   child: Text(
-                        //     'Event Coordinator',
-                        //     style: TextStyle(
-                        //       color: Colors.white,
-                        //       fontSize: 14,
-                        //     ),
-                        //   ),
-                        // ),
-                        // Center(
-                        //   child: Container(
-                        //     width: width * 0.8,
-                        //     height: height * .053,
-                        //     decoration:  BoxDecoration(
-                        //       borderRadius:
-                        //           BorderRadius.all(Radius.circular(10)),
-                        //       color: Constants.cardColor().withOpacity(0.7)
-                        //     ),
-                        //     child: TextFormField(
-                        //       controller: event_cordinator,
-                        //       decoration: const InputDecoration(
-                        //         border: InputBorder.none,
-                        //         contentPadding: EdgeInsets.only(left: 5),
-                        //       ),
-                        //       style: TextStyle(color: Colors.white),
-                        //     ),
-                        //   ),
-                        // ),
-                        // const Padding(
-                        //   padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
-                        //   child: Text(
-                        //     'Contact',
-                        //     style: TextStyle(
-                        //       color: Colors.white,
-                        //       fontSize: 14,
-                        //     ),
-                        //   ),
-                        // ),
-                        // Center(
-                        //   child: Container(
-                        //     width: width * 0.8,
-                        //     height: height * .053,
-                        //     decoration:  BoxDecoration(
-                        //       borderRadius:
-                        //           BorderRadius.all(Radius.circular(10)),
-                        //       color: Constants.cardColor().withOpacity(0.7)
-                        //     ),
-                        //     child: TextFormField(
-                        //       controller: condact,
-                        //       decoration: const InputDecoration(
-                        //         border: InputBorder.none,
-                        //         contentPadding: EdgeInsets.only(left: 5),
-                        //       ),
-                        //       style: TextStyle(color: Colors.white),
-                        //     ),
-                        //   ),
-                        // ),
+                        
                       ]),
                 ),
               ),

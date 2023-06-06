@@ -67,6 +67,35 @@ class InternshipDescriptionScreen extends StatelessWidget {
                             ),
                           ),
                         ),
+                         const Padding(
+                        padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
+                        child: Text(
+                          'Internship Name',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Container(
+                          width: width * 0.8,
+                          height: height * .053,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              //color: Color(0xff25262E),
+                              color: Constants.cardColor().withOpacity(0.7)),
+                          child: TextFormField(
+                            controller: controller.eventName,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              contentPadding: EdgeInsets.only(left: 5),
+                            ),
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
                         const Padding(
                           padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
                           child: Text(
@@ -115,6 +144,34 @@ class InternshipDescriptionScreen extends StatelessWidget {
                                 color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
                               controller: controller.startDate,
+                              decoration: const InputDecoration(
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.only(left: 5),
+                              ),
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
+                          child: Text(
+                            'End date',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ),
+                        Center(
+                          child: Container(
+                            width: width * 0.8,
+                            height: height * .053,
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                                color: Constants.cardColor().withOpacity(0.7)),
+                            child: TextFormField(
+                              controller: controller.endDate,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
