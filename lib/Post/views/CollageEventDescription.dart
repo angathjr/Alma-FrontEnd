@@ -148,13 +148,17 @@ class CollageEventDescriptionScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                       color: Constants.cardColor().withOpacity(0.7)),
-                  child: const Text(
-                    "Post",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
+                  child:  Obx(
+                  () => FittedBox(
+                    child: Text(
+                      controller.postingText.value,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
+                ),
                 ),
               ),
               const SizedBox(

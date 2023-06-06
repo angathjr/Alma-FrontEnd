@@ -30,10 +30,14 @@ class PostController extends GetxController {
   var isImageUploaded = false.obs;
   var choosendate = DateTime.now().obs;
   var eventDate = ''.obs;
+  var isPosting = false.obs;
+  var postingText = 'Post'.obs;
 
   Rx<File> selectedImage = Rx<File>(File(''));
 
   void addCollegeAndOtherEvent() async {
+    isPosting(true);
+    postingText("Posting...");
     if (isImageSelected.value) {
       await uploadImage();
     }
@@ -57,18 +61,23 @@ class PostController extends GetxController {
           "Event added successfully",
         );
         clearAll();
+        isPosting(false);
+        postingText("Done");
         await Future.delayed(const Duration(milliseconds: 1400));
         Get.offAllNamed('/');
       } else {
         Get.snackbar("Failed", "Failed to add  event ");
       }
     } catch (e) {
+      postingText("Try Again");
       log("error is $e");
     }
   }
 
   void addInternshipEvent() async {
     List<String> skills = skillsRequired.text.split(',');
+    isPosting(true);
+    postingText("Posting...");
 
     if (isImageSelected.value) {
       await uploadImage();
@@ -94,6 +103,8 @@ class PostController extends GetxController {
           "Internship added successfully",
         );
         clearAll();
+        isPosting(false);
+        postingText("Done");
         await Future.delayed(const Duration(milliseconds: 1400));
         Get.offAllNamed('/');
       } else {
@@ -106,6 +117,8 @@ class PostController extends GetxController {
 
   void addJobEvent() async {
     List<String> skills = skillsRequired.text.split(',');
+    isPosting(true);
+    postingText("Posting...");
 
     if (isImageSelected.value) {
       await uploadImage();
@@ -132,6 +145,8 @@ class PostController extends GetxController {
           snackPosition: SnackPosition.TOP,
         );
         clearAll();
+        isPosting(false);
+        postingText("Done");
         await Future.delayed(const Duration(milliseconds: 1400));
         Get.offAllNamed('/');
       } else {
@@ -243,17 +258,5 @@ class PostController extends GetxController {
     endDate.clear();
     skillsRequired.clear();
     venue.clear();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-    companyName.dispose();
-    eventName.dispose();
-    role.dispose();
-    description.dispose();
-    endDate.dispose();
-    skillsRequired.dispose();
-    venue.dispose();
   }
 }

@@ -52,7 +52,6 @@ class JobDescriptionScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
-                            
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: postController.companyName,
@@ -64,7 +63,7 @@ class JobDescriptionScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                       const Padding(
+                      const Padding(
                         padding: EdgeInsets.fromLTRB(19, 15, 4, 10),
                         child: Text(
                           'Job Name',
@@ -81,7 +80,6 @@ class JobDescriptionScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
-                             
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: postController.eventName,
@@ -110,7 +108,6 @@ class JobDescriptionScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
-                             
                               color: Constants.cardColor().withOpacity(0.7)),
                           child: TextFormField(
                             controller: postController.role,
@@ -166,11 +163,15 @@ class JobDescriptionScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                     color: Constants.cardColor().withOpacity(0.7)),
-                child: const Text(
-                  "Post",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
+                child: Obx(
+                  () => FittedBox(
+                    child: Text(
+                      postController.postingText.value,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
                   ),
                 ),
               ),
