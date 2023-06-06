@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -14,6 +15,7 @@ class CollageEventDescriptionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -33,97 +35,104 @@ class CollageEventDescriptionScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SingleChildScrollView(
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.fromLTRB(19, 30, 4, 6),
-                          child: Text(
-                            'Event name',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(19, 30, 4, 6),
+                            child: Text(
+                              'Event name',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                              ),
                             ),
                           ),
-                        ),
-                        Center(
-                          child: Container(
-                            width: width * 0.8,
-                            height: height * .053,
-                            decoration: BoxDecoration(
+                          Center(
+                            child: Container(
+                              width: width * 0.8,
+                              height: height * .053,
+                              decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Constants.cardColor().withOpacity(0.7)),
+                              child: TextFormField(
+                                controller: controller.eventName,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(left: 5),
+                                ),
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
+                            child: Text(
+                              'Event Date',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                          Center(
+                            child: Container(
+                              
+                              width: width * 0.8,
+                              height: height * .053,
+                              decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(10)),
-                                color: Constants.cardColor().withOpacity(0.7)),
-                            child: TextFormField(
-                              controller: controller.eventName,
-                              decoration: const InputDecoration(
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.only(left: 5),
+                                color: Constants.cardColor().withOpacity(0.7),
                               ),
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
-                          child: Text(
-                            'Event Date',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                        Center(
-                          child: Container(
-                            width: width * 0.8,
-                            height: height * .053,
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              color: Constants.cardColor().withOpacity(0.7),
-                            ),
-                            child: TextFormField(
-                              controller: controller.startDate,
-                              decoration: const InputDecoration(
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.only(left: 5),
+                              
+                              child: TextFormField(
+                                
+                                controller: controller.startDate,
+                                decoration:  InputDecoration(
+                                  icon: IconButton(onPressed: ()=>_showDatePicker(context), icon: Icon(Icons.abc)),
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(left: 5),
+                                ),
+                                style: TextStyle(color: Colors.white),
                               ),
-                              style: TextStyle(color: Colors.white),
                             ),
                           ),
-                        ),
-                        
-                        const Padding(
-                          padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
-                          child: Text(
-                            'Venue',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                        Center(
-                          child: Container(
-                            width: width * 0.8,
-                            height: height * .053,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                color: Constants.cardColor().withOpacity(0.7)),
-                            child: TextFormField(
-                              controller: controller.venue,
-                              decoration: const InputDecoration(
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.only(left: 5),
+                          
+                          const Padding(
+                            padding: EdgeInsets.fromLTRB(19, 15, 4, 6),
+                            child: Text(
+                              'Venue',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
                               ),
-                              style: TextStyle(color: Colors.white),
                             ),
                           ),
-                        ),
-                        
-                      ]),
+                          Center(
+                            child: Container(
+                              width: width * 0.8,
+                              height: height * .053,
+                              decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  color: Constants.cardColor().withOpacity(0.7)),
+                              child: TextFormField(
+                                controller: controller.venue,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  contentPadding: EdgeInsets.only(left: 5),
+                                ),
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          
+                        ]),
+                  ),
                 ),
               ),
               const Spacer(),
@@ -155,3 +164,41 @@ class CollageEventDescriptionScreen extends StatelessWidget {
     );
   }
 }
+
+
+ void _showDatePicker(ctx) {
+   DateTime? _chosenDateTime;
+    // showCupertinoModalPopup is a built-in function of the cupertino library
+    showCupertinoModalPopup(
+        context: ctx,
+        builder: (_) => Container(
+              height: 500,
+              color: Color.fromARGB(255, 238, 22, 22),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 400,
+                    child: CupertinoDatePicker(mode: CupertinoDatePickerMode.date,
+                      maximumYear: 2045,
+                      minimumYear: 2023,
+                      dateOrder:DatePickerDateOrder.ymd ,
+                        //initialDateTime: DateTime.now(),
+                        onDateTimeChanged: (val) {
+                          // setState(() {
+                          //   _chosenDateTime = val;
+                          // });
+                        }),
+                  ),
+
+                  // Close the modal
+                  CupertinoButton(
+                    child: const Text('OK'),
+                    color: Colors.amber,
+                    onPressed: () => Navigator.of(ctx).pop(),
+                  )
+                ],
+              ),
+            ));
+  }
+  
+ 
