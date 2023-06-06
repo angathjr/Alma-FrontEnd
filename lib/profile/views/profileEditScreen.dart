@@ -3,7 +3,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../core/constants.dart';
 import '../controllers/profile_controller.dart';
 import '../controllers/tab_controller.dart';
 
@@ -84,10 +83,10 @@ class ProfileEditScreen extends StatelessWidget {
                   isScrollable: false,
                   controller: tabController.tabController,
                   tabs: tabController.tabs,
-                  indicatorColor: Colors.red,
-                  indicatorWeight: 2.5,
+                  indicatorColor: Colors.grey,
+                  indicatorWeight: 3,
                   indicatorSize: TabBarIndicatorSize.label,
-                  padding: EdgeInsets.only(right: width * 0.19),
+                  // padding: EdgeInsets.only(right: width * 0.19),
                 ),
               ),
               SizedBox(
@@ -96,6 +95,7 @@ class ProfileEditScreen extends StatelessWidget {
               SizedBox(
                 height: height * 0.78,
                 child: TabBarView(
+                    physics: const NeverScrollableScrollPhysics(),
                     controller: tabController.tabController,
                     children: [GeneralProfileEditScreen(), Placeholder()]),
               )
