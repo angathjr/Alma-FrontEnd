@@ -1,27 +1,25 @@
+import 'package:alma/profile/controllers/profile_edit_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../core/constants.dart';
-import '../controllers/profile_controller.dart';
 
 class AlumniEditProfileScreen extends StatelessWidget {
   AlumniEditProfileScreen({super.key});
-  final ProfileController controller = Get.find();
+  final ProfileEditController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Padding(
         padding: EdgeInsets.all(width * 0.06),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Current Company',
               style: TextStyle(
                 color: Colors.white,
@@ -35,8 +33,7 @@ class AlumniEditProfileScreen extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: Constants.cardColor().withOpacity(0.7)),
               child: TextFormField(
-                //controller: controller.firstNameController,
-                initialValue: controller.user.value.firstName,
+                controller: controller.currentCompany,
                 decoration: const InputDecoration(
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.only(left: 5),
@@ -47,7 +44,7 @@ class AlumniEditProfileScreen extends StatelessWidget {
             SizedBox(
               height: width * 0.06,
             ),
-            Text(
+            const Text(
               'Previous Companies',
               style: TextStyle(
                 color: Colors.white,
@@ -58,11 +55,10 @@ class AlumniEditProfileScreen extends StatelessWidget {
               width: width * 02,
               height: height * .053,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
                   color: Constants.cardColor().withOpacity(0.7)),
               child: TextFormField(
-                //controller: controller.firstNameController,
-                initialValue: controller.user.value.firstName,
+                controller: controller.previousCompany,
                 decoration: const InputDecoration(
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.only(left: 5),
@@ -70,6 +66,35 @@ class AlumniEditProfileScreen extends StatelessWidget {
                 style: const TextStyle(color: Colors.white),
               ),
             ),
+            const Spacer(),
+            Center(
+              child: GestureDetector(
+                onTap: () {
+                  controller.updateAlumni();
+                },
+                child: Obx(
+                  () => Container(
+                    alignment: Alignment.center,
+                    width: width * 0.35,
+                    height: height * .053,
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(20)),
+                        color: Constants.cardColor().withOpacity(0.7)),
+                    child: Text(
+                      controller.submitText.value,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: height * 0.1,
+            )
           ],
         ),
       ),

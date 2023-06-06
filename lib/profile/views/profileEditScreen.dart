@@ -1,4 +1,5 @@
 import 'package:alma/profile/views/general_profile_edit_screen.dart';
+import 'package:alma/profile/views/staff_edit_profile_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -106,7 +107,7 @@ class ProfileEditScreen extends StatelessWidget {
                       (controller.user.value.userType == "ALUMNI")
                           ? AlumniEditProfileScreen()
                           : ((controller.user.value.userType == "STAFF")
-                              ? StaffProfileScreen()
+                              ? StaffProfileEdit()
                               : Container(
                                   child: Center(child: Text('NONE')),
                                 ))

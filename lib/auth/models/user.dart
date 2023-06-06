@@ -116,7 +116,7 @@ class UserData {
       this.joinedYear,
       this.yearOfGraduate,
       this.currentCompany,
-      // this.previousCompanies,
+      this.previousCompanies,
       this.academicYearFrom,
       this.academicYearTo,
       this.user});
@@ -127,7 +127,7 @@ class UserData {
   final int? joinedYear;
   final int? yearOfGraduate;
   final String? currentCompany;
-  // final List<String>? previousCompanies;
+  final List<String>? previousCompanies;
   final int? academicYearFrom;
   final int? academicYearTo;
   final int? user;
@@ -151,7 +151,7 @@ class UserData {
         joinedYear: joinedYear ?? this.joinedYear,
         yearOfGraduate: yearOfGraduate ?? this.yearOfGraduate,
         currentCompany: currentCompany ?? this.currentCompany,
-        // previousCompanies: previousCompanies ?? this.previousCompanies,
+        previousCompanies: previousCompanies ?? this.previousCompanies,
         academicYearFrom: academicYearFrom ?? this.academicYearFrom,
         academicYearTo: academicYearTo ?? this.academicYearTo,
         user: user ?? this.user,
@@ -164,9 +164,9 @@ class UserData {
         joinedYear: json["joined_year"] ?? 0,
         yearOfGraduate: json["year_of_graduate"] ?? 0,
         currentCompany: json["current_company"] ?? '',
-        // previousCompanies: json["previous_companies"] == null
-        //     ? []
-        //     : List<String>.from(json["previous_companies"]!.map((x) => x)),
+        previousCompanies: json["previous_companies"] == null
+            ? []
+            : List<String>.from(json["previous_companies"]!.map((x) => x)),
         academicYearFrom: json["academic_year_from"] ?? 0,
         academicYearTo: json["academic_year_to"] ?? 0,
         user: json["user"],
@@ -179,9 +179,9 @@ class UserData {
         "joined_year": joinedYear,
         "year_of_graduate": yearOfGraduate,
         "current_company": currentCompany,
-        // "previous_companies": previousCompanies == null
-        //     ? []
-        //     : List<String>.from(previousCompanies!.map((x) => x)),
+        "previous_companies": previousCompanies == null
+            ? []
+            : List<String>.from(previousCompanies!.map((x) => x)),
         "academic_year_from": academicYearFrom,
         "academic_year_to": academicYearTo,
         "user": user,

@@ -191,7 +191,7 @@ class GeneralProfileEditScreen extends StatelessWidget {
                       Center(
                         child: GestureDetector(
                           onTap: () {
-                            print(controller.lastNameController.text);
+                            controller.updateGeneralProfile();
                           },
                           child: Container(
                             alignment: Alignment.center,
