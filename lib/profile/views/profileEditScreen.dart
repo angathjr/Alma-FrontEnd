@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -40,10 +41,9 @@ class ProfileEditScreen extends StatelessWidget {
                     children: [
                       Obx(
                         () => CircleAvatar(
-                          backgroundImage:
-                              NetworkImage("${controller.user.value.imageUrl}"),
-                          foregroundImage: controller
-                                      .isImageSelected.value ==
+                          backgroundImage: CachedNetworkImageProvider(
+                              "${controller.user.value.imageUrl}"),
+                          foregroundImage: controller.isImageSelected.value ==
                                   true
                               ? FileImage(controller.selectedImage.value)
                                   as ImageProvider<Object>
