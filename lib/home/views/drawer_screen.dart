@@ -42,7 +42,7 @@ class NavigationDrawerScreen extends StatelessWidget {
                         child: SizedBox(
                             width: width * 0.25,
                             child: CircleAvatar(
-                                backgroundColor: Colors.transparent,
+                                backgroundColor: Colors.white,
                                 foregroundColor: Colors.transparent,
                                 foregroundImage: CachedNetworkImageProvider(
                                   "${profileController.user.value.imageUrl}",

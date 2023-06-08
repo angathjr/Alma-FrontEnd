@@ -38,4 +38,6 @@ class GetXDependancyInjector {
     Get.lazyPut(() => ProfileTabController(), fenix: true);
     Get.lazyPut(() => ProfileEditController(), fenix: true);
   }
+
+ 
 }

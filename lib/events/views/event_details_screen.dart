@@ -29,8 +29,7 @@ class EventDetailsScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: width * 0.04),
         child: SingleChildScrollView(
-          child: 
-          Container(
+          child: Container(
             child: Column(children: [
               SizedBox(
                 height: height * 0.03,
@@ -42,7 +41,7 @@ class EventDetailsScreen extends StatelessWidget {
                       // height: height * 0.58,
                       width: width,
                       decoration: BoxDecoration(
-                       // color: Colors.amber,
+                        // color: Colors.amber,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: ClipRRect(
@@ -55,45 +54,39 @@ class EventDetailsScreen extends StatelessWidget {
                                       context.theme.disabledColor),
                                   value: downloadProgress.progress),
                             ),
-                            imageUrl: "${controller.selectedEvent.value.imgUrl}",
+                            imageUrl:
+                                "${controller.selectedEvent.value.imgUrl}",
                             fit: BoxFit.cover,
                           )),
-                          
                     ),
-                     Container(
-                constraints: BoxConstraints(
-                    maxHeight: (controller.selectedEvent.value.imgUrl != "")
-                        ? height * 0.12
-                        : height * .5),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: height * 0.03,
+                    Container(
+                      constraints: BoxConstraints(
+                          maxHeight:
+                              (controller.selectedEvent.value.imgUrl != "")
+                                  ? height * 0.12
+                                  : height * .5),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: height * 0.03,
+                          ),
+                          Text(
+                            "${controller.selectedEvent.value.eventName}",
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 3,
+                            style: const TextStyle(
+                                fontSize: 27, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
-                    Text(
-                      "${controller.selectedEvent.value.eventName}",
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 3,
-                      style: const TextStyle(
-                          fontSize: 27,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    
                   ],
                 ),
-              ),
-                  ],
-                ),
-               
-              
-              
               Row(
                 children: const [
                   Text(
                     "Description:",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -102,18 +95,13 @@ class EventDetailsScreen extends StatelessWidget {
                 child: Container(
                   width: width,
                   child: Text(
-                    
-                      "${controller.selectedEvent.value.eventDescription}",
-                      softWrap: false,
-                      
-                            
-                           
-                      style: Constants.txtStyle().copyWith(fontSize: 16),
-                      // overflow: TextOverflow.ellipsis
-                      
-                      ),
+                    "${controller.selectedEvent.value.eventDescription}",
+                    softWrap: true,
+
+                    style: Constants.txtStyle().copyWith(fontSize: 16),
+                    // overflow: TextOverflow.ellipsis
+                  ),
                 ),
-                    
               )
             ]),
           ),

@@ -65,12 +65,12 @@ class ProfileEditController extends GetxController {
   }
 
   void updateGeneralProfile() async {
+    isUpdating(true);
+    submitText("Updating...");
     if (isImageSelected.value) {
       await uploadImage();
     }
-    isUpdating(true);
-    submitText("Updating...");
-    List<String> area_of_interest = interestedAreasController.text.split(',');
+    List<String> areaOfInterest = interestedAreasController.text.split(',');
 
     try {
       final response = await api.putApi('/users/user/${user.value.username}', {
@@ -79,7 +79,7 @@ class ProfileEditController extends GetxController {
         'phone_number': phoneNumberController.text,
         'email': mailController.text,
         'bio': bioController.text,
-        'area_of_interest': area_of_interest,
+        'area_of_interest': areaOfInterest,
         "img_url": imageUrl.value
       });
 

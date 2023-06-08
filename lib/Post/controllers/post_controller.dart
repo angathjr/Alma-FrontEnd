@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:alma/core/api_provider.dart';
 import 'package:alma/core/constants.dart';
+import 'package:alma/getx_di.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -72,8 +73,8 @@ class PostController extends GetxController {
         clearAll();
         isPosting(false);
         postingText("Done");
-        await Future.delayed(const Duration(milliseconds: 1400));
-        Get.offAllNamed('/');
+        await Future.delayed(const Duration(milliseconds: 1000));
+        Get.until((route) => Get.currentRoute == '/');
       } else {
         Get.snackbar("Failed", "Failed to add  event ");
       }
@@ -126,8 +127,8 @@ class PostController extends GetxController {
           clearAll();
           isPosting(false);
           postingText("Done");
-          await Future.delayed(const Duration(milliseconds: 1400));
-          Get.offAllNamed('/');
+          await Future.delayed(const Duration(milliseconds: 1000));
+          Get.until((route) => Get.currentRoute == '/');
         } else {
           Get.snackbar("Failed", "Failed to add internship");
         }
@@ -177,8 +178,8 @@ class PostController extends GetxController {
         clearAll();
         isPosting(false);
         postingText("Done");
-        await Future.delayed(const Duration(milliseconds: 1400));
-        Get.offAllNamed('/');
+        await Future.delayed(const Duration(milliseconds: 1000));
+       Get.until((route) => Get.currentRoute == '/');
       } else {
         Get.snackbar("Failed", "Failed to add Job");
       }

@@ -17,6 +17,7 @@ class SplashScreen extends StatelessWidget {
     loadPages();
     return Scaffold(
       body: FractionallySizedBox(
+        
         widthFactor: 1,
         heightFactor: 1,
         child: Column(
