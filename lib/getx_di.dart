@@ -13,6 +13,7 @@ import 'package:alma/events/controllers/event_controller.dart';
 import 'package:alma/search/controllers/search_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'Navbar/controllers/navcontroller.dart';
 import 'alumniDirectory/controllers/alumni_controller.dart';
 import 'auth/controllers/auth_controller.dart';
 import 'core/api_provider.dart';
@@ -37,6 +38,7 @@ class GetXDependancyInjector {
     Get.lazyPut(() => AlumniDirController(), fenix: true);
     Get.lazyPut(() => ProfileTabController(), fenix: true);
     Get.lazyPut(() => ProfileEditController(), fenix: true);
+    Get.lazyPut(() => NavController(),fenix: true,);
   }
 
  

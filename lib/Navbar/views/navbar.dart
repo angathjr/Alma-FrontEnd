@@ -13,7 +13,7 @@ import '../../eventCalendar/views/calendar_screen.dart';
 class NavBarScreen extends StatelessWidget {
   NavBarScreen({Key? key}) : super(key: key);
 
-  final navController = Get.put(NavController());
+  final NavController navController =Get.find();
   final EventsController eventsController = Get.find();
   final pages = [
     NewsFeedScreen(),
@@ -34,7 +34,7 @@ class NavBarScreen extends StatelessWidget {
       onWillPop: () async => false,
       child: Scaffold(
           resizeToAvoidBottomInset: false,
-          body: Container(
+          body: SizedBox(
             width: width,
             height: height,
             // decoration: Constants.buildBoxDecoration(),

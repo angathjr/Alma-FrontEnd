@@ -121,8 +121,8 @@ class OtherEventDescriptionScreen extends StatelessWidget {
                                   children: [
                                     Text(controller.eventDate.value),
                                     IconButton(
-                                        onPressed: () {
-                                          controller.pickDate(context, height);
+                                        onPressed: () async{
+                                          await controller.pickDate(context, height);
 
                                           controller.eventDate.value =
                                               controller.selectedDate.value;
@@ -158,12 +158,12 @@ class OtherEventDescriptionScreen extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(controller.lastDayToAppy.value),
+                                    Text(controller.lastDayToApply.value),
                                     IconButton(
-                                        onPressed: () {
-                                          controller.pickDate(context, height);
+                                        onPressed: ()async {
+                                          await controller.pickDate(context, height);
 
-                                          controller.lastDayToAppy.value =
+                                          controller.lastDayToApply.value =
                                               controller.selectedDate.value;
                                         },
                                         icon: const Icon(Iconsax.calendar))

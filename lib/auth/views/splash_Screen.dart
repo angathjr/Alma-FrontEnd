@@ -5,8 +5,8 @@ class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   void loadPages() async {
-    await Future.delayed(const Duration(milliseconds: 600));
-    Get.offAllNamed('/');
+    await Future.delayed(const Duration(milliseconds: 2000));
+    Get.offNamed('/navBar');
   }
 
   @override

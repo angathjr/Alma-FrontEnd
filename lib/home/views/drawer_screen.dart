@@ -1,9 +1,11 @@
 import 'package:alma/core/constants.dart';
 import 'package:alma/profile/controllers/profile_controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import '../../alumniDirectory/controllers/alumni_controller.dart';
 import '../../events/controllers/event_controller.dart';
 
@@ -21,6 +23,7 @@ class NavigationDrawerScreen extends StatelessWidget {
         curve: Curves.fastLinearToSlowEaseIn,
         duration: const Duration(milliseconds: 2500),
         child: Drawer(
+
           width: width * 0.6,
           elevation: 0,
           backgroundColor: Constants.cardColor(),
@@ -65,6 +68,8 @@ class NavigationDrawerScreen extends StatelessWidget {
                 curve: Curves.fastLinearToSlowEaseIn,
                 duration: const Duration(milliseconds: 2500),
                 child: ListTile(
+                  leading: const Icon(Iconsax.briefcase,
+                      color: Colors.white),
                   title: const Text(
                     'Jobs',
                     style: TextStyle(color: Colors.white, fontSize: 20),
@@ -80,6 +85,8 @@ class NavigationDrawerScreen extends StatelessWidget {
                 curve: Curves.fastLinearToSlowEaseIn,
                 duration: const Duration(milliseconds: 2500),
                 child: ListTile(
+                  leading: const Icon(FeatherIcons.award,
+                      color: Colors.white),
                   title: const Text(
                     'Internships',
                     style: TextStyle(color: Colors.white, fontSize: 20),
@@ -95,6 +102,8 @@ class NavigationDrawerScreen extends StatelessWidget {
                 curve: Curves.fastLinearToSlowEaseIn,
                 duration: const Duration(milliseconds: 2500),
                 child: ListTile(
+                  leading: const Icon(Iconsax.building,
+                      color: Colors.white),
                   title: const Text(
                     'College Events',
                     style: TextStyle(color: Colors.white, fontSize: 20),
@@ -110,6 +119,8 @@ class NavigationDrawerScreen extends StatelessWidget {
                 curve: Curves.fastLinearToSlowEaseIn,
                 duration: const Duration(milliseconds: 2500),
                 child: ListTile(
+                  leading: const Icon(Iconsax.calendar,
+                      color: Colors.white),
                   title: const Text(
                     'Other Events',
                     style: TextStyle(color: Colors.white, fontSize: 20),
@@ -125,6 +136,7 @@ class NavigationDrawerScreen extends StatelessWidget {
                 curve: Curves.fastLinearToSlowEaseIn,
                 duration: const Duration(milliseconds: 2500),
                 child: ListTile(
+                  leading: const Icon(FeatherIcons.users),
                   title: const Text(
                     'Alumni Directory',
                     style: TextStyle(color: Colors.white, fontSize: 20),

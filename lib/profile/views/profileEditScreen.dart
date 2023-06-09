@@ -7,8 +7,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../registration/views/staff_profile_screen.dart';
-import '../controllers/profile_controller.dart';
 import '../controllers/tab_controller.dart';
 import 'alumni_edit_profile_screen.dart';
 
@@ -31,7 +29,7 @@ class ProfileEditScreen extends StatelessWidget {
               Get.back();
               controller.selectedImage.value = File('');
             },
-            icon: const Icon(Iconsax.arrow_left_2)),
+            icon: const  Icon(Iconsax.arrow_left_2)),
         backgroundColor: Colors.black,
         title: const Text('Edit Profile'),
       ),
@@ -87,6 +85,7 @@ class ProfileEditScreen extends StatelessWidget {
               SizedBox(
                 height: height * 0.03,
                 child: TabBar(
+                  dividerColor: Colors.transparent,
                   physics: const BouncingScrollPhysics(),
                   isScrollable: false,
                   controller: tabController.tabController,
@@ -111,9 +110,7 @@ class ProfileEditScreen extends StatelessWidget {
                           ? AlumniEditProfileScreen()
                           : ((controller.user.value.userType == "STAFF")
                               ? StaffProfileEdit()
-                              : Container(
-                                  child: Center(child: Text('NONE')),
-                                ))
+                              : const Center(child: Text('NONE')))
                     ]),
               )
             ],

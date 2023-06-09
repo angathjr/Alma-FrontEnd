@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
+import 'package:alma/Navbar/controllers/navcontroller.dart';
 import 'package:alma/core/api_provider.dart';
 import 'package:alma/core/constants.dart';
 import 'package:alma/getx_di.dart';
@@ -29,17 +30,23 @@ class PostController extends GetxController {
   var selectedEventType = "J".obs;
   var isImageUploaded = false.obs;
 
+
   var eventDate = ''.obs;
-  var lastDayToAppy = ''.obs;
+   var chosenDate=DateTime.now().obs;
+  var lastDayToApply = ''.obs;
   var isPosting = false.obs;
   var selectedDate = ''.obs;
   var postingText = 'Post'.obs;
 
   Rx<File> selectedImage = Rx<File>(File(''));
 
+
+
+  //functions to perform each tasks
+
   void addCollegeAndOtherEvent() async {
     if (eventDate.value == '' ||
-        lastDayToAppy.value == '' ||
+        lastDayToApply.value == '' ||
         eventName.text.isEmpty) {
       Get.snackbar("Failed", "Please fill event date and name");
       return;
@@ -56,7 +63,7 @@ class PostController extends GetxController {
       "event_date": eventDate.value,
       "img_url": imageUrl.value,
       "event_type": selectedEventType.value,
-      "last_date_to_apply": lastDayToAppy.value,
+      "last_date_to_apply": lastDayToApply.value,
       "duration": duration.text,
     };
     log("college or other  data is $data");
@@ -75,6 +82,8 @@ class PostController extends GetxController {
         postingText("Done");
         await Future.delayed(const Duration(milliseconds: 1000));
         Get.until((route) => Get.currentRoute == '/');
+
+
       } else {
         Get.snackbar("Failed", "Failed to add  event ");
       }
@@ -89,7 +98,7 @@ class PostController extends GetxController {
 
   void addInternshipEvent() async {
     if (eventDate.value == '' ||
-        lastDayToAppy.value == '' ||
+        lastDayToApply.value == '' ||
         eventName.text.isEmpty) {
       Get.snackbar("Failed", "Please fill event date and name");
       return;
@@ -109,7 +118,7 @@ class PostController extends GetxController {
         "event_date": eventDate.value,
         "img_url": imageUrl.value,
         "event_type": selectedEventType.value,
-        "last_date_to_apply": lastDayToAppy.value,
+        "last_date_to_apply": lastDayToApply.value,
         "duration": duration.text,
         "event_link": eventLink.text
       };
@@ -142,7 +151,7 @@ class PostController extends GetxController {
   }
 
   void addJobEvent() async {
-    if (lastDayToAppy.value == '' || eventName.text.isEmpty) {
+    if (lastDayToApply.value == '' || eventName.text.isEmpty) {
       Get.snackbar("Failed", "Please fill the dates and name");
       return;
     }
@@ -161,7 +170,7 @@ class PostController extends GetxController {
       "skills_required": skills,
       "img_url": imageUrl.value,
       "event_type": selectedEventType.value,
-      "last_date_to_apply": lastDayToAppy.value,
+      "last_date_to_apply": lastDayToApply.value,
     };
     log("job data is $jobdata");
 
@@ -245,11 +254,10 @@ class PostController extends GetxController {
     }
   }
 
-  void pickDate(ctx, h) async {
+  Future<void> pickDate(ctx, h) async {
     await showCupertinoModalPopup(
         context: ctx,
         builder: (_) => Container(
-              width: MediaQuery.of(ctx).size.width,
               decoration: BoxDecoration(
                   color: Constants.cardColor(),
                   borderRadius: const BorderRadius.only(
@@ -257,7 +265,6 @@ class PostController extends GetxController {
                       topRight: Radius.circular(20))),
               height: h * 0.5,
               child: SizedBox(
-                width: MediaQuery.of(ctx).size.width,
                 child: CupertinoDatePicker(
                   initialDateTime: DateTime.now(),
                   mode: CupertinoDatePickerMode.date,
@@ -274,13 +281,7 @@ class PostController extends GetxController {
   }
 
   void clearAll() {
-    companyName.clear();
-    eventName.clear();
-    role.clear();
-    description.clear();
-    endDate.clear();
-    skillsRequired.clear();
-    venue.clear();
+    clearControllers();
     removeSelectedImage();
   }
 
@@ -294,7 +295,7 @@ class PostController extends GetxController {
     venue.clear();
     duration.clear();
     eventLink.clear();
-    lastDayToAppy.value = '';
+    lastDayToApply.value = '';
     selectedDate.value = '';
     eventDate.value = '';
   }

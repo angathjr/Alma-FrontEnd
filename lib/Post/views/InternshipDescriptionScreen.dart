@@ -188,8 +188,8 @@ class InternshipDescriptionScreen extends StatelessWidget {
                                     children: [
                                       Text(controller.eventDate.value),
                                       IconButton(
-                                          onPressed: () {
-                                            controller.pickDate(
+                                          onPressed: () async{
+                                            await controller.pickDate(
                                                 context, height);
                                             controller.eventDate.value =
                                                 controller.selectedDate.value;
@@ -226,12 +226,12 @@ class InternshipDescriptionScreen extends StatelessWidget {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(controller.lastDayToAppy.value),
+                                      Text(controller.lastDayToApply.value),
                                       IconButton(
-                                          onPressed: () {
-                                            controller.pickDate(
+                                          onPressed: () async{
+                                            await controller.pickDate(
                                                 context, height);
-                                            controller.lastDayToAppy.value =
+                                            controller.lastDayToApply.value =
                                                 controller.selectedDate.value;
                                           },
                                           icon: const Icon(Iconsax.calendar))

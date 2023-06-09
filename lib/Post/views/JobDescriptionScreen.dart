@@ -146,15 +146,15 @@ class JobDescriptionScreen extends StatelessWidget {
                               mainAxisAlignment:
                                   MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(postController.lastDayToAppy.value),
+                                Text(postController.lastDayToApply.value),
                                 IconButton(
-                                    onPressed: () {
-                                      postController.pickDate(
+                                    onPressed: ()async {
+                                      await postController.pickDate(
                                           context, height);
 
-                                      postController.lastDayToAppy.value =
+                                      postController.lastDayToApply.value =
                                           postController.selectedDate.value;
-                                      log(postController.lastDayToAppy.value);
+                                      log(postController.lastDayToApply.value);
                                     },
                                     icon: const Icon(Iconsax.calendar))
                               ],
