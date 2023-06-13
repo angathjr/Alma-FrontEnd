@@ -1,6 +1,5 @@
 import 'package:alma/auth/controllers/auth_controller.dart';
 import 'package:alma/profile/views/alumni_edit_profile_screen.dart';
-import 'package:alma/profile/views/others_Profile.dart';
 import 'package:alma/profile/views/staff_edit_profile_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';
@@ -11,8 +10,8 @@ import 'package:iconsax/iconsax.dart';
 import '../../core/constants.dart';
 import '../controllers/profile_controller.dart';
 
-class ProfilePage extends StatelessWidget {
-  ProfilePage({Key? key}) : super(key: key);
+class OthersProfile extends StatelessWidget {
+  OthersProfile({Key? key}) : super(key: key);
 
   final AuthController authController = Get.find();
   final ProfileController profileController = Get.find();
@@ -23,11 +22,9 @@ class ProfilePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-          title: const Center(
-            child: Text(
-              'Profile',
-              style: TextStyle(color: Colors.white),
-            ),
+          title:  Text(
+            'Profile',
+            style: TextStyle(color: Colors.white),
           ),
           backgroundColor: Colors.black),
       body: AnimationConfiguration.synchronized(
@@ -42,7 +39,7 @@ class ProfilePage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(left: 0.07 * width),
                     child: Text(
-                      "Hi, ${profileController.user.value.firstName!.capitalizeFirst}",
+                      "${profileController.user.value.firstName!.capitalizeFirst}",
                       style: const TextStyle(
                         fontSize: 25,
                       ),
@@ -64,7 +61,7 @@ class ProfilePage extends StatelessWidget {
                 height: 0.04 * height,
               ),
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: SlideAnimation(
                   curve: Curves.fastLinearToSlowEaseIn,
                   duration: const Duration(milliseconds: 2500),
@@ -110,7 +107,7 @@ class ProfilePage extends StatelessWidget {
                 height: 0.004 * height,
               ),
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: SlideAnimation(
                   curve: Curves.fastLinearToSlowEaseIn,
                   duration: const Duration(milliseconds: 2500),
@@ -155,77 +152,15 @@ class ProfilePage extends StatelessWidget {
               SizedBox(
                 height: 0.004 * height,
               ),
-              Row(
-                //mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  SizedBox(
-                    width: 0.05 * width,
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: InkWell(
-                      onTap: () {
-                        Get.toNamed('/EditProfile');
-                        
-                       // Get.to(() => OthersProfile());
-                        // Get.toNamed('/AlumniEditProfile');
-                      },
-                      child: SlideAnimation(
-                        curve: Curves.fastLinearToSlowEaseIn,
-                        duration: const Duration(milliseconds: 2500),
-                        horizontalOffset: -20,
-                        child: Container(
-                          height: 0.3 * height,
-                          width: 0.445 * width,
-                          decoration: BoxDecoration(
-                              color: Constants.cardColor().withOpacity(0.7),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(
-                                FeatherIcons.edit3,
-                                color: Colors.white70,
-                              ),
-                              Text(
-                                'Edit Profile',
-                                style: TextStyle(
-                                    fontSize: width * 0.045,
-                                    color: Colors.white60
-
-                                    //fontWeight: FontWeight.bold
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 0.01 * width,
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: SizedBox(
-                      height: 0.3 * height,
-                      width: 0.445 * width,
-                      child: SlideAnimation(
-                        curve: Curves.fastLinearToSlowEaseIn,
-                        duration: const Duration(milliseconds: 2500),
-                        horizontalOffset: 20,
-                        child: Column(
-                          children: [
-                            GestureDetector(
-                              onTap: () => profileController.fetchMyEvents(),
-                              child: Container(
-                                height: 0.148 * height,
-                                width: 0.445 * width,
-                                decoration: BoxDecoration(
-                                    color:
-                                        Constants.cardColor().withOpacity(0.7),
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Column(
+             Expanded(
+              flex: 1,
+               child: Container(
+                      //height: 0.15 * height,
+                      width: 0.9 * width,
+                      decoration: BoxDecoration(
+                          color: Constants.cardColor().withOpacity(0.7),
+                          borderRadius: BorderRadius.circular(10)),
+                       child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     const Icon(
@@ -243,54 +178,8 @@ class ProfilePage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 0.004 * height,
-                            ),
-                            GestureDetector(
-                              onTap: () => authController.logOut(),
-                              child: SlideAnimation(
-                                curve: Curves.fastLinearToSlowEaseIn,
-                                duration: const Duration(milliseconds: 2500),
-                                verticalOffset: 20,
-                                child: Container(
-                                  height: 0.148 * height,
-                                  width: 0.445 * width,
-                                  decoration: BoxDecoration(
-                                      color: Constants.cardColor()
-                                          .withOpacity(0.7),
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Icon(
-                                        Iconsax.logout,
-                                        color: Colors.white70,
-                                      ),
-                                      Text(
-                                        'Log Out',
-                                        style: TextStyle(
-                                            fontSize: width * 0.045,
-                                            color: Colors.white60
-                                            //fontWeight: FontWeight.bold
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 0.05 * width,
-                  )
-                ],
-              ),
+             ),
             ],
           ),
         ),
