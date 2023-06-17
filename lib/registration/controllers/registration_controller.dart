@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:alma/core/api_provider.dart';
 import 'package:alma/events/models/department_model.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -19,13 +20,14 @@ class RegistrationController extends GetxController {
   var isdepartmentfetched = false.obs;
   var depNames = <String>[].obs;
   var selectedDepartment = "".obs;
+  var isUpdating = false.obs;
 
   @override
   void onInit() {
     super.onInit();
-    // _storage.listenKey('user', (value) {
-    //   user.value = UserModel.fromJson(_storage.read('user'));
-    // });
+    _storage.listenKey('user', (value) {
+      user.value = UserModel.fromJson(_storage.read('user'));
+    });
     user.value = UserModel.fromJson(_storage.read('user'));
     userModel = user.value;
     log("username is ${user.value.username}");
@@ -36,6 +38,7 @@ class RegistrationController extends GetxController {
     Map data = {"user_type": "ALUMNI"};
 
     try {
+      isUpdating(true);
       final response =
           await api.putApi('/users/user/${user.value.username}', data);
       final parsed = UserModel.fromJson(response.body);
@@ -43,6 +46,7 @@ class RegistrationController extends GetxController {
       // userModel = parsed;
       log("response is ${response.body}");
       Get.toNamed('/alumni-profile');
+      isUpdating(false);
     } catch (e) {
       log("error${e.toString()}");
     }
@@ -52,13 +56,16 @@ class RegistrationController extends GetxController {
     Map data = {"user_type": "STUDENT"};
 
     try {
+      isUpdating(true);
       final response =
           await api.putApi('/users/user/${user.value.username}', data);
       final parsed = UserModel.fromJson(response.body);
       await _storage.write('user', parsed.toJson());
       // userModel = parsed;
       log("${response.body}");
+      
       Get.toNamed('/student-profile');
+      isUpdating(false);
     } catch (e) {
       log(e.toString());
     }
@@ -68,6 +75,7 @@ class RegistrationController extends GetxController {
     Map data = {"user_type": "STAFF"};
 
     try {
+      isUpdating(true);
       final response =
           await api.putApi('/users/user/${user.value.username}', data);
       final parsed = UserModel.fromJson(response.body);
@@ -75,6 +83,7 @@ class RegistrationController extends GetxController {
       // userModel = parsed;
       log("${response.body}");
       Get.toNamed('/staff-profile');
+      isUpdating(false);
     } catch (e) {
       log(e.toString());
     }

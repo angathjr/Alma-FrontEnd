@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
-const String NOIMAGE = "assets/images/pic.png";
+const String NOIMAGE = "assets/images/userlogo.png";
 
 class Constants {
   static var bgGradient = const [
