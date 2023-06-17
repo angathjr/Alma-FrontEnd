@@ -20,7 +20,7 @@ class ApiProviderNoAuth extends GetConnect {
       return request;
     });
 
-    httpClient.baseUrl = 'https://alma-backend.up.railway.app';
+    httpClient.baseUrl = 'https://alma.codingclubtkmce.tech';
     httpClient.timeout = const Duration(seconds: 40);
 
     httpClient.addRequestModifier<dynamic>((request) {
