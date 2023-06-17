@@ -8,6 +8,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../core/constants.dart';
+import '../../events/controllers/event_controller.dart';
 import '../controllers/profile_controller.dart';
 
 class OthersProfile extends StatelessWidget {
@@ -15,14 +16,16 @@ class OthersProfile extends StatelessWidget {
 
   final AuthController authController = Get.find();
   final ProfileController profileController = Get.find();
+  final EventsController controller = Get.find();
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-
+    double postSize = height * 0.6;
     return Scaffold(
       appBar: AppBar(
-          title:  Text(
+          title: Text(
             'Profile',
             style: TextStyle(color: Colors.white),
           ),
@@ -60,126 +63,156 @@ class OthersProfile extends StatelessWidget {
               SizedBox(
                 height: 0.04 * height,
               ),
-              Expanded(
-                flex: 2,
-                child: SlideAnimation(
-                  curve: Curves.fastLinearToSlowEaseIn,
-                  duration: const Duration(milliseconds: 2500),
-                  verticalOffset: -20,
-                  child: Container(
-                    width: 0.9 * width,
-                    decoration: BoxDecoration(
-                        color: Constants.cardColor().withOpacity(0.7),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: 0.04 * width, top: 0.01 * height),
-                          child: const Text(
-                            'Bio:',
-                            style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 20,
-                            ),
+              SlideAnimation(
+                curve: Curves.fastLinearToSlowEaseIn,
+                duration: const Duration(milliseconds: 2500),
+                verticalOffset: -20,
+                child: Container(
+                  width: 0.9 * width,
+                  height: 0.15 * height,
+                  decoration: BoxDecoration(
+                      color: Constants.cardColor().withOpacity(0.7),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: 0.04 * width, top: 0.01 * height),
+                        child: const Text(
+                          'Bio:',
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 20,
                           ),
                         ),
-                        SizedBox(
-                          height: 0.01 * height,
+                      ),
+                      SizedBox(
+                        height: 0.01 * height,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 0.04 * width),
+                        child: Text(
+                          '${profileController.user.value.bio}',
+                          style: const TextStyle(
+                              fontStyle: FontStyle.italic,
+                              color: Colors.white60,
+                              fontSize: 15),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 0.04 * width),
-                          child: Text(
-                            '${profileController.user.value.bio}',
-                            style: const TextStyle(
-                                fontStyle: FontStyle.italic,
-                                color: Colors.white60,
-                                fontSize: 15),
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ),
               ),
               SizedBox(
                 height: 0.004 * height,
               ),
-              Expanded(
-                flex: 2,
-                child: SlideAnimation(
-                  curve: Curves.fastLinearToSlowEaseIn,
-                  duration: const Duration(milliseconds: 2500),
-                  horizontalOffset: -20,
-                  child: Container(
-                    //height: 0.15 * height,
-                    width: 0.9 * width,
-                    decoration: BoxDecoration(
-                        color: Constants.cardColor().withOpacity(0.7),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                              left: 0.04 * width, top: 0.01 * height),
-                          child: const Text(
-                            'Interested Areas:',
-                            style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 20,
-                            ),
+              SlideAnimation(
+                curve: Curves.fastLinearToSlowEaseIn,
+                duration: const Duration(milliseconds: 2500),
+                horizontalOffset: -20,
+                child: Container(
+                  height: 0.15 * height,
+                  width: 0.9 * width,
+                  decoration: BoxDecoration(
+                      color: Constants.cardColor().withOpacity(0.7),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                            left: 0.04 * width, top: 0.01 * height),
+                        child: const Text(
+                          'Interested Areas:',
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 20,
                           ),
                         ),
-                        SizedBox(
-                          height: 0.01 * height,
+                      ),
+                      SizedBox(
+                        height: 0.01 * height,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 0.04 * width),
+                        child: Text(
+                          profileController.user.value.areaOfInterest!
+                              .join(", "),
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.white60),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 0.04 * width),
-                          child: Text(
-                            profileController.user.value.areaOfInterest!
-                                .join(", "),
-                            style: const TextStyle(
-                                fontSize: 16, color: Colors.white60),
-                          ),
-                        )
-                      ],
-                    ),
+                      )
+                    ],
                   ),
                 ),
               ),
               SizedBox(
                 height: 0.004 * height,
               ),
-             Expanded(
-              flex: 1,
-               child: Container(
-                      //height: 0.15 * height,
-                      width: 0.9 * width,
-                      decoration: BoxDecoration(
-                          color: Constants.cardColor().withOpacity(0.7),
-                          borderRadius: BorderRadius.circular(10)),
-                       child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Icon(
-                                      Iconsax.note,
-                                      color: Colors.white70,
-                                    ),
-                                    Text(
-                                      'My Posts',
-                                      style: TextStyle(
-                                          fontSize: width * 0.045,
-                                          color: Colors.white60
-
-                                          //fontWeight: FontWeight.bold
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                    ),
-             ),
+              Padding(
+                padding: EdgeInsets.only(left: 0.04 * width),
+                child: Text(
+                  'Posts',
+                  style: const TextStyle(fontSize: 16, color: Colors.white),
+                ),
+              ),
+              Container(
+                width: 0.9 * width,
+                height: 0.4 * height,
+                decoration: BoxDecoration(
+                    color: Constants.cardColor().withOpacity(0.7),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Padding(
+                  padding: EdgeInsets.only(
+                      left: 0.03 * width,
+                      right: 0.03 * width,
+                      top: 0.02 * height),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(360),
+                        child: SizedBox(
+                          width: width * 0.11,
+                          height: width * 0.11,
+                          child: CircleAvatar(
+                              backgroundColor: Colors.transparent,
+                              foregroundColor: Colors.transparent,
+                              radius: width * 0.1,
+                              foregroundImage: CachedNetworkImageProvider(
+                                "${profileController.user.value.imageUrl}",
+                              )),
+                        ),
+                      ),
+                      SizedBox(
+                        width: width * 0.02,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${profileController.user.value.firstName!.capitalizeFirst}",
+                            style: Constants.txtStyle().copyWith(fontSize: 17),
+                          ),
+                          Text(
+                            "1 hour ago",
+                            style: Constants.txtStyle().copyWith(fontSize: 11),
+                          )
+                        ],
+                      ),
+                      const Spacer(),
+                      SizedBox(
+                          width: width * 0.07,
+                          height: width * 0.07,
+                          child: const Icon(
+                            FeatherIcons.moreHorizontal,
+                            color: Colors.white,
+                          ))
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
