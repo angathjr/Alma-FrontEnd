@@ -19,6 +19,7 @@ class CollageEventDescriptionScreen extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
