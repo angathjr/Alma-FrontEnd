@@ -25,11 +25,22 @@ class AlumniDirectoryScreen extends StatelessWidget {
                   onPressed: () {
                     Get.back();
                   },
-                  icon: const Icon(Iconsax.arrow_left_2)),
-              title: const Text(
+                  icon:  Icon(Iconsax.arrow_left_2)),
+              title:  const Text(
                 'Alumni Directory',
                 style: TextStyle(color: Colors.white),
               ),
+               actions: <Widget>[
+    IconButton(
+      icon: const Icon(
+        Iconsax.filter,
+        color: Colors.white,
+      ),
+      onPressed: () {
+       
+      },
+    )
+  ],
             ),
             SliverPadding(
                 padding: EdgeInsets.symmetric(horizontal: width * 0.04),
@@ -75,6 +86,7 @@ class AlumniDirectoryScreen extends StatelessWidget {
                                         curve: Curves.fastLinearToSlowEaseIn,
                                         duration:
                                             const Duration(milliseconds: 1500),
+                                            
                                         child: Container(
                                             width: width,
                                             height: height * .22,
