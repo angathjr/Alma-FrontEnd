@@ -85,13 +85,13 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Helvetica',
           appBarTheme: const AppBarTheme(
               scrolledUnderElevation: 0, backgroundColor: Colors.black)),
-      // initialRoute: '/splash',
+      initialRoute: '/splash',
       getPages: [
         GetPage(
             name: '/',
             page: () => storage.hasData('authToken')
                 ? storage.read('isVerified') ?? false
-                    ? SplashScreen()
+                    ? NavBarScreen()
                     : UserSelectionScreen()
                 : LoginScreen()),
         GetPage(name: '/navBar', page: () => NavBarScreen()),

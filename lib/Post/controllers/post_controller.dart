@@ -30,17 +30,14 @@ class PostController extends GetxController {
   var selectedEventType = "J".obs;
   var isImageUploaded = false.obs;
 
-
   var eventDate = ''.obs;
-   var chosenDate=DateTime.now().obs;
+  var chosenDate = DateTime.now().obs;
   var lastDayToApply = ''.obs;
   var isPosting = false.obs;
   var selectedDate = ''.obs;
   var postingText = 'Post'.obs;
 
   Rx<File> selectedImage = Rx<File>(File(''));
-
-
 
   //functions to perform each tasks
 
@@ -82,8 +79,6 @@ class PostController extends GetxController {
         postingText("Done");
         await Future.delayed(const Duration(milliseconds: 1000));
         Get.until((route) => Get.currentRoute == '/');
-
-
       } else {
         Get.snackbar("Failed", "Failed to add  event ");
       }
@@ -188,7 +183,7 @@ class PostController extends GetxController {
         isPosting(false);
         postingText("Done");
         await Future.delayed(const Duration(milliseconds: 1000));
-       Get.until((route) => Get.currentRoute == '/');
+        Get.until((route) => Get.currentRoute == '/');
       } else {
         Get.snackbar("Failed", "Failed to add Job");
       }

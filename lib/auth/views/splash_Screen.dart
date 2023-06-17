@@ -5,8 +5,8 @@ class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   void loadPages() async {
-    await Future.delayed(const Duration(milliseconds: 2000));
-    Get.offNamed('/navBar');
+    await Future.delayed(const Duration(milliseconds: 2600));
+    Get.offAllNamed('/');
   }
 
   @override
@@ -15,9 +15,9 @@ class SplashScreen extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
 
     loadPages();
+
     return Scaffold(
       body: FractionallySizedBox(
-        
         widthFactor: 1,
         heightFactor: 1,
         child: Column(
