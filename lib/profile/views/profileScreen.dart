@@ -1,7 +1,5 @@
 import 'package:alma/auth/controllers/auth_controller.dart';
-import 'package:alma/profile/views/alumni_edit_profile_screen.dart';
-import 'package:alma/profile/views/others_Profile.dart';
-import 'package:alma/profile/views/staff_edit_profile_screen.dart';
+import 'package:alma/profile/views/user_profile_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +49,7 @@ class ProfilePage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(right: 0.05 * width),
                     child: CircleAvatar(
-                        backgroundColor: Colors.transparent,
+                        backgroundColor: Colors.white54,
                         foregroundColor: Colors.transparent,
                         radius: width * 0.1,
                         foregroundImage: CachedNetworkImageProvider(

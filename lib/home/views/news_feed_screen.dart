@@ -1,6 +1,7 @@
 import 'package:alma/core/constants.dart';
 import 'package:alma/events/controllers/event_controller.dart';
 import 'package:alma/home/views/drawer_screen.dart';
+import 'package:alma/profile/controllers/profile_controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,6 +14,7 @@ class NewsFeedScreen extends StatelessWidget {
   NewsFeedScreen({Key? key}) : super(key: key);
 
   final EventsController controller = Get.find();
+  final ProfileController profileController = Get.find();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _openDrawer() {
@@ -37,7 +39,7 @@ class NewsFeedScreen extends StatelessWidget {
                 SliverAppBar(
                   leading: IconButton(
                       onPressed: () => _openDrawer(),
-                      icon: const Icon(Iconsax.menu, color: Colors.white)),
+                      icon: const Icon(FeatherIcons.menu, color: Colors.white)),
                   pinned: false,
                   floating: true,
                   snap: true,
@@ -127,23 +129,27 @@ class NewsFeedScreen extends StatelessWidget {
                                                         children: [
                                                           GestureDetector(
                                                             onTap: () {
-                                                              Get.toNamed(
-                                                                  '/otherProfile-page');
+                                                              profileController
+                                                                      .selectedUserName
+                                                                      .value =
+                                                                  controller
+                                                                      .events[
+                                                                          index]
+                                                                      .postedBy!
+                                                                      .userName;
+                                                              profileController.getUserEventDetails();
                                                             },
                                                             child: ClipRRect(
-                                                              
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
                                                                           360),
-                                                                          
                                                               child: SizedBox(
                                                                   width: width *
                                                                       0.11,
                                                                   height:
                                                                       width *
                                                                           0.11,
-                                                                        
                                                                   child: controller
                                                                               .events[
                                                                                   index]
@@ -151,7 +157,6 @@ class NewsFeedScreen extends StatelessWidget {
                                                                               .imgUrl ==
                                                                           ''
                                                                       ? Image.asset(
-                                                                        
                                                                           NOIMAGE)
                                                                       : CachedNetworkImage(
                                                                           progressIndicatorBuilder: (context, url, downloadProgress) =>

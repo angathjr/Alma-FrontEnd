@@ -31,6 +31,8 @@ class StaffProfileController extends GetxController {
   Rx<File> selectedImage = Rx<File>(File(''));
   var imageUrl = ''.obs;
   var isImageSelected = false.obs;
+  var submitText = 'Submit'.obs;
+  var isUpdating = false.obs;
 
   @override
   void onInit() {
@@ -45,6 +47,8 @@ class StaffProfileController extends GetxController {
 
 //to update staff detials
   void registerStaff() async {
+    submitText.value = 'Updating...';
+    isUpdating(true);
     if (firstNameController.text.isEmpty ||
         lastNameController.text.isEmpty ||
         phoneNumberController.text.isEmpty ||
@@ -55,17 +59,16 @@ class StaffProfileController extends GetxController {
     } else {
       UserData staff = user.value.data!.first;
       staff = staff.copyWith(
-        user: user.value.id,
+          user: user.value.id,
           joinedYear: int.parse(joinedYearController.text),
           designation: designationController.text,
           tkmMail: tkmMailController.text,
           department: getIdofDepartment());
 
       try {
-
         final response = await api.putApi(
             '/users/staff/${user.value.username}', staff.toJson());
-            
+
         log("staff response is ${response.body}");
         if (response.statusCode == 200) {
           // userModel = UserModel.fromJson(response.body);
@@ -75,8 +78,14 @@ class StaffProfileController extends GetxController {
                   "Profile Image", "please choose your Profile image");
         } else {
           Get.snackbar("Error", "${response.body}");
+          submitText.value = 'Submit';
         }
       } catch (e) {
+        isUpdating(false);
+        submitText.value = 'Try Again';
+        Future.delayed(const Duration(seconds: 2), () {
+          submitText.value = 'Submit';
+        });
         log(e.toString());
       }
     }
@@ -104,8 +113,16 @@ class StaffProfileController extends GetxController {
         Get.offAllNamed('/');
       } else {
         Get.snackbar("Error", "${response.body["phone_number"][0]}");
+        submitText.value = 'Submit';
       }
+      submitText.value = 'Done';
+      isUpdating(false);
     } catch (e) {
+      isUpdating(false);
+      submitText.value = 'Try Again';
+      Future.delayed(const Duration(seconds: 2), () {
+        submitText.value = 'Submit';
+      });
       log(e.toString());
     }
   }

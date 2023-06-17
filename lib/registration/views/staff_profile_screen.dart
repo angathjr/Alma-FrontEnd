@@ -307,24 +307,25 @@ class StaffProfileScreen extends StatelessWidget {
               onTap: () {
                 staffController.registerStaff();
               },
-              child: Container(
-                width: width * 0.35,
-                height: height * .053,
-                decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
-                    color: Constants.cardColor().withOpacity(0.7)),
-             
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Submit",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
+              child: Obx(
+                () => Container(
+                  width: width * 0.35,
+                  height: height * .053,
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      color: Constants.cardColor().withOpacity(0.7)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        staffController.submitText.value,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

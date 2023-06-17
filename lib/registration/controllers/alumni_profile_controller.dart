@@ -35,7 +35,7 @@ class AlumniProfileController extends GetxController {
   Rx<File> selectedImage = Rx<File>(File(''));
   var imageUrl = ''.obs;
   var isImageSelected = false.obs;
-  var isUpdated = false.obs;
+  var isUpdating = false.obs;
   var submitText = "Submit".obs;
 
   @override
@@ -80,8 +80,16 @@ class AlumniProfileController extends GetxController {
             : Get.snackbar("Profile Image", "please choose your Profile image");
       } else {
         Get.snackbar("Error", "${response.body['error']}");
+        submitText.value = "Submit";
       }
+      submitText.value = "Done";
+      isUpdating(false);
     } catch (e) {
+      isUpdating(false);
+      submitText.value = "Try Again";
+      Future.delayed(const Duration(seconds: 2), () {
+        submitText.value = "Submit";
+      });
       log(e.toString());
     }
   }
@@ -93,7 +101,8 @@ class AlumniProfileController extends GetxController {
   }
 
   void updateUser() async {
-    isUpdated(false);
+    isUpdating(true);
+    submitText.value = "Updating...";
     if (firstNameController.text.isEmpty ||
         lastNameController.text.isEmpty ||
         phoneNumberController.text.isEmpty ||
@@ -118,8 +127,14 @@ class AlumniProfileController extends GetxController {
           registerAlumni();
         } else {
           Get.snackbar("Error", "${response.body["phone_number"][0]}");
+          submitText.value = "Submit";
         }
       } catch (e) {
+        isUpdating(false);
+        submitText.value = "Try Again";
+        Future.delayed(const Duration(seconds: 2), () {
+          submitText.value = "Submit";
+        });
         log(e.toString());
       }
     }
@@ -137,7 +152,7 @@ class AlumniProfileController extends GetxController {
         await _storage.write('user', userModel.toJson());
         await _storage.write('isVerified', true);
         log("new user model is ${userModel.toJson()}");
-        isUpdated(true);
+        isUpdating(true);
         Get.offAllNamed('/');
       } else {
         Get.snackbar("Error", "${response.body["phone_number"][0]}");

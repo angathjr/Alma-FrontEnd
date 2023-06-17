@@ -134,12 +134,14 @@ class PostedBy {
   final String? firstName;
   final dynamic? lastName;
   final dynamic? imgUrl;
+  final dynamic? userName;
 
   PostedBy({
     this.id,
     this.firstName,
     this.lastName,
     this.imgUrl,
+    this.userName,
   });
 
   PostedBy copyWith({
@@ -147,12 +149,14 @@ class PostedBy {
     String? firstName,
     dynamic? lastName,
     dynamic? imgUrl,
+    dynamic? username,
   }) =>
       PostedBy(
         id: id ?? this.id,
         firstName: firstName ?? this.firstName,
         lastName: lastName ?? this.lastName,
         imgUrl: imgUrl ?? this.imgUrl,
+        userName: username ?? this.userName,
       );
 
   factory PostedBy.fromJson(Map<String, dynamic> json) => PostedBy(
@@ -160,6 +164,7 @@ class PostedBy {
         firstName: json["first_name"] ?? '',
         lastName: json["last_name"] ?? '',
         imgUrl: json["img_url"] ?? '',
+        userName: json["username"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -167,5 +172,6 @@ class PostedBy {
         "first_name": firstName ?? '',
         "last_name": lastName ?? '',
         "img_url": imgUrl ?? '',
+        "username": userName ?? '',
       };
 }

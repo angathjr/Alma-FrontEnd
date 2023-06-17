@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:alma/core/api_provider.dart';
 import 'package:alma/events/models/event_model.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -12,15 +11,16 @@ import 'package:image_picker/image_picker.dart';
 import '../../auth/models/user.dart';
 
 class ProfileController extends GetxController {
- 
-
   final _storage = GetStorage();
   final ApiProvider api = Get.find();
 
   var user = (UserModel()).obs;
+  var selectedUserName = ''.obs;
+  var selectedUser = UserModel().obs;
+  var userEvents = <EventModel>[].obs;
   var events = <EventModel>[].obs;
-
   var isEventsloading = false.obs;
+  var isUserLoading = false.obs;
 
   //pick image
   Rx<File> selectedImage = Rx<File>(File(''));
@@ -66,6 +66,38 @@ class ProfileController extends GetxController {
       log(e.toString());
     } finally {
       isEventsloading(false);
+    }
+  }
+
+  void getUserEventDetails() async {
+    try {
+      isEventsloading(true);
+      Get.toNamed('/userProfile');
+      await getUserDetails();
+      final response = await api
+          .getApi('/events/user-events/${selectedUser.value.username}');
+      final parsed = eventModelFromJson(response.body);
+      userEvents.value = parsed;
+      log("selected user events are  ${response.body}");
+      isEventsloading(false);
+    } catch (e) {
+      isEventsloading(false);
+      log(e.toString());
+    }
+  }
+
+  Future<void> getUserDetails() async {
+    try {
+      isUserLoading(true);
+      final response =
+          await api.getApi('/users/user/${selectedUserName.value}');
+      final parsed = UserModel.fromJson(response.body);
+      selectedUser.value = parsed;
+      log("selected user is ${response.body}");
+      isUserLoading(false);
+    } catch (e) {
+      isUserLoading(false);
+      log(e.toString());
     }
   }
 }
