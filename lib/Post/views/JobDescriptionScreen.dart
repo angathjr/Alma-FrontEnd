@@ -17,7 +17,7 @@ class JobDescriptionScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset:false,
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
@@ -27,7 +27,9 @@ class JobDescriptionScreen extends StatelessWidget {
             icon: const Icon(Iconsax.arrow_left_2)),
         title: const Text("Job Description"),
       ),
-      body: Padding(
+      body: 
+      
+      Padding(
         padding: EdgeInsets.symmetric(horizontal: width * 0.04),
         child: Column(
           children: [

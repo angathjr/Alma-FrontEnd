@@ -150,8 +150,10 @@ class StaffProfileScreen extends StatelessWidget {
                                     const BorderRadius.all(Radius.circular(10)),
                                 color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
+                              
                               controller: staffController.phoneNumberController,
                               decoration: const InputDecoration(
+                                 hintText: '+91 ',
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
                               ),
