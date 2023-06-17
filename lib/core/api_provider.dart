@@ -7,7 +7,7 @@ class ApiProvider extends GetConnect {
   // Get request
   Future<Response> getApi(String url) => get(url);
   // Post request
-  Future<Response> postApi(String url, Map data) => post(url, data);
+  Future<Response>  postApi(String url, Map data) => post(url, data);
   // Put request
   Future<Response> putApi(String url, Map data) => put(url, data);
   // patch request
@@ -31,7 +31,7 @@ class ApiProvider extends GetConnect {
       return request;
     });
 
-    httpClient.baseUrl = 'https://alma-backend.up.railway.app';
+    httpClient.baseUrl = 'https://alma.codingclubtkmce.tech';
     httpClient.timeout = const Duration(seconds: 40);
 
     // Response Modifiers

@@ -24,7 +24,7 @@ class AuthController extends GetxController {
     _googleSignIn = GoogleSignIn();
   }
 
-  void signout() async {
+  void   signout() async {
     await _googleSignIn.signOut();
     await _storage.erase();
     Get.offAllNamed('/login');
