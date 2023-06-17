@@ -165,9 +165,9 @@ class ProfilePage extends StatelessWidget {
                     flex: 1,
                     child: InkWell(
                       onTap: () {
-                        //Get.toNamed('/EditProfile');
+                        Get.toNamed('/EditProfile');
 
-                        Get.to(() => OthersProfile());
+                       // Get.to(() => OthersProfile());
                         // Get.toNamed('/AlumniEditProfile');
                       },
                       child: SlideAnimation(

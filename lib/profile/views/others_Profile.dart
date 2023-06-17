@@ -1,12 +1,9 @@
 import 'package:alma/auth/controllers/auth_controller.dart';
-import 'package:alma/profile/views/alumni_edit_profile_screen.dart';
-import 'package:alma/profile/views/staff_edit_profile_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import '../../core/constants.dart';
 import '../../events/controllers/event_controller.dart';
 import '../controllers/profile_controller.dart';
@@ -25,7 +22,7 @@ class OthersProfile extends StatelessWidget {
     double postSize = height * 0.6;
     return Scaffold(
       appBar: AppBar(
-          title: Text(
+          title: const Text(
             'Profile',
             style: TextStyle(color: Colors.white),
           ),
@@ -153,104 +150,122 @@ class OthersProfile extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 0.04 * width),
-                  child: Text(
+                  child: const Text(
                     'Posts',
-                    style: const TextStyle(fontSize: 16, color: Colors.white),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
-                Container(
-                  width: 0.9 * width,
-                  height: 0.4 * height,
-                  decoration: BoxDecoration(
-                      color: Constants.cardColor().withOpacity(0.7),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        left: 0.03 * width,
-                        right: 0.03 * width,
-                        top: 0.02 * height),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(360),
-                          child: SizedBox(
-                            width: width * 0.11,
-                            height: width * 0.11,
-                            child: CircleAvatar(
-                                backgroundColor: Colors.transparent,
-                                foregroundColor: Colors.transparent,
-                                radius: width * 0.1,
-                                foregroundImage: CachedNetworkImageProvider(
-                                  "${profileController.user.value.imageUrl}",
-                                )),
-                          ),
-                        ),
-                        SizedBox(
-                          width: width * 0.02,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "${profileController.user.value.firstName!.capitalizeFirst}",
-                              style:
-                                  Constants.txtStyle().copyWith(fontSize: 17),
-                            ),
-                            Text(
-                              "1 hour ago",
-                              style:
-                                  Constants.txtStyle().copyWith(fontSize: 11),
-                            )
-                          ],
-                        ),
-                        const Spacer(),
-                        SizedBox(
-                            width: width * 0.07,
-                            height: width * 0.07,
-                            child: const Icon(
-                              FeatherIcons.moreHorizontal,
-                              color: Colors.white,
-                            ))
-                      ],
-                    ),
-                  ),
-                ),
-                if (controller.events[0].imgUrl != "")
-                  Container(
-                    height: postSize * 0.55,
-                    width: width,
+                GestureDetector(
+                  onTap: () {
+                    controller.gotoEvent(controller.events[0]);
+                  },
+                  child: Container(
+                    width: 0.9 * width,
+                    //height: 0.4 * height,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: CachedNetworkImage(
-                          progressIndicatorBuilder:
-                              (context, url, downloadProgress) => Center(
-                            child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation(
-                                    context.theme.disabledColor),
-                                value: downloadProgress.progress),
+                        color: Constants.cardColor().withOpacity(0.7),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          left: 0.03 * width,
+                          right: 0.03 * width,
+                          top: 0.02 * height),
+                      child: Column(
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(360),
+                                child: SizedBox(
+                                  width: width * 0.11,
+                                  height: width * 0.11,
+                                  child: CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      foregroundColor: Colors.transparent,
+                                      radius: width * 0.1,
+                                      foregroundImage:
+                                          CachedNetworkImageProvider(
+                                        "${profileController.user.value.imageUrl}",
+                                      )),
+                                ),
+                              ),
+                              SizedBox(
+                                width: width * 0.02,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "${profileController.user.value.firstName!.capitalizeFirst}",
+                                    style: Constants.txtStyle()
+                                        .copyWith(fontSize: 17),
+                                  ),
+                                  Text(
+                                    "1 hour ago",
+                                    style: Constants.txtStyle()
+                                        .copyWith(fontSize: 11),
+                                  )
+                                ],
+                              ),
+                              const Spacer(),
+                              SizedBox(
+                                  width: width * 0.07,
+                                  height: width * 0.07,
+                                  child: const Icon(
+                                    FeatherIcons.moreHorizontal,
+                                    color: Colors.white,
+                                  ))
+                            ],
                           ),
-                          imageUrl: "${controller.events[0].imgUrl}",
-                          fit: BoxFit.cover,
-                        )),
+                          SizedBox(
+                            height: height * 0.02,
+                          ),
+                          if (controller.events[0].imgUrl != "")
+                            Container(
+                              height: postSize * 0.5,
+                              width: width,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: CachedNetworkImage(
+                                    progressIndicatorBuilder:
+                                        (context, url, downloadProgress) =>
+                                            Center(
+                                      child: CircularProgressIndicator(
+                                          valueColor: AlwaysStoppedAnimation(
+                                              context.theme.disabledColor),
+                                          value: downloadProgress.progress),
+                                    ),
+                                    imageUrl: "${controller.events[0].imgUrl}",
+                                    fit: BoxFit.cover,
+                                  )),
+                            ),
+                          SizedBox(
+                            height: postSize * 0.06,
+                          ),
+                          Container(
+                            constraints: BoxConstraints(
+                                maxHeight: (controller.events[0].imgUrl != "")
+                                    ? postSize * 0.2
+                                    : postSize),
+                            //color: Colors.red,
+                            child: Text(
+                                "${controller.events[1].eventDescription}",
+                                maxLines: (controller.events[0].imgUrl != "")
+                                    ? 5
+                                    : 20,
+                                style:
+                                    Constants.txtStyle().copyWith(fontSize: 12),
+                                overflow: TextOverflow.ellipsis),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
-                SizedBox(
-                  height: postSize * 0.06,
                 ),
-                Container(
-                  constraints: BoxConstraints(
-                      maxHeight: (controller.events[0].imgUrl != "")
-                          ? postSize * 0.2
-                          : postSize),
-                  //color: Colors.red,
-                  child: Text("${controller.events[0].eventDescription}",
-                      maxLines: (controller.events[0].imgUrl != "") ? 5 : 20,
-                      style: Constants.txtStyle().copyWith(fontSize: 12),
-                      overflow: TextOverflow.ellipsis),
-                )
               ],
             ),
           ),

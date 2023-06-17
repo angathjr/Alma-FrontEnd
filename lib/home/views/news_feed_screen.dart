@@ -125,33 +125,42 @@ class NewsFeedScreen extends StatelessWidget {
                                                       height: postSize * 0.1,
                                                       child: Row(
                                                         children: [
-                                                          ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        360),
-                                                            child: SizedBox(
-                                                                width: width *
-                                                                    0.11,
-                                                                height: width *
-                                                                    0.11,
-                                                                child: controller
-                                                                            .events[
-                                                                                index]
-                                                                            .postedBy!
-                                                                            .imgUrl ==
-                                                                        ''
-                                                                    ? Image.asset(
-                                                                        NOIMAGE)
-                                                                    : CachedNetworkImage(
-                                                                        progressIndicatorBuilder: (context,
-                                                                                url,
-                                                                                downloadProgress) =>
-                                                                            Center(
-                                                                              child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(context.theme.disabledColor), value: downloadProgress.progress),
-                                                                            ),
-                                                                        imageUrl:
-                                                                            "${controller.events[index].postedBy!.imgUrl}")),
+                                                          GestureDetector(
+                                                            onTap: () {
+                                                              Get.toNamed(
+                                                                  '/otherProfile-page');
+                                                            },
+                                                            child: ClipRRect(
+                                                              
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          360),
+                                                                          
+                                                              child: SizedBox(
+                                                                  width: width *
+                                                                      0.11,
+                                                                  height:
+                                                                      width *
+                                                                          0.11,
+                                                                        
+                                                                  child: controller
+                                                                              .events[
+                                                                                  index]
+                                                                              .postedBy!
+                                                                              .imgUrl ==
+                                                                          ''
+                                                                      ? Image.asset(
+                                                                        
+                                                                          NOIMAGE)
+                                                                      : CachedNetworkImage(
+                                                                          progressIndicatorBuilder: (context, url, downloadProgress) =>
+                                                                              Center(
+                                                                                child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(context.theme.disabledColor), value: downloadProgress.progress),
+                                                                              ),
+                                                                          imageUrl:
+                                                                              "${controller.events[index].postedBy!.imgUrl}")),
+                                                            ),
                                                           ),
                                                           SizedBox(
                                                             width: width * 0.02,
