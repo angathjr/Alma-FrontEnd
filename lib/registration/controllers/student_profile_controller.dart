@@ -32,7 +32,8 @@ class StudentProfileController extends GetxController {
   Rx<File> selectedImage = Rx<File>(File(''));
   var imageUrl = ''.obs;
   var isImageSelected = false.obs;
-  var isUpdated=false.obs;
+  var isUpdating = false.obs;
+  var submitText = "Submit".obs;
 
   @override
   void onInit() {
@@ -48,6 +49,8 @@ class StudentProfileController extends GetxController {
   //api calls
 
   void registerStudent() async {
+    submitText.value = "Updating...";
+    isUpdating.value = true;
     if (firstNameController.text.isEmpty ||
         lastNameController.text.isEmpty ||
         phoneNumberController.text.isEmpty ||
@@ -60,7 +63,6 @@ class StudentProfileController extends GetxController {
     } else {
       UserData student = user.value.data![0];
       log(student.toString());
-      print("inside reg studd");
       log(student.user.toString());
 
       student = student.copyWith(
@@ -78,15 +80,19 @@ class StudentProfileController extends GetxController {
 
         if (response.statusCode == 200) {
           // userModel = UserModel.fromJson(response.body);
-          print("user name in reg is ${userModel.username}");
           isImageSelected.value
               ? uploadImage()
               : Get.snackbar(
                   "Profile Image", "please choose your profile image");
         } else {
           Get.snackbar("Error", "${response.body["tkm_mail"][0]}");
+          submitText.value = "Submit";
         }
       } catch (e) {
+        submitText.value = "Try Again";
+        isUpdating.value = false;
+        await Future.delayed(const Duration(seconds: 1));
+        submitText.value = "Submit";
         log(e.toString());
         // Get.snackbar("Error", e.toString());
       }
@@ -96,7 +102,6 @@ class StudentProfileController extends GetxController {
 //to update common user fields
 
   void updateUser() async {
-
     userModel = userModel.copyWith(
         firstName: firstNameController.text.trim(),
         lastName: lastNameController.text.trim(),
@@ -105,7 +110,7 @@ class StudentProfileController extends GetxController {
         imageUrl: imageUrl.value,
         isVerified: true);
 
-        print("user name in update user is${userModel.username}");
+    print("user name in update user is${userModel.username}");
 
     try {
       final response = await api.putApi(
@@ -119,8 +124,16 @@ class StudentProfileController extends GetxController {
         Get.offAllNamed('/');
       } else {
         Get.snackbar("Error", "${response.body["phone_number"][0]}");
+        submitText.value = "Submit";
       }
+      isUpdating.value = false;
+      submitText.value = "Submit";
     } catch (e) {
+      isUpdating.value = false;
+      submitText.value = "Try Again";
+      Future.delayed(const Duration(seconds: 2), () {
+        submitText.value = 'Submit';
+      });
       log(e.toString());
     }
   }
@@ -145,7 +158,7 @@ class StudentProfileController extends GetxController {
 
   void uploadImage() async {
     try {
-      final storageRef =  FirebaseStorage.instance.ref();
+      final storageRef = FirebaseStorage.instance.ref();
 
       final profileRef =
           storageRef.child('profile-images/${user.value.username}');
@@ -155,9 +168,8 @@ class StudentProfileController extends GetxController {
       imageUrl.value = await profileRef.getDownloadURL();
       log(imageUrl.value);
       updateUser();
-
     } catch (e) {
-      log("error in uploading img ${e}");
+      log("error in uploading img $e");
     }
   }
 

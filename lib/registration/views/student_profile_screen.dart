@@ -280,8 +280,8 @@ class StudentProfileScreen extends StatelessWidget {
                               width: width * 0.35,
                               height: height * .053,
                               decoration: BoxDecoration(
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(10)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
                                   color:
                                       Constants.cardColor().withOpacity(0.7)),
                               child: TextFormField(
@@ -301,8 +301,8 @@ class StudentProfileScreen extends StatelessWidget {
                               width: width * 0.35,
                               height: height * .053,
                               decoration: BoxDecoration(
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(10)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
                                   color:
                                       Constants.cardColor().withOpacity(0.7)),
                               child: TextFormField(
@@ -328,18 +328,20 @@ class StudentProfileScreen extends StatelessWidget {
               onTap: () {
                 controller.registerStudent();
               },
-              child: Container(
-                alignment: Alignment.center,
-                width: width * 0.35,
-                height: height * .053,
-                decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(20)),
-                    color: Constants.cardColor().withOpacity(0.7)),
-                child: const Text(
-                  "Submit",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
+              child: Obx(
+                () => Container(
+                  alignment: Alignment.center,
+                  width: width * 0.35,
+                  height: height * .053,
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      color: Constants.cardColor().withOpacity(0.7)),
+                  child: Text(
+                    controller.submitText.value,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
               ),
