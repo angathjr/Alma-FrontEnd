@@ -1,6 +1,7 @@
 import 'package:alma/core/constants.dart';
 import 'package:alma/events/controllers/event_controller.dart';
 import 'package:alma/home/views/drawer_screen.dart';
+import 'package:alma/profile/controllers/profile_controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,6 +14,7 @@ class NewsFeedScreen extends StatelessWidget {
   NewsFeedScreen({Key? key}) : super(key: key);
 
   final EventsController controller = Get.find();
+  final ProfileController profileController = Get.find();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   void _openDrawer() {
@@ -127,8 +129,15 @@ class NewsFeedScreen extends StatelessWidget {
                                                         children: [
                                                           GestureDetector(
                                                             onTap: () {
-                                                              Get.toNamed(
-                                                                  '/otherProfile-page');
+                                                              profileController
+                                                                      .selectedUserName
+                                                                      .value =
+                                                                  controller
+                                                                      .events[
+                                                                          index]
+                                                                      .postedBy!
+                                                                      .userName;
+                                                              profileController.getUserEventDetails();
                                                             },
                                                             child: ClipRRect(
                                                               borderRadius:
