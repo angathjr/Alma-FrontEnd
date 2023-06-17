@@ -37,7 +37,7 @@ class NewsFeedScreen extends StatelessWidget {
                 SliverAppBar(
                   leading: IconButton(
                       onPressed: () => _openDrawer(),
-                      icon: const Icon(Iconsax.menu, color: Colors.white)),
+                      icon: const Icon(FeatherIcons.menu, color: Colors.white)),
                   pinned: false,
                   floating: true,
                   snap: true,
@@ -131,19 +131,16 @@ class NewsFeedScreen extends StatelessWidget {
                                                                   '/otherProfile-page');
                                                             },
                                                             child: ClipRRect(
-                                                              
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
                                                                           360),
-                                                                          
                                                               child: SizedBox(
                                                                   width: width *
                                                                       0.11,
                                                                   height:
                                                                       width *
                                                                           0.11,
-                                                                        
                                                                   child: controller
                                                                               .events[
                                                                                   index]
@@ -151,7 +148,6 @@ class NewsFeedScreen extends StatelessWidget {
                                                                               .imgUrl ==
                                                                           ''
                                                                       ? Image.asset(
-                                                                        
                                                                           NOIMAGE)
                                                                       : CachedNetworkImage(
                                                                           progressIndicatorBuilder: (context, url, downloadProgress) =>
