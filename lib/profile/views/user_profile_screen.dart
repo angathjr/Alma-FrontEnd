@@ -208,8 +208,8 @@ class UserProfileScreen extends StatelessWidget {
                                     width: width,
                                     child: InkWell(
                                       onTap: () {
-                                        controller.gotoEvent(
-                                            controller.events[index]);
+                                        controller.gotoEvent(profileController
+                                            .userEvents[index]);
                                       },
                                       child: Container(
                                         padding: const EdgeInsets.all(10),
