@@ -87,19 +87,8 @@ class UserProfileScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             if (profileController.selectedUser.value.bio != "")
-                              // Padding(
-                              //   padding: EdgeInsets.only(
-                              //       left: 0.04 * width, top: 0.01 * height),
-                              //   child: const Text(
-                              //     'Bio:',
-                              //     style: TextStyle(
-                              //       color: Colors.white70,
-                              //       fontSize: 20,
-                              //     ),
-                              //   ),
-                              // ),
                               SizedBox(
-                                height: 0.01 * height,
+                                height: 0.004 * height,
                               ),
                             Padding(
                               padding: EdgeInsets.only(left: 0.04 * width),
@@ -108,25 +97,11 @@ class UserProfileScreen extends StatelessWidget {
                                 style: const TextStyle(
                                     fontStyle: FontStyle.italic,
                                     color: Colors.white60,
-                                    fontSize: 15),
+                                    fontSize: 16),
                               ),
-                            ),
-                            SizedBox(
-                              height: 0.01 * height,
                             ),
                             if (profileController.selectedUser.value.email !=
                                 "")
-                              // Padding(
-                              //   padding: EdgeInsets.only(
-                              //       left: 0.04 * width, top: 0.01 * height),
-                              //   child: const Text(
-                              //     'E-mail :',
-                              //     style: TextStyle(
-                              //       color: Colors.white70,
-                              //       fontSize: 20,
-                              //     ),
-                              //   ),
-                              // ),
                               SizedBox(
                                 height: 0.004 * height,
                               ),
@@ -138,20 +113,16 @@ class UserProfileScreen extends StatelessWidget {
                                     fontSize: 16, color: Colors.white60),
                               ),
                             ),
-                            SizedBox(
-                              height: 0.004 * height,
-                            ),
                             if (profileController
-                                    .selectedUser.value.areaOfInterest !=
-                                "")
+                                .selectedUser.value.areaOfInterest!.isNotEmpty)
                               Padding(
                                 padding: EdgeInsets.only(
                                     left: 0.04 * width, top: 0.01 * height),
-                                child: const Text(
+                                child: Text(
                                   'Interested Areas:',
                                   style: TextStyle(
                                     color: Colors.white70,
-                                    fontSize: 20,
+                                    fontSize: 18,
                                   ),
                                 ),
                               ),
