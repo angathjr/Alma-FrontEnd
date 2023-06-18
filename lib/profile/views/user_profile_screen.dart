@@ -47,8 +47,8 @@ class UserProfileScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 0.07 * width),
+                          Expanded(
+                            flex: 5,
                             child: Text(
                               "${profileController.selectedUser.value.firstName!.capitalizeFirst}",
                               style: const TextStyle(
@@ -56,15 +56,21 @@ class UserProfileScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 0.05 * width),
-                            child: CircleAvatar(
-                                backgroundColor: Colors.transparent,
-                                foregroundColor: Colors.transparent,
-                                radius: width * 0.1,
-                                foregroundImage: CachedNetworkImageProvider(
-                                  "${profileController.selectedUser.value.imageUrl}",
-                                )),
+                          Expanded(
+                            flex: 3,
+                            child: Padding(
+                              padding: EdgeInsets.only(right: 0.05 * width),
+                              child: Container(
+                                alignment: Alignment.centerRight,
+                                child: CircleAvatar(
+                                    backgroundColor: Colors.transparent,
+                                    foregroundColor: Colors.transparent,
+                                    radius: width * 0.1,
+                                    foregroundImage: CachedNetworkImageProvider(
+                                      "${profileController.selectedUser.value.imageUrl}",
+                                    )),
+                              ),
+                            ),
                           ),
                         ],
                       ),
