@@ -238,150 +238,158 @@ class AlumniDirectoryScreen extends StatelessWidget {
                                         curve: Curves.fastLinearToSlowEaseIn,
                                         duration:
                                             const Duration(milliseconds: 1500),
-                                        child: Container(
-                                            width: width,
-                                            height: height * .22,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  const BorderRadius.all(
-                                                      Radius.circular(10)),
-                                              color: Constants.cardColor()
-                                                  .withOpacity(0.7),
-                                            ),
-                                            child: Row(
-                                              children: [
-                                                Expanded(
-                                                  flex: 4,
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: SizedBox(
-                                                      height: height * 0.13,
-                                                      width: width * .01,
-                                                      child: CircleAvatar(
-                                                          backgroundColor:
-                                                              Colors
-                                                                  .transparent,
-                                                          foregroundColor:
-                                                              Colors
-                                                                  .transparent,
-                                                          radius: width * 0.1,
-                                                          foregroundImage:
-                                                              CachedNetworkImageProvider(
-                                                            "${controller.alumni[index].user!.imgUrl}",
-                                                          )),
-                                                    ),
-                                                  ),
+                                        child: GestureDetector(
+                                          onTap: () => controller.gotoProfile(
+                                              controller.alumni[index].user!
+                                                  .username!),
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: height * 0.01),
+                                            child: Container(
+                                                width: width,
+                                                height: height * .22,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      const BorderRadius.all(
+                                                          Radius.circular(10)),
+                                                  color: Constants.cardColor()
+                                                      .withOpacity(0.7),
                                                 ),
-                                                Expanded(
-                                                  flex: 7,
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                            horizontal:
-                                                                width * 0.02),
-                                                    child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Padding(
-                                                            padding: EdgeInsets
-                                                                .symmetric(
-                                                                    vertical:
-                                                                        height *
-                                                                            0.02),
-                                                            child: FittedBox(
-                                                              child: Text(
-                                                                "${controller.alumni[index].user!.firstName!.capitalizeFirst}",
+                                                child: Row(
+                                                  children: [
+                                                    Expanded(
+                                                      flex: 4,
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(8.0),
+                                                        child: SizedBox(
+                                                          height: height * 0.13,
+                                                          width: width * .01,
+                                                          child: CircleAvatar(
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              foregroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              radius:
+                                                                  width * 0.1,
+                                                              foregroundImage:
+                                                                  CachedNetworkImageProvider(
+                                                                "${controller.alumni[index].user!.imgUrl}",
+                                                              )),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Expanded(
+                                                      flex: 7,
+                                                      child: Padding(
+                                                        padding: EdgeInsets
+                                                            .symmetric(
+                                                                horizontal:
+                                                                    width *
+                                                                        0.02),
+                                                        child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Padding(
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
+                                                                        vertical:
+                                                                            height *
+                                                                                0.02),
+                                                                child:
+                                                                    FittedBox(
+                                                                  child: Text(
+                                                                    "${controller.alumni[index].user!.firstName!.capitalizeFirst}",
+                                                                    overflow:
+                                                                        TextOverflow
+                                                                            .ellipsis,
+                                                                    maxLines: 1,
+                                                                    style: const TextStyle(
+                                                                        fontSize:
+                                                                            20,
+                                                                        fontWeight:
+                                                                            FontWeight.bold),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Text(
+                                                                "Batch:   ${controller.alumni[index].academicYearFrom} - ${controller.alumni[index].academicYearTo}",
                                                                 overflow:
                                                                     TextOverflow
                                                                         .ellipsis,
-                                                                maxLines: 1,
-                                                                style: const TextStyle(
-                                                                    fontSize:
-                                                                        20,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold),
+                                                                maxLines: 4,
+                                                                style:
+                                                                    const TextStyle(
+                                                                  fontSize: 14,
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                            "Batch:   ${controller.alumni[index].academicYearFrom} - ${controller.alumni[index].academicYearTo}",
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                            maxLines: 4,
-                                                            style:
-                                                                const TextStyle(
-                                                              fontSize: 14,
-                                                            ),
-                                                          ),
-                                                          Text(
-                                                            "Current Company : ${controller.alumni[index].currentCompany}",
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                            maxLines: 4,
-                                                            style:
-                                                                const TextStyle(
-                                                              fontSize: 14,
-                                                            ),
-                                                          ),
-                                                          Expanded(
-                                                            flex: 1,
-                                                            child: Align(
-                                                              alignment: Alignment
-                                                                  .bottomRight,
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsets
-                                                                            .all(
-                                                                        8.0),
-                                                                child:
-                                                                    GestureDetector(
-                                                                  onTap: () =>
-                                                                      controller
-                                                                          .launchEmail(
-                                                                              "${controller.alumni[index].user!.email}"),
+                                                              Text(
+                                                                "Current Company : ${controller.alumni[index].currentCompany}",
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                maxLines: 4,
+                                                                style:
+                                                                    const TextStyle(
+                                                                  fontSize: 14,
+                                                                ),
+                                                              ),
+                                                              Expanded(
+                                                                flex: 1,
+                                                                child: Align(
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .bottomRight,
                                                                   child:
-                                                                      Container(
-                                                                    width:
-                                                                        width *
-                                                                            .2,
-                                                                    height:
-                                                                        height *
-                                                                            .04,
-                                                                    decoration:
-                                                                        const BoxDecoration(
-                                                                      borderRadius:
-                                                                          BorderRadius.all(
-                                                                              Radius.circular(10)),
-                                                                      color: Color.fromARGB(
-                                                                          255,
-                                                                          30,
-                                                                          31,
-                                                                          42),
-                                                                    ),
+                                                                      Padding(
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8.0),
                                                                     child:
-                                                                        const Icon(
-                                                                      FeatherIcons
-                                                                          .mail,
-                                                                      color: Colors
-                                                                          .white,
+                                                                        GestureDetector(
+                                                                      onTap: () =>
+                                                                          controller
+                                                                              .launchEmail("${controller.alumni[index].user!.email}"),
+                                                                      child:
+                                                                          Container(
+                                                                        width: width *
+                                                                            .2,
+                                                                        height: height *
+                                                                            .04,
+                                                                        decoration:
+                                                                            const BoxDecoration(
+                                                                          borderRadius:
+                                                                              BorderRadius.all(Radius.circular(10)),
+                                                                          color: Color.fromARGB(
+                                                                              255,
+                                                                              30,
+                                                                              31,
+                                                                              42),
+                                                                        ),
+                                                                        child:
+                                                                            const Icon(
+                                                                          FeatherIcons
+                                                                              .mail,
+                                                                          color:
+                                                                              Colors.white,
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                          ),
-                                                        ]),
-                                                  ),
-                                                )
-                                              ],
-                                            )),
+                                                            ]),
+                                                      ),
+                                                    )
+                                                  ],
+                                                )),
+                                          ),
+                                        ),
                                       ),
                                     ));
                               })),

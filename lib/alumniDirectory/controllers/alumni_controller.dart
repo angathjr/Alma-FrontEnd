@@ -1,5 +1,7 @@
 import 'dart:developer';
+import 'package:alma/auth/models/user.dart';
 import 'package:alma/core/api_provider.dart';
+import 'package:alma/profile/controllers/profile_controller.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -7,6 +9,7 @@ import '../models/alumni_model.dart';
 
 class AlumniDirController extends GetxController {
   final ApiProvider api = Get.find();
+  final ProfileController profileController = Get.find();
 
   var alumni = <AlumniModel>[].obs;
   var isLoading = false.obs;
@@ -40,4 +43,11 @@ class AlumniDirController extends GetxController {
 
     launchUrl(emailLaunchUri);
   }
+
+
+  void gotoProfile(String username){
+    profileController.selectedUserName.value =username;
+    profileController.getUserEventDetails();
+  }
+
 }

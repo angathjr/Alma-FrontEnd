@@ -47,8 +47,8 @@ class UserProfileScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 0.07 * width),
+                          Expanded(
+                            flex: 5,
                             child: Text(
                               "${profileController.selectedUser.value.firstName!.capitalizeFirst}",
                               style: const TextStyle(
@@ -56,44 +56,40 @@ class UserProfileScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 0.05 * width),
-                            child: CircleAvatar(
-                                backgroundColor: Colors.transparent,
-                                foregroundColor: Colors.transparent,
-                                radius: width * 0.1,
-                                foregroundImage: CachedNetworkImageProvider(
-                                  "${profileController.selectedUser.value.imageUrl}",
-                                )),
+                          Expanded(
+                            flex: 3,
+                            child: Padding(
+                              padding: EdgeInsets.only(right: 0.05 * width),
+                              child: Container(
+                                alignment: Alignment.centerRight,
+                                child: CircleAvatar(
+                                    backgroundColor: Colors.transparent,
+                                    foregroundColor: Colors.transparent,
+                                    radius: width * 0.1,
+                                    foregroundImage: CachedNetworkImageProvider(
+                                      "${profileController.selectedUser.value.imageUrl}",
+                                    )),
+                              ),
+                            ),
                           ),
                         ],
                       ),
                       SizedBox(
-                        height: 0.04 * height,
+                        height: 0.03 * height,
                       ),
                       Container(
                         width: width,
-                        height: 0.15 * height,
+                        //height: 0.15 * height,
                         decoration: BoxDecoration(
                             color: Constants.cardColor().withOpacity(0.7),
                             borderRadius: BorderRadius.circular(10)),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: 0.04 * width, top: 0.01 * height),
-                              child: const Text(
-                                'Bio:',
-                                style: TextStyle(
-                                  color: Colors.white70,
-                                  fontSize: 20,
-                                ),
+                            if (profileController.selectedUser.value.bio != "")
+                              SizedBox(
+                                height: 0.004 * height,
                               ),
-                            ),
-                            SizedBox(
-                              height: 0.01 * height,
-                            ),
                             Padding(
                               padding: EdgeInsets.only(left: 0.04 * width),
                               child: Text(
@@ -101,37 +97,37 @@ class UserProfileScreen extends StatelessWidget {
                                 style: const TextStyle(
                                     fontStyle: FontStyle.italic,
                                     color: Colors.white60,
-                                    fontSize: 15),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 0.004 * height,
-                      ),
-                      Container(
-                        height: 0.15 * height,
-                        width: width,
-                        decoration: BoxDecoration(
-                            color: Constants.cardColor().withOpacity(0.7),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  left: 0.04 * width, top: 0.01 * height),
-                              child: const Text(
-                                'Interested Areas:',
-                                style: TextStyle(
-                                  color: Colors.white70,
-                                  fontSize: 20,
-                                ),
+                                    fontSize: 16),
                               ),
                             ),
+                            if (profileController.selectedUser.value.email !=
+                                "")
+                              SizedBox(
+                                height: 0.004 * height,
+                              ),
+                            Padding(
+                              padding: EdgeInsets.only(left: 0.04 * width),
+                              child: Text(
+                                '${profileController.selectedUser.value.email}',
+                                style: const TextStyle(
+                                    fontSize: 16, color: Colors.white60),
+                              ),
+                            ),
+                            if (profileController
+                                .selectedUser.value.areaOfInterest!.isNotEmpty)
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    left: 0.04 * width, top: 0.01 * height),
+                                child: Text(
+                                  'Interested Areas:',
+                                  style: TextStyle(
+                                    color: Colors.white70,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
                             SizedBox(
-                              height: 0.01 * height,
+                              height: 0.004 * height,
                             ),
                             Padding(
                               padding: EdgeInsets.only(left: 0.04 * width),
@@ -142,16 +138,22 @@ class UserProfileScreen extends StatelessWidget {
                                 style: const TextStyle(
                                     fontSize: 16, color: Colors.white60),
                               ),
-                            )
+                            ),
+                            SizedBox(
+                              height: 0.01 * height,
+                            ),
                           ],
                         ),
                       ),
                       SizedBox(
-                        height: 0.04 * height,
+                        height: 0.01 * height,
                       ),
-                      Text("Posts"),
+                      Text(
+                        "Posts",
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
                       SizedBox(
-                        height: height * 0.05,
+                        height: height * 0.01,
                       )
                     ]),
             ),
