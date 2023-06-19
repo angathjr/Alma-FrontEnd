@@ -1,5 +1,4 @@
 import 'package:alma/auth/controllers/auth_controller.dart';
-import 'package:alma/profile/views/user_profile_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
@@ -165,7 +164,7 @@ class ProfilePage extends StatelessWidget {
                       onTap: () {
                         Get.toNamed('/EditProfile');
 
-                       // Get.to(() => OthersProfile());
+                        //Get.to(() => OtherEventEditScreen());
                         // Get.toNamed('/AlumniEditProfile');
                       },
                       child: SlideAnimation(
