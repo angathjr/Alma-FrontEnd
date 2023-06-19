@@ -19,6 +19,7 @@ class AlumniDirController extends GetxController {
   var isLoading = false.obs;
   var isSearching = false.obs;
   var selectedDepartment = "".obs;
+  var deptIndex = 0.obs;
 
   @override
   void onInit() {
@@ -69,7 +70,18 @@ class AlumniDirController extends GetxController {
     }
   }
 
-  void filterAlumni() {}
+  void filterAlumni() {
+    if (joinedYearController.text.isNotEmpty ||
+        selectedDepartment.value.isNotEmpty) {
+      alumni.value = allAlumni
+          .where((element) =>
+              element.academicYearFrom ==
+                  int.parse(joinedYearController.text) &&
+              element.department == deptIndex.value)
+          .toList();
+    }
+    Get.back();
+  }
 
   void clearControllers() {
     searchTextController.clear();

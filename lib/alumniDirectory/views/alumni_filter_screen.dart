@@ -144,19 +144,22 @@ class AlumniFilterScreen extends StatelessWidget {
                     ),
                     Expanded(
                       flex: 4,
-                      child: Container(
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: Colors.white12,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        height: height,
-                        child: Text(
-                          "Filter",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: width * 0.05,
-                              color: Colors.white),
+                      child: GestureDetector(
+                        onTap: ()=>controller.filterAlumni(),
+                        child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Colors.white12,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          height: height,
+                          child: Text(
+                            "Filter",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: width * 0.05,
+                                color: Colors.white),
+                          ),
                         ),
                       ),
                     ),
@@ -301,6 +304,10 @@ class DialogWidget extends StatelessWidget {
                                     value.toString();
                                 registrationController.selectedDepartment
                                     .value = value.toString();
+                                controller.deptIndex.value =
+                                    registrationController.depNames
+                                            .indexOf(value.toString()) +
+                                        1;
                               },
                             ),
                           ),

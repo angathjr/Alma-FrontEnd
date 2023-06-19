@@ -19,6 +19,7 @@ class UserModel {
       this.phoneNumber,
       this.areaOfInterest,
       this.data,
+      this.department,
       this.imageUrl});
 
   final int? id;
@@ -34,6 +35,7 @@ class UserModel {
   final String? phoneNumber;
   final List<UserData>? data;
   final String? imageUrl;
+  final int? department;
 
   UserModel copyWith({
     int? id,
@@ -61,6 +63,7 @@ class UserModel {
         username: username ?? this.username,
         phoneNumber: phoneNumber ?? this.phoneNumber,
         imageUrl: imageUrl ?? this.imageUrl,
+        department: department ?? department,
         data: data ?? this.data,
         bio: bio ?? this.bio,
         areaOfInterest: areaOfInterest ?? this.areaOfInterest,
@@ -77,6 +80,7 @@ class UserModel {
         username: json["username"] ?? '',
         imageUrl: json["img_url"] ?? '',
         phoneNumber: json["phone_number"] ?? '',
+        department: json["department"] ?? 0,
         bio: json["bio"] ?? '',
         areaOfInterest: json["area_of_interest"] == null
             ? []
@@ -98,6 +102,7 @@ class UserModel {
         "username": username ?? '',
         "phone_number": phoneNumber ?? '',
         "img_url": imageUrl ?? '',
+        "department": department ?? 0,
         "bio": bio ?? '',
         "area_of_interest": areaOfInterest == null
             ? []
