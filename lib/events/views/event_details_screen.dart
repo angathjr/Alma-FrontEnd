@@ -38,10 +38,8 @@ class EventDetailsScreen extends StatelessWidget {
                 Column(
                   children: [
                     Container(
-                      // height: height * 0.58,
                       width: width,
                       decoration: BoxDecoration(
-                        // color: Colors.amber,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: ClipRRect(
@@ -65,44 +63,75 @@ class EventDetailsScreen extends StatelessWidget {
                               (controller.selectedEvent.value.imgUrl != "")
                                   ? height * 0.12
                                   : height * .5),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: height * 0.03,
-                          ),
-                          Text(
-                            "${controller.selectedEvent.value.eventName}",
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 3,
-                            style: const TextStyle(
-                                fontSize: 27, fontWeight: FontWeight.bold),
-                          ),
-                        ],
+                    ),
+                  ],
+                ),
+              Column(
+                children: [
+                  Text(
+                    "${controller.selectedEvent.value.eventName}",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 3,
+                    style: const TextStyle(
+                        fontSize: 27, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+               SizedBox(
+                height: height * .02,
+              ),
+              if (controller.selectedEvent.value.eventDescription != "")
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                     Text(
+                      "Description :",
+                      style: TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 10, 12, 0),
+                      child: Container(
+                        width: width,
+                        child: Text(
+                          "${controller.selectedEvent.value.eventDescription}",
+                          softWrap: true,
+
+                          style: Constants.txtStyle().copyWith(fontSize: 16),
+                          // overflow: TextOverflow.ellipsis
+                        ),
                       ),
                     ),
                   ],
                 ),
-              Row(
-                children: const [
-                  Text(
-                    "Description:",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                ],
+              SizedBox(
+                height: height * .02,
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(15, 10, 12, 0),
-                child: Container(
-                  width: width,
-                  child: Text(
-                    "${controller.selectedEvent.value.eventDescription}",
-                    softWrap: true,
+              if (controller.selectedEvent.value.skillsRequired != [])
+                Column(
+                  children: [
+                    Text(
+                      "Skill required :",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 10, 12, 0),
+                      child: Container(
+                        width: width,
+                        child: Text(
+                          "${controller.selectedEvent.value.skillsRequired}",
+                          softWrap: true,
 
-                    style: Constants.txtStyle().copyWith(fontSize: 16),
-                    // overflow: TextOverflow.ellipsis
-                  ),
+                          style: Constants.txtStyle().copyWith(fontSize: 16),
+                          // overflow: TextOverflow.ellipsis
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              )
+
+
             ]),
           ),
         ),
