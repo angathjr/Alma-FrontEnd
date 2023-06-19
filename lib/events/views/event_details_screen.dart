@@ -34,6 +34,8 @@ class EventDetailsScreen extends StatelessWidget {
               SizedBox(
                 height: height * 0.03,
               ),
+
+              //image
               if (controller.selectedEvent.value.imgUrl != "")
                 Column(
                   children: [
@@ -66,6 +68,8 @@ class EventDetailsScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+
+              //event Name
               Column(
                 children: [
                   Text(
@@ -77,59 +81,294 @@ class EventDetailsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-               SizedBox(
-                height: height * .02,
-              ),
-              if (controller.selectedEvent.value.eventDescription != "")
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                     Text(
-                      "Description :",
-                      style: TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(15, 10, 12, 0),
-                      child: Container(
-                        width: width,
-                        child: Text(
-                          "${controller.selectedEvent.value.eventDescription}",
-                          softWrap: true,
-
-                          style: Constants.txtStyle().copyWith(fontSize: 16),
-                          // overflow: TextOverflow.ellipsis
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
               SizedBox(
-                height: height * .02,
+                height: height *.01,
               ),
-              if (controller.selectedEvent.value.skillsRequired != [])
-                Column(
-                  children: [
-                    Text(
-                      "Skill required :",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(15, 10, 12, 0),
-                      child: Container(
-                        width: width,
-                        child: Text(
-                          "${controller.selectedEvent.value.skillsRequired}",
-                          softWrap: true,
 
-                          style: Constants.txtStyle().copyWith(fontSize: 16),
-                          // overflow: TextOverflow.ellipsis
+              //Description
+
+             
+              if (controller.selectedEvent.value.eventDescription != "")
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * .03),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Description ",
+                        style: TextStyle(
+                           fontStyle: FontStyle.italic,
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: height * .005, horizontal: width * .03),
+                        child: Container(
+                          width: width,
+                          child: Text(
+                            "${controller.selectedEvent.value.eventDescription}",
+                            softWrap: true,
+
+                            style: Constants.txtStyle().copyWith(fontSize: 16),
+                            // overflow: TextOverflow.ellipsis
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
+                 SizedBox(
+                height: height *.01,
+              ),
+
+//company name
+             
+              if (controller.selectedEvent.value.companyName != "")
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * .03),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Company Name ",
+                        style: TextStyle(
+                           fontStyle: FontStyle.italic,
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: height * .005, horizontal: width * .03),
+                        child: Container(
+                          width: width,
+                          child: Text(
+                            "${controller.selectedEvent.value.companyName}",
+                            softWrap: true,
+
+                            style: Constants.txtStyle().copyWith(fontSize: 16),
+                            // overflow: TextOverflow.ellipsis
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                 SizedBox(
+                height: height *.01,
+              ),
+
+//Role
+             
+              if (controller.selectedEvent.value.role != "")
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * .03),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Role ",
+                        style: TextStyle(
+                           fontStyle: FontStyle.italic,
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: height * .005, horizontal: width * .03),
+                        child: Container(
+                          width: width,
+                          child: Text(
+                            "${controller.selectedEvent.value.role}",
+                            softWrap: true,
+
+                            style: Constants.txtStyle().copyWith(fontSize: 16),
+                            // overflow: TextOverflow.ellipsis
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                 SizedBox(
+                height: height *.01,
+              ),
+                
+
+//skill Required
+             
+              if (controller.selectedEvent.value.skillsRequired !.isNotEmpty)
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * .03),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Skill Required ",
+                        style: TextStyle(
+                           fontStyle: FontStyle.italic,
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: height * .005, horizontal: width * .03),
+                        child: Container(
+                          width: width,
+                          child: Text(
+                            "${controller.selectedEvent.value.skillsRequired!
+                                .join(", ")}",
+                            softWrap: true,
+
+                            style: Constants.txtStyle().copyWith(fontSize: 16),
+                            // overflow: TextOverflow.ellipsis
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                 SizedBox(
+                height: height *.01,
+              ),
+
+//last date to apply
+              
+              if (controller.selectedEvent.value.lastDateToApply != "")
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * .03),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Last Date to Apply ",
+                        style: TextStyle(
+                           fontStyle: FontStyle.italic,
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: height * .005, horizontal: width * .03),
+                        child: Container(
+                          width: width,
+                          child: Text(
+                            "${controller.selectedEvent.value.lastDateToApply}",
+                            softWrap: true,
+
+                            style: Constants.txtStyle().copyWith(fontSize: 16),
+                            // overflow: TextOverflow.ellipsis
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                 SizedBox(
+                height: height *.01,
+              ),
+
+//Duration
+              
+              if (controller.selectedEvent.value.duration != "")
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * .03),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Duartion ",
+                        style: TextStyle(
+                           fontStyle: FontStyle.italic,
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: height * .005, horizontal: width * .03),
+                        child: Container(
+                          width: width,
+                          child: Text(
+                            "${controller.selectedEvent.value.duration}",
+                            softWrap: true,
+
+                            style: Constants.txtStyle().copyWith(fontSize: 16),
+                            // overflow: TextOverflow.ellipsis
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                 SizedBox(
+                height: height *.01,
+              ),
+
+
+//venue
+              
+              if (controller.selectedEvent.value.venue != "")
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * .03),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "venue ",
+                        style: TextStyle(
+                           fontStyle: FontStyle.italic,
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: height * .005, horizontal: width * .03),
+                        child: Container(
+                          width: width,
+                          child: Text(
+                            "${controller.selectedEvent.value.venue}",
+                            softWrap: true,
+
+                            style: Constants.txtStyle().copyWith(fontSize: 16),
+                            // overflow: TextOverflow.ellipsis
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                 SizedBox(
+                height: height *.01,
+              ),
+
+//event Link
+             
+              if (controller.selectedEvent.value.eventLink != "")
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * .03),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Event Link",
+                        style: TextStyle(
+                           fontStyle: FontStyle.italic,
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: height * .005, horizontal: width * .03),
+                        child: Container(
+                          width: width,
+                          child: Text(
+                            "${controller.selectedEvent.value.eventLink}",
+                            softWrap: true,
+
+                            style: Constants.txtStyle().copyWith(fontSize: 16),
+                            // overflow: TextOverflow.ellipsis
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                 SizedBox(
+                height: height *.01,
+              ),
+
 
 
             ]),
