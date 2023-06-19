@@ -22,6 +22,7 @@ class AlumniDirectoryScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.black,
         body: CustomScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           slivers: [
             SliverAppBar(
               centerTitle: true,
