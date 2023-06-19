@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../alumniDirectory/controllers/alumni_controller.dart';
+import '../../alumniDirectory/controllers/alumni_dir_controller.dart';
 import '../../events/controllers/event_controller.dart';
 
 class NavigationDrawerScreen extends StatelessWidget {

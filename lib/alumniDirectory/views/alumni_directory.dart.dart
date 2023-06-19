@@ -1,5 +1,6 @@
 import 'dart:ui';
-import 'package:alma/alumniDirectory/controllers/alumni_controller.dart';
+import 'package:alma/alumniDirectory/controllers/alumni_dir_controller.dart';
+import 'package:alma/alumniDirectory/views/alumni_filter_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,7 +46,21 @@ class AlumniDirectoryScreen extends StatelessWidget {
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    filterWidget(context, height, width);
+                    showModalBottomSheet(
+      isScrollControlled: true,
+      isDismissible: true,
+      context: context,
+      backgroundColor: Colors.transparent,
+      useSafeArea: true,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+      builder: (context) => BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+          child:AlumniFilterScreen()
+           
+          ),
+    );
                   },
                 )
               ],
@@ -67,8 +82,8 @@ class AlumniDirectoryScreen extends StatelessWidget {
                                   color: Constants.cardColor().withOpacity(0.5),
                                   borderRadius: BorderRadius.circular(20)),
                               child: TextField(
-                                onSubmitted: (value) =>
-                                    controller.searchAlumni(),
+                                // onSubmitted: (value) =>
+                                //     controller.searchAlumni(),
                                 textAlign: TextAlign.left,
                                 textAlignVertical: TextAlignVertical.center,
                                 decoration: const InputDecoration(
@@ -77,6 +92,7 @@ class AlumniDirectoryScreen extends StatelessWidget {
                                     contentPadding: EdgeInsets.only(left: 20),
                                     border: InputBorder.none),
                                 controller: controller.searchTextController,
+                                onChanged: (value) => controller.searchAlumni(),
                               ),
                             ),
                           ),
@@ -295,287 +311,9 @@ class AlumniDirectoryScreen extends StatelessWidget {
           ],
         ));
   }
+}
 
   //bottom model
-  Future<dynamic> filterWidget(
-      BuildContext context, double height, double width) {
-    return showModalBottomSheet(
-      isScrollControlled: true,
-      isDismissible: true,
-      context: context,
-      backgroundColor: Colors.transparent,
-      useSafeArea: true,
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20), topRight: Radius.circular(20))),
-      builder: (context) => BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-          child: Container(
-            height: height * 0.3,
-            width: width,
-            decoration: BoxDecoration(
-              color: Constants.cardColor(),
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Sort by ",
-                      style: TextStyle(fontSize: width * 0.06),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 10,
-                  child: Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: width * 0.08, vertical: width * 0.05),
-                      width: width,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            flex: 7,
-                            child: Row(
-                              children: [
-                                Expanded(
-                                    child: GestureDetector(
-                                  onTap: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            const DialogueWidget1());
-                                  },
-                                  child: Container(
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white12,
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      height: height,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "Year",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: width * 0.05,
-                                                color: Colors.white),
-                                          ),
-                                          const Icon(Iconsax.calendar,
-                                              color: Colors.white)
-                                        ],
-                                      )),
-                                )),
-                                SizedBox(
-                                  width: width * .03,
-                                ),
-                                Expanded(
-                                    child: GestureDetector(
-                                  onTap: () {
-                                    showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            DialogWidget());
-                                  },
-                                  child: Container(
-                                      alignment: Alignment.center,
-                                      decoration: BoxDecoration(
-                                        color: Colors.white12,
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      height: height,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "Department",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: width * 0.05,
-                                                color: Colors.white),
-                                          ),
-                                          const Icon(Iconsax.courthouse,
-                                              color: Colors.white)
-                                        ],
-                                      )),
-                                )),
-                              ],
-                            ),
-                          ),
-                        ],
-                      )),
-                )
-              ],
-            ),
-          )),
-    );
-  }
-}
 
-//dialogue for year
 
-class DialogueWidget1 extends StatelessWidget {
-  const DialogueWidget1({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-    return Dialog(
-      child: Container(
-        height: height * 0.23,
-        width: width,
-        decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(12)),
-            color: Constants.cardColor().withOpacity(0.7)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const Padding(
-              padding: EdgeInsets.all(15.0),
-              child: Text(
-                'Enter Batch',
-                style: TextStyle(color: Colors.white, fontSize: 22.0),
-              ),
-            ),
-            Container(
-              width: width * .7,
-              height: height * .051,
-              decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  color: Constants.cardColor().withOpacity(0.9)),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  hintText: "DD/MM/YYYY",
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.only(left: 5),
-                ),
-                style: const TextStyle(color: Colors.white),
-              ),
-            ),
-            SizedBox(
-              height: height * .05,
-            ),
-            Container(
-              width: width * 0.3,
-              height: height * .053,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey.withOpacity(0.5)),
-              child: const Text(
-                "sort",
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: Colors.white),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-//dialog for department
-class DialogWidget extends StatelessWidget {
-  DialogWidget({super.key});
-  final RegistrationController registrationController = Get.find();
-
-  @override
-  Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-    return Dialog(
-      child: Container(
-        height: height * 0.23,
-        width: width,
-        decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(12)),
-            color: Constants.cardColor().withOpacity(0.7)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const Padding(
-              padding: EdgeInsets.all(15.0),
-              child: Text(
-                'Enter Department',
-                style: TextStyle(color: Colors.white, fontSize: 22.0),
-              ),
-            ),
-            Container(
-                width: width * .7,
-                height: height * .051,
-                decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    color: Constants.cardColor().withOpacity(0.5)),
-                child: Obx(
-                  () => (registrationController.isdepartmentfetched.value ==
-                          false)
-                      ? const Center(child: CupertinoActivityIndicator())
-                      : DropdownButtonHideUnderline(
-                          child: ButtonTheme(
-                            alignedDropdown: true,
-                            child: DropdownButton(
-                              borderRadius: BorderRadius.circular(20),
-                              isExpanded: true,
-                              isDense: false,
-                              value: registrationController
-                                  .selectedDepartment.value,
-                              elevation: 0,
-                              items: registrationController.depNames
-                                  .map<DropdownMenuItem<String>>(
-                                      (String value) {
-                                return DropdownMenuItem(
-                                  value: value,
-                                  child: Text(value,
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: width * 0.037)),
-                                );
-                              }).toList(),
-                              onChanged: (value) {
-                                registrationController.selectedDepartment
-                                    .value = value.toString();
-                              },
-                            ),
-                          ),
-                        ),
-                )),
-            SizedBox(
-              height: height * .05,
-            ),
-            Container(
-              width: width * 0.3,
-              height: height * .053,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey.withOpacity(0.5)),
-              child: const Text(
-                "Sort",
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: Colors.white),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

@@ -14,9 +14,11 @@ class AlumniDirController extends GetxController {
   var allAlumni = <AlumniModel>[].obs;
   var alumni = <AlumniModel>[].obs;
 
+  final TextEditingController searchTextController = TextEditingController();
+  final TextEditingController joinedYearController = TextEditingController();
   var isLoading = false.obs;
   var isSearching = false.obs;
-  final TextEditingController searchTextController = TextEditingController();
+  var selectedDepartment = "".obs;
 
   @override
   void onInit() {
@@ -67,9 +69,16 @@ class AlumniDirController extends GetxController {
     }
   }
 
+  void filterAlumni() {}
+
   void clearControllers() {
     searchTextController.clear();
-     Get.back();
+    Get.back();
   }
 
+  void clearFilter() {
+    selectedDepartment.value = "";
+    joinedYearController.clear();
+    Get.back();
+  }
 }
