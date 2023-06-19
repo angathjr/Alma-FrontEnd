@@ -9,6 +9,7 @@ class EventDetailsScreen extends StatelessWidget {
   EventDetailsScreen({super.key});
 
   EventsController controller = Get.find();
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -82,12 +83,11 @@ class EventDetailsScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: height *.01,
+                height: height * .01,
               ),
 
               //Description
 
-             
               if (controller.selectedEvent.value.eventDescription != "")
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * .03),
@@ -97,8 +97,9 @@ class EventDetailsScreen extends StatelessWidget {
                       const Text(
                         "Description ",
                         style: TextStyle(
-                           fontStyle: FontStyle.italic,
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                            fontStyle: FontStyle.italic,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
@@ -117,12 +118,12 @@ class EventDetailsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                 SizedBox(
-                height: height *.01,
+              SizedBox(
+                height: height * .01,
               ),
 
 //company name
-             
+
               if (controller.selectedEvent.value.companyName != "")
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * .03),
@@ -132,8 +133,9 @@ class EventDetailsScreen extends StatelessWidget {
                       const Text(
                         "Company Name ",
                         style: TextStyle(
-                           fontStyle: FontStyle.italic,
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                            fontStyle: FontStyle.italic,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
@@ -152,12 +154,12 @@ class EventDetailsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                 SizedBox(
-                height: height *.01,
+              SizedBox(
+                height: height * .01,
               ),
 
 //Role
-             
+
               if (controller.selectedEvent.value.role != "")
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * .03),
@@ -167,8 +169,9 @@ class EventDetailsScreen extends StatelessWidget {
                       const Text(
                         "Role ",
                         style: TextStyle(
-                           fontStyle: FontStyle.italic,
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                            fontStyle: FontStyle.italic,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
@@ -187,14 +190,13 @@ class EventDetailsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                 SizedBox(
-                height: height *.01,
+              SizedBox(
+                height: height * .01,
               ),
-                
 
 //skill Required
-             
-              if (controller.selectedEvent.value.skillsRequired !.isNotEmpty)
+
+              if (controller.selectedEvent.value.skillsRequired!.isNotEmpty)
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * .03),
                   child: Column(
@@ -203,8 +205,9 @@ class EventDetailsScreen extends StatelessWidget {
                       const Text(
                         "Skill Required ",
                         style: TextStyle(
-                           fontStyle: FontStyle.italic,
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                            fontStyle: FontStyle.italic,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
@@ -212,8 +215,7 @@ class EventDetailsScreen extends StatelessWidget {
                         child: Container(
                           width: width,
                           child: Text(
-                            "${controller.selectedEvent.value.skillsRequired!
-                                .join(", ")}",
+                            "${controller.selectedEvent.value.skillsRequired!.join(", ")}",
                             softWrap: true,
 
                             style: Constants.txtStyle().copyWith(fontSize: 16),
@@ -224,12 +226,12 @@ class EventDetailsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                 SizedBox(
-                height: height *.01,
+              SizedBox(
+                height: height * .01,
               ),
 
 //last date to apply
-              
+
               if (controller.selectedEvent.value.lastDateToApply != "")
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * .03),
@@ -239,8 +241,9 @@ class EventDetailsScreen extends StatelessWidget {
                       const Text(
                         "Last Date to Apply ",
                         style: TextStyle(
-                           fontStyle: FontStyle.italic,
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                            fontStyle: FontStyle.italic,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
@@ -259,12 +262,12 @@ class EventDetailsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                 SizedBox(
-                height: height *.01,
+              SizedBox(
+                height: height * .01,
               ),
 
 //Duration
-              
+
               if (controller.selectedEvent.value.duration != "")
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * .03),
@@ -274,8 +277,9 @@ class EventDetailsScreen extends StatelessWidget {
                       const Text(
                         "Duartion ",
                         style: TextStyle(
-                           fontStyle: FontStyle.italic,
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                            fontStyle: FontStyle.italic,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
@@ -294,13 +298,12 @@ class EventDetailsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                 SizedBox(
-                height: height *.01,
+              SizedBox(
+                height: height * .01,
               ),
 
-
 //venue
-              
+
               if (controller.selectedEvent.value.venue != "")
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * .03),
@@ -310,8 +313,9 @@ class EventDetailsScreen extends StatelessWidget {
                       const Text(
                         "venue ",
                         style: TextStyle(
-                           fontStyle: FontStyle.italic,
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                            fontStyle: FontStyle.italic,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
@@ -330,12 +334,12 @@ class EventDetailsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                 SizedBox(
-                height: height *.01,
+              SizedBox(
+                height: height * .01,
               ),
 
 //event Link
-             
+
               if (controller.selectedEvent.value.eventLink != "")
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: width * .03),
@@ -345,8 +349,9 @@ class EventDetailsScreen extends StatelessWidget {
                       const Text(
                         "Event Link",
                         style: TextStyle(
-                           fontStyle: FontStyle.italic,
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                            fontStyle: FontStyle.italic,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(
@@ -365,16 +370,39 @@ class EventDetailsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                 SizedBox(
-                height: height *.01,
+              SizedBox(
+                height: height * .01,
               ),
-
-
-
             ]),
           ),
         ),
       ),
+
+      //apply now button
+
+      bottomNavigationBar: (controller.selectedEvent.value.eventLink != "")
+          ? Padding(
+              padding:
+                  EdgeInsets.symmetric(horizontal: width * .05, vertical: 10),
+              child: GestureDetector(
+                onTap: () => controller
+                    .launchurl(controller.selectedEvent.value.eventLink!),
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Colors.grey[850],
+                      borderRadius: BorderRadius.circular(15)),
+                  width: width,
+                  height: height * 0.06,
+                  child: Text(
+                    "Apply Now",
+                    style: TextStyle(
+                        fontSize: width * 0.05, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            )
+          : null,
     );
   }
 }

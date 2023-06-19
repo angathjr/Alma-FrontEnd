@@ -63,6 +63,8 @@ class PostController extends GetxController {
       "last_date_to_apply": lastDayToApply.value,
       "duration": duration.text,
     };
+
+   
     log("college or other  data is $data");
 
     try {

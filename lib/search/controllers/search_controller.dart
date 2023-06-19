@@ -1,12 +1,12 @@
 import 'dart:developer';
-import 'package:alma/core/api_provider_no_auth.dart';
+import 'package:alma/core/api_provider.dart';
 import 'package:alma/events/controllers/event_controller.dart';
 import 'package:alma/events/models/event_model.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class EventSearchController extends GetxController {
-  final ApiProviderNoAuth api = Get.find();
+  final ApiProvider api = Get.find();
   final EventsController eventsController = Get.find();
 
   TextEditingController searchTextController = TextEditingController();

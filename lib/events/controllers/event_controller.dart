@@ -4,6 +4,7 @@ import 'package:alma/events/models/event_model.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class EventsController extends GetxController {
   final TextEditingController companyNameController = TextEditingController();
@@ -123,5 +124,14 @@ class EventsController extends GetxController {
   void gotoEvent(EventModel eventdata) {
     selectedEvent.value = eventdata;
     Get.toNamed('/feedDetails');
+  }
+
+  void launchurl(String url) async {
+    final _url = Uri.parse(url);
+    try {
+      await launchUrl(_url);
+    } catch (e) {
+      log("error launching url $e");
+    }
   }
 }

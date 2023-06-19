@@ -31,12 +31,13 @@ class FcmController extends GetxController {
   }
 
   void handleForegroundNotifications() async {
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      RemoteNotification? notification = message.notification;
-      AndroidNotification? android = message.notification?.android;
+    try {
+      FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+        RemoteNotification? notification = message.notification;
+        AndroidNotification? android = message.notification?.android;
 
-      if (notification != null && android != null) {
-        flutterLocalNotificationsPlugin.show(
+        if (notification != null && android != null) {
+          flutterLocalNotificationsPlugin.show(
             notification.hashCode,
             notification.title,
             notification.body,
@@ -47,16 +48,21 @@ class FcmController extends GetxController {
                 channelDescription: notificationChannel.description,
                 icon: '@mipmap/ic_launcher',
               ),
-            ));
-      }
+            ),
+          );
+        }
 
-      log('Got a message whilst in the foreground!');
-      log('Message data: ${message.data}');
+        log('Got a message whilst in the foreground!');
+        log('Message data: ${message.data}');
 
-      if (message.notification != null) {
-        log('Message also contained a notification: ${message.notification}');
-      }
-    });
+        if (message.notification != null) {
+          log('Message also contained a notification: ${message.notification}');
+        }
+      });
+    } catch (e, stackTrace) {
+      // Handle the exception here
+      print('Error occurred: $e\n$stackTrace');
+    }
   }
 
   void handleRequest() async {
