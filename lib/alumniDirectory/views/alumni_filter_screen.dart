@@ -59,53 +59,54 @@ class AlumniFilterScreen extends StatelessWidget {
                                   builder: (BuildContext context) =>
                                       DialogueWidget1());
                             },
-                            child: Stack(
-                              children: [
-                                Container(
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white12,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    height: height,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "Year",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: width * 0.05,
-                                              color: Colors.white),
-                                        ),
-                                        const Icon(Iconsax.calendar,
-                                            color: Colors.white),
-                                        if (controller.joinedYearController.text
-                                            .isNotEmpty)
-                                          SizedBox(
-                                            height: height * .02,
+                            child: Obx(
+                              () => Stack(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white12,
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      height: height,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "Year",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: width * 0.05,
+                                                color: Colors.white),
                                           ),
-                                        Text(controller
-                                            .joinedYearController.text),
-                                      ],
-                                    )),
-                                if (controller
-                                    .joinedYearController.text.isNotEmpty)
-                                  Positioned(
-                                      right: -10,
-                                      top: -10,
-                                      child: IconButton(
-                                        icon: Icon(
-                                          Iconsax.close_circle,
-                                          size: width * 0.08,
-                                        ),
-                                        onPressed: () {
-                                          controller.clearJoindYear();
-                                          controller.joinedYearController.text="";
-                                        },
-                                      ))
-                              ],
+                                          const Icon(Iconsax.calendar,
+                                              color: Colors.white),
+                                          if (controller.joinedYearController
+                                              .text.isNotEmpty)
+                                            SizedBox(
+                                              height: height * .02,
+                                            ),
+                                          Text(controller.joinedYear.value),
+                                        ],
+                                      )),
+                                  if (controller
+                                      .joinedYearController.text.isNotEmpty)
+                                    Positioned(
+                                        right: -10,
+                                        top: -10,
+                                        child: IconButton(
+                                          icon: Icon(
+                                            Iconsax.close_circle,
+                                            size: width * 0.08,
+                                          ),
+                                          onPressed: () {
+                                            controller.clearJoindYear();
+                                            controller.joinedYear.value = "";
+                                          },
+                                        ))
+                                ],
+                              ),
                             ),
                           )),
                           SizedBox(
@@ -259,6 +260,8 @@ class DialogueWidget1 extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
+                controller.joinedYear.value =
+                    controller.joinedYearController.text;
                 Get.back();
               },
               child: Container(
