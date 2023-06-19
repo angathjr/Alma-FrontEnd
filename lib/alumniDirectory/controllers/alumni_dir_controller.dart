@@ -71,7 +71,7 @@ class AlumniDirController extends GetxController {
   }
 
   void filterAlumni() {
-    if (joinedYearController.text.isNotEmpty ||
+    if (joinedYearController.text.isNotEmpty &&
         selectedDepartment.value.isNotEmpty) {
       alumni.value = allAlumni
           .where((element) =>
@@ -79,6 +79,17 @@ class AlumniDirController extends GetxController {
                   int.parse(joinedYearController.text) &&
               element.department == deptIndex.value)
           .toList();
+    } else if (joinedYearController.text.isNotEmpty) {
+      alumni.value = allAlumni
+          .where((element) =>
+              element.academicYearFrom == int.parse(joinedYearController.text))
+          .toList();
+    } else if (selectedDepartment.value.isNotEmpty) {
+      alumni.value = allAlumni
+          .where((element) => element.department == deptIndex.value)
+          .toList();
+    } else {
+      alumni.value = allAlumni;
     }
     Get.back();
   }
