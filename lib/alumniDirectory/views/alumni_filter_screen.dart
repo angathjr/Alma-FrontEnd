@@ -59,33 +59,54 @@ class AlumniFilterScreen extends StatelessWidget {
                                   builder: (BuildContext context) =>
                                       DialogueWidget1());
                             },
-                            child: Container(
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  color: Colors.white12,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                height: height,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Year",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: width * 0.05,
-                                          color: Colors.white),
+                            child: Stack(
+                              children: [
+                                Container(
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white12,
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
-                                    const Icon(Iconsax.calendar,
-                                        color: Colors.white),
-                                    if (controller
-                                        .joinedYearController.text.isNotEmpty)
-                                      SizedBox(
-                                        height: height * .02,
-                                      ),
-                                    Text(controller.joinedYearController.text),
-                                  ],
-                                )),
+                                    height: height,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Year",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: width * 0.05,
+                                              color: Colors.white),
+                                        ),
+                                        const Icon(Iconsax.calendar,
+                                            color: Colors.white),
+                                        if (controller.joinedYearController.text
+                                            .isNotEmpty)
+                                          SizedBox(
+                                            height: height * .02,
+                                          ),
+                                        Text(controller
+                                            .joinedYearController.text),
+                                      ],
+                                    )),
+                                if (controller
+                                    .joinedYearController.text.isNotEmpty)
+                                  Positioned(
+                                      right: -10,
+                                      top: -10,
+                                      child: IconButton(
+                                        icon: Icon(
+                                          Iconsax.close_circle,
+                                          size: width * 0.08,
+                                        ),
+                                        onPressed: () {
+                                          controller.clearJoindYear();
+                                          controller.joinedYearController.text="";
+                                        },
+                                      ))
+                              ],
+                            ),
                           )),
                           SizedBox(
                             width: height * .01,
@@ -99,41 +120,60 @@ class AlumniFilterScreen extends StatelessWidget {
                                       DialogWidget());
                             },
                             child: Obx(
-                              () => Container(
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white12,
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  height: height,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "Department",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: width * 0.05,
-                                            color: Colors.white),
+                              () => Stack(
+                                children: [
+                                  Container(
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white12,
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
-                                      const Icon(Iconsax.courthouse,
-                                          color: Colors.white),
-                                      if (controller.selectedDepartment.value !=
-                                          "")
-                                        SizedBox(
-                                          height: height * .02,
-                                        ),
-                                      Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: width * 0.02),
-                                          child: Text(
-                                            controller.selectedDepartment.value,
-                                            style: const TextStyle(
-                                                overflow:
-                                                    TextOverflow.ellipsis),
-                                          )),
-                                    ],
-                                  )),
+                                      height: height,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "Department",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: width * 0.05,
+                                                color: Colors.white),
+                                          ),
+                                          const Icon(Iconsax.courthouse,
+                                              color: Colors.white),
+                                          if (controller
+                                                  .selectedDepartment.value !=
+                                              "")
+                                            SizedBox(
+                                              height: height * .02,
+                                            ),
+                                          Container(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: width * 0.02),
+                                              child: Text(
+                                                controller
+                                                    .selectedDepartment.value,
+                                                style: const TextStyle(
+                                                    overflow:
+                                                        TextOverflow.ellipsis),
+                                              )),
+                                        ],
+                                      )),
+                                  if (controller.selectedDepartment.value != "")
+                                    Positioned(
+                                        right: -10,
+                                        top: -10,
+                                        child: IconButton(
+                                          icon: Icon(
+                                            Iconsax.close_circle,
+                                            size: width * 0.08,
+                                          ),
+                                          onPressed: () =>
+                                              controller.clearDepartment(),
+                                        ))
+                                ],
+                              ),
                             ),
                           )),
                         ],
@@ -145,7 +185,7 @@ class AlumniFilterScreen extends StatelessWidget {
                     Expanded(
                       flex: 4,
                       child: GestureDetector(
-                        onTap: ()=>controller.filterAlumni(),
+                        onTap: () => controller.filterAlumni(),
                         child: Container(
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
@@ -207,6 +247,7 @@ class DialogueWidget1 extends StatelessWidget {
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
                   color: Constants.cardColor().withOpacity(0.9)),
               child: TextFormField(
+                keyboardType: TextInputType.number,
                 controller: controller.joinedYearController,
                 decoration: const InputDecoration(
                   hintText: "YYYY",
@@ -217,7 +258,9 @@ class DialogueWidget1 extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () => Get.back(),
+              onTap: () {
+                Get.back();
+              },
               child: Container(
                 width: width * 0.3,
                 height: height * .053,
