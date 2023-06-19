@@ -20,6 +20,7 @@ class AlumniDirController extends GetxController {
   var isSearching = false.obs;
   var selectedDepartment = "".obs;
   var deptIndex = 0.obs;
+  var joinedYear="".obs;
 
   @override
   void onInit() {
@@ -103,5 +104,15 @@ class AlumniDirController extends GetxController {
     selectedDepartment.value = "";
     joinedYearController.clear();
     Get.back();
+  }
+
+  void clearJoindYear(){
+    joinedYearController.clear();
+    joinedYearController.text="";
+    joinedYear.value="";
+  }
+
+  void clearDepartment(){
+    selectedDepartment.value="";
   }
 }

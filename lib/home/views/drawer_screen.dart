@@ -21,7 +21,7 @@ class NavigationDrawerScreen extends StatelessWidget {
     return AnimationConfiguration.synchronized(
       child: FadeInAnimation(
         curve: Curves.fastLinearToSlowEaseIn,
-        duration: const Duration(milliseconds: 2500),
+        duration: const Duration(milliseconds: 1500),
         child: Drawer(
           width: width * 0.6,
           elevation: 0,
@@ -36,7 +36,7 @@ class NavigationDrawerScreen extends StatelessWidget {
                 ),
                 child: SlideAnimation(
                   curve: Curves.fastLinearToSlowEaseIn,
-                  duration: const Duration(milliseconds: 2500),
+                  duration: const Duration(milliseconds: 1500),
                   verticalOffset: 50.0,
                   child: Column(
                     children: [
@@ -65,7 +65,7 @@ class NavigationDrawerScreen extends StatelessWidget {
               SlideAnimation(
                 horizontalOffset: -30,
                 curve: Curves.fastLinearToSlowEaseIn,
-                duration: const Duration(milliseconds: 2500),
+                duration: const Duration(milliseconds: 1500),
                 child: ListTile(
                   leading: const Icon(Iconsax.briefcase, color: Colors.white),
                   title: const Text(
@@ -81,7 +81,7 @@ class NavigationDrawerScreen extends StatelessWidget {
               SlideAnimation(
                 verticalOffset: -30,
                 curve: Curves.fastLinearToSlowEaseIn,
-                duration: const Duration(milliseconds: 2500),
+                duration: const Duration(milliseconds: 1500),
                 child: ListTile(
                   leading: const Icon(FeatherIcons.award, color: Colors.white),
                   title: const Text(
@@ -97,7 +97,7 @@ class NavigationDrawerScreen extends StatelessWidget {
               SlideAnimation(
                 verticalOffset: -30,
                 curve: Curves.fastLinearToSlowEaseIn,
-                duration: const Duration(milliseconds: 2500),
+                duration: const Duration(milliseconds: 1500),
                 child: ListTile(
                   leading: const Icon(Iconsax.building, color: Colors.white),
                   title: const Text(
@@ -113,7 +113,7 @@ class NavigationDrawerScreen extends StatelessWidget {
               SlideAnimation(
                 verticalOffset: -30,
                 curve: Curves.fastLinearToSlowEaseIn,
-                duration: const Duration(milliseconds: 2500),
+                duration: const Duration(milliseconds: 1500),
                 child: ListTile(
                   leading: const Icon(Iconsax.calendar, color: Colors.white),
                   title: const Text(
@@ -129,9 +129,9 @@ class NavigationDrawerScreen extends StatelessWidget {
               SlideAnimation(
                 verticalOffset: -30,
                 curve: Curves.fastLinearToSlowEaseIn,
-                duration: const Duration(milliseconds: 2500),
+                duration: const Duration(milliseconds: 1500),
                 child: ListTile(
-                  leading: const Icon(FeatherIcons.users),
+                  leading: const Icon(FeatherIcons.users,color: Colors.white,),
                   title: const Text(
                     'Alumni Directory',
                     style: TextStyle(color: Colors.white, fontSize: 20),
