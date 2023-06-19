@@ -8,7 +8,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 
 class NewsFeedScreen extends StatelessWidget {
   NewsFeedScreen({Key? key}) : super(key: key);
@@ -137,7 +136,8 @@ class NewsFeedScreen extends StatelessWidget {
                                                                           index]
                                                                       .postedBy!
                                                                       .userName;
-                                                              profileController.getUserEventDetails();
+                                                              profileController
+                                                                  .getUserEventDetails();
                                                             },
                                                             child: ClipRRect(
                                                               borderRadius:
@@ -157,6 +157,8 @@ class NewsFeedScreen extends StatelessWidget {
                                                                               .imgUrl ==
                                                                           ''
                                                                       ? Image.asset(
+                                                                          color: Colors
+                                                                              .white,
                                                                           NOIMAGE)
                                                                       : CachedNetworkImage(
                                                                           progressIndicatorBuilder: (context, url, downloadProgress) =>
