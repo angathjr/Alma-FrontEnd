@@ -23,7 +23,6 @@ class NavigationDrawerScreen extends StatelessWidget {
         curve: Curves.fastLinearToSlowEaseIn,
         duration: const Duration(milliseconds: 2500),
         child: Drawer(
-
           width: width * 0.6,
           elevation: 0,
           backgroundColor: Constants.cardColor(),
@@ -68,8 +67,7 @@ class NavigationDrawerScreen extends StatelessWidget {
                 curve: Curves.fastLinearToSlowEaseIn,
                 duration: const Duration(milliseconds: 2500),
                 child: ListTile(
-                  leading: const Icon(Iconsax.briefcase,
-                      color: Colors.white),
+                  leading: const Icon(Iconsax.briefcase, color: Colors.white),
                   title: const Text(
                     'Jobs',
                     style: TextStyle(color: Colors.white, fontSize: 20),
@@ -85,8 +83,7 @@ class NavigationDrawerScreen extends StatelessWidget {
                 curve: Curves.fastLinearToSlowEaseIn,
                 duration: const Duration(milliseconds: 2500),
                 child: ListTile(
-                  leading: const Icon(FeatherIcons.award,
-                      color: Colors.white),
+                  leading: const Icon(FeatherIcons.award, color: Colors.white),
                   title: const Text(
                     'Internships',
                     style: TextStyle(color: Colors.white, fontSize: 20),
@@ -102,8 +99,7 @@ class NavigationDrawerScreen extends StatelessWidget {
                 curve: Curves.fastLinearToSlowEaseIn,
                 duration: const Duration(milliseconds: 2500),
                 child: ListTile(
-                  leading: const Icon(Iconsax.building,
-                      color: Colors.white),
+                  leading: const Icon(Iconsax.building, color: Colors.white),
                   title: const Text(
                     'College Events',
                     style: TextStyle(color: Colors.white, fontSize: 20),
@@ -119,8 +115,7 @@ class NavigationDrawerScreen extends StatelessWidget {
                 curve: Curves.fastLinearToSlowEaseIn,
                 duration: const Duration(milliseconds: 2500),
                 child: ListTile(
-                  leading: const Icon(Iconsax.calendar,
-                      color: Colors.white),
+                  leading: const Icon(Iconsax.calendar, color: Colors.white),
                   title: const Text(
                     'Other Events',
                     style: TextStyle(color: Colors.white, fontSize: 20),
@@ -143,6 +138,7 @@ class NavigationDrawerScreen extends StatelessWidget {
                   ),
                   onTap: () {
                     alumniDirController.fetchAlumni();
+                    alumniDirController.clearControllers();
                     Get.toNamed('/alumni-dir');
                   },
                 ),

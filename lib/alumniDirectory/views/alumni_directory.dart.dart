@@ -24,19 +24,20 @@ class AlumniDirectoryScreen extends StatelessWidget {
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
-                automaticallyImplyLeading: false,
-                pinned: true,
-                leading: IconButton(
-                   onPressed: () {
-                     Get.back();
-                   },
-                   icon: const Icon(Iconsax.arrow_left_2)),
-                floating: true,
-                snap: true,
-                titleSpacing: 20,
-                title: const Text('Alumni Directory'),
-                backgroundColor: Colors.black,
-                  actions: <Widget>[
+              centerTitle: true,
+              automaticallyImplyLeading: false,
+              pinned: true,
+              leading: IconButton(
+                  onPressed: () {
+                    controller.clearControllers();
+                  },
+                  icon: const Icon(Iconsax.arrow_left_2)),
+              floating: true,
+              snap: true,
+              titleSpacing: 20,
+              title: const Text('Alumni Directory'),
+              backgroundColor: Colors.black,
+              actions: <Widget>[
                 IconButton(
                   icon: const Icon(
                     Iconsax.filter,
@@ -46,56 +47,53 @@ class AlumniDirectoryScreen extends StatelessWidget {
                     filterWidget(context, height, width);
                   },
                 )
-              
               ],
-                bottom: PreferredSize(
-                  preferredSize: Size.fromHeight(height * 0.055 + 10),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: width * 0.05),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              flex: 11,
-                              child: Container(
-                                alignment: Alignment.center,
-                                height: height * 0.055,
-                                decoration: BoxDecoration(
-                                    color:
-                                        Constants.cardColor().withOpacity(0.5),
-                                    borderRadius: BorderRadius.circular(20)),
-                                child: const TextField(
-                                  // onSubmitted: (value) =>
-                                  //     searchController.searchEvents(),
-                                  textAlign: TextAlign.left,
-                                  textAlignVertical: TextAlignVertical.center,
-                                  decoration: InputDecoration(
-                                      prefixIcon: Icon(FeatherIcons.search),
-                                      hintText: "Search",
-                                      contentPadding: EdgeInsets.only(left: 20),
-                                      border: InputBorder.none),
-                                  // controller:
-                                  //     searchController.searchTextController,
-                                ),
+              bottom: PreferredSize(
+                preferredSize: Size.fromHeight(height * 0.055 + 10),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            flex: 11,
+                            child: Container(
+                              alignment: Alignment.center,
+                              height: height * 0.055,
+                              decoration: BoxDecoration(
+                                  color: Constants.cardColor().withOpacity(0.5),
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: TextField(
+                                onSubmitted: (value) =>
+                                    controller.searchAlumni(),
+                                textAlign: TextAlign.left,
+                                textAlignVertical: TextAlignVertical.center,
+                                decoration: const InputDecoration(
+                                    prefixIcon: Icon(FeatherIcons.search),
+                                    hintText: "Search",
+                                    contentPadding: EdgeInsets.only(left: 20),
+                                    border: InputBorder.none),
+                                controller: controller.searchTextController,
                               ),
                             ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ],
                   ),
                 ),
               ),
-            
+            ),
             SliverPadding(
                 padding: EdgeInsets.symmetric(horizontal: width * 0.04),
                 sliver: Obx(
-                  () => controller.isLoading.value
+                  () => (controller.isLoading.value ||
+                          controller.isSearching.value)
                       ? SliverToBoxAdapter(
                           child: SizedBox(
                               height: height * 0.6,
