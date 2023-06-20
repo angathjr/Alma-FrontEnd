@@ -153,11 +153,15 @@ class CalendarScreen extends StatelessWidget {
                                                       fontSize: 20,
                                                       color: Colors.white),
                                                 ),
-                                                Text(
-                                                  "${controller.events[index].eventDescription}",
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  maxLines: 3,
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: 0.1 * width),
+                                                  child: Text(
+                                                    "${controller.events[index].eventDescription}",
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    maxLines: 4,
+                                                  ),
                                                 )
                                               ],
                                             ),
