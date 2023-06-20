@@ -1,9 +1,9 @@
 import 'dart:developer';
 import 'dart:io';
-import 'package:alma/Navbar/controllers/navcontroller.dart';
+
 import 'package:alma/core/api_provider.dart';
 import 'package:alma/core/constants.dart';
-import 'package:alma/getx_di.dart';
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
