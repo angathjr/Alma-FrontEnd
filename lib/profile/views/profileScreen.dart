@@ -246,7 +246,34 @@ class ProfilePage extends StatelessWidget {
                               height: 0.004 * height,
                             ),
                             GestureDetector(
-                              onTap: () => authController.logOut(),
+                              onTap: () => Get.dialog(AlertDialog(
+                                // backgroundColor: context.theme.cardColor,
+                                title: Text(
+                                  "Log Out",
+                                  style: context.theme.textTheme.bodyMedium
+                                      ?.copyWith(fontSize: 20),
+                                ),
+                                content: const Text(
+                                    "Are you sure you want to log out?"),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      authController.logOut();
+                                    },
+                                    child: const Text(
+                                      "Yes",
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    child: const Text(
+                                      "No",
+                                    ),
+                                  ),
+                                ],
+                              )),
                               child: SlideAnimation(
                                 curve: Curves.fastLinearToSlowEaseIn,
                                 duration: const Duration(milliseconds: 2500),
