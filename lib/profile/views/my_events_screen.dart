@@ -166,14 +166,14 @@ class MyEventsScreen extends StatelessWidget {
                                                                         fontSize:
                                                                             17),
                                                               ),
-                                                              Text(
-                                                                "1 hour ago",
-                                                                style: Constants
-                                                                        .txtStyle()
-                                                                    .copyWith(
-                                                                        fontSize:
-                                                                            11),
-                                                              )
+                                                              // Text(
+                                                              //   "1 hour ago",
+                                                              //   style: Constants
+                                                              //           .txtStyle()
+                                                              //       .copyWith(
+                                                              //           fontSize:
+                                                              //               11),
+                                                              // )
                                                             ],
                                                           ),
                                                           const Spacer(),

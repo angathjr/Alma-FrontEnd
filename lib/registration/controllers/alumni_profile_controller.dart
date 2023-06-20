@@ -52,15 +52,6 @@ class AlumniProfileController extends GetxController {
 //api calls
 
   void registerAlumni() async {
-    // UserData alumni = user.value.data![0];
-
-    // alumni = alumni.copyWith(
-    //     department: getIdofDepartment(),
-    //     currentCompany: currentCompanyController.text,
-    //     academicYearFrom: int.parse(year1Controller.text),
-    //     academicYearTo: int.parse(year2Controller.text),
-    //     user: user.value.id);
-
     Map<String, dynamic> data = {
       "department": getIdofDepartment(),
       "current_company": currentCompanyController.text,
@@ -141,14 +132,16 @@ class AlumniProfileController extends GetxController {
   }
 
   void updateVerification() async {
-    userModel = userModel.copyWith(isVerified: true);
+    // userModel = userModel.copyWith(isVerified: true);
+
+    Map data = {"is_verified": true, "img_url": imageUrl.value};
 
     try {
-      final response = await api.putApi(
-          '/users/user/${user.value.username}', userModel.toJson());
+      final response =
+          await api.putApi('/users/user/${user.value.username}', data);
       log("user response${response.body}");
       if (response.statusCode == 200) {
-        // userModel = UserModel.fromJson(response.body);
+        userModel = UserModel.fromJson(response.body);
         await _storage.write('user', userModel.toJson());
         await _storage.write('isVerified', true);
         log("new user model is ${userModel.toJson()}");

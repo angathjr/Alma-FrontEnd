@@ -19,6 +19,7 @@ class ProfilePage extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
           title: const Center(
             child: Text(
@@ -51,9 +52,12 @@ class ProfilePage extends StatelessWidget {
                         backgroundColor: Colors.white54,
                         foregroundColor: Colors.transparent,
                         radius: width * 0.1,
-                        foregroundImage: CachedNetworkImageProvider(
-                          "${profileController.user.value.imageUrl}",
-                        )),
+                        foregroundImage:
+                            profileController.user.value.imageUrl != ""
+                                ? CachedNetworkImageProvider(
+                                    "${profileController.user.value.imageUrl}",
+                                  )
+                                : const AssetImage(NOIMAGE) as ImageProvider),
                   ),
                 ],
               ),

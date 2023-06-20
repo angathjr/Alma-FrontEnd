@@ -65,7 +65,6 @@ class PostController extends GetxController {
       "event_link": eventLink.text
     };
 
-   
     log("college or other  data is $data");
 
     try {
@@ -168,7 +167,7 @@ class PostController extends GetxController {
       "skills_required": skills,
       "img_url": imageUrl.value,
       "event_type": selectedEventType.value,
-      "duration":duration.text,
+      "duration": duration.text,
       "last_date_to_apply": lastDayToApply.value,
       "event_link": eventLink.text
     };

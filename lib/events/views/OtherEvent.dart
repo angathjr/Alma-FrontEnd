@@ -34,7 +34,7 @@ class OtherEventScreen extends StatelessWidget {
             ? const Center(
                 child: CupertinoActivityIndicator(),
               )
-            : ListView.builder(
+            : controller.otherEvent.isEmpty?const Center(child: Text("NO EVENTS"),):ListView.builder(
                 shrinkWrap: true,
                 itemCount: controller.otherEvent.length,
                 itemBuilder: ((context, index) {

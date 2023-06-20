@@ -46,9 +46,13 @@ class NavigationDrawerScreen extends StatelessWidget {
                             child: CircleAvatar(
                                 backgroundColor: Colors.white,
                                 foregroundColor: Colors.transparent,
-                                foregroundImage: CachedNetworkImageProvider(
-                                  "${profileController.user.value.imageUrl}",
-                                ))),
+                                foregroundImage:
+                                    profileController.user.value.imageUrl != ""
+                                        ? CachedNetworkImageProvider(
+                                            "${profileController.user.value.imageUrl}",
+                                          )
+                                        : const AssetImage(NOIMAGE)
+                                            as ImageProvider)),
                       ),
                       Text(
                         "${profileController.user.value.firstName}",
@@ -131,7 +135,10 @@ class NavigationDrawerScreen extends StatelessWidget {
                 curve: Curves.fastLinearToSlowEaseIn,
                 duration: const Duration(milliseconds: 1500),
                 child: ListTile(
-                  leading: const Icon(FeatherIcons.users,color: Colors.white,),
+                  leading: const Icon(
+                    FeatherIcons.users,
+                    color: Colors.white,
+                  ),
                   title: const Text(
                     'Alumni Directory',
                     style: TextStyle(color: Colors.white, fontSize: 20),

@@ -1,10 +1,10 @@
-import 'package:alma/Internship/views/InternshipScreen.dart';
+import 'package:alma/events/views/InternshipScreen.dart';
 import 'package:alma/Navbar/views/navbar.dart';
 import 'package:alma/Post/views/InternshipDescriptionScreen.dart';
 import 'package:alma/Post/views/JobDescriptionScreen.dart';
 import 'package:alma/auth/views/splash_Screen.dart';
 import 'package:alma/eventCalendar/views/calendar_screen.dart';
-import 'package:alma/jobs/views/JobScreen.dart';
+import 'package:alma/events/views/JobScreen.dart';
 import 'package:alma/profile/views/my_events_screen.dart';
 import 'package:alma/profile/views/user_profile_screen.dart';
 import 'package:alma/profile/views/profileEditScreen.dart';

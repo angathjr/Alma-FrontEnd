@@ -7,6 +7,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import '../../core/constants.dart';
 import '../controllers/tab_controller.dart';
 import 'alumni_edit_profile_screen.dart';
 
@@ -21,7 +22,6 @@ class ProfileEditScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      
       backgroundColor: Colors.black,
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -30,7 +30,7 @@ class ProfileEditScreen extends StatelessWidget {
               Get.back();
               controller.selectedImage.value = File('');
             },
-            icon: const  Icon(Iconsax.arrow_left_2)),
+            icon: const Icon(Iconsax.arrow_left_2)),
         backgroundColor: Colors.black,
         title: const Text('Edit Profile'),
       ),
@@ -49,14 +49,18 @@ class ProfileEditScreen extends StatelessWidget {
                     children: [
                       Obx(
                         () => CircleAvatar(
-                          backgroundImage: CachedNetworkImageProvider(
-                              "${controller.user.value.imageUrl}"),
-                          foregroundImage:
-                              controller.isImageSelected.value == true
-                                  ? FileImage(controller.selectedImage.value)
-                                      as ImageProvider<Object>
-                                  : CachedNetworkImageProvider(
-                                      "${controller.user.value.imageUrl}"),
+                          backgroundImage: controller.user.value.imageUrl != ""
+                              ? CachedNetworkImageProvider(
+                                  "${controller.user.value.imageUrl}",
+                                )
+                              : const AssetImage(NOIMAGE) as ImageProvider,
+                          foregroundImage: controller.isImageSelected.value ==
+                                  true
+                              ? FileImage(controller.selectedImage.value)
+                              : controller.user.value.imageUrl != ""
+                                  ? CachedNetworkImageProvider(
+                                      "${controller.user.value.imageUrl}")
+                                  : const AssetImage(NOIMAGE) as ImageProvider,
                         ),
                       ),
                       Positioned(

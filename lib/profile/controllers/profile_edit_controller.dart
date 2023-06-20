@@ -86,7 +86,7 @@ class ProfileEditController extends GetxController {
 
       UserModel userdata = UserModel.fromJson(response.body);
       if (response.statusCode == 200) {
-        _storage.write('user', userdata.toJson());
+        await _storage.write('user', userdata.toJson());
         isUpdating(false);
         submitText("Updated");
         Get.back();
