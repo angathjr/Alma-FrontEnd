@@ -1,5 +1,6 @@
 import 'package:alma/core/constants.dart';
 import 'package:alma/events/controllers/event_controller.dart';
+import 'package:alma/events/controllers/event_edit_controller.dart';
 import 'package:alma/profile/controllers/profile_controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';
@@ -14,6 +15,7 @@ class MyEventsScreen extends StatelessWidget {
 
   final EventsController eventsController = Get.find();
   final ProfileController controller = Get.find();
+  final EventEditController eventEditController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -112,6 +114,7 @@ class MyEventsScreen extends StatelessWidget {
                                                             15)),
                                                 child: Column(
                                                   children: [
+
                                                     //Row that contains profile pic and name
 
                                                     SizedBox(
@@ -176,17 +179,43 @@ class MyEventsScreen extends StatelessWidget {
                                                             ],
                                                           ),
                                                           const Spacer(),
-                                                          SizedBox(
-                                                              width:
-                                                                  width * 0.07,
-                                                              height:
-                                                                  width * 0.07,
-                                                              child: const Icon(
-                                                                FeatherIcons
-                                                                    .moreHorizontal,
-                                                                color: Colors
-                                                                    .white,
-                                                              ))
+
+                                                          //drop down for  edit and delete
+                                                          
+                                                          GestureDetector(
+                                                            child: SizedBox(
+                                                                width: width *
+                                                                    0.07,
+                                                                height: width *
+                                                                    0.07,
+                                                                child:
+                                                                    PopupMenuButton(
+                                                                  enableFeedback:
+                                                                      true,
+                                                                  position:
+                                                                      PopupMenuPosition
+                                                                          .over,
+                                                                  elevation: 2,
+                                                                  shape: RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              10)),
+                                                                  itemBuilder:
+                                                                      (context) {
+                                                                    return eventEditController
+                                                                        .dropDownContents
+                                                                        .map((e) =>
+                                                                            PopupMenuItem(
+                                                                              onTap: () {
+                                                                                e == 'Delete' ? eventEditController.deleteEvent(controller.events[index].id!) : null;
+                                                                              },
+                                                                              value: e,
+                                                                              child: Container(alignment: Alignment.center, child: Text(e)),
+                                                                            ))
+                                                                        .toList();
+                                                                  },
+                                                                )),
+                                                          )
                                                         ],
                                                       ),
                                                     ),
