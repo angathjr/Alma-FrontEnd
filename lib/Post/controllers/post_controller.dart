@@ -62,6 +62,7 @@ class PostController extends GetxController {
       "event_type": selectedEventType.value,
       "last_date_to_apply": lastDayToApply.value,
       "duration": duration.text,
+      "event_link": eventLink.text
     };
 
    
@@ -167,7 +168,9 @@ class PostController extends GetxController {
       "skills_required": skills,
       "img_url": imageUrl.value,
       "event_type": selectedEventType.value,
+      "duration":duration.text,
       "last_date_to_apply": lastDayToApply.value,
+      "event_link": eventLink.text
     };
     log("job data is $jobdata");
 

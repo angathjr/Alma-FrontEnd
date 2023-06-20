@@ -114,6 +114,8 @@ class EventEditController extends GetxController {
       // "img_url": imageUrl.value,
       "event_type": selectedEventType.value,
       "last_date_to_apply": lastDayToApply.value,
+      "duration": duration.text,
+      "event_link": eventLink.text
     };
     log("job data is $jobdata");
 
@@ -165,6 +167,8 @@ class EventEditController extends GetxController {
       "event_type": selectedEventType.value,
       "last_date_to_apply": lastDayToApply.value,
       "duration": duration.text,
+
+      "event_link": eventLink.text
     };
 
     log("college or other  data is $data");
