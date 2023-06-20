@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import '../../core/constants.dart';
 import '../../events/controllers/event_controller.dart';
 import '../controllers/profile_controller.dart';
@@ -25,9 +26,18 @@ class UserProfileScreen extends StatelessWidget {
     return Scaffold(
         body: CustomScrollView(
       slivers: [
-        const SliverAppBar(
+        SliverAppBar(
+          leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(
+              Iconsax.arrow_left_2,
+              color: Colors.white,
+            ),
+          ),
           pinned: true,
-          title: Text(
+          title: const Text(
             'Profile',
             style: TextStyle(color: Colors.white),
           ),
