@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:alma/Post/controllers/post_controller.dart';
+import 'package:alma/events/controllers/event_edit_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -10,7 +11,7 @@ import '../../core/constants.dart';
 class JobDescriptionEditScreen extends StatelessWidget {
   JobDescriptionEditScreen({super.key});
 
-  final PostController postController = Get.find();
+  final EventEditController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +23,9 @@ class JobDescriptionEditScreen extends StatelessWidget {
         leading: IconButton(
             onPressed: () {
               Get.back();
-              postController.clearControllers();
             },
             icon: const Icon(Iconsax.arrow_left_2)),
-        title: const Text("Job Description"),
+        title: const Text("Edit Job Description"),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: width * 0.04),
@@ -59,7 +59,7 @@ class JobDescriptionEditScreen extends StatelessWidget {
                                     const BorderRadius.all(Radius.circular(10)),
                                 color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
-                              controller: postController.eventName,
+                              controller: controller.eventName,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
@@ -87,7 +87,7 @@ class JobDescriptionEditScreen extends StatelessWidget {
                                     const BorderRadius.all(Radius.circular(10)),
                                 color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
-                              controller: postController.companyName,
+                              controller: controller.companyName,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
@@ -115,7 +115,7 @@ class JobDescriptionEditScreen extends StatelessWidget {
                                     const BorderRadius.all(Radius.circular(10)),
                                 color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
-                              controller: postController.role,
+                              controller: controller.role,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
@@ -150,16 +150,15 @@ class JobDescriptionEditScreen extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(postController.lastDayToApply.value),
+                                    Text(controller.lastDayToApply.value),
                                     IconButton(
                                         onPressed: () async {
-                                          await postController.pickDate(
+                                          await controller.pickDate(
                                               context, height);
 
-                                          postController.lastDayToApply.value =
-                                              postController.selectedDate.value;
-                                          log(postController
-                                              .lastDayToApply.value);
+                                          controller.lastDayToApply.value =
+                                              controller.selectedDate.value;
+                                          log(controller.lastDayToApply.value);
                                         },
                                         icon: const Icon(Iconsax.calendar))
                                   ],
@@ -185,7 +184,7 @@ class JobDescriptionEditScreen extends StatelessWidget {
                                     const BorderRadius.all(Radius.circular(10)),
                                 color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
-                              controller: postController.skillsRequired,
+                              controller: controller.skillsRequired,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
@@ -214,7 +213,7 @@ class JobDescriptionEditScreen extends StatelessWidget {
                                 //color: Color(0xff25262E),
                                 color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
-                              controller: postController.eventLink,
+                              controller: controller.eventLink,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
@@ -243,7 +242,7 @@ class JobDescriptionEditScreen extends StatelessWidget {
                                 //color: Color(0xff25262E),
                                 color: Constants.cardColor().withOpacity(0.7)),
                             child: TextFormField(
-                              controller: postController.description,
+                              controller: controller.description,
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 contentPadding: EdgeInsets.only(left: 5),
@@ -261,7 +260,7 @@ class JobDescriptionEditScreen extends StatelessWidget {
             ),
             const Spacer(),
             GestureDetector(
-              onTap: () => postController.addJobEvent(),
+              onTap: () => controller.updateJobAndInternship(),
               child: Container(
                 alignment: Alignment.center,
                 width: width * 0.35,
@@ -272,7 +271,7 @@ class JobDescriptionEditScreen extends StatelessWidget {
                 child: Obx(
                   () => FittedBox(
                     child: Text(
-                      postController.postingText.value,
+                      controller.postingText.value,
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
@@ -283,7 +282,7 @@ class JobDescriptionEditScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: height * 0.02,
+              height: height * 0.03,
             )
           ],
         ),

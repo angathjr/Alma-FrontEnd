@@ -38,6 +38,7 @@ class ProfileEditController extends GetxController {
 
   @override
   void onInit() {
+    print("inside profile controller");
     _storage.listenKey('user', (value) {
       user.value = UserModel.fromJson(_storage.read('user'));
     });

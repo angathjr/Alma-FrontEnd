@@ -26,7 +26,11 @@ import 'Post/views/CollageEventDescription.dart';
 import 'Post/views/OtherEventDescription.dart';
 import 'auth/views/login_screen.dart';
 import 'events/views/CollageEvents.dart';
+import 'events/views/CollegeEventEdit.dart';
+import 'events/views/InternshipEventEdit.dart';
+import 'events/views/JobEventEdit.dart';
 import 'events/views/OtherEvent.dart';
+import 'events/views/OtherEventEdit.dart';
 import 'events/views/event_details_screen.dart';
 import 'getx_di.dart';
 
@@ -123,6 +127,18 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/alumni-dir', page: () => AlumniDirectoryScreen()),
         GetPage(name: '/profile', page: () => ProfilePage()),
         GetPage(name: '/userProfile', page: () => UserProfileScreen()),
+        GetPage(
+            name: '/jobEdit-description',
+            page: () => JobDescriptionEditScreen()),
+        GetPage(
+            name: '/internshipEdit-description',
+            page: () => InternshipDescriptionEditScreen()),
+        GetPage(
+            name: '/otherEventEdit-description',
+            page: () => OtherEventEditScreen()),
+        GetPage(
+            name: '/collageEventsEdit-description',
+            page: () => CollageEventEditScreen()),
       ],
     );
   }

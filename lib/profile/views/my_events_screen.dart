@@ -114,7 +114,6 @@ class MyEventsScreen extends StatelessWidget {
                                                             15)),
                                                 child: Column(
                                                   children: [
-
                                                     //Row that contains profile pic and name
 
                                                     SizedBox(
@@ -181,7 +180,7 @@ class MyEventsScreen extends StatelessWidget {
                                                           const Spacer(),
 
                                                           //drop down for  edit and delete
-                                                          
+
                                                           GestureDetector(
                                                             child: SizedBox(
                                                                 width: width *
@@ -196,6 +195,28 @@ class MyEventsScreen extends StatelessWidget {
                                                                       PopupMenuPosition
                                                                           .over,
                                                                   elevation: 2,
+                                                                  onSelected:
+                                                                      (value) {
+                                                                    if (value ==
+                                                                        "Edit") {
+                                                                      eventEditController
+                                                                          .selectedEvent
+                                                                          .value = controller
+                                                                              .events[
+                                                                          index];
+                                                                      eventEditController.goToEventDetailCompletion(controller
+                                                                          .events[
+                                                                              index]
+                                                                          .eventType!);
+                                                                      eventEditController
+                                                                          .onInit();
+                                                                    } else {
+                                                                      eventEditController.deleteEvent(controller
+                                                                          .events[
+                                                                              index]
+                                                                          .id!);
+                                                                    }
+                                                                  },
                                                                   shape: RoundedRectangleBorder(
                                                                       borderRadius:
                                                                           BorderRadius.circular(

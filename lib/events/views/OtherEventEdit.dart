@@ -1,4 +1,5 @@
 import 'package:alma/Post/controllers/post_controller.dart';
+import 'package:alma/events/controllers/event_edit_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -8,7 +9,7 @@ import '../../core/constants.dart';
 class OtherEventEditScreen extends StatelessWidget {
   OtherEventEditScreen({super.key});
 
-  final PostController controller = Get.find();
+  final EventEditController controller = Get.find();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -236,7 +237,7 @@ class OtherEventEditScreen extends StatelessWidget {
               ),
               const Spacer(),
               GestureDetector(
-                onTap: () => controller.addCollegeAndOtherEvent(),
+                onTap: () => controller.updateCollegeAndOtherEvent(),
                 child: Container(
                   alignment: Alignment.center,
                   width: width * 0.35,
