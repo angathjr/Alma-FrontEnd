@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 class NewsFeedScreen extends StatelessWidget {
   NewsFeedScreen({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class NewsFeedScreen extends StatelessWidget {
                 SliverAppBar(
                   leading: IconButton(
                       onPressed: () => _openDrawer(),
-                      icon: const Icon(FeatherIcons.menu, color: Colors.white)),
+                      icon: const Icon(Iconsax.menu, color: Colors.white)),
                   pinned: false,
                   floating: true,
                   snap: true,
@@ -49,6 +50,7 @@ class NewsFeedScreen extends StatelessWidget {
                   backgroundColor: Colors.black,
                 ),
                 CupertinoSliverRefreshControl(
+                  refreshTriggerPullDistance: height * 0.3,
                   onRefresh: () async {
                     controller.fetchEvents();
                   },

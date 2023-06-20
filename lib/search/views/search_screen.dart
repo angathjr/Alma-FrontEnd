@@ -22,6 +22,7 @@ class SearchPage extends StatelessWidget {
           backgroundColor: Colors.transparent,
           resizeToAvoidBottomInset: false,
           body: CustomScrollView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             slivers: [
               SliverAppBar(
                 automaticallyImplyLeading: false,
@@ -50,7 +51,7 @@ class SearchPage extends StatelessWidget {
                                         Constants.cardColor().withOpacity(0.5),
                                     borderRadius: BorderRadius.circular(20)),
                                 child: TextField(
-                                  onSubmitted: (value) =>
+                                  onChanged: (value) =>
                                       searchController.searchEvents(),
                                   textAlign: TextAlign.left,
                                   textAlignVertical: TextAlignVertical.center,
