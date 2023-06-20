@@ -96,20 +96,21 @@ class EventDetailsScreen extends StatelessWidget {
                     const Text(
                       "Description ",
                       style: TextStyle(
-                          fontStyle: FontStyle.italic,
-                          fontSize: 16,
+                         
+                          fontSize: 15,
                           fontWeight: FontWeight.bold),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
                           vertical: height * .005, horizontal: width * .03),
-                      child: Container(
+                      child: SizedBox(
                         width: width,
                         child: Text(
                           "${controller.selectedEvent.value.eventDescription}",
                           softWrap: true,
 
-                          style: Constants.txtStyle().copyWith(fontSize: 16),
+                          style: Constants.txtStyle().copyWith(fontSize: 14,
+                             fontStyle: FontStyle.italic,),
                           // overflow: TextOverflow.ellipsis
                         ),
                       ),
@@ -132,8 +133,8 @@ class EventDetailsScreen extends StatelessWidget {
                     const Text(
                       "Company Name ",
                       style: TextStyle(
-                          fontStyle: FontStyle.italic,
-                          fontSize: 16,
+                          
+                          fontSize: 15,
                           fontWeight: FontWeight.bold),
                     ),
                     Padding(
@@ -145,7 +146,7 @@ class EventDetailsScreen extends StatelessWidget {
                           "${controller.selectedEvent.value.companyName}",
                           softWrap: true,
 
-                          style: Constants.txtStyle().copyWith(fontSize: 16),
+                          style: Constants.txtStyle().copyWith(fontSize: 14),
                           // overflow: TextOverflow.ellipsis
                         ),
                       ),
@@ -168,8 +169,8 @@ class EventDetailsScreen extends StatelessWidget {
                     const Text(
                       "Role ",
                       style: TextStyle(
-                          fontStyle: FontStyle.italic,
-                          fontSize: 16,
+                        
+                          fontSize: 15,
                           fontWeight: FontWeight.bold),
                     ),
                     Padding(
@@ -181,7 +182,7 @@ class EventDetailsScreen extends StatelessWidget {
                           "${controller.selectedEvent.value.role}",
                           softWrap: true,
 
-                          style: Constants.txtStyle().copyWith(fontSize: 16),
+                          style: Constants.txtStyle().copyWith(fontSize: 14),
                           // overflow: TextOverflow.ellipsis
                         ),
                       ),
@@ -204,8 +205,8 @@ class EventDetailsScreen extends StatelessWidget {
                     const Text(
                       "Skill Required ",
                       style: TextStyle(
-                          fontStyle: FontStyle.italic,
-                          fontSize: 16,
+                         
+                          fontSize: 15,
                           fontWeight: FontWeight.bold),
                     ),
                     Padding(
@@ -217,7 +218,7 @@ class EventDetailsScreen extends StatelessWidget {
                           "${controller.selectedEvent.value.skillsRequired!.join(", ")}",
                           softWrap: true,
 
-                          style: Constants.txtStyle().copyWith(fontSize: 16),
+                          style: Constants.txtStyle().copyWith(fontSize: 14),
                           // overflow: TextOverflow.ellipsis
                         ),
                       ),
@@ -240,8 +241,8 @@ class EventDetailsScreen extends StatelessWidget {
                     const Text(
                       "Last Date to Apply ",
                       style: TextStyle(
-                          fontStyle: FontStyle.italic,
-                          fontSize: 16,
+                         
+                          fontSize: 15,
                           fontWeight: FontWeight.bold),
                     ),
                     Padding(
@@ -253,7 +254,7 @@ class EventDetailsScreen extends StatelessWidget {
                           "${controller.selectedEvent.value.lastDateToApply}",
                           softWrap: true,
 
-                          style: Constants.txtStyle().copyWith(fontSize: 16),
+                          style: Constants.txtStyle().copyWith(fontSize: 14),
                           // overflow: TextOverflow.ellipsis
                         ),
                       ),
@@ -276,20 +277,20 @@ class EventDetailsScreen extends StatelessWidget {
                     const Text(
                       "Duartion ",
                       style: TextStyle(
-                          fontStyle: FontStyle.italic,
-                          fontSize: 16,
+                          
+                          fontSize: 15,
                           fontWeight: FontWeight.bold),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
                           vertical: height * .005, horizontal: width * .03),
-                      child: Container(
+                      child: SizedBox(
                         width: width,
                         child: Text(
                           "${controller.selectedEvent.value.duration}",
                           softWrap: true,
 
-                          style: Constants.txtStyle().copyWith(fontSize: 16),
+                          style: Constants.txtStyle().copyWith(fontSize: 14),
                           // overflow: TextOverflow.ellipsis
                         ),
                       ),
@@ -312,8 +313,8 @@ class EventDetailsScreen extends StatelessWidget {
                     const Text(
                       "venue ",
                       style: TextStyle(
-                          fontStyle: FontStyle.italic,
-                          fontSize: 16,
+                      
+                          fontSize: 15,
                           fontWeight: FontWeight.bold),
                     ),
                     Padding(
@@ -325,7 +326,7 @@ class EventDetailsScreen extends StatelessWidget {
                           "${controller.selectedEvent.value.venue}",
                           softWrap: true,
 
-                          style: Constants.txtStyle().copyWith(fontSize: 16),
+                          style: Constants.txtStyle().copyWith(fontSize: 14),
                           // overflow: TextOverflow.ellipsis
                         ),
                       ),
@@ -348,8 +349,8 @@ class EventDetailsScreen extends StatelessWidget {
                     const Text(
                       "Event Link",
                       style: TextStyle(
-                          fontStyle: FontStyle.italic,
-                          fontSize: 16,
+                        
+                          fontSize: 15,
                           fontWeight: FontWeight.bold),
                     ),
                     Padding(
@@ -361,7 +362,7 @@ class EventDetailsScreen extends StatelessWidget {
                           "${controller.selectedEvent.value.eventLink}",
                           softWrap: true,
 
-                          style: Constants.txtStyle().copyWith(fontSize: 16),
+                          style: Constants.txtStyle().copyWith(fontSize: 14),
                           // overflow: TextOverflow.ellipsis
                         ),
                       ),
