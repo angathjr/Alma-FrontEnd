@@ -9,7 +9,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../core/constants.dart';
-import '../../registration/controllers/registration_controller.dart';
+
 
 class AlumniDirectoryScreen extends StatelessWidget {
   AlumniDirectoryScreen({super.key});

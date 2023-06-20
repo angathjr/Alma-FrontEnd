@@ -118,7 +118,7 @@ class UserProfileScreen extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.only(
                                     left: 0.04 * width, top: 0.01 * height),
-                                child: Text(
+                                child: const Text(
                                   'Interested Areas:',
                                   style: TextStyle(
                                     color: Colors.white70,
@@ -148,7 +148,7 @@ class UserProfileScreen extends StatelessWidget {
                       SizedBox(
                         height: 0.01 * height,
                       ),
-                      Text(
+                      const Text(
                         "Posts",
                         style: TextStyle(fontSize: 16, color: Colors.white),
                       ),

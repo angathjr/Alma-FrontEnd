@@ -30,7 +30,7 @@ class AlumniEditProfileScreen extends StatelessWidget {
               width: width * 02,
               height: height * .053,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
                   color: Constants.cardColor().withOpacity(0.7)),
               child: TextFormField(
                 controller: controller.currentCompany,

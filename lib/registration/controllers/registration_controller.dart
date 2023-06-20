@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:alma/core/api_provider.dart';
 import 'package:alma/events/models/department_model.dart';
-import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 

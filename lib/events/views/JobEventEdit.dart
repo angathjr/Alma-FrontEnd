@@ -33,7 +33,7 @@ class JobDescriptionEditScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
+              child: SizedBox(
                 width: width * .89,
                 height: height * .76,
                 child: SingleChildScrollView(
