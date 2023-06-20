@@ -1,4 +1,3 @@
-import 'package:alma/Post/controllers/post_controller.dart';
 import 'package:alma/events/controllers/event_edit_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

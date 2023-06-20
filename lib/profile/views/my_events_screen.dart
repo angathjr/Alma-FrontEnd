@@ -3,7 +3,6 @@ import 'package:alma/events/controllers/event_controller.dart';
 import 'package:alma/events/controllers/event_edit_controller.dart';
 import 'package:alma/profile/controllers/profile_controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';

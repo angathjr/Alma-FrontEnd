@@ -1,5 +1,4 @@
 import 'package:alma/Post/controllers/post_controller.dart';
-import 'package:alma/alumniDirectory/views/alumni_directory.dart.dart';
 import 'package:alma/eventCalendar/controllers/calendar_controller.dart';
 import 'package:alma/events/controllers/event_edit_controller.dart';
 import 'package:alma/fcm/controller/fcm_controller.dart';
