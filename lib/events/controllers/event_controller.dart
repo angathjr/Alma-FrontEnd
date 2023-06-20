@@ -37,7 +37,8 @@ class EventsController extends GetxController {
   var selectedIndex = 0.obs;
   var selectedEvent = EventModel().obs;
   late EventModel eventModel;
-
+  var isSelected=false.obs;
+  
   @override
   void onInit() {
     super.onInit();

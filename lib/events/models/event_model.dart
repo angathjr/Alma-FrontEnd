@@ -7,6 +7,7 @@ String eventModelToJson(List<EventModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class EventModel {
+  final int? id;
   final String? eventType;
   final String? eventName;
   final DateTime? eventDate;
@@ -25,7 +26,8 @@ class EventModel {
   final String? eventLink;
 
   EventModel(
-      {this.eventType,
+      {this.id,
+      this.eventType,
       this.eventName,
       this.eventDate,
       this.eventDescription,
@@ -44,6 +46,7 @@ class EventModel {
 
   EventModel copyWith(
           {String? eventType,
+          int? id,
           String? eventName,
           DateTime? eventDate,
           String? eventDescription,
@@ -60,6 +63,7 @@ class EventModel {
           String? eventLink,
           String? venue}) =>
       EventModel(
+          id: id ?? this.id,
           eventType: eventType ?? this.eventType,
           eventName: eventName ?? this.eventName,
           eventDate: eventDate ?? this.eventDate,
@@ -78,6 +82,7 @@ class EventModel {
           venue: venue ?? this.venue);
 
   factory EventModel.fromJson(Map<String, dynamic> json) => EventModel(
+      id: json["id"],
       eventType: json["event_type"],
       eventName: json["event_name"] ?? '',
       eventDate: json["event_date"] == null
@@ -105,6 +110,7 @@ class EventModel {
       eventLink: json["event_link"] ?? '');
 
   Map<String, dynamic> toJson() => {
+        "id": id,
         "event_type": eventType ?? 'J',
         "event_name": eventName ?? '',
         "duration": duration ?? "",

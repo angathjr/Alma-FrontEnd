@@ -13,7 +13,7 @@ class ApiProvider extends GetConnect {
   // patch request
   Future<Response> patchApi(String url, Map data) => patch(url, data);
   // delete request
-  Future<Response> deleteApi(String url, Map data) => delete(url);
+  Future<Response> deleteApi(String url) => delete(url);
 
   @override
   void onInit() {
