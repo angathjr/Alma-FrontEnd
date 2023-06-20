@@ -62,6 +62,8 @@ class ProfileEditController extends GetxController {
             ? ""
             : user.value.data![0].previousCompanies?.join(', '));
 
+    imageUrl.value = user.value.imageUrl ?? "";
+
     super.onInit();
   }
 
@@ -70,6 +72,11 @@ class ProfileEditController extends GetxController {
     submitText("Updating...");
     if (isImageSelected.value) {
       await uploadImage();
+    }
+    if (interestedAreasController.text.isEmpty) {
+      Get.snackbar("Complete", "Please enter your area of interest");
+      submitText("Submit");
+      return;
     }
     List<String> areaOfInterest = interestedAreasController.text.split(',');
 

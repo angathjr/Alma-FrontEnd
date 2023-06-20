@@ -297,5 +297,7 @@ class PostController extends GetxController {
     lastDayToApply.value = '';
     selectedDate.value = '';
     eventDate.value = '';
+    imageUrl.value = '';
+    isImageSelected(false);
   }
 }
